@@ -5,14 +5,12 @@ import {
   View
 } from 'react-native'
 
+import Chat from './containers/Chat/Chat'
+
 export default class App extends Component {
   render() {
     return (
-      <View>
-        <Text>
-          Hi
-        </Text>
-      </View>
+      <Chat />
     );
   }
 }
