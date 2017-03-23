@@ -1,0 +1,3 @@
+rootProject.name = 'tiat'
+
+include ':app'
