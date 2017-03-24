@@ -31,7 +31,6 @@ export default class Chat extends React.Component {
       demoMessages: Demo.messages,
       currentLine: 0
     }
-    this.onSend = this.onSend.bind(this);
   }
 
   showNextBubble() {
@@ -89,21 +88,12 @@ export default class Chat extends React.Component {
     });
   }
 
-  onSend(messages = []) {
-    this.setState((previousState) => {
-      return {
-        messages: GiftedChat.append(previousState.messages, messages),
-      };
-    });
-  }
-
   render() {
     return (
       <GiftedChat
         renderBubble={this.renderBubble.bind(this)}
         renderComposer={this.renderComposer.bind(this)}
         messages={this.state.messages}
-        onSend={this.onSend}
         user={{
           _id: 1,
         }}
