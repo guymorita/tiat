@@ -2,7 +2,9 @@
 import React, { Component } from 'react'
 import {
   ListView,
-  Text
+  StyleSheet,
+  Text,
+  View
 } from 'react-native'
 
 import MatchCell from './MatchCell'
@@ -40,7 +42,19 @@ export default class Matches extends Component {
 
   renderSectionHeader(sectionData, category) {
     return (
-      <Text style={{fontWeight: "700"}}>{category}</Text>
+      <View style={styles.sectionHeader}>
+        <Text style={{fontWeight: "700"}}>{category}</Text>
+      </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  sectionHeader: {
+    marginLeft: 20,
+    marginTop: 10,
+    paddingTop: 5,
+    paddingBottom: 5,
+    backgroundColor: '#fff'
+  }
+})

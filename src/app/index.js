@@ -31,6 +31,7 @@ export default class App extends Component {
         return (
           <View>
             <NavigationBar
+              tintColor={"#F8F8F8"}
               title={{title: "Chats"}}
             />
             <Matches />
@@ -41,6 +42,7 @@ export default class App extends Component {
         return (
           <View>
             <NavigationBar
+              tintColor={"#F8F8F8"}
               title={{title: "Ann"}}
             />
             <Chat />
