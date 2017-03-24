@@ -29,11 +29,12 @@ export default class Matches extends Component {
   }
 
   render() {
+    const { navigator } = this.props
     return (
       <ListView
         dataSource={this.state.dataSource}
         renderRow={(rowData) =>
-          <MatchCell userInfo={rowData} />
+          <MatchCell userInfo={rowData} navigator={navigator}/>
         }
         renderSectionHeader={this.renderSectionHeader}
       />

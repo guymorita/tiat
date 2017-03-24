@@ -4,29 +4,39 @@ import {
   Image,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View
 } from 'react-native'
 
 export default class MatchCell extends Component {
+  _onPressCell() {
+    const { navigator } = this.props
+    navigator.push({
+      title: "Chat"
+    })
+  }
+
   render() {
     const { userInfo } = this.props
     return (
-      <View style={styles.container}>
-        <View>
-          <Image
-            style={styles.thumb}
-            source={{uri: userInfo.thumb_url}}
-          />
+      <TouchableOpacity onPress={this._onPressCell.bind(this)}>
+        <View style={styles.container}>
+          <View>
+            <Image
+              style={styles.thumb}
+              source={{uri: userInfo.thumb_url}}
+            />
+          </View>
+          <View style={styles.infoColumn}>
+            <Text style={styles.name}>
+              {userInfo.first_name}
+            </Text>
+            <Text style={styles.subText}>
+              Matched Yesterday
+            </Text>
+          </View>
         </View>
-        <View style={styles.infoColumn}>
-          <Text style={styles.name}>
-            {userInfo.first_name}
-          </Text>
-          <Text style={styles.subText}>
-            Matched Yesterday
-          </Text>
-        </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }

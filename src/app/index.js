@@ -29,26 +29,27 @@ export default class App extends Component {
     switch(route.title) {
       case 'Matches':
         return (
-          <View>
+          <View style={{flex: 1}}>
             <NavigationBar
               tintColor={"#F8F8F8"}
               title={{title: "Chats"}}
             />
-            <Matches />
+            <Matches navigator={navigator}/>
           </View>
         );
 
       case 'Chat':
         return (
-          <View>
+          <View style={{flex: 1}}>
             <NavigationBar
               tintColor={"#F8F8F8"}
               title={{title: "Ann"}}
             />
-            <Chat />
+            <Chat navigator={navigator}/>
           </View>
         );
 
     }
   }
 }
+
