@@ -5,6 +5,7 @@ import {
   Text,
   View
 } from 'react-native'
+import NavigationBar from 'react-native-navbar'
 
 import Chat from './containers/Chat/Chat'
 import Matches from './containers/Matches/Matches'
@@ -25,12 +26,26 @@ export default class App extends Component {
   }
 
   renderScene(route, navigator) {
-    console.log('route', route)
     switch(route.title) {
       case 'Matches':
-        return <Matches />
+        return (
+          <View>
+            <NavigationBar
+              title={{title: "Chats"}}
+            />
+            <Matches />
+          </View>
+        );
+
       case 'Chat':
-        return <Chat />
+        return (
+          <View>
+            <NavigationBar
+              title={{title: "Ann"}}
+            />
+            <Chat />
+          </View>
+        );
 
     }
   }
