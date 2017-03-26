@@ -2,7 +2,9 @@ import React from 'react'
 import {
   Button,
   Platform,
+  StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native'
 
@@ -69,13 +71,32 @@ export default class Chat extends React.Component {
     );
   }
 
-  renderComposer(props) {
+  renderInputToolbar(props) {
     return (
-      <View style={{flexDirection: 'row', justifyContent: 'flex-end', flex: 1}}>
-        <Button
-        title="Next"
-        onPress={this._onNextPress.bind(this)}
-        />
+      <View style={styles.inputToolbar}>
+        {this.renderOptionBubble()}
+        {this.renderOptionBubble()}
+      </View>
+    );
+  }
+
+  renderOptionBubble() {
+    return (
+      <View style={styles.bottomBubble}>
+        <TouchableOpacity onPress={this._onNextPress.bind(this)}>
+          <Text
+            style={styles.optionBubble}
+            numberOfLines={2}>
+            So have you met any cool people on this app?
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  renderAccessory(props) {
+    return (
+      <View>
       </View>
     );
   }
@@ -91,8 +112,10 @@ export default class Chat extends React.Component {
     return (
       <GiftedChat
         renderBubble={this.renderBubble.bind(this)}
-        renderComposer={this.renderComposer.bind(this)}
+        renderInputToolbar={this.renderInputToolbar.bind(this)}
+        renderAccessory={this.renderAccessory.bind(this)}
         messages={this.state.messages}
+        bottomOffset={100}
         user={{
           _id: 1,
         }}
@@ -100,3 +123,35 @@ export default class Chat extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  composerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    flex: 1,
+    backgroundColor: 'red',
+    bottom: 0
+  },
+  inputToolbar: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  bottomBubble: {
+    borderRadius: 15,
+    borderBottomRightRadius: 0,
+    backgroundColor: 'red',
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    minHeight: 20,
+    justifyContent: 'center',
+    height: 70,
+    flex: 1
+  },
+  optionBubble: {
+    color: 'white'
+  }
+})
