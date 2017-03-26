@@ -6,6 +6,7 @@ import {
   Text,
   View
 } from 'react-native'
+import { connect } from 'react-redux'
 
 import MatchCell from './MatchCell'
 
@@ -15,17 +16,17 @@ const ana = {
   "first_name": "Katey"
 }
 
-export default class Matches extends Component {
-  constructor() {
-    super();
+class Matches extends Component {
+  constructor(props) {
+    super(props);
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
       sectionHeaderHasChanged: (s1, s2) => s1 !== s2
     })
 
     this.state = {
-      dataSource: ds.cloneWithRowsAndSections({Messages: Array(6).fill(ana)}),
-    };
+      dataSource: ds.cloneWithRowsAndSections({Messages: Array(6).fill(ana)})
+    }
   }
 
   render() {
@@ -59,3 +60,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   }
 })
+
+const mapStateToProps = function(state) {
+  const { characters, matches } = state
+  console.log('matches', matches)
+  console.log('characters', characters)
+  return {
+    matches
+  }
+}
+
+export default connect(mapStateToProps)(Matches)

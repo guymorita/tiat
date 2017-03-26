@@ -1,7 +1,7 @@
 
-import matchBlob from '../data/v1/matches.json'
+import characters from '../data/v1/characters.json'
 
-const initialState = matchBlob.matches
+const initialState = characters.characters
 
 export default function matches(state = initialState, action) {
   switch(action.type) {

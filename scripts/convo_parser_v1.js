@@ -2,14 +2,15 @@
 const fs = require('fs-extra');
 const path = require('path');
 const util = require('util');
-const js_yaml = require('js-yaml');
-const fileUrl = './convos/rawJson/11_Ana.json';
+const JSON3 = require('json3');
+
+const fileUrl = './convos/raw_json/101_Ana.json';
 const baseName = path.basename(fileUrl, '.json');
 
 const convoJson = require(fileUrl);
 
-const [femaleUserId, femaleFirstName] = baseName.split('_');
-const OUTPUT_YAML = `scripts/convos/yml/${baseName}.yml`;
+const [femaleCharId, femaleFirstName] = baseName.split('_');
+const OUTPUT_JSON = `scripts/convos/json/${baseName}.json`;
 
 const SELF = 'self';
 const GIRL = 'girl';
@@ -19,21 +20,21 @@ const BRANCH = 'branch';
 const threads = {};
 
 const createMessage = function(element, curThreadLen) {
-  const userId = getUserId(element);
+  const charId = getCharId(element);
   return {
     text: element.text,
     msg_id: curThreadLen,
-    usr_id: Number(userId),
+    cha_id: Number(charId),
     wait_sec: Number(element.wait_sec)
   }
 };
 
-const getUserId = function(element) {
+const getCharId = function(element) {
   switch(element.type) {
     case SELF:
       return 1;
     case GIRL:
-      return femaleUserId;
+      return femaleCharId;
     case NARRATOR:
       return 2;
   }
@@ -117,5 +118,6 @@ convoJson.forEach(function(element, i) {
 
 // console.log(util.inspect(threads, {showHidden: false, depth: 4}))
 
-saveThreadsYaml = js_yaml.safeDump(threads);
-fs.outputFileSync(OUTPUT_YAML, saveThreadsYaml);
+saveThreadsJson = JSON3.stringify(threads, null, 2);
+
+fs.outputFileSync(OUTPUT_JSON, saveThreadsJson);

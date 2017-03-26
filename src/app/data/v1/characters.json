@@ -1,0 +1,32 @@
+{
+  "date": 1490526155942,
+  "version": 1,
+  "characters": [
+    {
+      "key": "11_Colin",
+      "cha_id": "11",
+      "first_name": "Colin",
+      "age": "27",
+      "distance_in_miles": "",
+      "school": "UC Davis",
+      "raw_bio": "I never know what to say in these things, but someone told me to put my height. 6'2\"",
+      "thumb_url": "",
+      "photo_1": "",
+      "photo_2": "",
+      "photo_3": ""
+    },
+    {
+      "key": "101_Ana",
+      "cha_id": "101",
+      "first_name": "Ana",
+      "age": "26",
+      "distance_in_miles": "2",
+      "school": "University of the Pacific",
+      "raw_bio": "\"The best dreams happen while you’re awake.\", Pill pusher by day, catburglar by night.",
+      "thumb_url": "",
+      "photo_1": "",
+      "photo_2": "",
+      "photo_3": ""
+    }
+  ]
+}
