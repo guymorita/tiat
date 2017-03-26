@@ -3,6 +3,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const util = require('util');
 const JSON3 = require('json3');
+const _ = require('lodash')
 
 const fileUrl = './characters/json/characters.json';
 const charJson = require(fileUrl);
@@ -16,6 +17,14 @@ const characters = charBlob.characters = [];
 
 charJson.forEach((line) => {
   const key = line.key;
+  const { photo_0, photo_1, photo_2 } = line
+  line.images = {
+    photo_0,
+    photo_1,
+    photo_2
+  }
+  line = _.omit(line, ['photo_0', 'photo_1', 'photo_2'])
+
   characters.push(line);
 });
 

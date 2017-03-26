@@ -24,8 +24,10 @@ class Matches extends Component {
       sectionHeaderHasChanged: (s1, s2) => s1 !== s2
     })
 
+    const { matches } = props
+
     this.state = {
-      dataSource: ds.cloneWithRowsAndSections({Messages: Array(6).fill(ana)})
+      dataSource: ds.cloneWithRowsAndSections({Messages: matches})
     }
   }
 
@@ -62,9 +64,7 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { characters, matches } = state
-  console.log('matches', matches)
-  console.log('characters', characters)
+  const { matches } = state
   return {
     matches
   }

@@ -7,8 +7,9 @@ import {
   TouchableOpacity,
   View
 } from 'react-native'
+import { connect } from 'react-redux'
 
-export default class MatchCell extends Component {
+class MatchCell extends Component {
   _onPressCell() {
     const { navigator } = this.props
     navigator.push({
@@ -17,19 +18,30 @@ export default class MatchCell extends Component {
   }
 
   render() {
-    const { userInfo } = this.props
+    const { characters, userInfo } = this.props
+    const { key } = userInfo
+
+    const isChar = (el) => { return el.key === key }
+
+    const femaleChar = characters.find(isChar)
+    const { images } = femaleChar
+
+    const firstImage = images.photo_0
+    console.log('firstImage', firstImage)
+
     return (
       <TouchableOpacity onPress={this._onPressCell.bind(this)}>
         <View style={styles.container}>
           <View>
             <Image
               style={styles.thumb}
-              source={{uri: userInfo.thumb_url}}
+              source={{uri: firstImage}}
             />
+
           </View>
           <View style={styles.infoColumn}>
             <Text style={styles.name}>
-              {userInfo.first_name}
+              {femaleChar.first_name}
             </Text>
             <Text style={styles.subText}>
               Matched Yesterday
@@ -65,3 +77,13 @@ const styles = StyleSheet.create({
     color: '#B2B2B2'
   }
 })
+
+const mapStateToProps = function(state) {
+  const { characters } = state
+
+  return {
+    characters
+  }
+}
+
+export default connect(mapStateToProps)(MatchCell)
