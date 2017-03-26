@@ -9,7 +9,7 @@ const baseName = path.basename(fileUrl, '.json');
 const convoJson = require(fileUrl);
 
 const [femaleUserId, femaleFirstName] = baseName.split('_');
-const OUTPUT_YAML = `scripts/convos/yaml/${baseName}.yml`;
+const OUTPUT_YAML = `scripts/convos/yml/${baseName}.yml`;
 
 const SELF = 'self';
 const GIRL = 'girl';
@@ -39,16 +39,32 @@ const getUserId = function(element) {
   }
 };
 
+const createBranch = function(element) {
+    const isLinearBranch = element.next_thread;
+    const isTerminal = element.terminal;
+    const isMultiBranch = element.option_a_text;
+
+    if (isLinearBranch) {
+      return createLinearBranch(element);
+    } else if (isMultiBranch) {
+      return createMultiBranch(element);
+    } else if (isTerminal) {
+      return createTerminalBranch(element);
+    } else {
+      throw Error('Error branching');
+    }
+};
+
 const createLinearBranch = function(element) {
   return {
     branch_type: 'linear',
     branch_target: element.next_thread,
-    decisions: []
+    options: []
   }
 };
 
 const createMultiBranch = function(element) {
-  const decisions = [
+  const options = [
     {
       dec_id: 0,
       text: element.option_a_text,
@@ -65,7 +81,7 @@ const createMultiBranch = function(element) {
   return {
     branch_type: 'multi',
     branch_target: '',
-    decisions
+    options
   }
 };
 
@@ -73,7 +89,7 @@ const createTerminalBranch = function(element) {
   return {
     branch_type: 'terminal',
     branch_target: '',
-    decisions: []
+    options: []
   }
 };
 
@@ -83,30 +99,19 @@ convoJson.forEach(function(element, i) {
   const currentThread = threads[thread] = threads[thread] || {};
   const messages = currentThread.messages = currentThread.messages || [];
 
-  const platform = element.platform;
-  currentThread.platform = platform;
-  currentThreadLen = currentThread.messages.length;
+  currentThread.platform = element.platform;
 
   const isMessage = [SELF, GIRL, NARRATOR].includes(element.type);
-  const isMultiBranch = [BRANCH].includes(element.type);
-  const isLinearBranch = element.next_thread;
-  const isTerminal = element.terminal;
+  const isBranch = [BRANCH].includes(element.type);
 
   if (isMessage) {
+    const currentThreadLen = currentThread.messages.length;
     const newMessage = createMessage(element, currentThreadLen);
     messages.push(newMessage);
   }
 
-  if (isLinearBranch) {
-    currentThread.branch = createLinearBranch(element);
-  }
-
-  if (isMultiBranch) {
-    currentThread.branch = createMultiBranch(element);
-  }
-
-  if (isTerminal) {
-    currentThread.branch = createTerminalBranch(element);
+  if (isBranch) {
+    currentThread.branch = createBranch(element);
   }
 });
 

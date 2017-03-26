@@ -40,7 +40,7 @@ a:
   branch:
     branch_type: multi
     branch_target: ''
-    decisions:
+    options:
       - dec_id: 0
         text: Make a bad joke and be playful
         target_thread: b
@@ -73,7 +73,7 @@ b:
   branch:
     branch_type: linear
     branch_target: d
-    decisions: []
+    options: []
 c:
   messages:
     - text: I'm a software engineer at Google actually
@@ -108,14 +108,14 @@ c:
   branch:
     branch_type: linear
     branch_target: d
-    decisions: []
+    options: []
 d:
   messages: []
   platform: tinder
   branch:
     branch_type: multi
     branch_target: ''
-    decisions:
+    options:
       - dec_id: 0
         text: Start getting at her intentions on this app
         target_thread: e
@@ -144,7 +144,7 @@ e:
   branch:
     branch_type: linear
     branch_target: g
-    decisions: []
+    options: []
 f:
   messages:
     - text: So what got you interested in becoming a pharmacist?
@@ -187,14 +187,14 @@ f:
   branch:
     branch_type: linear
     branch_target: g
-    decisions: []
+    options: []
 g:
   messages: []
   platform: tinder
   branch:
     branch_type: multi
     branch_target: ''
-    decisions:
+    options:
       - dec_id: 0
         text: Be honest about your love life
         target_thread: h
@@ -283,7 +283,7 @@ h:
   branch:
     branch_type: linear
     branch_target: j
-    decisions: []
+    options: []
 i:
   messages:
     - text: Hmmm. I haven't really met anyone yet
@@ -322,14 +322,14 @@ i:
   branch:
     branch_type: linear
     branch_target: j
-    decisions: []
+    options: []
 j:
   messages: []
   platform: tinder
   branch:
     branch_type: multi
     branch_target: ''
-    decisions:
+    options:
       - dec_id: 0
         text: Push the envelope and find out what she's looking for
         target_thread: k
@@ -380,7 +380,7 @@ k:
   branch:
     branch_type: linear
     branch_target: m
-    decisions: []
+    options: []
 l:
   messages:
     - text: So would you like to have dinner sometime?
@@ -407,14 +407,14 @@ l:
   branch:
     branch_type: terminal
     branch_target: ''
-    decisions: []
+    options: []
 m:
   messages: []
   platform: tinder
   branch:
     branch_type: multi
     branch_target: ''
-    decisions:
+    options:
       - dec_id: 0
         text: Be honest about your casual intentions
         target_thread: 'n'
@@ -469,7 +469,7 @@ m:
   branch:
     branch_type: linear
     branch_target: p
-    decisions: []
+    options: []
 o:
   messages:
     - text: I didn't mean it like that haha
@@ -528,7 +528,7 @@ o:
   branch:
     branch_type: linear
     branch_target: p
-    decisions: []
+    options: []
 p:
   messages:
     - text: >-
@@ -541,7 +541,7 @@ p:
   branch:
     branch_type: linear
     branch_target: q
-    decisions: []
+    options: []
 q:
   messages:
     - text: 'Hello there :) This is Colin'
@@ -767,3 +767,7 @@ q:
       usr_id: 11
       wait_sec: 0
   platform: iMessage
+  branch:
+    branch_type: terminal
+    branch_target: ''
+    options: []
