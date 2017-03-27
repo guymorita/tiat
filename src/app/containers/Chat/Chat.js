@@ -26,11 +26,13 @@ user2 = {
 class Chat extends React.Component {
   constructor(props) {
     super(props);
-    const { chat, matches } = props
+    const { characters, chat, matches } = props
     const { currentChat } = chat
     const { key } = currentChat
     let threads = {}
     let match = {}
+
+    const character = characters.find((char) => { return char.key === key })
 
     if (key) {
       match = matches.find((match) => { return match.key === key })
@@ -47,7 +49,8 @@ class Chat extends React.Component {
         atBranch: false
       },
       match,
-      threads
+      threads,
+      character
     }
   }
 
@@ -240,12 +243,15 @@ class Chat extends React.Component {
   }
 
   render() {
+    const { character } = this.state
+    const first_name = character && character.first_name || "Ann"
+    console.log('first_name', first_name)
     return (
       <View style={styles.container}>
         <NavigationBar
           leftButton={this.leftButtonConfig}
           tintColor={"#F8F8F8"}
-          title={{title: "Ann"}}
+          title={{title: first_name}}
         />
         <GiftedChat
           renderBubble={this.renderBubble.bind(this)}
@@ -318,9 +324,10 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { chat, matches } = state
+  const { characters, chat, matches } = state
 
   return {
+    characters,
     chat,
     matches
   }
