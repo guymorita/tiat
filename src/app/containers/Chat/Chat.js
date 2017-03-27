@@ -9,9 +9,9 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import NavigationBar from 'react-native-navbar'
 import _ from 'lodash'
 import { Bubble, GiftedChat } from 'react-native-gifted-chat'
-import Demo from './DemoChat'
 
 user1 = {
   _id: 1,
@@ -39,7 +39,6 @@ class Chat extends React.Component {
 
     this.state = {
       messages: [],
-      demoMessages: Demo.messages,
       currentLineRender: 0,
       currentChat: {
         key,
@@ -50,12 +49,18 @@ class Chat extends React.Component {
       match,
       threads
     }
-    console.log('this.state', this.state)
   }
 
-  // figure out the button to render
-  // figure out how to get it to look for the next item to show
-  // figure out how to show the options
+  leftButtonConfig = {
+    title: 'Back',
+    tintColor: 'black',
+    handler: () => this._onBackPress(),
+  }
+
+  _onBackPress() {
+    const { navigator } = this.props
+    navigator.pop()
+  }
 
   nextStep() {
     const { currentChat, threads } = this.state
@@ -75,7 +80,6 @@ class Chat extends React.Component {
   }
 
   showNextBubble(){
-    console.log('next bubblw')
     const { currentChat, currentLineRender, threads } = this.state
     const currentThread = threads[currentChat.thread]
     const { msg_id } = currentChat
@@ -123,7 +127,7 @@ class Chat extends React.Component {
 
   switchBranch(branch_target) {
     const { currentChat } = this.state
-    console.log('switchBranch', branch_target)
+
     this.setState({
       currentChat: {
         ...currentChat,
@@ -181,14 +185,14 @@ class Chat extends React.Component {
 
     return (
       <View style={styles.inputToolbar}>
-        {this.renderOptionBubbles(options)}
+        { this.renderOptionBubbles(options) }
       </View>
     );
   }
 
   renderOptionBubbles(options) {
     return options.map((option) => {
-      {return this.renderOptionBubble(option)}
+      { return this.renderOptionBubble(option) }
     })
   }
 
@@ -237,21 +241,31 @@ class Chat extends React.Component {
 
   render() {
     return (
-      <GiftedChat
-        renderBubble={this.renderBubble.bind(this)}
-        renderInputToolbar={this.renderInputToolbar.bind(this)}
-        renderAccessory={this.renderAccessory.bind(this)}
-        messages={this.state.messages}
-        bottomOffset={100}
-        user={{
-          _id: 1,
-        }}
-      />
+      <View style={styles.container}>
+        <NavigationBar
+          leftButton={this.leftButtonConfig}
+          tintColor={"#F8F8F8"}
+          title={{title: "Ann"}}
+        />
+        <GiftedChat
+          renderBubble={this.renderBubble.bind(this)}
+          renderInputToolbar={this.renderInputToolbar.bind(this)}
+          renderAccessory={this.renderAccessory.bind(this)}
+          messages={this.state.messages}
+          bottomOffset={100}
+          user={{
+            _id: 1,
+          }}
+        />
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   composerContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
