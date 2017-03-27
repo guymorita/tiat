@@ -1,3 +1,4 @@
+
 import React from 'react'
 import {
   Button,
@@ -7,50 +8,140 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-
+import { connect } from 'react-redux'
+import _ from 'lodash'
 import { Bubble, GiftedChat } from 'react-native-gifted-chat'
 import Demo from './DemoChat'
 
 user1 = {
   _id: 1,
-  name: 'Me',
-  avatar: 'https://s-media-cache-ak0.pinimg.com/736x/47/5e/0f/475e0f1362a7526c16d604f5dac47b86.jpg',
-
+  avatar: 'https://s-media-cache-ak0.pinimg.com/736x/47/5e/0f/475e0f1362a7526c16d604f5dac47b86.jpg'
 }
 
 user2 = {
   _id: 2,
-  name: 'Ana',
-  avatar: 'https://s-media-cache-ak0.pinimg.com/736x/47/5e/0f/475e0f1362a7526c16d604f5dac47b86.jpg',
+  avatar: 'https://s-media-cache-ak0.pinimg.com/736x/47/5e/0f/475e0f1362a7526c16d604f5dac47b86.jpg'
 }
 
-export default class Chat extends React.Component {
+class Chat extends React.Component {
   constructor(props) {
     super(props);
+    const { chat, matches } = props
+    const { currentChat } = chat
+    const { key } = currentChat
+    let threads = {}
+    let match = {}
+
+    if (key) {
+      match = matches.find((match) => { return match.key === key })
+      threads = match.threads
+    }
+
     this.state = {
       messages: [],
       demoMessages: Demo.messages,
-      currentLine: 0
+      currentLineRender: 0,
+      currentChat: {
+        key,
+        thread: 'a',
+        msg_id: 0,
+        atBranch: false
+      },
+      match,
+      threads
+    }
+    console.log('this.state', this.state)
+  }
+
+  // figure out the button to render
+  // figure out how to get it to look for the next item to show
+  // figure out how to show the options
+
+  nextStep() {
+    const { currentChat, threads } = this.state
+    const currentThread = threads[currentChat.thread]
+    const { msg_id } = currentChat
+    const { messages } = currentThread
+    let nextIsBranch = true
+    if (messages.length) {
+      const lastMessage = _.last(messages)
+      nextIsBranch = msg_id >= lastMessage.msg_id
+    }
+    if (!nextIsBranch) {
+      this.showNextBubble()
+    } else {
+      this.execBranch()
     }
   }
 
-  showNextBubble() {
-    const currentLine = this.state.currentLine
-    const nextMessage = this.state.demoMessages[currentLine]
-    const isColin = nextMessage._id === 1
+  showNextBubble(){
+    console.log('next bubblw')
+    const { currentChat, currentLineRender, threads } = this.state
+    const currentThread = threads[currentChat.thread]
+    const { msg_id } = currentChat
+    const { messages } = currentThread
+    const nextMessage = messages.find((msg) => { return msg.msg_id === msg_id })
+    const isColin = nextMessage.cha_id === 1
     nextMessage.user = isColin ? user1 : user2
-    nextMessage._id = currentLine
+    nextMessage._id = currentLineRender
 
     this.setState(() => {
       return {
         messages: GiftedChat.append(this.state.messages, nextMessage),
-        currentLine: currentLine + 1
+        currentLineRender: currentLineRender + 1,
+        currentChat: {
+          ...currentChat,
+          msg_id: currentChat.msg_id + 1
+        }
       };
     });
   }
 
+  execBranch() {
+    const { currentChat, threads } = this.state
+    const currentThread = threads[currentChat.thread]
+    const { branch } = currentThread
+
+    switch(branch.branch_type) {
+      case 'linear':
+        const { branch_target } = branch
+        this.switchBranch(branch_target)
+        return
+      case 'multi':
+        this.setState({
+          currentChat: {
+            ...currentChat,
+            atBranch: true
+          }
+        })
+        return
+      case 'terminal':
+        console.log('terminal')
+        return
+    }
+  }
+
+  switchBranch(branch_target) {
+    const { currentChat } = this.state
+    console.log('switchBranch', branch_target)
+    this.setState({
+      currentChat: {
+        ...currentChat,
+        thread: branch_target,
+        msg_id: 0,
+        atBranch: false
+      }
+    }, () => {
+      this.nextStep()
+    })
+  }
+
   _onNextPress() {
-    this.showNextBubble()
+    this.nextStep()
+  }
+
+  _onOptionPress(option) {
+    this.switchBranch(option.target_thread)
   }
 
   renderBubble(props) {
@@ -72,23 +163,59 @@ export default class Chat extends React.Component {
   }
 
   renderInputToolbar(props) {
+    const { currentChat } = this.state
+    const { atBranch } = currentChat
+
+    if (atBranch) {
+      return this.renderBranchOptions()
+    } else {
+      return this.renderNextBubble()
+    }
+  }
+
+  renderBranchOptions() {
+    const { currentChat, threads } = this.state
+    const currentThread = threads[currentChat.thread]
+    const { branch } = currentThread
+    const { options } = branch
+
     return (
       <View style={styles.inputToolbar}>
-        {this.renderOptionBubble()}
-        {this.renderOptionBubble()}
+        {this.renderOptionBubbles(options)}
       </View>
     );
   }
 
-  renderOptionBubble() {
+  renderOptionBubbles(options) {
+    return options.map((option) => {
+      {return this.renderOptionBubble(option)}
+    })
+  }
+
+  renderOptionBubble(option) {
     return (
-      <View style={styles.bottomBubble}>
-        <TouchableOpacity onPress={this._onNextPress.bind(this)}>
+      <View key={option.dec_id} style={styles.bottomBubble}>
+        <TouchableOpacity onPress={this._onOptionPress.bind(this, option)}>
           <Text
             style={styles.optionBubble}
             numberOfLines={2}>
-            So have you met any cool people on this app?
+            {option.text}
           </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  renderNextBubble() {
+    return (
+      <View style={styles.inputToolbar}>
+        <TouchableOpacity onPress={this._onNextPress.bind(this)}>
+          <View style={styles.nextBubble}>
+            <Text
+              style={styles.nextBubbleText}>
+              Next
+            </Text>
+          </View>
         </TouchableOpacity>
       </View>
     );
@@ -137,6 +264,26 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center'
   },
+  nextBubble: {
+    borderRadius: 15,
+    borderBottomRightRadius: 0,
+    backgroundColor: 'red',
+    marginLeft: 50,
+    marginRight: 50,
+    marginTop: 10,
+    paddingLeft: 50,
+    paddingRight: 50,
+    minHeight: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 70,
+    flex: 1
+
+  },
+  nextBubbleText: {
+    fontSize: 16,
+    color: 'white'
+  },
   bottomBubble: {
     borderRadius: 15,
     borderBottomRightRadius: 0,
@@ -155,3 +302,13 @@ const styles = StyleSheet.create({
     color: 'white'
   }
 })
+
+const mapStateToProps = function(state) {
+  const { chat, matches } = state
+
+  return {
+    chat,
+    matches
+  }
+}
+export default connect(mapStateToProps)(Chat)

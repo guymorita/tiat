@@ -9,17 +9,20 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 
+import { switchChat } from '../../actions/chat'
+
 class MatchCell extends Component {
-  _onPressCell() {
-    const { navigator } = this.props
+  _onPressCell(key) {
+    const { dispatch, navigator } = this.props
+    dispatch(switchChat(key))
     navigator.push({
       title: "Chat"
     })
   }
 
   render() {
-    const { characters, userInfo } = this.props
-    const { key } = userInfo
+    const { characters, matchInfo } = this.props
+    const { key } = matchInfo
 
     const isChar = (el) => { return el.key === key }
 
@@ -37,7 +40,7 @@ class MatchCell extends Component {
     const firstImage = (key) => { return imageMapping[key] }
 
     return (
-      <TouchableOpacity onPress={this._onPressCell.bind(this)}>
+      <TouchableOpacity onPress={this._onPressCell.bind(this, key)}>
         <View style={styles.container}>
           <View>
             <Image

@@ -37,7 +37,7 @@ class Matches extends Component {
       <ListView
         dataSource={this.state.dataSource}
         renderRow={(rowData) =>
-          <MatchCell userInfo={rowData} navigator={navigator}/>
+          <MatchCell matchInfo={rowData} navigator={navigator}/>
         }
         renderSectionHeader={this.renderSectionHeader}
       />
