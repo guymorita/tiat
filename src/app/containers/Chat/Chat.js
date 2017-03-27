@@ -268,15 +268,16 @@ class Chat extends React.Component {
     const backgroundStyle = getBackgroundStyle(currentChat.platform)
 
     return (
-      <View key={option.dec_id} style={[styles.bottomBubble, backgroundStyle]}>
-        <TouchableOpacity onPress={this._onOptionPress.bind(this, option)}>
+      <TouchableOpacity key={option.dec_id} style={styles.bottomBubbleTouch} onPress={this._onOptionPress.bind(this, option)}>
+        <View  style={[styles.bottomBubble, backgroundStyle]}>
           <Text
             style={styles.optionBubble}
             numberOfLines={2}>
             {option.text}
           </Text>
-        </TouchableOpacity>
-      </View>
+
+        </View>
+      </TouchableOpacity>
     );
   }
 
@@ -372,6 +373,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white'
   },
+  bottomBubbleTouch: {
+    flex: 1
+  },
   bottomBubble: {
     borderRadius: 15,
     borderBottomRightRadius: 0,
@@ -382,7 +386,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     minHeight: 20,
     justifyContent: 'center',
-    height: 70,
+    height: 80,
     flex: 1
   },
   optionBubble: {
