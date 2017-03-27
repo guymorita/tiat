@@ -1,7 +1,7 @@
-key,cha_id,first_name,age,distance_in_miles,school,raw_bio,photo_0,photo_1,photo_2
-11_Colin,11,Colin,27,,UC Davis,"I never know what to say in these things, but someone told me to put my height. 6'2""",,,
-101_Ana,101,Ana,26,2,University of the Pacific,"""The best dreams happen while you’re awake."", Pill pusher by day, catburglar by night.",https://s3-ap-southeast-1.amazonaws.com/tiat-images/101-Ana-0.png,https://s3-ap-southeast-1.amazonaws.com/tiat-images/101-Ana-1.png,
-102_Jessica,102,Jessica,24,1,University of California,Oh hi,https://s3-ap-southeast-1.amazonaws.com/tiat-images/102-Jessica-0.png,https://s3-ap-southeast-1.amazonaws.com/tiat-images/102-Jessica-1.png,
-103_Christina,103,Christina,21,,University of Washington,"Jedi in the streets, Sith in the sheets",https://s3-ap-southeast-1.amazonaws.com/tiat-images/103-Christina-0.png,,
-104_Em,104,Em,29,2,Stanford University,instagram: emdeplam,https://s3-ap-southeast-1.amazonaws.com/tiat-images/104-Em-0.png,,
-105_Katrina,105,Katrina,25,5,Queens,"""Before you critisize someone you should walk a mile in their shoes""",https://s3-ap-southeast-1.amazonaws.com/tiat-images/105-Katrina-0.png,,
+key,cha_id,first_name,age,distance_in_miles,school,raw_bio,thumb,photo_0,photo_1,photo_2
+11_Colin,11,Colin,27,,UC Davis,"I never know what to say in these things, but someone told me to put my height. 6'2""",,,,
+101_Ana,101,Ana,26,2,University of the Pacific,"""The best dreams happen while you’re awake."", Pill pusher by day, catburglar by night.",https://s3-ap-southeast-1.amazonaws.com/tiat-images/101_Ana_thumb.jpg,,,
+102_Jessica,102,Jessica,24,1,University of California,Oh hi,https://s3-ap-southeast-1.amazonaws.com/tiat-images/102_Jessica_thumb.jpg,,,
+103_Christina,103,Christina,21,,University of Washington,"Jedi in the streets, Sith in the sheets",https://s3-ap-southeast-1.amazonaws.com/tiat-images/103_Christina_thumb.jpg,,,
+104_Em,104,Em,29,2,Stanford University,instagram: emdeplam,https://s3-ap-southeast-1.amazonaws.com/tiat-images/104_Em_thumb.jpg,,,
+105_Katrina,105,Katrina,25,5,Queens,"""Before you critisize someone you should walk a mile in their shoes""",https://s3-ap-southeast-1.amazonaws.com/tiat-images/105_Katrina_thumb.jpg,,,

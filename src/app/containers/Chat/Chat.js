@@ -23,7 +23,7 @@ user2 = {
   avatar: 'https://s-media-cache-ak0.pinimg.com/736x/47/5e/0f/475e0f1362a7526c16d604f5dac47b86.jpg'
 }
 
-const TINDER_COLOR = '#66B0C7'
+const TINDER_COLOR = '#ED7C61'
 const IMESSAGE_COLOR = '#2D75FA'
 
 const getBackgroundStyle = (platform) => {
@@ -107,14 +107,38 @@ class Chat extends React.Component {
     }
   }
 
+  getThumb(nextMessage) {
+    const { characters } = this.props
+    const { currentChat } = this.state
+    const { key } = currentChat
+    const { cha_id } = nextMessage
+    if (nextMessage.cha_id === 2) {
+      return 'https://www.playshakespeare.com/images/avatar/thumb_1b09da63a23c12d8d02185e9.jpg'
+    } else if ( cha_id < 100) {
+      return ''
+    }
+    const character = characters.find((char) => { return char.key === key })
+    return character.images.thumb
+  }
+
+  setChaId(nextMessage) {
+    // main character needs to be 1 to render on the right side
+    if (nextMessage.cha_id > 10 && nextMessage.cha_id < 100) {
+      return 1
+    }
+    return nextMessage.cha_id
+  }
+
   showNextBubble(){
     const { currentChat, currentLineRender, threads } = this.state
     const currentThread = threads[currentChat.thread]
     const { msg_id } = currentChat
     const { messages } = currentThread
     const nextMessage = messages.find((msg) => { return msg.msg_id === msg_id })
-    const isColin = nextMessage.cha_id === 1
-    nextMessage.user = isColin ? user1 : user2
+
+    nextMessage.user = {}
+    nextMessage.user._id = this.setChaId(nextMessage)
+    nextMessage.user.avatar = this.getThumb(nextMessage)
     nextMessage._id = currentLineRender
 
     this.setState(() => {
@@ -181,7 +205,13 @@ class Chat extends React.Component {
 
   renderBubble(props) {
     const { currentChat } = this.state
-    const bgColor = getBackgroundColor(currentChat.platform)
+    const firstBgColor = getBackgroundColor(currentChat.platform)
+    const { currentMessage } = props
+    const secondBgColor = currentMessage.cha_id === 2 ? '#D0E2F4': '#F0F0F0'
+    // console.log('props', props)
+    // #F0F0F0
+    // #DCDCDC
+    // #D0E2F4
 
     return (
       <Bubble
@@ -192,8 +222,11 @@ class Chat extends React.Component {
         }
         }}
         wrapperStyle={{
+          left: {
+            backgroundColor: secondBgColor
+          },
           right: {
-            backgroundColor: bgColor
+            backgroundColor: firstBgColor
           }
         }}
       />
