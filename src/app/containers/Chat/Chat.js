@@ -23,6 +23,27 @@ user2 = {
   avatar: 'https://s-media-cache-ak0.pinimg.com/736x/47/5e/0f/475e0f1362a7526c16d604f5dac47b86.jpg'
 }
 
+const TINDER_COLOR = '#66B0C7'
+const IMESSAGE_COLOR = '#2D75FA'
+
+const getBackgroundStyle = (platform) => {
+  switch(platform) {
+    case 'tinder':
+      return styles.backgroundTinder
+    case 'iMessage':
+      return styles.backgroundiMessage
+  }
+}
+
+const getBackgroundColor = (platform) => {
+  switch(platform) {
+    case 'tinder':
+      return TINDER_COLOR
+    case 'iMessage':
+      return IMESSAGE_COLOR
+  }
+}
+
 class Chat extends React.Component {
   constructor(props) {
     super(props);
@@ -33,10 +54,13 @@ class Chat extends React.Component {
     let match = {}
 
     const character = characters.find((char) => { return char.key === key })
+    let platform = 'tinder'
 
     if (key) {
       match = matches.find((match) => { return match.key === key })
       threads = match.threads
+      firstThread = threads.a
+      platform = firstThread.platform
     }
 
     this.state = {
@@ -46,7 +70,8 @@ class Chat extends React.Component {
         key,
         thread: 'a',
         msg_id: 0,
-        atBranch: false
+        atBranch: false,
+        platform
       },
       match,
       threads,
@@ -129,14 +154,17 @@ class Chat extends React.Component {
   }
 
   switchBranch(branch_target) {
-    const { currentChat } = this.state
+    const { currentChat, threads } = this.state
+    const currentThread = threads[currentChat.thread]
+    const newThread = threads[branch_target]
 
     this.setState({
       currentChat: {
         ...currentChat,
         thread: branch_target,
         msg_id: 0,
-        atBranch: false
+        atBranch: false,
+        platform: newThread.platform
       }
     }, () => {
       this.nextStep()
@@ -152,6 +180,9 @@ class Chat extends React.Component {
   }
 
   renderBubble(props) {
+    const { currentChat } = this.state
+    const bgColor = getBackgroundColor(currentChat.platform)
+
     return (
       <Bubble
         {...props}
@@ -162,7 +193,7 @@ class Chat extends React.Component {
         }}
         wrapperStyle={{
           right: {
-            backgroundColor: 'red'
+            backgroundColor: bgColor
           }
         }}
       />
@@ -200,8 +231,11 @@ class Chat extends React.Component {
   }
 
   renderOptionBubble(option) {
+    const { currentChat } = this.state
+    const backgroundStyle = getBackgroundStyle(currentChat.platform)
+
     return (
-      <View key={option.dec_id} style={styles.bottomBubble}>
+      <View key={option.dec_id} style={[styles.bottomBubble, backgroundStyle]}>
         <TouchableOpacity onPress={this._onOptionPress.bind(this, option)}>
           <Text
             style={styles.optionBubble}
@@ -214,10 +248,13 @@ class Chat extends React.Component {
   }
 
   renderNextBubble() {
+    const { currentChat } = this.state
+    const backgroundStyle = getBackgroundStyle(currentChat.platform)
+
     return (
       <View style={styles.inputToolbar}>
         <TouchableOpacity onPress={this._onNextPress.bind(this)}>
-          <View style={styles.nextBubble}>
+          <View style={[styles.nextBubble, backgroundStyle]}>
             <Text
               style={styles.nextBubbleText}>
               Next
@@ -245,7 +282,7 @@ class Chat extends React.Component {
   render() {
     const { character } = this.state
     const first_name = character && character.first_name || "Ann"
-    console.log('first_name', first_name)
+
     return (
       <View style={styles.container}>
         <NavigationBar
@@ -276,7 +313,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     flex: 1,
-    backgroundColor: 'red',
     bottom: 0
   },
   inputToolbar: {
@@ -287,7 +323,6 @@ const styles = StyleSheet.create({
   nextBubble: {
     borderRadius: 15,
     borderBottomRightRadius: 0,
-    backgroundColor: 'red',
     marginLeft: 50,
     marginRight: 50,
     marginTop: 10,
@@ -307,7 +342,6 @@ const styles = StyleSheet.create({
   bottomBubble: {
     borderRadius: 15,
     borderBottomRightRadius: 0,
-    backgroundColor: 'red',
     marginLeft: 10,
     marginRight: 10,
     marginTop: 10,
@@ -320,6 +354,12 @@ const styles = StyleSheet.create({
   },
   optionBubble: {
     color: 'white'
+  },
+  backgroundTinder: {
+    backgroundColor: TINDER_COLOR,
+  },
+  backgroundiMessage: {
+    backgroundColor: IMESSAGE_COLOR
   }
 })
 
