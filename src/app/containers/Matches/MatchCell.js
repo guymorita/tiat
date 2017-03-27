@@ -26,8 +26,15 @@ class MatchCell extends Component {
     const femaleChar = characters.find(isChar)
     const { images } = femaleChar
 
-    const firstImage = images.photo_0
-    console.log('firstImage', firstImage)
+    const imageMapping = {
+      '101_Ana': require('./101Ana0.png'),
+      '102_Jessica': require('./102Jessica0.png'),
+      '103_Christina': require('./103Christina0.png'),
+      '104_Em': require('./104Em0.png'),
+      '105_Katrina': require('./105Katrina0.png')
+    }
+
+    const firstImage = (key) => { return imageMapping[key] }
 
     return (
       <TouchableOpacity onPress={this._onPressCell.bind(this)}>
@@ -35,7 +42,7 @@ class MatchCell extends Component {
           <View>
             <Image
               style={styles.thumb}
-              source={{uri: firstImage}}
+              source={firstImage(key)}
             />
 
           </View>
