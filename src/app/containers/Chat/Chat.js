@@ -14,15 +14,15 @@ import _ from 'lodash'
 import { Bubble, GiftedChat } from 'react-native-gifted-chat'
 
 import { getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
+import { getInputFormat } from '../../actions/chat'
 
 const TEXT_COLOR_LIGHT = 'white'
 
 class Chat extends React.Component {
   constructor(props) {
     super(props);
-    const { characters, chat, matches } = props
-    const { currentChat } = chat
-    const { key } = currentChat
+    const { characters, curChat, dispatch, matches } = props
+    const key = '101_Ana'
     let threads = {}
     let match = {}
 
@@ -40,7 +40,7 @@ class Chat extends React.Component {
     this.state = {
       messages: [],
       currentLineRender: 0,
-      currentChat: {
+      curChat: {
         key,
         thread: 'a',
         msg_id: 0,
@@ -67,9 +67,9 @@ class Chat extends React.Component {
   // FIX remove all functions except button handlers and render functions
 
   nextStep() {
-    const { currentChat, threads } = this.state
-    const currentThread = threads[currentChat.thread]
-    const { msg_id } = currentChat
+    const { curChat, threads } = this.state
+    const currentThread = threads[curChat.thread]
+    const { msg_id } = curChat
     const { messages } = currentThread
     let nextIsBranch = true
     if (messages.length) {
@@ -85,8 +85,8 @@ class Chat extends React.Component {
 
   getThumb(nextMessage) {
     const { characters } = this.props
-    const { currentChat } = this.state
-    const { key } = currentChat
+    const { curChat } = this.state
+    const { key } = curChat
     const { cha_id } = nextMessage
     if (nextMessage.cha_id === 2) {
       return 'https://www.playshakespeare.com/images/avatar/thumb_1b09da63a23c12d8d02185e9.jpg'
@@ -106,9 +106,9 @@ class Chat extends React.Component {
   }
 
   showNextBubble(){
-    const { currentChat, currentLineRender, threads } = this.state
-    const currentThread = threads[currentChat.thread]
-    const { msg_id } = currentChat
+    const { curChat, currentLineRender, threads } = this.state
+    const currentThread = threads[curChat.thread]
+    const { msg_id } = curChat
     const { messages } = currentThread
     const nextMessage = messages.find((msg) => { return msg.msg_id === msg_id })
 
@@ -121,17 +121,17 @@ class Chat extends React.Component {
       return {
         messages: GiftedChat.append(this.state.messages, nextMessage),
         currentLineRender: currentLineRender + 1,
-        currentChat: {
-          ...currentChat,
-          msg_id: currentChat.msg_id + 1
+        curChat: {
+          ...curChat,
+          msg_id: curChat.msg_id + 1
         }
       };
     });
   }
 
   execBranch() {
-    const { currentChat, threads } = this.state
-    const currentThread = threads[currentChat.thread]
+    const { curChat, threads } = this.state
+    const currentThread = threads[curChat.thread]
     const { branch } = currentThread
 
     switch(branch.branch_type) {
@@ -141,8 +141,8 @@ class Chat extends React.Component {
         return
       case 'multi':
         this.setState({
-          currentChat: {
-            ...currentChat,
+          curChat: {
+            ...curChat,
             atBranch: true
           }
         })
@@ -154,13 +154,13 @@ class Chat extends React.Component {
   }
 
   switchBranch(branch_target) {
-    const { currentChat, threads } = this.state
-    const currentThread = threads[currentChat.thread]
+    const { curChat, threads } = this.state
+    const currentThread = threads[curChat.thread]
     const newThread = threads[branch_target]
 
     this.setState({
-      currentChat: {
-        ...currentChat,
+      curChat: {
+        ...curChat,
         thread: branch_target,
         msg_id: 0,
         atBranch: false,
@@ -180,8 +180,8 @@ class Chat extends React.Component {
   }
 
   renderBubble(props) {
-    const { currentChat } = this.state
-    const firstBgColor = getBackgroundColor(currentChat.platform)
+    const { curChat } = this.state
+    const firstBgColor = getBackgroundColor(curChat.platform)
     const { currentMessage } = props
     const secondBgColor = currentMessage.cha_id === 2 ? '#D0E2F4': '#F0F0F0'
 
@@ -206,8 +206,8 @@ class Chat extends React.Component {
   }
 
   renderInputToolbar(props) {
-    const { currentChat } = this.state
-    const { atBranch } = currentChat
+    const { curChat } = this.state
+    const { atBranch } = curChat
 
     if (atBranch) {
       return this.renderBranchOptions()
@@ -217,8 +217,8 @@ class Chat extends React.Component {
   }
 
   renderBranchOptions() {
-    const { currentChat, threads } = this.state
-    const currentThread = threads[currentChat.thread]
+    const { curChat, threads } = this.state
+    const currentThread = threads[curChat.thread]
     const { branch } = currentThread
     const { options } = branch
 
@@ -236,8 +236,8 @@ class Chat extends React.Component {
   }
 
   renderOptionBubble(option) {
-    const { currentChat } = this.state
-    const backgroundStyle = getBackgroundStyle(currentChat.platform)
+    const { curChat } = this.state
+    const backgroundStyle = getBackgroundStyle(curChat.platform)
 
     return (
       <TouchableOpacity key={option.dec_id} style={styles.optionBubbleTouch} onPress={this._onOptionPress.bind(this, option)}>
@@ -254,8 +254,8 @@ class Chat extends React.Component {
   }
 
   renderNextBubble() {
-    const { currentChat } = this.state
-    const backgroundStyle = getBackgroundStyle(currentChat.platform)
+    const { curChat } = this.state
+    const backgroundStyle = getBackgroundStyle(curChat.platform)
 
     return (
       <View style={styles.inputToolbar}>
@@ -356,10 +356,15 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = function(state) {
   const { characters, chat, matches } = state
+  const { activeChats, currentChat } = chat
+  // no longer needs currentChat again.
+  const { key } = currentChat
+  const activeChatMatch = (chat) => { return chat.key === key }
+  const curChat = activeChats.find(activeChatMatch)
 
   return {
     characters,
-    chat,
+    curChat,
     matches
   }
 }

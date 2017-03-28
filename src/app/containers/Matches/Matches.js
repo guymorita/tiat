@@ -10,12 +10,6 @@ import { connect } from 'react-redux'
 
 import MatchCell from './MatchCell'
 
-const ana = {
-  "thumb_url": "https://s-media-cache-ak0.pinimg.com/736x/47/5e/0f/475e0f1362a7526c16d604f5dac47b86.jpg",
-  "id": 11,
-  "first_name": "Katey"
-}
-
 class Matches extends Component {
   constructor(props) {
     super(props);

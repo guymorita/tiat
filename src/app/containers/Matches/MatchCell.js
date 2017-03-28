@@ -9,12 +9,12 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 
-import { switchChat } from '../../actions/chat'
+import { initSwitchChat } from '../../actions/chat'
 
 class MatchCell extends Component {
   _onPressCell(key) {
     const { dispatch, navigator } = this.props
-    dispatch(switchChat(key))
+    dispatch(initSwitchChat(key))
     navigator.push({
       title: "Chat"
     })
