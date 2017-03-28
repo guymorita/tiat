@@ -14,7 +14,7 @@ import _ from 'lodash'
 import { Bubble, GiftedChat } from 'react-native-gifted-chat'
 
 import { getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
-import { getInputFormat } from '../../actions/chat'
+import { nextStep } from '../../actions/chat'
 
 const TEXT_COLOR_LIGHT = 'white'
 
@@ -22,34 +22,28 @@ class Chat extends React.Component {
   constructor(props) {
     super(props);
     const { characters, curChat, dispatch, matches } = props
-    const key = '101_Ana'
+    // const { key } = curChat
     let threads = {}
     let match = {}
 
-    const character = characters.find((char) => { return char.key === key })
-    let platform = 'tinder'
+    // const character = characters.find((char) => { return char.key === key })
+    // let platform = 'tinder'
 
-    if (key) {
-      match = matches.find((match) => { return match.key === key })
-      threads = match.threads
-      firstThread = threads.a
-      platform = firstThread.platform
-    }
+    // if (key) {
+    //   match = matches.find((match) => { return match.key === key })
+    //   threads = match.threads
+    //   firstThread = threads.a
+    //   platform = firstThread.platform
+    // }
 
     // FIX get rid of all state except messages
     this.state = {
       messages: [],
       currentLineRender: 0,
-      curChat: {
-        key,
-        thread: 'a',
-        msg_id: 0,
-        atBranch: false,
-        platform
-      },
+      platform: 'tinder',
       match,
       threads,
-      character
+      // character
     }
   }
 
@@ -66,68 +60,19 @@ class Chat extends React.Component {
 
   // FIX remove all functions except button handlers and render functions
 
-  nextStep() {
-    const { curChat, threads } = this.state
-    const currentThread = threads[curChat.thread]
-    const { msg_id } = curChat
-    const { messages } = currentThread
-    let nextIsBranch = true
-    if (messages.length) {
-      const lastMessage = _.last(messages)
-      nextIsBranch = msg_id >= lastMessage.msg_id
-    }
-    if (!nextIsBranch) {
-      this.showNextBubble()
-    } else {
-      this.execBranch()
-    }
-  }
-
-  getThumb(nextMessage) {
-    const { characters } = this.props
-    const { curChat } = this.state
-    const { key } = curChat
-    const { cha_id } = nextMessage
-    if (nextMessage.cha_id === 2) {
-      return 'https://www.playshakespeare.com/images/avatar/thumb_1b09da63a23c12d8d02185e9.jpg'
-    } else if ( cha_id < 100) {
-      return ''
-    }
-    const character = characters.find((char) => { return char.key === key })
-    return character.images.thumb
-  }
-
-  setChaId(nextMessage) {
-    // main character needs to be 1 to render on the right side
-    if (nextMessage.cha_id > 10 && nextMessage.cha_id < 100) {
-      return 1
-    }
-    return nextMessage.cha_id
-  }
-
-  showNextBubble(){
-    const { curChat, currentLineRender, threads } = this.state
-    const currentThread = threads[curChat.thread]
-    const { msg_id } = curChat
-    const { messages } = currentThread
-    const nextMessage = messages.find((msg) => { return msg.msg_id === msg_id })
-
-    nextMessage.user = {}
-    nextMessage.user._id = this.setChaId(nextMessage)
-    nextMessage.user.avatar = this.getThumb(nextMessage)
-    nextMessage._id = currentLineRender
-
-    this.setState(() => {
-      return {
-        messages: GiftedChat.append(this.state.messages, nextMessage),
-        currentLineRender: currentLineRender + 1,
-        curChat: {
-          ...curChat,
-          msg_id: curChat.msg_id + 1
-        }
-      };
-    });
-  }
+  // getThumb(nextMessage) {
+  //   const { characters } = this.props
+  //   const { curChat } = this.state
+  //   const { key } = curChat
+  //   const { cha_id } = nextMessage
+  //   if (nextMessage.cha_id === 2) {
+  //     return 'https://www.playshakespeare.com/images/avatar/thumb_1b09da63a23c12d8d02185e9.jpg'
+  //   } else if ( cha_id < 100) {
+  //     return ''
+  //   }
+  //   const character = characters.find((char) => { return char.key === key })
+  //   return character.images.thumb
+  // }
 
   execBranch() {
     const { curChat, threads } = this.state
@@ -167,12 +112,15 @@ class Chat extends React.Component {
         platform: newThread.platform
       }
     }, () => {
-      this.nextStep()
+      // this.nextStep()
     })
   }
 
   _onNextPress() {
-    this.nextStep()
+    const { curChat, dispatch } = this.props
+    const { key } = curChat
+
+    dispatch(nextStep(key))
   }
 
   _onOptionPress(option) {
@@ -180,8 +128,8 @@ class Chat extends React.Component {
   }
 
   renderBubble(props) {
-    const { curChat } = this.state
-    const firstBgColor = getBackgroundColor(curChat.platform)
+    // const { curChat } = this.state
+    const firstBgColor = getBackgroundColor('tinder')
     const { currentMessage } = props
     const secondBgColor = currentMessage.cha_id === 2 ? '#D0E2F4': '#F0F0F0'
 
@@ -205,10 +153,13 @@ class Chat extends React.Component {
     );
   }
 
-  renderInputToolbar(props) {
-    const { curChat } = this.state
+  renderInputToolbar() {
+    const { curChat } = this.props
+    const isActive = !_.isEmpty(curChat)
+    if (!isActive) {
+      return this.renderNextBubble()
+    }
     const { atBranch } = curChat
-
     if (atBranch) {
       return this.renderBranchOptions()
     } else {
@@ -237,7 +188,7 @@ class Chat extends React.Component {
 
   renderOptionBubble(option) {
     const { curChat } = this.state
-    const backgroundStyle = getBackgroundStyle(curChat.platform)
+    const backgroundStyle = getBackgroundStyle('tinder')
 
     return (
       <TouchableOpacity key={option.dec_id} style={styles.optionBubbleTouch} onPress={this._onOptionPress.bind(this, option)}>
@@ -254,8 +205,8 @@ class Chat extends React.Component {
   }
 
   renderNextBubble() {
-    const { curChat } = this.state
-    const backgroundStyle = getBackgroundStyle(curChat.platform)
+    // const { curChat } = this.state
+    const backgroundStyle = getBackgroundStyle('tinder')
 
     return (
       <View style={styles.inputToolbar}>
@@ -283,6 +234,15 @@ class Chat extends React.Component {
       messages: [
       ],
     });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { curChat } = nextProps
+    const { giftedChat } = curChat
+    const { messages } = giftedChat
+    this.setState({
+      messages: GiftedChat.append(this.state.messages, messages[messages.length - 1]),
+    })
   }
 
   render() {
@@ -357,7 +317,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = function(state) {
   const { characters, chat, matches } = state
   const { activeChats, currentChat } = chat
-  // no longer needs currentChat again.
+
   const { key } = currentChat
   const activeChatMatch = (chat) => { return chat.key === key }
   const curChat = activeChats.find(activeChatMatch)
@@ -365,6 +325,7 @@ const mapStateToProps = function(state) {
   return {
     characters,
     curChat,
+    key,
     matches
   }
 }
