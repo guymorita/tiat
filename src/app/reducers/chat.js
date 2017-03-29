@@ -1,21 +1,28 @@
 
+import _ from 'lodash'
+
 import {
   findActiveChatIndex,
   INIT_ACTIVE_CHAT,
   PUSH_NEXT_MESSAGE,
-  SWITCH_CHAT
+  SWITCH_CHAT,
+  BRANCH_MULTI
 } from '../actions/chat'
 
 const initialState = {
   currentChat: {
     key: ''
   },
-  activeChats: [
-  ]
+  activeChats: {
+
+  }
 }
 
 export default function chat(state = initialState, action) {
   switch(action.type) {
+    case BRANCH_MULTI:
+      console.log('branch multi')
+      return state
     case INIT_ACTIVE_CHAT:
       const newChat = {
         key: action.key,
@@ -27,30 +34,38 @@ export default function chat(state = initialState, action) {
           currentLine: 0
         }
       }
-      return {
-        ...state,
-        activeChats: state.activeChats.concat(newChat)
-      }
+
+      return Object.assign({}, state, state.activeChats[action.key] = newChat)
     case PUSH_NEXT_MESSAGE:
       const { activeChats } = state
-      const index = findActiveChatIndex(activeChats, action.key)
-      const activeChat = activeChats[index]
+      const activeChat = activeChats[action.key]
 
       return {
         ...state,
-        activeChats: [
-          ...activeChats.slice(0,index),
-          {
+        activeChats: {
+          ...state.activeChats,
+          [action.key]: {
             ...activeChat,
             msg_id: activeChat.msg_id + 1,
             giftedChat: {
               messages: activeChat.giftedChat.messages.concat(action.nextMessage),
               currentLine: activeChat.giftedChat.currentLine + 1
             }
-          },
-          ...activeChats.slice(index + 1)
-        ]
+          }
+        }
       }
+        //   ...activeChats.slice(0,index),
+        //   {
+        //     ...activeChat,
+        //     msg_id: activeChat.msg_id + 1,
+        //     giftedChat: {
+        //       messages: activeChat.giftedChat.messages.concat(action.nextMessage),
+        //       currentLine: activeChat.giftedChat.currentLine + 1
+        //     }
+        //   },
+        //   ...activeChats.slice(index + 1)
+        // ]
+      // }
     case SWITCH_CHAT:
       return {
         ...state,

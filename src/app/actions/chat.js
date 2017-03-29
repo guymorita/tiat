@@ -4,6 +4,9 @@ import _ from 'lodash'
 export const SWITCH_CHAT = 'SWITCH_CHAT'
 export const INIT_ACTIVE_CHAT = 'INIT_ACTIVE_CHAT'
 export const PUSH_NEXT_MESSAGE = 'PUSH_NEXT_MESSAGE'
+export const BRANCH_LINEAR = 'BRANCH_LINEAR'
+export const BRANCH_MULTI = 'BRANCH_MULTI'
+export const BRANCH_TERMINAL = 'BRANCH_TERMINAL'
 
 function initActiveChat(key) {
   return {
@@ -19,15 +22,9 @@ function switchChat(key) {
   }
 }
 
-export function findActiveChatIndex(activeChats, key) {
-  const findIndex = (activeChat) => { return activeChat.key === key }
-  return activeChats.findIndex(findIndex)
-}
-
 function getActiveChat(state, key) {
-  const activeChatMatch = (chat) => { return chat.key === key }
   const { activeChats } = state.chat
-  const activeChat = activeChats.find(activeChatMatch)
+  const activeChat = activeChats[key]
   return activeChat
 }
 
@@ -39,6 +36,7 @@ export function initSwitchChat(key) {
   return (dispatch, getState) => {
     const state = getState()
     const activeChat = getActiveChat(state, key)
+
     if (_.isEmpty(activeChat)) {
       dispatch(switchChat(key))
       return dispatch(initActiveChat(key))
@@ -69,8 +67,8 @@ function createNextMessage(activeChat, currentThread) {
     const nextMessage = messages.find((msg) => { return msg.msg_id === msg_id })
     const { giftedChat } = activeChat
     const { key } = activeChat
-    // for gifted chat
 
+    // for gifted chat
     nextMessage.user = {}
     nextMessage.user._id = setChaId(nextMessage)
     // nextMessage.user.avatar = this.getThumb(nextMessage)
@@ -79,6 +77,43 @@ function createNextMessage(activeChat, currentThread) {
     dispatch(pushNextMessage(key, nextMessage))
   }
 }
+
+function switchBranch(branch_target) {
+  const { curChat, threads } = this.state
+  const currentThread = threads[curChat.thread]
+  const newThread = threads[branch_target]
+
+  this.setState({
+    curChat: {
+      ...curChat,
+      thread: branch_target,
+      msg_id: 0,
+      atBranch: false,
+      platform: newThread.platform
+    }
+  }, () => {
+    // this.nextStep()
+  })
+}
+
+ function execBranch(activeChat, threads) {
+    const currentThread = threads[activeChat.thread]
+    const { branch } = currentThread
+
+    switch(branch.branch_type) {
+      case 'linear':
+        // const { branch_target } = branch
+        // switchBranch(branch_target)
+        return
+      case 'multi':
+        return {
+          type: BRANCH_MULTI
+        }
+      case 'terminal':
+        console.log('terminal')
+        return
+    }
+  }
 
 export function nextStep(key) {
   return (dispatch, getState) => {
@@ -95,12 +130,9 @@ export function nextStep(key) {
       nextIsBranch = msg_id >= lastMessage.msg_id
     }
     if (!nextIsBranch) {
-      // this.showNewBubble()
-      console.log('show new bubble')
       dispatch(createNextMessage(activeChat, currentThread))
     } else {
-      // this.execBranch()
-      console.log('exec branch')
+      dispatch(execBranch(activeChat, threads))
     }
 
   }
@@ -112,22 +144,3 @@ export function chooseOption(key, option) {
   }
 }
 
-// pushes a new message to props
-// pushes a prop change that toggles the keyboard
-
-  // nextStep() {
-  //   const { curChat, threads } = this.state
-  //   const currentThread = threads[curChat.thread]
-  //   const { msg_id } = curChat
-  //   const { messages } = currentThread
-  //   let nextIsBranch = true
-  //   if (messages.length) {
-  //     const lastMessage = _.last(messages)
-  //     nextIsBranch = msg_id >= lastMessage.msg_id
-  //   }
-  //   if (!nextIsBranch) {
-  //     this.showNewBubble()
-  //   } else {
-  //     this.execBranch()
-  //   }
-  // }

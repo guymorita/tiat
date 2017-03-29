@@ -39,7 +39,6 @@ class Chat extends React.Component {
     // FIX get rid of all state except messages
     this.state = {
       messages: [],
-      currentLineRender: 0,
       platform: 'tinder',
       match,
       threads,
@@ -73,48 +72,6 @@ class Chat extends React.Component {
   //   const character = characters.find((char) => { return char.key === key })
   //   return character.images.thumb
   // }
-
-  execBranch() {
-    const { curChat, threads } = this.state
-    const currentThread = threads[curChat.thread]
-    const { branch } = currentThread
-
-    switch(branch.branch_type) {
-      case 'linear':
-        const { branch_target } = branch
-        this.switchBranch(branch_target)
-        return
-      case 'multi':
-        this.setState({
-          curChat: {
-            ...curChat,
-            atBranch: true
-          }
-        })
-        return
-      case 'terminal':
-        console.log('terminal')
-        return
-    }
-  }
-
-  switchBranch(branch_target) {
-    const { curChat, threads } = this.state
-    const currentThread = threads[curChat.thread]
-    const newThread = threads[branch_target]
-
-    this.setState({
-      curChat: {
-        ...curChat,
-        thread: branch_target,
-        msg_id: 0,
-        atBranch: false,
-        platform: newThread.platform
-      }
-    }, () => {
-      // this.nextStep()
-    })
-  }
 
   _onNextPress() {
     const { curChat, dispatch } = this.props
@@ -240,6 +197,7 @@ class Chat extends React.Component {
     const { curChat } = nextProps
     const { giftedChat } = curChat
     const { messages } = giftedChat
+    console.log('curChat', curChat)
     this.setState({
       messages: GiftedChat.append(this.state.messages, messages[messages.length - 1]),
     })
@@ -317,10 +275,8 @@ const styles = StyleSheet.create({
 const mapStateToProps = function(state) {
   const { characters, chat, matches } = state
   const { activeChats, currentChat } = chat
-
   const { key } = currentChat
-  const activeChatMatch = (chat) => { return chat.key === key }
-  const curChat = activeChats.find(activeChatMatch)
+  const curChat = activeChats[key]
 
   return {
     characters,
