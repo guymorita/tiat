@@ -13,8 +13,8 @@ import NavigationBar from 'react-native-navbar'
 import _ from 'lodash'
 import { Bubble, GiftedChat } from 'react-native-gifted-chat'
 
-import { LIGHT_BLUE, getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
-import { getMatch, nextStep, switchBranchPushMessage } from '../../actions/chat'
+import { LIGHT_BLUE, LIGHT_GRAY, getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
+import { getMatch, nextStep, switchBranchPushMessage, shouldWait } from '../../actions/chat'
 
 const TEXT_COLOR_LIGHT = 'white'
 
@@ -52,7 +52,7 @@ class Chat extends React.Component {
   renderBubble(props) {
     const firstBgColor = getBackgroundColor(this.props.platform)
     const { currentMessage } = props
-    const secondBgColor = currentMessage.cha_id === 2 ? LIGHT_BLUE : '#F0F0F0'
+    const secondBgColor = currentMessage.cha_id === 2 ? LIGHT_BLUE : LIGHT_GRAY
 
     return (
       <Bubble
@@ -76,29 +76,28 @@ class Chat extends React.Component {
 
   renderInputToolbar() {
     const { curChat } = this.props
-    const isActive = !_.isEmpty(curChat)
-    if (!isActive) {
-      return this.renderNextBubble()
+
+    let renderInputContent = this.renderNextBubble
+    if (curChat && curChat.atBranch) {
+      renderInputContent = this.renderBranchOptions
+    } else if (curChat && shouldWait(curChat)) {
+      renderInputContent = this.renderWaitingBubble
     }
-    const { atBranch } = curChat
-    if (atBranch) {
-      return this.renderBranchOptions()
-    } else {
-      return this.renderNextBubble()
-    }
+
+    return (
+      <View style={styles.inputToolbar}>
+        {renderInputContent()}
+      </View>
+    )
   }
 
-  renderBranchOptions() {
+  renderBranchOptions = () => {
     const { curChat, match } = this.props
     const currentThread = match.threads[curChat.thread]
     const { branch } = currentThread
     const { options } = branch
 
-    return (
-      <View style={styles.inputToolbar}>
-        { this.renderOptionBubbles(options) }
-      </View>
-    );
+    return this.renderOptionBubbles(options)
   }
 
   renderOptionBubbles(options) {
@@ -118,26 +117,35 @@ class Chat extends React.Component {
             numberOfLines={2}>
             {option.text}
           </Text>
-
         </View>
       </TouchableOpacity>
     );
   }
 
-  renderNextBubble() {
+  renderNextBubble = () => {
     const backgroundStyle = getBackgroundStyle(this.props.platform)
 
     return (
-      <View style={styles.inputToolbar}>
-        <TouchableOpacity onPress={this._onNextPress.bind(this)}>
-          <View style={[styles.bubbleBase, styles.nextBubble, backgroundStyle]}>
-            <Text
-              style={styles.nextBubbleText}>
-              Next
-            </Text>
-          </View>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity onPress={this._onNextPress.bind(this)}>
+        <View style={[styles.bubbleBase, styles.centerBubble, backgroundStyle]}>
+          <Text
+            style={styles.nextBubbleText}>
+            Next
+          </Text>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+
+  renderWaitingBubble() {
+    return (
+      <TouchableOpacity onPress={this._onNextPress}>
+        <View style={[styles.bubbleBase, styles.centerBubble, styles.waitBubble]}>
+          <Text>
+            Waiting
+          </Text>
+        </View>
+      </TouchableOpacity>
     );
   }
 
@@ -217,12 +225,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 70
   },
-  nextBubble: {
+  centerBubble: {
     marginLeft: 50,
     marginRight: 50,
     paddingLeft: 50,
     paddingRight: 50,
     alignItems: 'center',
+  },
+  waitBubble: {
+    backgroundColor: LIGHT_GRAY
   },
   nextBubbleText: {
     fontSize: 16,

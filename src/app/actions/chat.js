@@ -34,6 +34,18 @@ export function getMatch(state, key) {
   return state.matches.find((match) => { return match.key === key })
 }
 
+function waitComplete(activeChat) {
+  const { wait } = activeChat
+  const timeNow = Date.now() / 1000
+  const waitDone = timeNow > wait.time_wait_finish
+  return waitDone
+}
+
+export function shouldWait(activeChat) {
+  const { currently_waiting } = activeChat.wait
+  return currently_waiting && !waitComplete(activeChat)
+}
+
 export function initSwitchChat(key) {
   return (dispatch, getState) => {
     const state = getState()
@@ -86,11 +98,11 @@ function tryPushNextMessageWithTimeout(key, nextMessage) {
   return (dispatch, getState) => {
     const state = getState()
     const activeChat = getActiveChat(state, key)
-    const { msg_id } = nextMessage
     const { wait } = activeChat
     const { currently_waiting } = wait
-    const timeNow = Date.now() / 1000
-    const waitComplete = timeNow > wait.time_wait_finish
+    const { msg_id } = nextMessage
+
+    dispatch(tryPushNextMessage(key, nextMessage))
 
     if (!currently_waiting) {
       const { wait_sec } = nextMessage
@@ -100,11 +112,9 @@ function tryPushNextMessageWithTimeout(key, nextMessage) {
       }, wait_millisec)
     }
 
-    if (waitComplete) {
+    if (waitComplete(activeChat)) {
       dispatch(pushNextMessage(key, nextMessage))
     }
-
-    dispatch(tryPushNextMessage(key, nextMessage))
   }
 }
 

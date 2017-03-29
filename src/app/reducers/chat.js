@@ -97,19 +97,11 @@ export default function chat(state = initialState, action) {
               time_last_interaction: timeNow,
               time_end_wait: newEndWaitTime,
               wait_message_id: newMsg.msg_id,
-              currently_waiting: true,
-              herro: true
+              currently_waiting: true
             }
           }
         }
       }
-      //     * sets the most recent try date
-      //     * set end time
-      //         * waiting implied if end is later than now
-      //     * set id of message it’s waiting for
-      // * push next message
-      //     * only does something if
-      return state
 
     case SWITCH_BRANCH:
       const aChats = state.activeChats
