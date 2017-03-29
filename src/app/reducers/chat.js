@@ -24,7 +24,6 @@ export default function chat(state = initialState, action) {
     case BRANCH_MULTI:
       const actChats = state.activeChats
       const actChat = actChats[action.key]
-
       return {
         ...state,
         activeChats: {
@@ -52,7 +51,6 @@ export default function chat(state = initialState, action) {
     case PUSH_NEXT_MESSAGE:
       const { activeChats } = state
       const activeChat = activeChats[action.key]
-
       return {
         ...state,
         activeChats: {
@@ -67,10 +65,10 @@ export default function chat(state = initialState, action) {
           }
         }
       }
-    case SWITCH_BRANCH:
-      aChats = state.activeChats
-      const aChat = aChats[action.key]
 
+    case SWITCH_BRANCH:
+      const aChats = state.activeChats
+      const aChat = aChats[action.key]
       return {
         ...state,
         activeChats: {
@@ -91,23 +89,8 @@ export default function chat(state = initialState, action) {
           key: action.key
         }
       }
+
     default:
       return state
   }
 }
-
-  // const { curChat, threads } = this.state
-  // const currentThread = threads[curChat.thread]
-  // const newThread = threads[branch_target]
-
-  // this.setState({
-  //   curChat: {
-  //     ...curChat,
-      // thread: branch_target,
-      // msg_id: 0,
-      // atBranch: false,
-      // platform: newThread.platform
-  //   }
-  // }, () => {
-  //   // this.nextStep()
-  // })

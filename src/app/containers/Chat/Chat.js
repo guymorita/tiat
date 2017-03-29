@@ -13,7 +13,7 @@ import NavigationBar from 'react-native-navbar'
 import _ from 'lodash'
 import { Bubble, GiftedChat } from 'react-native-gifted-chat'
 
-import { getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
+import { LIGHT_BLUE, getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
 import { getMatch, nextStep, switchBranchPushMessage } from '../../actions/chat'
 
 const TEXT_COLOR_LIGHT = 'white'
@@ -52,7 +52,7 @@ class Chat extends React.Component {
   renderBubble(props) {
     const firstBgColor = getBackgroundColor(this.props.platform)
     const { currentMessage } = props
-    const secondBgColor = currentMessage.cha_id === 2 ? '#D0E2F4': '#F0F0F0'
+    const secondBgColor = currentMessage.cha_id === 2 ? LIGHT_BLUE : '#F0F0F0'
 
     return (
       <Bubble
@@ -174,7 +174,7 @@ class Chat extends React.Component {
     const isActive = !_.isEmpty(curChat)
     if (isActive) {
       const char = characters.find((cha) => { return cha.key === curChat.key})
-      first_name = char && char.first_name || "Ann"
+      first_name = char && char.first_name
     }
 
     return (
@@ -259,4 +259,5 @@ const mapStateToProps = function(state) {
     platform
   }
 }
+
 export default connect(mapStateToProps)(Chat)
