@@ -53,6 +53,18 @@ function setChaId(nextMessage) {
   return nextMessage.cha_id
 }
 
+function getThumb(characters, activeChat, nextMessage) {
+  const { key } = activeChat
+  const { cha_id } = nextMessage
+  if (nextMessage.cha_id === 2) {
+    return 'https://www.playshakespeare.com/images/avatar/thumb_1b09da63a23c12d8d02185e9.jpg'
+  } else if ( cha_id < 100) {
+    return ''
+  }
+  const character = characters.find((char) => { return char.key === key })
+  return character.images.thumb
+}
+
 function pushNextMessage(key, nextMessage) {
   return {
     type: PUSH_NEXT_MESSAGE,
@@ -69,10 +81,12 @@ function createNextMessage(activeChat, currentThread) {
     const { giftedChat } = activeChat
     const { key } = activeChat
 
+    const state = getState()
+
     // for gifted chat
     nextMessage.user = {}
     nextMessage.user._id = setChaId(nextMessage)
-    // nextMessage.user.avatar = this.getThumb(nextMessage)
+    nextMessage.user.avatar = getThumb(state.characters, activeChat, nextMessage)
     nextMessage._id = giftedChat.currentLine
 
     dispatch(pushNextMessage(key, nextMessage))
@@ -132,7 +146,6 @@ export function nextStep(key) {
     if (!nextIsBranch) {
       dispatch(createNextMessage(activeChat, currentThread))
     } else {
-      console.log('next is branch')
       dispatch(execBranch(activeChat, threads))
     }
 

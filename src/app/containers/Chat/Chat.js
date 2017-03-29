@@ -21,28 +21,8 @@ const TEXT_COLOR_LIGHT = 'white'
 class Chat extends React.Component {
   constructor(props) {
     super(props);
-    const { characters, curChat, dispatch } = props
-    // const { key } = curChat
-    let threads = {}
-    let match = {}
-
-    // const character = characters.find((char) => { return char.key === key })
-    // let platform = 'tinder'
-
-    // if (key) {
-    //   match = matches.find((match) => { return match.key === key })
-    //   threads = match.threads
-    //   firstThread = threads.a
-    //   platform = firstThread.platform
-    // }
-
-    // FIX get rid of all state except messages
     this.state = {
-      messages: [],
-      platform: 'tinder',
-      match,
-      threads,
-      // character
+      messages: []
     }
   }
 
@@ -56,22 +36,6 @@ class Chat extends React.Component {
     const { navigator } = this.props
     navigator.pop()
   }
-
-  // FIX remove all functions except button handlers and render functions
-
-  // getThumb(nextMessage) {
-  //   const { characters } = this.props
-  //   const { curChat } = this.state
-  //   const { key } = curChat
-  //   const { cha_id } = nextMessage
-  //   if (nextMessage.cha_id === 2) {
-  //     return 'https://www.playshakespeare.com/images/avatar/thumb_1b09da63a23c12d8d02185e9.jpg'
-  //   } else if ( cha_id < 100) {
-  //     return ''
-  //   }
-  //   const character = characters.find((char) => { return char.key === key })
-  //   return character.images.thumb
-  // }
 
   _onNextPress() {
     const { curChat, dispatch } = this.props
@@ -88,8 +52,7 @@ class Chat extends React.Component {
   }
 
   renderBubble(props) {
-    // const { curChat } = this.state
-    const firstBgColor = getBackgroundColor('tinder')
+    const firstBgColor = getBackgroundColor(this.props.platform)
     const { currentMessage } = props
     const secondBgColor = currentMessage.cha_id === 2 ? '#D0E2F4': '#F0F0F0'
 
@@ -147,8 +110,7 @@ class Chat extends React.Component {
   }
 
   renderOptionBubble(option) {
-    const { curChat } = this.state
-    const backgroundStyle = getBackgroundStyle('tinder')
+    const backgroundStyle = getBackgroundStyle(this.props.platform)
 
     return (
       <TouchableOpacity key={option.dec_id} style={styles.optionBubbleTouch} onPress={this._onOptionPress.bind(this, option)}>
@@ -165,8 +127,7 @@ class Chat extends React.Component {
   }
 
   renderNextBubble() {
-    // const { curChat } = this.state
-    const backgroundStyle = getBackgroundStyle('tinder')
+    const backgroundStyle = getBackgroundStyle(this.props.platform)
 
     return (
       <View style={styles.inputToolbar}>
@@ -285,12 +246,14 @@ const mapStateToProps = function(state) {
 
   const match = getMatch(state, key)
   const curChat = activeChats[key]
+  const platform = match && match.threads[curChat.thread].platform || 'tinder'
 
   return {
     characters,
     curChat,
     key,
-    match
+    match,
+    platform
   }
 }
 export default connect(mapStateToProps)(Chat)
