@@ -7,6 +7,7 @@ export const PUSH_NEXT_MESSAGE = 'PUSH_NEXT_MESSAGE'
 export const BRANCH_LINEAR = 'BRANCH_LINEAR'
 export const BRANCH_MULTI = 'BRANCH_MULTI'
 export const BRANCH_TERMINAL = 'BRANCH_TERMINAL'
+export const SWITCH_BRANCH = 'SWITCH_BRANCH'
 
 function initActiveChat(key) {
   return {
@@ -28,7 +29,7 @@ function getActiveChat(state, key) {
   return activeChat
 }
 
-function getMatch(state, key) {
+export function getMatch(state, key) {
   return state.matches.find((match) => { return match.key === key })
 }
 
@@ -78,42 +79,41 @@ function createNextMessage(activeChat, currentThread) {
   }
 }
 
-function switchBranch(branch_target) {
-  const { curChat, threads } = this.state
-  const currentThread = threads[curChat.thread]
-  const newThread = threads[branch_target]
-
-  this.setState({
-    curChat: {
-      ...curChat,
-      thread: branch_target,
-      msg_id: 0,
-      atBranch: false,
-      platform: newThread.platform
-    }
-  }, () => {
-    // this.nextStep()
-  })
+function switchBranch(key, branch_target) {
+  return {
+    type: SWITCH_BRANCH,
+    branch_target,
+    key
+  }
 }
 
- function execBranch(activeChat, threads) {
-    const currentThread = threads[activeChat.thread]
-    const { branch } = currentThread
-
-    switch(branch.branch_type) {
-      case 'linear':
-        // const { branch_target } = branch
-        // switchBranch(branch_target)
-        return
-      case 'multi':
-        return {
-          type: BRANCH_MULTI
-        }
-      case 'terminal':
-        console.log('terminal')
-        return
-    }
+export function switchBranchPushMessage(key, branch_target) {
+  return (dispatch, getState) => {
+    dispatch(switchBranch(key, branch_target))
+    dispatch(nextStep(key))
   }
+}
+
+function execBranch(activeChat, threads) {
+  const currentThread = threads[activeChat.thread]
+  const { branch } = currentThread
+
+  switch(branch.branch_type) {
+    case 'linear':
+      const { branch_target } = branch
+      return (dispatch, getState) => {
+        dispatch(switchBranchPushMessage(activeChat.key, branch_target))
+      }
+    case 'multi':
+      return {
+        type: BRANCH_MULTI,
+        key: activeChat.key
+      }
+    case 'terminal':
+      console.log('terminal')
+      return
+  }
+}
 
 export function nextStep(key) {
   return (dispatch, getState) => {
@@ -132,6 +132,7 @@ export function nextStep(key) {
     if (!nextIsBranch) {
       dispatch(createNextMessage(activeChat, currentThread))
     } else {
+      console.log('next is branch')
       dispatch(execBranch(activeChat, threads))
     }
 

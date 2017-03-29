@@ -14,14 +14,14 @@ import _ from 'lodash'
 import { Bubble, GiftedChat } from 'react-native-gifted-chat'
 
 import { getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
-import { nextStep } from '../../actions/chat'
+import { getMatch, nextStep, switchBranchPushMessage } from '../../actions/chat'
 
 const TEXT_COLOR_LIGHT = 'white'
 
 class Chat extends React.Component {
   constructor(props) {
     super(props);
-    const { characters, curChat, dispatch, matches } = props
+    const { characters, curChat, dispatch } = props
     // const { key } = curChat
     let threads = {}
     let match = {}
@@ -81,7 +81,10 @@ class Chat extends React.Component {
   }
 
   _onOptionPress(option) {
-    this.switchBranch(option.target_thread)
+    const { curChat, dispatch } = this.props
+    const { key } = curChat
+
+    dispatch(switchBranchPushMessage(key, option.target_thread))
   }
 
   renderBubble(props) {
@@ -125,8 +128,8 @@ class Chat extends React.Component {
   }
 
   renderBranchOptions() {
-    const { curChat, threads } = this.state
-    const currentThread = threads[curChat.thread]
+    const { curChat, match } = this.props
+    const currentThread = match.threads[curChat.thread]
     const { branch } = currentThread
     const { options } = branch
 
@@ -197,10 +200,13 @@ class Chat extends React.Component {
     const { curChat } = nextProps
     const { giftedChat } = curChat
     const { messages } = giftedChat
-    console.log('curChat', curChat)
-    this.setState({
-      messages: GiftedChat.append(this.state.messages, messages[messages.length - 1]),
-    })
+
+    const hasNewMessage = this.state.messages.length !== messages.length
+    if (hasNewMessage) {
+      this.setState({
+        messages: GiftedChat.append(this.state.messages, messages[messages.length - 1]),
+      })
+    }
   }
 
   render() {
@@ -276,13 +282,15 @@ const mapStateToProps = function(state) {
   const { characters, chat, matches } = state
   const { activeChats, currentChat } = chat
   const { key } = currentChat
+
+  const match = getMatch(state, key)
   const curChat = activeChats[key]
 
   return {
     characters,
     curChat,
     key,
-    matches
+    match
   }
 }
 export default connect(mapStateToProps)(Chat)
