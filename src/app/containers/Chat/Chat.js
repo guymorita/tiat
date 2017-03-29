@@ -40,14 +40,12 @@ class Chat extends React.Component {
   _onNextPress() {
     const { curChat, dispatch } = this.props
     const { key } = curChat
-
     dispatch(nextStep(key))
   }
 
   _onOptionPress(option) {
     const { curChat, dispatch } = this.props
     const { key } = curChat
-
     dispatch(switchBranchPushMessage(key, option.target_thread))
   }
 
@@ -171,8 +169,13 @@ class Chat extends React.Component {
   }
 
   render() {
-    const { character } = this.state
-    const first_name = character && character.first_name || "Ann"
+    const { characters, curChat } = this.props
+    let first_name = "Ann"
+    const isActive = !_.isEmpty(curChat)
+    if (isActive) {
+      const char = characters.find((cha) => { return cha.key === curChat.key})
+      first_name = char && char.first_name || "Ann"
+    }
 
     return (
       <View style={styles.container}>
