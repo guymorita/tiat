@@ -4,6 +4,7 @@ import _ from 'lodash'
 export const SWITCH_CHAT = 'SWITCH_CHAT'
 export const INIT_ACTIVE_CHAT = 'INIT_ACTIVE_CHAT'
 export const PUSH_NEXT_MESSAGE = 'PUSH_NEXT_MESSAGE'
+export const TRY_PUSH_NEXT_MESSAGE = 'TRY_PUSH_NEXT_MESSAGE'
 export const BRANCH_LINEAR = 'BRANCH_LINEAR'
 export const BRANCH_MULTI = 'BRANCH_MULTI'
 export const BRANCH_TERMINAL = 'BRANCH_TERMINAL'
@@ -73,6 +74,40 @@ function pushNextMessage(key, nextMessage) {
   }
 }
 
+function tryPushNextMessage(key, nextMessage) {
+  return {
+    type: TRY_PUSH_NEXT_MESSAGE,
+    key,
+    nextMessage
+  }
+}
+
+function tryPushNextMessageWithTimeout(key, nextMessage) {
+  return (dispatch, getState) => {
+    const state = getState()
+    const activeChat = getActiveChat(state, key)
+    const { msg_id } = nextMessage
+    const { wait } = activeChat
+    const { currently_waiting } = wait
+    const timeNow = Date.now() / 1000
+    const waitComplete = timeNow > wait.time_wait_finish
+
+    if (!currently_waiting) {
+      const { wait_sec } = nextMessage
+      const wait_millisec = wait_sec * 1001
+      setTimeout(() => {
+        dispatch(pushNextMessage(key, nextMessage))
+      }, wait_millisec)
+    }
+
+    if (waitComplete) {
+      dispatch(pushNextMessage(key, nextMessage))
+    }
+
+    dispatch(tryPushNextMessage(key, nextMessage))
+  }
+}
+
 function createNextMessage(activeChat, currentThread) {
   return (dispatch, getState) => {
     const { msg_id } = activeChat
@@ -89,7 +124,7 @@ function createNextMessage(activeChat, currentThread) {
     nextMessage.user.avatar = getThumb(state.characters, activeChat, nextMessage)
     nextMessage._id = giftedChat.currentLine
 
-    dispatch(pushNextMessage(key, nextMessage))
+    dispatch(tryPushNextMessageWithTimeout(key, nextMessage))
   }
 }
 
@@ -102,7 +137,7 @@ function switchBranch(key, branch_target) {
 }
 
 export function switchBranchPushMessage(key, branch_target) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(switchBranch(key, branch_target))
     dispatch(nextStep(key))
   }
@@ -115,7 +150,7 @@ function execBranch(activeChat, threads) {
   switch(branch.branch_type) {
     case 'linear':
       const { branch_target } = branch
-      return (dispatch, getState) => {
+      return (dispatch) => {
         dispatch(switchBranchPushMessage(activeChat.key, branch_target))
       }
     case 'multi':
@@ -149,12 +184,6 @@ export function nextStep(key) {
       dispatch(execBranch(activeChat, threads))
     }
 
-  }
-}
-
-export function chooseOption(key, option) {
-  return (dispatch, getState) => {
-    const state = getState()
   }
 }
 
