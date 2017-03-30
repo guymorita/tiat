@@ -4,6 +4,7 @@ import {
   findActiveChatIndex,
   INIT_ACTIVE_CHAT,
   PUSH_NEXT_MESSAGE,
+  setChaId,
   SWITCH_BRANCH,
   SWITCH_CHAT,
   TRY_PUSH_NEXT_MESSAGE
@@ -54,6 +55,8 @@ export default function chat(state = initialState, action) {
     case PUSH_NEXT_MESSAGE:
       const { activeChats } = state
       const activeChat = activeChats[action.key]
+      const { options } = action
+      console.log('options', options)
 
       return {
         ...state,
@@ -68,7 +71,7 @@ export default function chat(state = initialState, action) {
             },
             wait: {
               ...activeChat.wait,
-              currently_waiting: false
+              currently_waiting: options.keepWaiting || false
             }
           }
         }

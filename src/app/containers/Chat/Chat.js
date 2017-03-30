@@ -137,9 +137,9 @@ class Chat extends React.Component {
     );
   }
 
-  renderWaitingBubble() {
+  renderWaitingBubble = () => {
     return (
-      <TouchableOpacity onPress={this._onNextPress}>
+      <TouchableOpacity onPress={this._onNextPress.bind(this)}>
         <View style={[styles.bubbleBase, styles.centerBubble, styles.waitBubble]}>
           <Text>
             Waiting

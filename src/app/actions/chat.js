@@ -58,7 +58,7 @@ export function initSwitchChat(key) {
   }
 }
 
-function setChaId(nextMessage) {
+export function setChaId(nextMessage) {
   // main character needs to be 1 to render on the right side
   if (nextMessage.cha_id > 10 && nextMessage.cha_id < 100) {
     return 1
@@ -78,11 +78,26 @@ function getThumb(characters, activeChat, nextMessage) {
   return character.images.thumb
 }
 
-function pushNextMessage(key, nextMessage) {
+function pushNextMessage(key, nextMessage, options = {}) {
   return {
     type: PUSH_NEXT_MESSAGE,
     key,
-    nextMessage
+    nextMessage,
+    options
+  }
+}
+
+function pushNextMessageAddChar(key, nextMessage, options = {}) {
+  return (dispatch, getState) => {
+    const state = getState()
+    const activeChat = getActiveChat(state, key)
+    const { giftedChat } = activeChat
+    // for gifted chat
+    nextMessage.user = {}
+    nextMessage.user._id = setChaId(nextMessage)
+    nextMessage.user.avatar = getThumb(state.characters, activeChat, nextMessage)
+    nextMessage._id = giftedChat.currentLine
+    dispatch(pushNextMessage(key, nextMessage, options))
   }
 }
 
@@ -94,26 +109,76 @@ function tryPushNextMessage(key, nextMessage) {
   }
 }
 
-function tryPushNextMessageWithTimeout(key, nextMessage) {
+function getMessagesToQueue(messages, cha_id, msg_id) {
+  const messagesToQueue = []
+
+  let pullMessage = false
+  for (var i = 0; i < messages.length; i++) {
+    const currentMessage = messages[i]
+    if (msg_id === currentMessage.msg_id) {
+      pullMessage = true
+    }
+    if (pullMessage) {
+      messagesToQueue.push(currentMessage)
+    }
+    const nextNextMessage = messages[i+1]
+    const nextMessageEnd = !nextNextMessage || nextNextMessage.cha_id !== cha_id
+    if (pullMessage && nextMessageEnd) {
+      pullMessage = false
+    }
+  };
+  return messagesToQueue
+}
+
+function tryPushFemaleNextMessageWithTimeout(key, nextMessage) {
   return (dispatch, getState) => {
     const state = getState()
     const activeChat = getActiveChat(state, key)
     const { wait } = activeChat
     const { currently_waiting } = wait
-    const { msg_id } = nextMessage
+    const { cha_id, msg_id } = nextMessage
 
-    dispatch(tryPushNextMessage(key, nextMessage))
+    const match = getMatch(state, key)
+    const currentThread = match.threads[activeChat.thread]
+    const { messages } = currentThread
+
+    const messagesToQueue = getMessagesToQueue(messages, cha_id, msg_id)
+    const lastMessage = _.last(messagesToQueue)
+
+    dispatch(tryPushNextMessage(key, lastMessage))
 
     if (!currently_waiting) {
-      const { wait_sec } = nextMessage
-      const wait_millisec = wait_sec * 1001
-      setTimeout(() => {
-        dispatch(pushNextMessage(key, nextMessage))
-      }, wait_millisec)
+      let sum_wait_wait_millisec = 0
+      const msgsLength = messagesToQueue.length
+      for (var i = 0; i < msgsLength; i++) {
+        const msg = messagesToQueue[i]
+        const { wait_sec } = msg
+        const wait_millisec = wait_sec * 1001
+        sum_wait_wait_millisec = sum_wait_wait_millisec + wait_millisec
+        const keepWaiting = msg.msg_id !== lastMessage.msg_id
+        setTimeout(() => {
+          dispatch(pushNextMessageAddChar(key, msg, {keepWaiting}))
+        }, sum_wait_wait_millisec)
+      };
     }
 
     if (waitComplete(activeChat)) {
-      dispatch(pushNextMessage(key, nextMessage))
+      messagesToQueue.forEach(function (msg) {
+        dispatch(pushNextMessageAddChar(key, msg))
+      })
+    }
+  }
+}
+
+function tryPushNextMessageWithTimeout(key, nextMessage) {
+  return (dispatch, getState) => {
+    const { cha_id } = nextMessage
+    // user or narrator
+    if (cha_id < 100) {
+      dispatch(tryPushNextMessage(key, nextMessage))
+      dispatch(pushNextMessageAddChar(key, nextMessage))
+    } else {
+      dispatch(tryPushFemaleNextMessageWithTimeout(key, nextMessage))
     }
   }
 }
@@ -123,16 +188,7 @@ function createNextMessage(activeChat, currentThread) {
     const { msg_id } = activeChat
     const { messages } = currentThread
     const nextMessage = messages.find((msg) => { return msg.msg_id === msg_id })
-    const { giftedChat } = activeChat
     const { key } = activeChat
-
-    const state = getState()
-
-    // for gifted chat
-    nextMessage.user = {}
-    nextMessage.user._id = setChaId(nextMessage)
-    nextMessage.user.avatar = getThumb(state.characters, activeChat, nextMessage)
-    nextMessage._id = giftedChat.currentLine
 
     dispatch(tryPushNextMessageWithTimeout(key, nextMessage))
   }
