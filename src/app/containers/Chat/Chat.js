@@ -165,7 +165,7 @@ class Chat extends React.Component {
       initialMessages = giftedChat.messages
     }
     this.setState({
-      messages: initialMessages.reverse()
+      messages: _.cloneDeep(initialMessages).reverse()
     });
   }
 

@@ -18,7 +18,7 @@ export default function configureStore(preloadedState) {
         thunkMiddleware,
         loggerMiddleware
       ),
-      autoRehydrate({log: true})
+      autoRehydrate()
     )
   )
   persistStore(store, {
