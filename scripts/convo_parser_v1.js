@@ -4,32 +4,26 @@ const path = require('path');
 const util = require('util');
 const JSON3 = require('json3');
 
-const fileUrl = './convos/raw_json/101_Ana.json';
-const baseName = path.basename(fileUrl, '.json');
-
-const convoJson = require(fileUrl);
-
-const [femaleCharId, femaleFirstName] = baseName.split('_');
-const OUTPUT_JSON = `scripts/convos/json/${baseName}.json`;
-
 const SELF = 'self';
 const GIRL = 'girl';
 const NARRATOR = 'narrator';
 const BRANCH = 'branch';
 
-const threads = {};
-
-const createMessage = function(element, curThreadLen) {
-  const charId = getCharId(element);
+const createMessage = function(element, curThreadLen, femaleCharId) {
+  let charId = getCharId(element, femaleCharId);
+  charId = Number(charId)
+  let { wait_sec } = element
+  // REMOVE this later
+  wait_sec = charId < 0 ? 0 : 2
   return {
     text: element.text,
     msg_id: curThreadLen,
     cha_id: Number(charId),
-    wait_sec: Number(element.wait_sec)
+    wait_sec: wait_sec
   }
 };
 
-const getCharId = function(element) {
+const getCharId = function(element, femaleCharId) {
   switch(element.type) {
     case SELF:
       return 1;
@@ -94,30 +88,61 @@ const createTerminalBranch = function(element) {
   }
 };
 
-convoJson.forEach(function(element, i) {
-  const thread = element.thread;
+const parseConvoJson = function(fileUrl) {
+  const baseName = path.basename(fileUrl, '.json');
+  const convoJson = require(fileUrl);
 
-  const currentThread = threads[thread] = threads[thread] || {};
-  const messages = currentThread.messages = currentThread.messages || [];
+  const [femaleCharId, femaleFirstName] = baseName.split('_');
+  const OUTPUT_JSON = `scripts/convos/json/${baseName}.json`;
 
-  currentThread.platform = element.platform;
+  const threads = {};
 
-  const isMessage = [SELF, GIRL, NARRATOR].includes(element.type);
-  const isBranch = [BRANCH].includes(element.type);
+  convoJson.forEach(function(element, i) {
+    const thread = element.thread;
 
-  if (isMessage) {
-    const currentThreadLen = currentThread.messages.length;
-    const newMessage = createMessage(element, currentThreadLen);
-    messages.push(newMessage);
+    const currentThread = threads[thread] = threads[thread] || {};
+    const messages = currentThread.messages = currentThread.messages || [];
+
+    currentThread.platform = element.platform;
+
+    const isMessage = [SELF, GIRL, NARRATOR].includes(element.type);
+    const isBranch = [BRANCH].includes(element.type);
+
+    if (isMessage) {
+      const currentThreadLen = currentThread.messages.length;
+      const newMessage = createMessage(element, currentThreadLen, femaleCharId);
+      messages.push(newMessage);
+    }
+
+    if (isBranch) {
+      currentThread.branch = createBranch(element);
+    }
+  });
+
+  // console.log(util.inspect(threads, {showHidden: false, depth: 4}))
+
+  saveThreadsJson = JSON3.stringify(threads, null, 2);
+
+  fs.outputFileSync(OUTPUT_JSON, saveThreadsJson);
+}
+
+// const fs = require('fs-extra');
+// const path = require('path');
+// const JSON3 = require('json3');
+// const util = require('util');
+
+const normalizedPath = path.join(__dirname + '/convos/raw_json/');
+
+fs.readdirSync(normalizedPath).forEach(function(file) {
+  if (file.includes('DS_Store')) {
+    return
   }
+  const matchPath = path.join(normalizedPath, file);
+  const femaleKey = path.basename(matchPath, '.json');
+  const completePath = normalizedPath + file
+  console.log('file', file)
+  parseConvoJson(completePath)
+  // const fileUrl = './convos/raw_json/101_Ana.json';
 
-  if (isBranch) {
-    currentThread.branch = createBranch(element);
-  }
 });
 
-// console.log(util.inspect(threads, {showHidden: false, depth: 4}))
-
-saveThreadsJson = JSON3.stringify(threads, null, 2);
-
-fs.outputFileSync(OUTPUT_JSON, saveThreadsJson);

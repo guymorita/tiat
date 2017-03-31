@@ -1,0 +1,6 @@
+[
+{"type":"self","text":"Hi Christina! I've been informed we're a \"match\" haha","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"self","text":"How is your week going so far?","platform":"tinder","wait_sec":"2","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"narrator","text":"Sometimes people just don't respond. It's nothing personal. Keep on moving, and maintain a positive attitude.","platform":"tinder","wait_sec":"14400","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"branch","text":"","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"TRUE","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""}
+]
