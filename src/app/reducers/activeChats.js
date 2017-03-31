@@ -45,7 +45,10 @@ export default function activeChats(state = initialState, action) {
           currently_waiting: false
         }
       }
-      return Object.assign({}, state, state[action.key] = newChat)
+      return {
+        ...state,
+        [action.key]: newChat
+      }
 
     case PUSH_NEXT_MESSAGE:
       const activeChat = state[action.key]
