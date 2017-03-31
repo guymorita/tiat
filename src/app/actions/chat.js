@@ -25,7 +25,7 @@ function switchChat(key) {
 }
 
 function getActiveChat(state, key) {
-  const { activeChats } = state.chat
+  const { activeChats } = state
   const activeChat = activeChats[key]
   return activeChat
 }

@@ -7,14 +7,13 @@ import {
   PUSH_NEXT_MESSAGE,
   setChaId,
   SWITCH_BRANCH,
-  SWITCH_CHAT,
   TRY_PUSH_NEXT_MESSAGE
 } from '../actions/chat'
 
 const initialState = {
 }
 
-export default function chat(state = initialState, action) {
+export default function activeChats(state = initialState, action) {
   switch(action.type) {
     case BRANCH_MULTI:
       const actChat = state.actChats[action.key]
