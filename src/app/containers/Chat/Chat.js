@@ -157,9 +157,15 @@ class Chat extends React.Component {
   }
 
   componentWillMount() {
+    const { curChat } = this.props
+    let initialMessages = []
+
+    if (curChat) {
+      const { giftedChat } = curChat
+      initialMessages = giftedChat.messages
+    }
     this.setState({
-      messages: [
-      ],
+      messages: initialMessages.reverse()
     });
   }
 

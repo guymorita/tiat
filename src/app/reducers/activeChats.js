@@ -16,7 +16,7 @@ const initialState = {
 export default function activeChats(state = initialState, action) {
   switch(action.type) {
     case BRANCH_MULTI:
-      const actChat = state.actChats[action.key]
+      const actChat = state[action.key]
       return {
         ...state,
         [action.key]: {

@@ -50,9 +50,8 @@ export function initSwitchChat(key) {
   return (dispatch, getState) => {
     const state = getState()
     const activeChat = getActiveChat(state, key)
-
+    dispatch(switchChat(key))
     if (_.isEmpty(activeChat)) {
-      dispatch(switchChat(key))
       return dispatch(initActiveChat(key))
     }
   }

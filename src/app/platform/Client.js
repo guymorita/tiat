@@ -25,7 +25,7 @@ export default function configureStore(preloadedState) {
     storage: AsyncStorage,
     blacklist: ['matches', 'characters']
   }, () => {
-    console.log('rehydration complete')
+    // console.log('rehydration complete')
   })
   return store
 }
