@@ -126,11 +126,6 @@ const parseConvoJson = function(fileUrl) {
   fs.outputFileSync(OUTPUT_JSON, saveThreadsJson);
 }
 
-// const fs = require('fs-extra');
-// const path = require('path');
-// const JSON3 = require('json3');
-// const util = require('util');
-
 const normalizedPath = path.join(__dirname + '/convos/raw_json/');
 
 fs.readdirSync(normalizedPath).forEach(function(file) {
@@ -140,9 +135,6 @@ fs.readdirSync(normalizedPath).forEach(function(file) {
   const matchPath = path.join(normalizedPath, file);
   const femaleKey = path.basename(matchPath, '.json');
   const completePath = normalizedPath + file
-  console.log('file', file)
   parseConvoJson(completePath)
-  // const fileUrl = './convos/raw_json/101_Ana.json';
-
 });
 
