@@ -225,8 +225,9 @@ function execBranch(activeChat, threads) {
         key: activeChat.key
       }
     case 'terminal':
-      console.log('terminal')
-      return
+      return {
+        type: BRANCH_TERMINAL
+      }
   }
 }
 
@@ -242,7 +243,7 @@ export function nextStep(key) {
     let nextIsBranch = true
     if (messages.length) {
       const lastMessage = _.last(messages)
-      nextIsBranch = msg_id >= lastMessage.msg_id
+      nextIsBranch = msg_id > lastMessage.msg_id
     }
     if (!nextIsBranch) {
       dispatch(createNextMessage(activeChat, currentThread))

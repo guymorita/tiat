@@ -1,6 +1,7 @@
 
 import {
   BRANCH_MULTI,
+  BRANCH_TERMINAL,
   findActiveChatIndex,
   INIT_ACTIVE_CHAT,
   PUSH_NEXT_MESSAGE,
@@ -33,6 +34,9 @@ export default function chat(state = initialState, action) {
         }
       }
 
+    case BRANCH_TERMINAL:
+      return state
+
     case INIT_ACTIVE_CHAT:
       const newChat = {
         key: action.key,
@@ -56,7 +60,6 @@ export default function chat(state = initialState, action) {
       const { activeChats } = state
       const activeChat = activeChats[action.key]
       const { options } = action
-      console.log('options', options)
 
       return {
         ...state,
