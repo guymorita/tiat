@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { activeChats, characters, currentChat, matches } = state
+  const { activeChats, characters, currentChat } = state
   const { key } = currentChat
 
   const match = getMatch(state, key)

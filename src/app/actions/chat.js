@@ -31,7 +31,7 @@ function getActiveChat(state, key) {
 }
 
 export function getMatch(state, key) {
-  return state.matches.find((match) => { return match.key === key })
+  return state.matchesAll.find((match) => { return match.key === key })
 }
 
 function waitComplete(activeChat) {

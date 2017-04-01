@@ -23,7 +23,7 @@ export default function configureStore(preloadedState) {
   )
   persistStore(store, {
     storage: AsyncStorage,
-    blacklist: ['matches', 'characters']
+    blacklist: ['matchesAll', 'characters']
   }, () => {
     // console.log('rehydration complete')
   })

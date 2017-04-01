@@ -18,10 +18,10 @@ class Matches extends Component {
       sectionHeaderHasChanged: (s1, s2) => s1 !== s2
     })
 
-    const { matches } = props
+    const { matchesAll } = props
 
     this.state = {
-      dataSource: ds.cloneWithRowsAndSections({Messages: matches})
+      dataSource: ds.cloneWithRowsAndSections({Messages: matchesAll})
     }
   }
 
@@ -58,9 +58,9 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { matches } = state
+  const { matchesAll } = state
   return {
-    matches
+    matchesAll
   }
 }
 
