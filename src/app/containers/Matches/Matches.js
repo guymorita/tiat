@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 
-
+import { findMatches } from '../../actions/matches'
 import MatchCell from './MatchCell'
 
 class Matches extends Component {
@@ -19,19 +19,20 @@ class Matches extends Component {
       sectionHeaderHasChanged: (s1, s2) => s1 !== s2
     })
 
-    const { matchesAll, matchQueue } = props
-
-    const { current_day } = matchQueue
-    const { queue } = current_day
-    const filteredMatchQueue = queue.map((match) => { return match.key })
-    // FIX filter matches with incomplete timer out
-
-    const matchIncluded = match => filteredMatchQueue.includes(match.key)
-    const matchesToShow = matchesAll.filter(matchIncluded)
+    const { dispatch, matchesAll, matchQueue } = props
+    dispatch(findMatches(matchesAll, matchQueue))
 
     this.state = {
-      dataSource: ds.cloneWithRowsAndSections({Messages: matchesToShow})
+      dataSource: ds.cloneWithRowsAndSections({Messages: []}),
+      ds
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { currentMatches } = nextProps
+    this.setState({
+      dataSource: this.state.ds.cloneWithRowsAndSections({Messages: currentMatches})
+    })
   }
 
   render() {
@@ -39,6 +40,7 @@ class Matches extends Component {
     return (
       <ListView
         dataSource={this.state.dataSource}
+        enableEmptySections={true}
         renderRow={(rowData) =>
           <MatchCell matchInfo={rowData} navigator={navigator}/>
         }
@@ -67,8 +69,9 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { matchesAll, matchQueue } = state
+  const { currentMatches, matchesAll, matchQueue } = state
   return {
+    currentMatches,
     matchesAll,
     matchQueue
   }

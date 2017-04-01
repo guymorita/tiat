@@ -36,9 +36,9 @@ PushNotification.configure({
 });
 
 PushNotification.localNotificationSchedule({
-  message: "My Notification Message", // (required)
+  message: "Lilan sent a message", // (required)
   date: new Date(Date.now() + (10 * 1000)) // in 60 secs
 });
 
 export default PushNotification
-console.log('loading push lib')
+
