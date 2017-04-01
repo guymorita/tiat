@@ -16,6 +16,8 @@ import { Bubble, GiftedChat } from 'react-native-gifted-chat'
 import { LIGHT_BLUE, LIGHT_GRAY, getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
 import { getMatch, nextStep, switchBranchPushMessage, shouldWait } from '../../actions/chat'
 
+import PushNofication from '../../lib/pushNotifications'
+
 const TEXT_COLOR_LIGHT = 'white'
 
 class Chat extends React.Component {
