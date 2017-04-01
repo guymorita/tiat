@@ -8,6 +8,7 @@ import {
 import NavigationBar from 'react-native-navbar'
 
 import Chat from './containers/Chat/Chat'
+import Dev from './containers/Dev/Dev'
 import Matches from './containers/Matches/Matches'
 
 export default class App extends Component {
@@ -15,6 +16,7 @@ export default class App extends Component {
     const routes = [
       {title: 'Matches', index: 0},
       {title: 'Chat', index: 1},
+      {title: 'Dev', index: 2}
     ];
     return (
       <Navigator
@@ -30,10 +32,6 @@ export default class App extends Component {
       case 'Matches':
         return (
           <View style={{flex: 1}}>
-            <NavigationBar
-              tintColor={"#F8F8F8"}
-              title={{title: "Chats"}}
-            />
             <Matches navigator={navigator}/>
           </View>
         );
@@ -42,6 +40,13 @@ export default class App extends Component {
         return (
           <View style={{flex: 1}}>
             <Chat navigator={navigator}/>
+          </View>
+        );
+
+      case 'Dev':
+        return (
+          <View style={{flex: 1}}>
+            <Dev navigator={navigator}/>
           </View>
         );
     }

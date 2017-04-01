@@ -18,10 +18,6 @@ const initialState = {
       {
         key: "103_Christina",
         min_timeout: 0
-      },
-      {
-        key: "104_Em",
-        min_timeout: 2
       }
     ]
   },

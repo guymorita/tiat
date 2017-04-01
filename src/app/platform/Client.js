@@ -9,6 +9,8 @@ import rootReducer from '../reducers'
 
 const loggerMiddleware = createLogger()
 
+export let perStore = null
+
 export default function configureStore(preloadedState) {
   const store = createStore(
     rootReducer,
@@ -21,11 +23,10 @@ export default function configureStore(preloadedState) {
       autoRehydrate()
     )
   )
-  persistStore(store, {
+  perStore = persistStore(store, {
     storage: AsyncStorage,
     blacklist: ['matchesAll', 'characters']
   }, () => {
-    // console.log('rehydration complete')
   })
   return store
 }

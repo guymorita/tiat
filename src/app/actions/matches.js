@@ -13,8 +13,8 @@ export function findMatches(matchesAll, matchQueue) {
     const { current_day } = matchQueue
     const { queue } = current_day
     const filteredMatchQueue = queue.map((match) => { return match.key })
-    // FIX filter matches with incomplete timer out
 
+    // FIX filter matches with incomplete timer out
     const matchIncluded = match => filteredMatchQueue.includes(match.key)
     const matchesToShow = matchesAll.filter(matchIncluded)
     return dispatch(findMatchesToShow(matchesToShow))

@@ -7,6 +7,7 @@ import {
   View
 } from 'react-native'
 import { connect } from 'react-redux'
+import NavigationBar from 'react-native-navbar'
 
 import { findMatches } from '../../actions/matches'
 import MatchCell from './MatchCell'
@@ -28,6 +29,19 @@ class Matches extends Component {
     }
   }
 
+  rightButtonConfig = {
+    title: 'Dev',
+    tintColor: 'black',
+    handler: () => this._onRightButtonPress(),
+  }
+
+  _onRightButtonPress() {
+    const { navigator } = this.props
+    navigator.push({
+      title: 'Dev'
+    })
+  }
+
   componentWillReceiveProps(nextProps) {
     const { currentMatches } = nextProps
     this.setState({
@@ -38,14 +52,21 @@ class Matches extends Component {
   render() {
     const { navigator } = this.props
     return (
-      <ListView
-        dataSource={this.state.dataSource}
-        enableEmptySections={true}
-        renderRow={(rowData) =>
-          <MatchCell matchInfo={rowData} navigator={navigator}/>
-        }
-        renderSectionHeader={this.renderSectionHeader}
-      />
+      <View style={styles.container}>
+        <NavigationBar
+          rightButton={this.rightButtonConfig}
+          tintColor={"#F8F8F8"}
+          title={{title: "Chats"}}
+        />
+        <ListView
+          dataSource={this.state.dataSource}
+          enableEmptySections={true}
+          renderRow={(rowData) =>
+            <MatchCell matchInfo={rowData} navigator={navigator}/>
+          }
+          renderSectionHeader={this.renderSectionHeader}
+        />
+      </View>
     );
   }
 
@@ -59,6 +80,9 @@ class Matches extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   sectionHeader: {
     marginLeft: 20,
     marginTop: 10,
