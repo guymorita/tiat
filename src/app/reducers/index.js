@@ -1,14 +1,16 @@
 
 import { combineReducers } from 'redux'
 
-import characters from './characters'
-import matchesAll from './matchesAll'
-import currentChat from './currentChat'
 import activeChats from './activeChats'
+import characters from './characters'
+import currentChat from './currentChat'
+import matchesAll from './matchesAll'
+import matchQueue from './matchQueue'
 
 export default combineReducers({
+  activeChats,
   characters,
   currentChat,
-  activeChats,
-  matchesAll
+  matchesAll,
+  matchQueue
 })

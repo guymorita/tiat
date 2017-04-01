@@ -8,6 +8,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 
+
 import MatchCell from './MatchCell'
 
 class Matches extends Component {
@@ -18,10 +19,18 @@ class Matches extends Component {
       sectionHeaderHasChanged: (s1, s2) => s1 !== s2
     })
 
-    const { matchesAll } = props
+    const { matchesAll, matchQueue } = props
+
+    const { current_day } = matchQueue
+    const { queue } = current_day
+    const filteredMatchQueue = queue.map((match) => { return match.key })
+    // FIX filter matches with incomplete timer out
+
+    const matchIncluded = match => filteredMatchQueue.includes(match.key)
+    const matchesToShow = matchesAll.filter(matchIncluded)
 
     this.state = {
-      dataSource: ds.cloneWithRowsAndSections({Messages: matchesAll})
+      dataSource: ds.cloneWithRowsAndSections({Messages: matchesToShow})
     }
   }
 
@@ -58,9 +67,10 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { matchesAll } = state
+  const { matchesAll, matchQueue } = state
   return {
-    matchesAll
+    matchesAll,
+    matchQueue
   }
 }
 
