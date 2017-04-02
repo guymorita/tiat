@@ -1,0 +1,4 @@
+type,text,platform,wait_sec,thread,next_thread,terminal,option_a_text,option_a_thread,option_b_text,option_b_thread
+self,Hello Susan! How is your day going?,tinder,0,a,,,,,,
+narrator,"Sometimes people just don't respond. It's nothing personal. Keep on moving, and maintain a positive attitude.",tinder,14400,a,,,,,,
+branch,,tinder,0,a,,TRUE,,,,

@@ -1,0 +1,5 @@
+type,text,platform,wait_sec,thread,next_thread,terminal,option_a_text,option_a_thread,option_b_text,option_b_thread
+self,"Hello Lucy! Nice to ""meet"" you haha",tinder,0,a,,,,,,
+self,How is your day going?,tinder,0,a,,,,,,
+narrator,"No response. Plenty of fish in the sea, as they say. Chin up and chat with someone else :)",tinder,14400,a,,,,,,
+branch,,tinder,0,a,,TRUE,,,,

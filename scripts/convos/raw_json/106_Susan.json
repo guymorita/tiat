@@ -1,0 +1,5 @@
+[
+{"type":"self","text":"Hello Susan! How is your day going?","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"narrator","text":"Sometimes people just don't respond. It's nothing personal. Keep on moving, and maintain a positive attitude.","platform":"tinder","wait_sec":"14400","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"branch","text":"","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"TRUE","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""}
+]

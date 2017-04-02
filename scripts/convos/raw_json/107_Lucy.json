@@ -1,0 +1,6 @@
+[
+{"type":"self","text":"Hello Lucy! Nice to \"meet\" you haha","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"self","text":"How is your day going?","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"narrator","text":"No response. Plenty of fish in the sea, as they say. Chin up and chat with someone else :)","platform":"tinder","wait_sec":"14400","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"branch","text":"","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"TRUE","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""}
+]

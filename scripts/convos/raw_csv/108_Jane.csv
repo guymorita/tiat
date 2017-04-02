@@ -1,0 +1,18 @@
+type,text,platform,wait_sec,thread,next_thread,terminal,option_a_text,option_a_thread,option_b_text,option_b_thread
+self,"Hello Lucy! Nice to ""meet"" you haha",tinder,0,a,,,,,,
+self,How is your day going?,tinder,0,a,,,,,,
+girl,Hello there,tinder,0,a,,,,,,
+girl,"So far, so good, thanks for asking :)",tinder,0,a,,,,,,
+girl,And you?,tinder,0,a,,,,,,
+self,"I'm well, thanks, just at work right now",tinder,0,a,,,,,,
+girl,That's good,tinder,0,a,,,,,,
+self,What do you do for work?,tinder,0,a,,,,,,
+self,I'm a software engineer,tinder,0,a,,,,,,
+self,And you?,tinder,0,a,,,,,,
+narrator,Hmmmm. Not getting a response. Want to try another message or move on?,tinder,14400,a,,,,,,
+branch,,tinder,0,a,,,Send a friendly follow up message,b,Move on,c
+self,Hola! Just wanted to see if you'd like to keep chatting :),tinder,0,b,,,,,,
+narrator,"Hey, no worries. The important thing is that you were polite. Lashing out when people don't respond is never okay.",tinder,14400,b,,,,,,
+branch,,tinder,0,b,,TRUE,,,,
+narrator,"Hey, no worries. The important thing is that you were polite. Lashing out when people don't respond is never okay.",,0,c,,,,,,
+branch,,tinder,0,c,,TRUE,,,,

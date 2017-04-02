@@ -16,6 +16,9 @@ matchBlob.version = 1;
 matchBlob.matches = [];
 
 fs.readdirSync(normalizedPath).forEach(function(file) {
+  if (file.includes('DS_Store')) {
+    return
+  }
   const matchPath = path.join(normalizedPath, file);
   const femaleKey = path.basename(matchPath, '.json');
   const [femaleChaId, femaleFirstName] = femaleKey.split('_');

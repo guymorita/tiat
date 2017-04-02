@@ -1,0 +1,19 @@
+[
+{"type":"self","text":"Hello Lucy! Nice to \"meet\" you haha","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"self","text":"How is your day going?","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"girl","text":"Hello there","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"girl","text":"So far, so good, thanks for asking :)","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"girl","text":"And you?","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"self","text":"I'm well, thanks, just at work right now","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"girl","text":"That's good","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"self","text":"What do you do for work?","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"self","text":"I'm a software engineer","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"self","text":"And you?","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"narrator","text":"Hmmmm. Not getting a response. Want to try another message or move on?","platform":"tinder","wait_sec":"14400","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"branch","text":"","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"Send a friendly follow up message","option_a_thread":"b","option_b_text":"Move on","option_b_thread":"c"},
+{"type":"self","text":"Hola! Just wanted to see if you'd like to keep chatting :)","platform":"tinder","wait_sec":"0","thread":"b","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"narrator","text":"Hey, no worries. The important thing is that you were polite. Lashing out when people don't respond is never okay.","platform":"tinder","wait_sec":"14400","thread":"b","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"branch","text":"","platform":"tinder","wait_sec":"0","thread":"b","next_thread":"","terminal":"TRUE","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"narrator","text":"Hey, no worries. The important thing is that you were polite. Lashing out when people don't respond is never okay.","platform":"","wait_sec":"0","thread":"c","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"branch","text":"","platform":"tinder","wait_sec":"0","thread":"c","next_thread":"","terminal":"TRUE","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""}
+]

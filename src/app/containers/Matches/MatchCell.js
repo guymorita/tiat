@@ -34,7 +34,15 @@ class MatchCell extends Component {
       '102_Jessica': require('./102Jessica0.png'),
       '103_Christina': require('./103Christina0.png'),
       '104_Em': require('./104Em0.png'),
-      '105_Katrina': require('./105Katrina0.png')
+      '105_Katrina': require('./105Katrina0.png'),
+      '106_Susan': require('./106Susan0.png'),
+      '107_Lucy': require('./107Lucy0.png'),
+      '108_Jane': require('./108Jane0.png'),
+      '109_Bianca': require('./109Bianca0.png'),
+      '110_Mai': require('./110Mai0.png'),
+      '111_Karen': require('./111Karen0.png'),
+      '112_Mina': require('./112Mina0.png'),
+      '113_Ashley': require('./113Ashley0.png')
     }
 
     const firstImage = (key) => { return imageMapping[key] }
