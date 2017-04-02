@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View
 } from 'react-native'
+import moment from 'moment'
 import { connect } from 'react-redux'
 
 import { initSwitchChat } from '../../actions/chat'
@@ -21,8 +22,8 @@ class MatchCell extends Component {
   }
 
   render() {
-    const { characters, matchInfo } = this.props
-    const { key } = matchInfo
+    const { characters, date, matchInfo } = this.props
+    const { date_matched, key } = matchInfo
 
     const isChar = (el) => { return el.key === key }
 
@@ -62,7 +63,7 @@ class MatchCell extends Component {
               {femaleChar.first_name}
             </Text>
             <Text style={styles.subText}>
-              Matched Yesterday
+              Matched {moment(date_matched).from(date.opened_today.modified)}
             </Text>
           </View>
         </View>
@@ -97,10 +98,11 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { characters } = state
+  const { characters, date } = state
 
   return {
-    characters
+    characters,
+    date
   }
 }
 

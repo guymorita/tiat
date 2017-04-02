@@ -23,7 +23,7 @@ const initialState = {
 export default function matchQueue(state = initialState, action) {
   switch(action.type) {
     case ADVANCE_MATCH_QUEUE:
-      const modDay = action.date.opened_today.mofified_day
+      const modDay = action.date.opened_today.modified_day
       return {
         ...state,
         current_day: {
