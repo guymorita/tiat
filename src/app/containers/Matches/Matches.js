@@ -9,7 +9,7 @@ import {
 import { connect } from 'react-redux'
 import NavigationBar from 'react-native-navbar'
 
-import { findMatches } from '../../actions/matches'
+import { findMatches, initMatchQueue } from '../../actions/matches'
 import MatchCell from './MatchCell'
 
 class Matches extends Component {
@@ -20,8 +20,12 @@ class Matches extends Component {
       sectionHeaderHasChanged: (s1, s2) => s1 !== s2
     })
 
-    const { dispatch, matchesAll, matchQueue } = props
-    dispatch(findMatches(matchesAll, matchQueue))
+    const { currentMatches, date, dispatch, matchesAll, matchQueue } = props
+    if (!matchQueue.init_finish) {
+      dispatch(initMatchQueue(matchesAll, date))
+    } else {
+      dispatch(findMatches(currentMatches, matchQueue))
+    }
 
     this.state = {
       dataSource: ds.cloneWithRowsAndSections({Messages: []}),
@@ -43,7 +47,8 @@ class Matches extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { currentMatches } = nextProps
+    const { currentMatches, dispatch, matchQueue } = nextProps
+    dispatch(findMatches(currentMatches, matchQueue))
     this.setState({
       dataSource: this.state.ds.cloneWithRowsAndSections({Messages: currentMatches})
     })
@@ -61,6 +66,7 @@ class Matches extends Component {
         <ListView
           dataSource={this.state.dataSource}
           enableEmptySections={true}
+          removeClippedSubviews={false}
           renderRow={(rowData) =>
             <MatchCell matchInfo={rowData} navigator={navigator}/>
           }
@@ -93,9 +99,10 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { currentMatches, matchesAll, matchQueue } = state
+  const { currentMatches, date, matchesAll, matchQueue } = state
   return {
     currentMatches,
+    date,
     matchesAll,
     matchQueue
   }

@@ -1,5 +1,73 @@
 
+import _ from 'lodash'
+
+import {
+  dayFromDate
+} from './date'
+
+export const ADVANCE_MATCH_QUEUE = 'ADVANCE_MATCH_QUEUE'
 export const FIND_MATCHES_TO_SHOW = 'FIND_MATCHES_TO_SHOW'
+export const IMPORT_TO_CURRENT_MATCHES_FINISHED = 'IMPORT_TO_CURRENT_MATCHES_FINISHED'
+export const INIT_MATCH_QUEUE = 'INIT_MATCH_QUEUE'
+
+const MIN_NUM_RANDOM_MATCHES_PER_DAY = 0
+const MAX_NUM_RANDOM_MATCHES_PER_DAY = 2
+
+const NUM_MATCHES_DAY_1 = 3
+const NUM_MATCHES_DAY_2 = 2
+
+function formatMatches(matches) {
+  return matches.map((match) => { return { key: match.key }})
+}
+
+function getNewMatchQueueNextDay(state, next_day_of_month) {
+  const range = MAX_NUM_RANDOM_MATCHES_PER_DAY - MIN_NUM_RANDOM_MATCHES_PER_DAY
+  const numRandomMatches = Math.floor(Math.random()*(range + 1))+MIN_NUM_RANDOM_MATCHES_PER_DAY
+
+  const { currentMatches, matchesAll, matchQueue } = state
+
+  const { current_day, next_day } = matchQueue
+  const currentQueue = current_day.queue
+  const nextQueue = next_day.queue
+
+  const allQueuedAndMatched = currentMatches.concat(currentQueue, nextQueue)
+  const allQueuedAndMatchedKeys = allQueuedAndMatched.map((match) => { return match.key})
+
+  const notQueuedAndMatched = (match) => { return !allQueuedAndMatchedKeys.includes(match.key)}
+
+  const availableMatches = matchesAll.filter(notQueuedAndMatched)
+
+  const nextMatches = availableMatches.slice(0, numRandomMatches)
+  const formattedNextMatches = formatMatches(nextMatches)
+
+  return {
+    day_of_month: next_day_of_month,
+    import_finished: false,
+    random_num_matches: numRandomMatches,
+    queue: formattedNextMatches
+  }
+}
+
+function advanceMatchQueue(date, nextDay) {
+  return {
+    type: ADVANCE_MATCH_QUEUE,
+    date,
+    nextDay
+  }
+}
+
+export function tryAdvanceMatchQueue() {
+  return (dispatch, getState) => {
+    const state = getState()
+    const { date, matchQueue } = state
+    if (date.opened_today.modified_day !== matchQueue.current_day.day_of_month) {
+      const modDate = date.opened_today.mofified
+      next_day_of_month = dayFromDate(modDate, 1)
+      const nextDay = getNewMatchQueueNextDay(state, next_day_of_month)
+      dispatch(advanceMatchQueue(date, nextDay))
+    }
+  }
+}
 
 function findMatchesToShow(matches) {
   return {
@@ -8,15 +76,41 @@ function findMatchesToShow(matches) {
   }
 }
 
-export function findMatches(matchesAll, matchQueue) {
-  return (dispatch, getState) => {
+function importFinished() {
+  return {
+    type: IMPORT_TO_CURRENT_MATCHES_FINISHED
+  }
+}
+
+export function findMatches(currentMatches, matchQueue) {
+  return (dispatch) => {
     const { current_day } = matchQueue
+    const { import_finished } = current_day
+    if (import_finished) {
+      return
+    }
     const { queue } = current_day
-    const filteredMatchQueue = queue.map((match) => { return match.key })
+    const allCurrentKeys = currentMatches.map((match) => { return match.key })
 
     // FIX filter matches with incomplete timer out
-    const matchIncluded = match => filteredMatchQueue.includes(match.key)
-    const matchesToShow = matchesAll.filter(matchIncluded)
+    const matchDupe = match => allCurrentKeys.includes(match.key)
+    const newMatches = _.reject(queue, matchDupe)
+    const matchesToShow = currentMatches.concat(newMatches)
+    dispatch(importFinished())
     return dispatch(findMatchesToShow(matchesToShow))
+  }
+}
+
+export function initMatchQueue(matchesAll, date) {
+  const matchesDay1 = matchesAll.slice(0,NUM_MATCHES_DAY_1)
+  const matchesDay2 = matchesAll.slice(NUM_MATCHES_DAY_1, NUM_MATCHES_DAY_1 + NUM_MATCHES_DAY_2)
+
+  const formattedMatchesDay1 = formatMatches(matchesDay1)
+  const formattedMatchesDay2 = formatMatches(matchesDay2)
+
+  return {
+    type: INIT_MATCH_QUEUE,
+    current_day: formattedMatchesDay1,
+    next_day: formattedMatchesDay2
   }
 }

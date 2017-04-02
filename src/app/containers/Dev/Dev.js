@@ -11,6 +11,7 @@ import NavigationBar from 'react-native-navbar'
 import moment from 'moment'
 
 import { advanceDateDay } from '../../actions/date'
+import { findMatches, tryAdvanceMatchQueue } from '../../actions/matches'
 import { perStore } from '../../platform/Client'
 
 class Dev extends React.Component {
@@ -26,8 +27,10 @@ class Dev extends React.Component {
   }
 
   _onAdvanceDayPress = () => {
-    const { dispatch } = this.props
+    const { currentMatches, dispatch, matchQueue } = this.props
     dispatch(advanceDateDay())
+    dispatch(tryAdvanceMatchQueue())
+    dispatch(findMatches(currentMatches, matchQueue))
   }
 
   _onPurgePress = () => {
@@ -141,9 +144,11 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { date } = state
+  const { currentMatches, date, matchQueue } = state
   return {
-    date
+    currentMatches,
+    date,
+    matchQueue
   }
 }
 
