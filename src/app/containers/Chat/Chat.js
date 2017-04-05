@@ -238,9 +238,21 @@ class Chat extends React.Component {
   }
 
   componentDidMount() {
+    const { messages } = this.state
+    const { curChat, dispatch } = this.props
+    if (messages.length === 0 && !_.isEmpty(curChat)) {
+      this.setTimeout(
+        () => {
+          const { key } = curChat
+          dispatch(nextStep(key))
+        },
+        1000
+      )
+    }
+
     this.setTimeout(
       () => {this.tryCycleFooterAnimation(); },
-      1000
+      1500
     )
   }
 
