@@ -3,7 +3,7 @@ import {
   StyleSheet
 } from 'react-native'
 
-const TINDER_COLOR = '#ED7C61'
+export const TINDER_COLOR = '#ED7C61'
 const IMESSAGE_COLOR = '#2D75FA'
 export const LIGHT_BLUE = '#D0E2F4'
 export const LIGHT_GRAY = '#F0F0F0'

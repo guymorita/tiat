@@ -211,21 +211,23 @@ export function switchBranchPushMessage(key, branch_target) {
 function execBranch(activeChat, threads) {
   const currentThread = threads[activeChat.thread]
   const { branch } = currentThread
+  const { key } = activeChat
 
   switch(branch.branch_type) {
     case 'linear':
       const { branch_target } = branch
       return (dispatch) => {
-        dispatch(switchBranchPushMessage(activeChat.key, branch_target))
+        dispatch(switchBranchPushMessage(key, branch_target))
       }
     case 'multi':
       return {
         type: BRANCH_MULTI,
-        key: activeChat.key
+        key
       }
     case 'terminal':
       return {
-        type: BRANCH_TERMINAL
+        type: BRANCH_TERMINAL,
+        key
       }
   }
 }

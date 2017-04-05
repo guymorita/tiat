@@ -8,9 +8,11 @@ import {
   View
 } from 'react-native'
 import moment from 'moment'
+import _ from 'lodash'
 import { connect } from 'react-redux'
 
 import { initSwitchChat } from '../../actions/chat'
+import { TINDER_COLOR } from '../../lib/colors'
 
 class MatchCell extends Component {
   _onPressCell(key) {
@@ -22,8 +24,20 @@ class MatchCell extends Component {
   }
 
   render() {
-    const { characters, date, matchInfo } = this.props
+    const { activeChats, characters, date, matchInfo } = this.props
     const { date_matched, key } = matchInfo
+    const activeChat = activeChats[key]
+    let isTerminated = false
+
+    const isNewMatch = _.isEmpty(activeChat)
+    let lastMessageText = ''
+
+    if (!isNewMatch && activeChat.giftedChat.messages.length) {
+      isTerminated = activeChat.isTerminated
+      const messages = activeChat.giftedChat.messages
+      const lastMessage = _.last(messages)
+      lastMessageText = lastMessage.text
+    }
 
     const isChar = (el) => { return el.key === key }
 
@@ -62,9 +76,24 @@ class MatchCell extends Component {
             <Text style={styles.name}>
               {femaleChar.first_name}
             </Text>
-            <Text style={styles.subText}>
-              Matched {moment(date_matched).from(date.opened_today.modified)}
-            </Text>
+            {isNewMatch &&
+              <Text style={styles.newMatch}>
+                New Match!
+              </Text>
+            }
+            {!isTerminated && !isNewMatch &&
+              <Text
+                style={styles.subText}
+                numberOfLines={1}
+              >
+                {lastMessageText}
+              </Text>
+            }
+            {isTerminated &&
+              <Text style={styles.chatEnded}>
+                Chat Ended
+              </Text>
+            }
           </View>
         </View>
       </TouchableOpacity>
@@ -84,7 +113,8 @@ const styles = StyleSheet.create({
     borderRadius: 40
   },
   infoColumn: {
-    marginLeft: 15
+    marginLeft: 15,
+    flex: 1
   },
   name: {
     marginTop: 15,
@@ -93,14 +123,24 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
   subText: {
-    color: '#B2B2B2'
+    color: '#B2B2B2',
+    fontWeight: '500'
+  },
+  newMatch: {
+    color: '#60B9F9',
+    fontWeight: '500'
+  },
+  chatEnded: {
+    color: TINDER_COLOR,
+    fontWeight: '500'
   }
 })
 
 const mapStateToProps = function(state) {
-  const { characters, date } = state
+  const { activeChats, characters, date } = state
 
   return {
+    activeChats,
     characters,
     date
   }

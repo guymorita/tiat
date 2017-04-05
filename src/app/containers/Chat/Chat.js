@@ -136,6 +136,8 @@ class Chat extends React.Component {
       renderInputContent = this.renderBranchOptions
     } else if (curChat && shouldWait(curChat)) {
       renderInputContent = this.renderWaitingBubble
+    } else if (curChat && curChat.isTerminated) {
+      renderInputContent = this.renderTerminatedBubble
     }
 
     return (
@@ -203,6 +205,18 @@ class Chat extends React.Component {
     );
   }
 
+  renderTerminatedBubble = () => {
+    return (
+      <TouchableOpacity onPress={this._onNextPress.bind(this)}>
+        <View style={[styles.bubbleBase, styles.centerBubble, styles.endBubble]}>
+          <Text style={styles.endText}>
+            Try again
+          </Text>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+
   renderAccessory(props) {
     return (
       <View>
@@ -257,9 +271,8 @@ class Chat extends React.Component {
   }
 
   render() {
-    const { characters, curChat } = this.props
+    const { characters, curChat, isActive } = this.props
     let first_name = "Ann"
-    const isActive = !_.isEmpty(curChat)
     if (isActive) {
       const char = characters.find((cha) => { return cha.key === curChat.key})
       first_name = char && char.first_name
@@ -323,6 +336,12 @@ const styles = StyleSheet.create({
   waitBubble: {
     backgroundColor: LIGHT_GRAY
   },
+  endBubble: {
+    backgroundColor: '#888'
+  },
+  endText: {
+    color: 'white'
+  },
   nextBubbleText: {
     fontSize: 16,
     color: TEXT_COLOR_LIGHT
@@ -347,11 +366,13 @@ const mapStateToProps = function(state) {
 
   const match = getMatch(state, key)
   const curChat = activeChats[key]
+  const isActive = !_.isEmpty(curChat)
   const platform = match && match.threads[curChat.thread].platform || 'tinder'
 
   return {
     characters,
     curChat,
+    isActive,
     key,
     match,
     platform

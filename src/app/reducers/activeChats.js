@@ -26,7 +26,14 @@ export default function activeChats(state = initialState, action) {
       }
 
     case BRANCH_TERMINAL:
-      return state
+      const actiChat = state[action.key]
+      return {
+        ...state,
+        [action.key]: {
+          ...actiChat,
+          isTerminated: true
+        }
+      }
 
     case INIT_ACTIVE_CHAT:
       const newChat = {
