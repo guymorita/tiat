@@ -9,12 +9,15 @@ import {
   UPDATE_ACTUAL_DATE
 } from '../actions/date'
 
-const dateNow = Date.now()
+const datee = new Date
+const dateNow = datee.getTime()
 const day = dayFromDate(dateNow)
+const offsetInMin = datee.getTimezoneOffset()
 
 const initialState = {
   first_open: {
-    actual: dateNow
+    actual: dateNow,
+    timezoneOffset: offsetInMin
   },
   opened_today: {
     actual: dateNow,

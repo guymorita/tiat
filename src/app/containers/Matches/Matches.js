@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import {
+  AppState,
   ListView,
   StyleSheet,
   Text,
@@ -12,6 +13,7 @@ import NavigationBar from 'react-native-navbar'
 import { findMatches, initMatchQueue, tryAdvanceMatchQueue } from '../../actions/matches'
 import { updateActualDate } from '../../actions/date'
 import MatchCell from './MatchCell'
+import { createPushNotification } from '../../actions/pushNotification'
 
 class Matches extends Component {
   constructor(props) {
@@ -39,6 +41,13 @@ class Matches extends Component {
     })
   }
 
+  _handleAppStateChange = (nextAppState) => {
+    if (nextAppState === 'background') {
+      const { dispatch } = this.props
+      dispatch(createPushNotification())
+    }
+  }
+
   componentWillMount() {
     const { activeChats, currentMatches, date, dispatch, matchesAll, matchQueue } = this.props
 
@@ -63,6 +72,14 @@ class Matches extends Component {
     this.setState({
       dataSource: this.state.ds.cloneWithRows(currentMatches)
     })
+  }
+
+  componentDidMount() {
+    AppState.addEventListener('change', this._handleAppStateChange);
+  }
+
+  componentWillUnmount() {
+    AppState.removeEventListener('change', this._handleAppStateChange);
   }
 
   render() {
