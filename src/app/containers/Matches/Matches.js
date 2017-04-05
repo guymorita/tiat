@@ -16,8 +16,7 @@ class Matches extends Component {
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2,
-      sectionHeaderHasChanged: (s1, s2) => s1 !== s2
+      rowHasChanged: (r1, r2) => r1 !== r2
     })
 
     const { currentMatches, date, dispatch, matchesAll, matchQueue } = props
@@ -28,7 +27,7 @@ class Matches extends Component {
     }
 
     this.state = {
-      dataSource: ds.cloneWithRowsAndSections({Messages: []}),
+      dataSource: ds.cloneWithRows([]),
       ds
     }
   }
@@ -50,7 +49,7 @@ class Matches extends Component {
     const { currentMatches, dispatch, matchQueue } = nextProps
     dispatch(findMatches(currentMatches, matchQueue))
     this.setState({
-      dataSource: this.state.ds.cloneWithRowsAndSections({Messages: currentMatches})
+      dataSource: this.state.ds.cloneWithRows(currentMatches)
     })
   }
 
@@ -70,18 +69,9 @@ class Matches extends Component {
           renderRow={(rowData) =>
             <MatchCell matchInfo={rowData} navigator={navigator}/>
           }
-          renderSectionHeader={this.renderSectionHeader}
         />
       </View>
     );
-  }
-
-  renderSectionHeader(sectionData, category) {
-    return (
-      <View style={styles.sectionHeader}>
-        <Text style={{fontWeight: "700"}}>{category}</Text>
-      </View>
-    )
   }
 }
 
