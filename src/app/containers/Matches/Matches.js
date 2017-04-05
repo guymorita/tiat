@@ -45,9 +45,18 @@ class Matches extends Component {
     })
   }
 
+  componentWillMount() {
+    const { currentMatches } = this.props
+
+    this.setState({
+      dataSource: this.state.ds.cloneWithRows(currentMatches),
+    })
+  }
+
   componentWillReceiveProps(nextProps) {
     const { currentMatches, dispatch, matchQueue } = nextProps
     dispatch(findMatches(currentMatches, matchQueue))
+
     this.setState({
       dataSource: this.state.ds.cloneWithRows(currentMatches)
     })
