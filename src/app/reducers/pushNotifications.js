@@ -1,5 +1,5 @@
 
-import { CREATE_PUSH_NOTIFICATION } from '../actions/pushNotifications'
+import { CREATE_PUSH_NOTIFICATION, PUSH_NOTIFICATION_FIRED } from '../actions/pushNotifications'
 
 const initialState = {
   queued_message: {
@@ -18,6 +18,8 @@ const initialState = {
 export default function pushNotifications(state = initialState, action) {
   switch(action.type) {
     case CREATE_PUSH_NOTIFICATION:
+      return state
+    case PUSH_NOTIFICATION_FIRED:
       return state
     default:
       return state
