@@ -98,7 +98,7 @@ export function findMatches(currentMatches, matchQueue) {
     // FIX filter matches with incomplete timer out
     const matchDupe = match => allCurrentKeys.includes(match.key)
     const newMatches = _.reject(queue, matchDupe)
-    const matchesToShow = currentMatches.concat(newMatches)
+    const matchesToShow = newMatches.concat(currentMatches)
     dispatch(importFinished())
     return dispatch(findMatchesToShow(matchesToShow))
   }
