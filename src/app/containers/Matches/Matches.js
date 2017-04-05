@@ -13,7 +13,7 @@ import NavigationBar from 'react-native-navbar'
 import { findMatches, initMatchQueue, tryAdvanceMatchQueue } from '../../actions/matches'
 import { updateActualDate } from '../../actions/date'
 import MatchCell from './MatchCell'
-import { createPushNotification } from '../../actions/pushNotification'
+import { tryCreatePushNotification } from '../../actions/pushNotification'
 
 class Matches extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class Matches extends Component {
   _handleAppStateChange = (nextAppState) => {
     if (nextAppState === 'background') {
       const { dispatch } = this.props
-      dispatch(createPushNotification())
+      dispatch(tryCreatePushNotification())
     }
   }
 

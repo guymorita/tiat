@@ -15,6 +15,7 @@ import { Bubble, GiftedChat } from 'react-native-gifted-chat'
 import _ from 'lodash'
 import reactMixin from 'react-mixin'
 import timerMixin from 'react-timer-mixin'
+import PushNotification from 'react-native-push-notification'
 
 import { LIGHT_BLUE, LIGHT_GRAY, getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
 import { getMatch, nextStep, switchBranchPushMessage, shouldWait } from '../../actions/chat'
@@ -240,6 +241,10 @@ class Chat extends React.Component {
     const { curChat } = nextProps
     const { giftedChat } = curChat
     const { messages } = giftedChat
+
+    if (curChat.isTerminated) {
+      PushNotification.requestPermissions()
+    }
 
     const hasNewMessage = this.state.messages.length !== messages.length
     if (hasNewMessage) {

@@ -1,5 +1,6 @@
 
 import PushNotification from 'react-native-push-notification'
+import moment from 'moment'
 
 export const CREATE_PUSH_NOTIFICATION = 'CREATE_PUSH_NOTIFICATION'
 
@@ -8,15 +9,29 @@ PushNotification.configure({
     onNotification: function(notification) {
         console.log( 'NOTIFICATION:', notification )
     },
-    requestPermissions: true,
+    requestPermissions: false,
 })
 
-export function createPushNotification() {
-  PushNotification.localNotificationSchedule({
-    message: "You have new matches!", // (required)
-    date: new Date(Date.now() + (5 * 1000)) // in 60 secs
-  });
+function createPushNotification() {
   return {
     type: CREATE_PUSH_NOTIFICATION
+  }
+}
+
+export function tryCreatePushNotification() {
+  return (dispatch, getState) => {
+    const state = getState()
+    const { date, matchQueue } = state
+    const hasMatchesTmrw = matchQueue.next_day.random_num_matches > 0
+    if (!hasMatchesTmrw) {
+      return
+    }
+    const dateToSend = moment().add(1, 'days').hour(12)
+    const text = "You have new matches!"
+    PushNotification.localNotificationSchedule({
+      message: text,
+      date: dateToSend.toDate()
+    });
+    dispatch(createPushNotification(text, dateToSend))
   }
 }
