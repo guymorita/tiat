@@ -27,15 +27,15 @@ class Dev extends React.Component {
   }
 
   _onAdvanceDayPress = () => {
-    const { currentMatches, dispatch, matchQueue } = this.props
+    const { activeChats, currentMatches, dispatch, matchQueue } = this.props
     dispatch(advanceDateDay())
     dispatch(tryAdvanceMatchQueue())
-    dispatch(findMatches(currentMatches, matchQueue))
+    dispatch(findMatches(currentMatches, matchQueue, activeChats))
   }
 
   _onPurgePress = () => {
     perStore.purge()
-    alert('Data purged, restart the app')
+    alert('Data purged, force stop the app, and restart')
   }
 
   render() {
@@ -47,9 +47,9 @@ class Dev extends React.Component {
           tintColor={"#F8F8F8"}
           title={{title: 'Dev'}}
         />
-        <View style={styles.row}>
+        <View style={[styles.row, styles.header]}>
           <View style={styles.col1}>
-            <Text>
+            <Text style={styles.headerText}>
               Dates
             </Text>
           </View>
@@ -100,7 +100,7 @@ class Dev extends React.Component {
         <View style={styles.row}>
           <View style={styles.col1}>
             <Text>
-              Modified Date Opened Change
+              Modified Date Opened
             </Text>
           </View>
           <View style={styles.col2}>
@@ -109,9 +109,9 @@ class Dev extends React.Component {
             </Text>
           </View>
         </View>
-        <View style={styles.row}>
+        <View style={[styles.row, styles.header]}>
           <View style={styles.col1}>
-            <Text>
+            <Text style={styles.headerText}>
               Data
             </Text>
           </View>
@@ -136,16 +136,25 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   col1: {
-    flex: 0.7
+    flex: 0.7,
+    marginLeft: 10
   },
   col2: {
     flex: 0.3
+  },
+  header: {
+    marginTop: 10,
+    marginBottom: 10
+  },
+  headerText: {
+    fontSize: 20
   }
 })
 
 const mapStateToProps = function(state) {
-  const { currentMatches, date, matchQueue } = state
+  const { activeChats, currentMatches, date, matchQueue } = state
   return {
+    activeChats,
     currentMatches,
     date,
     matchQueue

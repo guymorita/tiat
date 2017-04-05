@@ -9,7 +9,8 @@ import {
 import { connect } from 'react-redux'
 import NavigationBar from 'react-native-navbar'
 
-import { findMatches, initMatchQueue } from '../../actions/matches'
+import { findMatches, initMatchQueue, tryAdvanceMatchQueue } from '../../actions/matches'
+import { updateActualDate } from '../../actions/date'
 import MatchCell from './MatchCell'
 
 class Matches extends Component {
@@ -18,13 +19,6 @@ class Matches extends Component {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     })
-
-    const { currentMatches, date, dispatch, matchesAll, matchQueue } = props
-    if (!matchQueue.init_finish) {
-      dispatch(initMatchQueue(matchesAll, date))
-    } else {
-      dispatch(findMatches(currentMatches, matchQueue))
-    }
 
     this.state = {
       dataSource: ds.cloneWithRows([]),
@@ -46,7 +40,16 @@ class Matches extends Component {
   }
 
   componentWillMount() {
-    const { currentMatches } = this.props
+    const { activeChats, currentMatches, date, dispatch, matchesAll, matchQueue } = this.props
+
+    dispatch(updateActualDate())
+    dispatch(tryAdvanceMatchQueue())
+
+    if (!matchQueue.init_finish) {
+      dispatch(initMatchQueue(matchesAll, date))
+    } else {
+      dispatch(findMatches(currentMatches, matchQueue, activeChats))
+    }
 
     this.setState({
       dataSource: this.state.ds.cloneWithRows(currentMatches),
@@ -54,8 +57,8 @@ class Matches extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { currentMatches, dispatch, matchQueue } = nextProps
-    dispatch(findMatches(currentMatches, matchQueue))
+    const { activeChats, currentMatches, dispatch, matchQueue } = nextProps
+    dispatch(findMatches(currentMatches, matchQueue, activeChats))
 
     this.setState({
       dataSource: this.state.ds.cloneWithRows(currentMatches)
@@ -98,8 +101,9 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { currentMatches, date, matchesAll, matchQueue } = state
+  const { activeChats, currentMatches, date, matchesAll, matchQueue } = state
   return {
+    activeChats,
     currentMatches,
     date,
     matchesAll,

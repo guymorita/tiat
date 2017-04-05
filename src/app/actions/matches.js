@@ -17,6 +17,8 @@ const MAX_NUM_RANDOM_MATCHES_PER_DAY = 2
 const NUM_MATCHES_DAY_1 = 3
 const NUM_MATCHES_DAY_2 = 2
 
+const NUM_MAX_NEW_MATCHES = 3
+
 function formatMatches(matches, date) {
   return matches.map((match) => { return { key: match.key, date_matched: date }})
 }
@@ -85,7 +87,7 @@ function importFinished() {
   }
 }
 
-export function findMatches(currentMatches, matchQueue) {
+export function findMatches(currentMatches, matchQueue, activeChats) {
   return (dispatch) => {
     const { current_day } = matchQueue
     const { import_finished } = current_day
@@ -97,7 +99,12 @@ export function findMatches(currentMatches, matchQueue) {
 
     // FIX filter matches with incomplete timer out
     const matchDupe = match => allCurrentKeys.includes(match.key)
-    const newMatches = _.reject(queue, matchDupe)
+    let newMatches = _.reject(queue, matchDupe)
+    const overNewMatchLimit = allCurrentKeys.length >= (_.keys(activeChats).length + NUM_MAX_NEW_MATCHES)
+    if (overNewMatchLimit) {
+      newMatches = []
+    }
+
     const matchesToShow = newMatches.concat(currentMatches)
     dispatch(importFinished())
     return dispatch(findMatchesToShow(matchesToShow))
