@@ -41,7 +41,7 @@ function getNewMatchQueueNextDay(state, date) {
   const availableMatches = matchesAll.filter(notQueuedAndMatched)
 
   const nextMatches = availableMatches.slice(0, numRandomMatches)
-  console.log('nextMatches', nextMatches)
+
   const formattedNextMatches = formatMatches(nextMatches, modDate)
 
   return {

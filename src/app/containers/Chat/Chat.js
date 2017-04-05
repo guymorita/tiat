@@ -1,6 +1,7 @@
 
 import React from 'react'
 import {
+  Animated,
   Button,
   Platform,
   StyleSheet,
@@ -10,8 +11,10 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import NavigationBar from 'react-native-navbar'
-import _ from 'lodash'
 import { Bubble, GiftedChat } from 'react-native-gifted-chat'
+import _ from 'lodash'
+import reactMixin from 'react-mixin'
+import timerMixin from 'react-timer-mixin'
 
 import { LIGHT_BLUE, LIGHT_GRAY, getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
 import { getMatch, nextStep, switchBranchPushMessage, shouldWait } from '../../actions/chat'
@@ -24,7 +27,9 @@ class Chat extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: []
+      messages: [],
+      animatedStartValue: new Animated.Value(0),
+      userHasInteracted: false
     }
   }
 
@@ -42,12 +47,14 @@ class Chat extends React.Component {
   _onNextPress() {
     const { curChat, dispatch } = this.props
     const { key } = curChat
+    this.setState({userHasInteracted: true})
     dispatch(nextStep(key))
   }
 
   _onOptionPress(option) {
     const { curChat, dispatch } = this.props
     const { key } = curChat
+    this.setState({userHasInteracted: true})
     dispatch(switchBranchPushMessage(key, option.target_thread))
   }
 
@@ -74,6 +81,51 @@ class Chat extends React.Component {
         }}
       />
     );
+  }
+
+  tryCycleFooterAnimation = () => {
+    if (!this.state.userHasInteracted) {
+      this.cycleFooterAnimation()
+    }
+  }
+
+  cycleFooterAnimation = () => {
+    Animated.sequence([
+      Animated.timing(this.state.animatedStartValue, {
+        toValue: 1,
+        duration: 3000
+      }),
+      Animated.timing(this.state.animatedStartValue, {
+        toValue: 0,
+        duration: 2000
+    })
+    ]).start((event) => {
+      if (event.finished) {
+        this.cycleFooterAnimation()
+      }
+    });
+  }
+
+  renderFooter () {
+    const { userHasInteracted } = this.state
+
+    if (!userHasInteracted) {
+      return (
+        <View>
+          <Animated.View
+            style={[styles.footer, {
+              opacity: this.state.animatedStartValue
+            }]}
+          >
+            <Text style={styles.footerText}>
+              &#8595; Tap below &#8595;
+            </Text>
+          </Animated.View>
+        </View>
+      )
+    } else {
+      return (<View></View>)
+    }
   }
 
   renderInputToolbar() {
@@ -166,6 +218,7 @@ class Chat extends React.Component {
       const { giftedChat } = curChat
       initialMessages = giftedChat.messages
     }
+
     this.setState({
       messages: _.cloneDeep(initialMessages).reverse()
     });
@@ -182,6 +235,13 @@ class Chat extends React.Component {
         messages: GiftedChat.append(this.state.messages, messages[messages.length - 1]),
       })
     }
+  }
+
+  componentDidMount() {
+    this.setTimeout(
+      () => {this.tryCycleFooterAnimation(); },
+      1000
+    )
   }
 
   render() {
@@ -202,6 +262,7 @@ class Chat extends React.Component {
         />
         <GiftedChat
           renderBubble={this.renderBubble.bind(this)}
+          renderFooter={this.renderFooter.bind(this)}
           renderInputToolbar={this.renderInputToolbar.bind(this)}
           renderAccessory={this.renderAccessory.bind(this)}
           messages={this.state.messages}
@@ -223,6 +284,13 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center'
+  },
+  footer: {
+    alignItems: 'center',
+    marginTop: 10
+  },
+  footerText: {
+    color: '#444'
   },
   bubbleBase: {
     flex: 1,
@@ -277,5 +345,7 @@ const mapStateToProps = function(state) {
     platform
   }
 }
+
+reactMixin(Chat.prototype, timerMixin)
 
 export default connect(mapStateToProps)(Chat)
