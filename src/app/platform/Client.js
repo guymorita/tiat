@@ -1,10 +1,8 @@
 
-import { AsyncStorage } from 'react-native'
-
 import { compose, createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
-import { persistStore, autoRehydrate } from 'redux-persist'
+import { autoRehydrate } from 'redux-persist'
 import rootReducer from '../reducers'
 
 const loggerMiddleware = createLogger()
@@ -23,10 +21,5 @@ export default function configureStore(preloadedState) {
       autoRehydrate()
     )
   )
-  perStore = persistStore(store, {
-    storage: AsyncStorage,
-    blacklist: ['matchesAll', 'characters']
-  }, () => {
-  })
   return store
 }
