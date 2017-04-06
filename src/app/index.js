@@ -6,21 +6,26 @@ import {
   View
 } from 'react-native'
 import NavigationBar from 'react-native-navbar'
+import { connect } from 'react-redux'
 
 import Chat from './containers/Chat/Chat'
 import Dev from './containers/Dev/Dev'
 import Matches from './containers/Matches/Matches'
+import Intro from './containers/Intro/Intro'
 
-export default class App extends Component {
+class App extends Component {
   render() {
+    const { intro } = this.props
     const routes = [
-      {title: 'Matches', index: 0},
-      {title: 'Chat', index: 1},
-      {title: 'Dev', index: 2}
-    ];
+      {title: 'Intro', index: 0},
+      {title: 'Matches', index: 1},
+      {title: 'Chat', index: 2},
+      {title: 'Dev', index: 3}
+    ]
+    const firstRoute = intro.intro_finished ? routes[1] : routes[0]
     return (
       <Navigator
-        initialRoute={routes[0]}
+        initialRoute={firstRoute}
         initialRouteStack={routes}
         renderScene={this.renderScene.bind(this)}
       />
@@ -49,7 +54,20 @@ export default class App extends Component {
             <Dev navigator={navigator}/>
           </View>
         );
+
+      case 'Intro':
+        return (
+          <View style={{flex: 1}}>
+            <Intro navigator={navigator}/>
+          </View>
+        )
     }
   }
 }
 
+const mapStateToProps = function(state) {
+  const { intro } = state
+  return { intro }
+}
+
+export default connect(mapStateToProps)(App)

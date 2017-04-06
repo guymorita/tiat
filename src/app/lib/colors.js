@@ -3,9 +3,11 @@ import {
   StyleSheet
 } from 'react-native'
 
-export const TINDER_COLOR = '#ED7C61'
+export const TINDER_COLOR = '#EC736B'
 const IMESSAGE_COLOR = '#2D75FA'
-export const LIGHT_BLUE = '#D0E2F4'
+
+export const LIGHT_BLUE = '#60B9F9'
+export const BABY_BLUE = '#D0E2F4'
 export const LIGHT_GRAY = '#F0F0F0'
 
 export const getBackgroundStyle = (platform) => {

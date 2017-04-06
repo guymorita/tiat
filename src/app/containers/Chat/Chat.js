@@ -18,7 +18,7 @@ import reactMixin from 'react-mixin'
 import timerMixin from 'react-timer-mixin'
 import PushNotification from 'react-native-push-notification'
 
-import { LIGHT_BLUE, LIGHT_GRAY, getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
+import { BABY_BLUE, LIGHT_GRAY, getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
 import { getMatch, initActiveChat, nextStep, switchBranchPushMessage, shouldWait } from '../../actions/chat'
 
 const TEXT_COLOR_LIGHT = 'white'
@@ -71,7 +71,7 @@ class Chat extends React.Component {
   renderBubble(props) {
     const firstBgColor = getBackgroundColor(this.props.platform)
     const { currentMessage } = props
-    const secondBgColor = currentMessage.cha_id === 2 ? LIGHT_BLUE : LIGHT_GRAY
+    const secondBgColor = currentMessage.cha_id === 2 ? BABY_BLUE : LIGHT_GRAY
 
     return (
       <Bubble
@@ -272,7 +272,12 @@ class Chat extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { curChat } = nextProps
+    const { isActive, curChat } = nextProps
+
+    if (!isActive) {
+      return
+    }
+
     const { giftedChat } = curChat
     const { messages } = giftedChat
 

@@ -12,7 +12,7 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 
 import { initSwitchChat } from '../../actions/chat'
-import { TINDER_COLOR } from '../../lib/colors'
+import { LIGHT_BLUE, TINDER_COLOR } from '../../lib/colors'
 
 class MatchCell extends Component {
   _onPressCell(key) {
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     fontWeight: '500'
   },
   newMatch: {
-    color: '#60B9F9',
+    color: LIGHT_BLUE,
     fontWeight: '500'
   },
   chatEnded: {
