@@ -46,7 +46,7 @@ export default function date(state = initialState, action) {
       const { change_day } = openedToday
       const actual = dateNow
       const actualDay = dayFromDate(actual)
-      const mo_date = modi_date(openedToday.actual, change_day)
+      const mo_date = modi_date(actual, change_day)
       return {
         ...state,
         opened_today: {

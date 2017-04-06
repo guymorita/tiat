@@ -2,16 +2,20 @@
 import _ from 'lodash'
 import moment from 'moment'
 
-export const SWITCH_CHAT = 'SWITCH_CHAT'
+import {
+  dateNow
+} from './date'
+
 export const INIT_ACTIVE_CHAT = 'INIT_ACTIVE_CHAT'
 export const PUSH_NEXT_MESSAGE = 'PUSH_NEXT_MESSAGE'
-export const TRY_PUSH_NEXT_MESSAGE = 'TRY_PUSH_NEXT_MESSAGE'
 export const BRANCH_LINEAR = 'BRANCH_LINEAR'
 export const BRANCH_MULTI = 'BRANCH_MULTI'
 export const BRANCH_TERMINAL = 'BRANCH_TERMINAL'
 export const SWITCH_BRANCH = 'SWITCH_BRANCH'
+export const SWITCH_CHAT = 'SWITCH_CHAT'
+export const TRY_PUSH_NEXT_MESSAGE = 'TRY_PUSH_NEXT_MESSAGE'
 
-function initActiveChat(key) {
+export function initActiveChat(key) {
   return {
     type: INIT_ACTIVE_CHAT,
     key
@@ -35,16 +39,29 @@ export function getMatch(state, key) {
   return state.matchesAll.find((match) => { return match.key === key })
 }
 
-function waitComplete(activeChat) {
+function waitMessageComplete(activeChat) {
   const { wait } = activeChat
   const timeNow = moment().unix()
   const waitDone = timeNow > wait.time_wait_finish
   return waitDone
 }
 
-export function shouldWait(activeChat) {
+function shouldWaitForMessage(activeChat) {
   const { currently_waiting } = activeChat.wait
-  return currently_waiting && !waitComplete(activeChat)
+  return currently_waiting && !waitMessageComplete(activeChat)
+}
+
+function waitTerminateComplete(activeChat, date) {
+  return dateNow(date) > activeChat.terminate.dateRetry
+}
+
+function shouldWaitForTerminate(activeChat, date) {
+  const { isTerminated } = activeChat.terminate
+  return isTerminated && !waitTerminateComplete(activeChat, date)
+}
+
+export function shouldWait(activeChat, date) {
+  return shouldWaitForMessage(activeChat) || shouldWaitForTerminate(activeChat, date)
 }
 
 export function initSwitchChat(key) {
@@ -162,7 +179,7 @@ function tryPushFemaleNextMessageWithTimeout(key, nextMessage) {
       };
     }
 
-    if (waitComplete(activeChat)) {
+    if (waitMessageComplete(activeChat)) {
       messagesToQueue.forEach(function (msg) {
         dispatch(pushNextMessageAddChar(key, msg))
       })
@@ -209,7 +226,7 @@ export function switchBranchPushMessage(key, branch_target) {
   }
 }
 
-function execBranch(activeChat, threads) {
+function execBranch(activeChat, threads, date) {
   const currentThread = threads[activeChat.thread]
   const { branch } = currentThread
   const { key } = activeChat
@@ -226,9 +243,12 @@ function execBranch(activeChat, threads) {
         key
       }
     case 'terminal':
+      // FIX it's depending on opened_today which could have been a while ago, dateNow would work
+      // better but harder for debugging
       return {
         type: BRANCH_TERMINAL,
-        key
+        key,
+        dateNow: dateNow(date)
       }
   }
 }
@@ -238,6 +258,7 @@ export function nextStep(key) {
     const state = getState()
     const activeChat = getActiveChat(state, key)
     const match = getMatch(state, key)
+    const { date } = state
     const { threads } = match
     const currentThread = threads[activeChat.thread]
     const { msg_id } = activeChat
@@ -250,7 +271,7 @@ export function nextStep(key) {
     if (!nextIsBranch) {
       dispatch(createNextMessage(activeChat, currentThread))
     } else {
-      dispatch(execBranch(activeChat, threads))
+      dispatch(execBranch(activeChat, threads, date))
     }
 
   }

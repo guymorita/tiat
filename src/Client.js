@@ -12,6 +12,8 @@ import App from './app/index'
 
 const store = configureStore()
 
+export let perStore = null
+
 export default class Client extends Component {
   constructor() {
     super()
@@ -19,7 +21,7 @@ export default class Client extends Component {
   }
 
   componentWillMount(){
-    persistStore(store, {
+    perStore = persistStore(store, {
       storage: AsyncStorage,
       blacklist: ['matchesAll', 'characters']
     }, () => {

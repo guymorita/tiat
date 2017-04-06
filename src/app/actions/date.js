@@ -14,6 +14,14 @@ export function conv_to_unix(date) {
   return date.unix()
 }
 
+export function dateNow(date = {}) {
+  if (__DEV__) {
+    return date.opened_today.modified
+  } else {
+    return moment().unix()
+  }
+}
+
 export function dayFromDate(date, adj_days=0) {
   return Number(moment.unix(date).add(adj_days, 'days').format('D'))
 }

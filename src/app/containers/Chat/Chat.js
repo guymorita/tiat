@@ -13,12 +13,13 @@ import { connect } from 'react-redux'
 import NavigationBar from 'react-native-navbar'
 import { Bubble, GiftedChat } from 'react-native-gifted-chat'
 import _ from 'lodash'
+import moment from 'moment'
 import reactMixin from 'react-mixin'
 import timerMixin from 'react-timer-mixin'
 import PushNotification from 'react-native-push-notification'
 
 import { LIGHT_BLUE, LIGHT_GRAY, getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
-import { getMatch, nextStep, switchBranchPushMessage, shouldWait } from '../../actions/chat'
+import { getMatch, initActiveChat, nextStep, switchBranchPushMessage, shouldWait } from '../../actions/chat'
 
 const TEXT_COLOR_LIGHT = 'white'
 
@@ -57,6 +58,16 @@ class Chat extends React.Component {
     dispatch(switchBranchPushMessage(key, option.target_thread))
   }
 
+  _onTryAgainPress() {
+    const { curChat, dispatch } = this.props
+    const { key } = curChat
+    this.setState({
+      messages: []
+    }, () => {
+      dispatch(initActiveChat(key))
+    })
+  }
+
   renderBubble(props) {
     const firstBgColor = getBackgroundColor(this.props.platform)
     const { currentMessage } = props
@@ -82,12 +93,6 @@ class Chat extends React.Component {
     );
   }
 
-  tryCycleFooterAnimation = () => {
-    if (!this.state.userHasInteracted) {
-      this.cycleFooterAnimation()
-    }
-  }
-
   cycleFooterAnimation = () => {
     Animated.sequence([
       Animated.timing(this.state.animatedStartValue, {
@@ -105,10 +110,41 @@ class Chat extends React.Component {
     });
   }
 
+  renderTapBelow() {
+    return (
+      <Text style={styles.footerText}>
+        &#8595; Tap below &#8595;
+      </Text>
+    );
+  }
+
+  renderWaitingFooter(timeToRestart) {
+    return (
+      <Text style={styles.footerText}>
+        Wait {moment.duration(timeToRestart * 1000).humanize()}
+      </Text>
+    );
+  }
+
   renderFooter () {
     const { userHasInteracted } = this.state
+    const { isActive, curChat, date } = this.props
+    let footerComp = this.renderTapBelow
+    let waitingToRestart = false
 
-    if (!userHasInteracted) {
+    const isTerminated = isActive && curChat.terminate.isTerminated
+    if (isActive && isTerminated) {
+      const dateNow = date.opened_today.modified
+      const { dateRetry } = curChat.terminate
+      waitingToRestart = dateRetry > dateNow
+
+      if (waitingToRestart) {
+        const timeToRestart = dateRetry - dateNow
+        footerComp = this.renderWaitingFooter.bind(this, timeToRestart)
+      }
+    }
+
+    if (!userHasInteracted || waitingToRestart) {
       return (
         <View>
           <Animated.View
@@ -116,9 +152,7 @@ class Chat extends React.Component {
               opacity: this.state.animatedStartValue
             }]}
           >
-            <Text style={styles.footerText}>
-              &#8595; Tap below &#8595;
-            </Text>
+            {footerComp()}
           </Animated.View>
         </View>
       )
@@ -128,14 +162,14 @@ class Chat extends React.Component {
   }
 
   renderInputToolbar() {
-    const { curChat } = this.props
+    const { curChat, date } = this.props
 
     let renderInputContent = this.renderNextBubble
     if (curChat && curChat.atBranch) {
       renderInputContent = this.renderBranchOptions
-    } else if (curChat && shouldWait(curChat)) {
+    } else if (curChat && shouldWait(curChat, date)) {
       renderInputContent = this.renderWaitingBubble
-    } else if (curChat && curChat.isTerminated) {
+    } else if (curChat && curChat.terminate.isTerminated) {
       renderInputContent = this.renderTerminatedBubble
     }
 
@@ -194,7 +228,7 @@ class Chat extends React.Component {
 
   renderWaitingBubble = () => {
     return (
-      <TouchableOpacity onPress={this._onNextPress.bind(this)}>
+      <TouchableOpacity onPress={() => {}}>
         <View style={[styles.bubbleBase, styles.centerBubble, styles.waitBubble]}>
           <Text>
             Waiting
@@ -206,7 +240,7 @@ class Chat extends React.Component {
 
   renderTerminatedBubble = () => {
     return (
-      <TouchableOpacity onPress={this._onNextPress.bind(this)}>
+      <TouchableOpacity onPress={this._onTryAgainPress.bind(this)}>
         <View style={[styles.bubbleBase, styles.centerBubble, styles.endBubble]}>
           <Text style={styles.endText}>
             Try again
@@ -242,7 +276,7 @@ class Chat extends React.Component {
     const { giftedChat } = curChat
     const { messages } = giftedChat
 
-    if (curChat.isTerminated) {
+    if (curChat.terminate.isTerminated) {
       PushNotification.requestPermissions()
     }
 
@@ -268,7 +302,7 @@ class Chat extends React.Component {
     }
 
     this.setTimeout(
-      () => {this.tryCycleFooterAnimation(); },
+      () => {this.cycleFooterAnimation(); },
       1500
     )
   }
@@ -364,7 +398,7 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { activeChats, characters, currentChat } = state
+  const { activeChats, characters, currentChat, date } = state
   const { key } = currentChat
 
   const match = getMatch(state, key)
@@ -375,6 +409,7 @@ const mapStateToProps = function(state) {
   return {
     characters,
     curChat,
+    date,
     isActive,
     key,
     match,

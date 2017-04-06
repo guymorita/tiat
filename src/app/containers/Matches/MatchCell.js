@@ -33,7 +33,7 @@ class MatchCell extends Component {
     let lastMessageText = ''
 
     if (!isNewMatch && activeChat.giftedChat.messages.length) {
-      isTerminated = activeChat.isTerminated
+      isTerminated = activeChat.terminate.isTerminated
       const messages = activeChat.giftedChat.messages
       const lastMessage = _.last(messages)
       lastMessageText = lastMessage.text

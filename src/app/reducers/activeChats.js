@@ -29,11 +29,18 @@ export default function activeChats(state = initialState, action) {
 
     case BRANCH_TERMINAL:
       const actiChat = state[action.key]
+      const dateNow = action.dateNow
+      const dateNextAvailable = moment.unix(dateNow).add(4, 'hours').unix()
       return {
         ...state,
         [action.key]: {
           ...actiChat,
-          isTerminated: true,
+          terminate: {
+            ...actiChat.terminate,
+            isTerminated: true,
+            dateLastTerminated: action.dateNow,
+            dateRetry: dateNextAvailable
+          }
         }
       }
 
@@ -52,6 +59,11 @@ export default function activeChats(state = initialState, action) {
           time_end_wait: 0,
           wait_message_id: 0,
           currently_waiting: false
+        },
+        terminate: {
+          isTerminated: false,
+          dateLastTerminated: 1000,
+          dateRetry: 1000
         }
       }
       return {

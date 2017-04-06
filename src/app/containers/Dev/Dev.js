@@ -12,7 +12,7 @@ import moment from 'moment'
 
 import { advanceDateDay } from '../../actions/date'
 import { findMatches, tryAdvanceMatchQueue } from '../../actions/matches'
-import { perStore } from '../../platform/Client'
+import { perStore } from '../../../Client'
 
 class Dev extends React.Component {
   leftButtonConfig = {
