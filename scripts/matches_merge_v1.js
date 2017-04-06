@@ -3,6 +3,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const JSON3 = require('json3');
 const util = require('util');
+const moment = require('moment')
 
 const normalizedPath = path.join(__dirname + '/convos/json/');
 
@@ -11,7 +12,7 @@ const OUTPUT_JSON = './src/app/data/v1/matches.json'
 const matchJoinDict = require('./characters/match_join_dict.js');
 
 const matchBlob = {};
-matchBlob.date = Date.now();
+matchBlob.date = moment().unix();
 matchBlob.version = 1;
 matchBlob.matches = [];
 

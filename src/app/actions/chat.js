@@ -1,5 +1,6 @@
 
 import _ from 'lodash'
+import moment from 'moment'
 
 export const SWITCH_CHAT = 'SWITCH_CHAT'
 export const INIT_ACTIVE_CHAT = 'INIT_ACTIVE_CHAT'
@@ -36,7 +37,7 @@ export function getMatch(state, key) {
 
 function waitComplete(activeChat) {
   const { wait } = activeChat
-  const timeNow = Date.now() / 1000
+  const timeNow = moment().unix()
   const waitDone = timeNow > wait.time_wait_finish
   return waitDone
 }

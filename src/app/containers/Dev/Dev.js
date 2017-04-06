@@ -64,7 +64,7 @@ class Dev extends React.Component {
           </View>
           <View style={styles.col2}>
             <Text>
-              {moment(date.first_open.actual).format("MM-DD-YYYY")}
+              {moment.unix(date.first_open.actual).format("MM-DD-YYYY")}
             </Text>
           </View>
         </View>
@@ -76,7 +76,7 @@ class Dev extends React.Component {
           </View>
           <View style={styles.col2}>
             <Text>
-              {moment(date.opened_today.actual).format("MM-DD-YYYY")}
+              {moment.unix(date.opened_today.actual).format("MM-DD-YYYY")}
             </Text>
           </View>
         </View>
@@ -105,7 +105,7 @@ class Dev extends React.Component {
           </View>
           <View style={styles.col2}>
             <Text>
-              {moment(date.opened_today.modified).format("MM-DD-YYYY")}
+              {moment.unix(date.opened_today.modified).format("MM-DD-YYYY")}
             </Text>
           </View>
         </View>

@@ -114,7 +114,7 @@ export function findMatches(currentMatches, matchQueue, activeChats) {
 export function initMatchQueue(matchesAll, date) {
   const matchesDay1 = matchesAll.slice(0,NUM_MATCHES_DAY_1)
   const matchesDay2 = matchesAll.slice(NUM_MATCHES_DAY_1, NUM_MATCHES_DAY_1 + NUM_MATCHES_DAY_2)
-  const date_tmrw = moment(date.opened_today.actual).add(1, 'days').unix() * 1000
+  const date_tmrw = moment(date.opened_today.actual).add(1, 'days').unix()
   const formattedMatchesDay1 = formatMatches(matchesDay1, date.opened_today.actual)
   const formattedMatchesDay2 = formatMatches(matchesDay2, date_tmrw)
 

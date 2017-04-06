@@ -1,8 +1,10 @@
 
+import moment from 'moment'
+
 import { dayFromDate } from '../actions/date'
 import { ADVANCE_MATCH_QUEUE, IMPORT_TO_CURRENT_MATCHES_FINISHED, INIT_MATCH_QUEUE } from '../actions/matches'
 
-const dateNow = Date.now()
+const dateNow = moment().unix()
 
 const initialState = {
   current_day: {

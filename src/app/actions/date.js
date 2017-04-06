@@ -11,15 +11,15 @@ export function advanceDateDay() {
 }
 
 export function conv_to_unix(date) {
-  return date.unix() * 1000
+  return date.unix()
 }
 
 export function dayFromDate(date, adj_days=0) {
-  return Number(moment(date).add(adj_days, 'days').format('D'))
+  return Number(moment.unix(date).add(adj_days, 'days').format('D'))
 }
 
 export function modi_date(actual, change) {
-  return moment(actual).add(change, 'days')
+  return moment.unix(actual).add(change, 'days')
 }
 
 export function updateActualDate() {

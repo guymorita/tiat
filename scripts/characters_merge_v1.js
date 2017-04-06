@@ -4,6 +4,7 @@ const path = require('path');
 const util = require('util');
 const JSON3 = require('json3');
 const _ = require('lodash')
+const moment = require('moment')
 
 const fileUrl = './characters/json/characters.json';
 const charJson = require(fileUrl);
@@ -11,7 +12,7 @@ const charJson = require(fileUrl);
 const OUTPUT_JSON = './src/app/data/v1/characters.json'
 
 const charBlob = {};
-charBlob.date = Date.now();
+charBlob.date = moment().unix();
 charBlob.version = 1;
 const characters = charBlob.characters = [];
 

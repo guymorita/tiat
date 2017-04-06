@@ -1,4 +1,6 @@
 
+import moment from 'moment'
+
 import {
   BRANCH_MULTI,
   BRANCH_TERMINAL,
@@ -31,7 +33,7 @@ export default function activeChats(state = initialState, action) {
         ...state,
         [action.key]: {
           ...actiChat,
-          isTerminated: true
+          isTerminated: true,
         }
       }
 
@@ -81,7 +83,7 @@ export default function activeChats(state = initialState, action) {
       const acChat = state[action.key]
       const newMsg = action.nextMessage
 
-      const timeNow = Date.now() / 1000
+      const timeNow = moment().unix()
       const currentWaitEndTime = acChat.wait.time_wait_finish
       const newPotentialWaitTime = timeNow + newMsg.wait_sec
       const currentlyWaiting = timeNow < currentWaitEndTime
