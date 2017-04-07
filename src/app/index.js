@@ -10,8 +10,8 @@ import { connect } from 'react-redux'
 
 import Chat from './containers/Chat/Chat'
 import Dev from './containers/Dev/Dev'
-import Matches from './containers/Matches/Matches'
 import Intro from './containers/Intro/Intro'
+import Matches from './containers/Matches/Matches'
 
 class App extends Component {
   render() {
@@ -28,39 +28,33 @@ class App extends Component {
         initialRoute={firstRoute}
         initialRouteStack={routes}
         renderScene={this.renderScene.bind(this)}
+        configureScene={(route, routeStack) =>
+          Navigator.SceneConfigs.FadeAndroid}
       />
     );
   }
 
+  _renderScene = (component) => {
+    return (
+      <View style={{flex: 1}}>
+        {component}
+      </View>
+    )
+  }
+
   renderScene(route, navigator) {
     switch(route.title) {
-      case 'Matches':
-        return (
-          <View style={{flex: 1}}>
-            <Matches navigator={navigator}/>
-          </View>
-        );
-
       case 'Chat':
-        return (
-          <View style={{flex: 1}}>
-            <Chat navigator={navigator}/>
-          </View>
-        );
+        return this._renderScene(<Chat navigator={navigator}/>)
 
       case 'Dev':
-        return (
-          <View style={{flex: 1}}>
-            <Dev navigator={navigator}/>
-          </View>
-        );
+        return this._renderScene(<Dev navigator={navigator}/>)
 
       case 'Intro':
-        return (
-          <View style={{flex: 1}}>
-            <Intro navigator={navigator}/>
-          </View>
-        )
+        return this._renderScene(<Intro navigator={navigator}/>)
+
+      case 'Matches':
+        return this._renderScene(<Matches navigator={navigator}/>)
     }
   }
 }
