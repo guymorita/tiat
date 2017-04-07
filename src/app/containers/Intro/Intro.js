@@ -48,8 +48,8 @@ class Intro extends Component {
       description: 'Get helpful tips and insight from our modern day romance specialist',
       img: require('./onboarding3.png'),
       imgStyle: {
-        height: 310 / 2,
-        width: 630 / 2,
+        height: 310 / 2.5,
+        width: 630 / 2.5,
       },
       backgroundColor: TINDER_COLOR,
       fontColor: '#fff',
