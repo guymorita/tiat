@@ -5,18 +5,19 @@ import createLogger from 'redux-logger'
 import { autoRehydrate } from 'redux-persist'
 import rootReducer from '../reducers'
 
-const loggerMiddleware = createLogger()
-
-export let perStore = null
-
 export default function configureStore(preloadedState) {
+  let middleware = [ thunkMiddleware ]
+  if (process.env.NODE_ENV !== 'production') {
+    const loggerMiddleware = createLogger()
+    middleware = [ ...middleware, loggerMiddleware ]
+  }
+
   const store = createStore(
     rootReducer,
     preloadedState,
     compose(
       applyMiddleware(
-        thunkMiddleware,
-        loggerMiddleware
+        ...middleware
       ),
       autoRehydrate()
     )
