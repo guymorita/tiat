@@ -49,7 +49,7 @@ class App extends Component {
         ref={(ref) => this._drawer = ref}
         openDrawerOffset={100}
         tapToClose={true}
-        content={<ControlPanel navigator={this._navigator}/>}
+        content={<ControlPanel navigator={this._navigator} {...this.props}/>}
         >
         <Navigator
           initialRoute={firstRoute}

@@ -9,6 +9,7 @@ const IMESSAGE_COLOR = '#2D75FA'
 export const LIGHT_BLUE = '#60B9F9'
 export const BABY_BLUE = '#D0E2F4'
 export const LIGHT_GRAY = '#F0F0F0'
+export const LIGHT_PURPLE = '#5E38B8'
 
 export const getBackgroundStyle = (platform) => {
   switch(platform) {

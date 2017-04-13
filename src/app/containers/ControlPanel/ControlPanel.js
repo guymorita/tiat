@@ -9,27 +9,27 @@ import {
 import NavigationBar from 'react-native-navbar'
 import { connect } from 'react-redux'
 
-export default class ControlPanel extends Component {
+class ControlPanel extends Component {
   _onChatPress = () => {
-    const { navigator } = this.props
+    const { closeDrawer, navigator } = this.props
     navigator.push({
       title: 'Matches'
     })
+    closeDrawer()
   }
 
   _onStorePress = () => {
-    const { navigator } = this.props
+    const { closeDrawer, navigator } = this.props
     navigator.push({
       title: 'Store'
     })
+    closeDrawer()
   }
 
   render() {
     return (
       <View style={styles.container}>
         <NavigationBar
-            leftButton={this.leftButtonConfig}
-            rightButton={__DEV__ ? this.devButtonConfig : this.blankButtonConfig}
             tintColor={"#F8F8F8"}
             title={{title: "Wing"}}
           />
@@ -77,3 +77,5 @@ const styles = StyleSheet.create({
     fontWeight: '500'
   }
 })
+
+export default connect()(ControlPanel)
