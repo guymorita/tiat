@@ -3,12 +3,27 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   Text,
+  TouchableOpacity,
   View
 } from 'react-native'
 import NavigationBar from 'react-native-navbar'
 import { connect } from 'react-redux'
 
 export default class ControlPanel extends Component {
+  _onChatPress = () => {
+    const { navigator } = this.props
+    navigator.push({
+      title: 'Matches'
+    })
+  }
+
+  _onStorePress = () => {
+    const { navigator } = this.props
+    navigator.push({
+      title: 'Store'
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -19,16 +34,20 @@ export default class ControlPanel extends Component {
             title={{title: "Wing"}}
           />
         <View>
-          <View style={styles.menuItem}>
-            <Text style={styles.menuItemText}>
-              Chats
-            </Text>
-          </View>
-          <View style={styles.menuItem}>
-            <Text style={styles.menuItemText}>
-              Store
-            </Text>
-          </View>
+          <TouchableOpacity onPress={this._onChatPress.bind(this)}>
+            <View style={styles.menuItem}>
+              <Text style={styles.menuItemText}>
+                Chats
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this._onStorePress.bind(this)}>
+            <View style={styles.menuItem}>
+              <Text style={styles.menuItemText}>
+                Store
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     )

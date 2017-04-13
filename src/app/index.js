@@ -26,6 +26,7 @@ class App extends Component {
   _closeDrawer = () => {
     this._drawer.close()
   }
+
   componentWillReceiveProps(nextProps) {
     const { ui } = nextProps
     const { drawer_opened } = ui
@@ -42,16 +43,18 @@ class App extends Component {
       {title: 'Store', index: 4}
     ]
     const firstRoute = ui.intro_finished ? routes[1] : routes[0]
+
     return (
       <Drawer
         ref={(ref) => this._drawer = ref}
         openDrawerOffset={100}
         tapToClose={true}
-        content={<ControlPanel />}
+        content={<ControlPanel navigator={this._navigator}/>}
         >
         <Navigator
           initialRoute={firstRoute}
           initialRouteStack={routes}
+          ref={(ref) => this._navigator = ref}
           renderScene={this.renderScene.bind(this)}
           configureScene={(route, routeStack) =>
             Navigator.SceneConfigs.FadeAndroid}
