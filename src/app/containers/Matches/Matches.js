@@ -28,10 +28,28 @@ class Matches extends Component {
     }
   }
 
-  rightButtonConfig = {
+  leftButtonConfig = {
+    title: '≡',
+    tintColor: 'black',
+    handler: () => this._onLeftButtonPress()
+  }
+
+  devButtonConfig = {
     title: 'Dev',
     tintColor: 'black',
     handler: () => this._onRightButtonPress(),
+  }
+
+  blankButtonConfig = {
+    title: '',
+    handler: () => {}
+  }
+
+  _onLeftButtonPress() {
+    const { navigator } = this.props
+    navigator.push({
+      title: 'Store'
+    })
   }
 
   _onRightButtonPress() {
@@ -87,7 +105,8 @@ class Matches extends Component {
     return (
       <View style={styles.container}>
         <NavigationBar
-          rightButton={this.rightButtonConfig}
+          leftButton={this.leftButtonConfig}
+          rightButton={__DEV__ ? this.devButtonConfig : this.blankButtonConfig}
           tintColor={"#F8F8F8"}
           title={{title: "Chats"}}
         />
