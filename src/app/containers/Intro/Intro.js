@@ -3,7 +3,7 @@ import { AppRegistry, Alert } from 'react-native'
 import AppIntro from 'react-native-app-intro'
 import { connect } from 'react-redux'
 
-import { introFinished } from '../../actions/intro'
+import { introFinished } from '../../actions/ui'
 import { LIGHT_BLUE, TINDER_COLOR } from '../../lib/colors'
 
 class Intro extends Component {

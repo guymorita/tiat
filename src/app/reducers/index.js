@@ -6,7 +6,7 @@ import characters from './characters'
 import currentChat from './currentChat'
 import currentMatches from './currentMatches'
 import date from './date'
-import intro from './intro'
+import ui from './ui'
 import matchesAll from './matchesAll'
 import matchQueue from './matchQueue'
 
@@ -16,7 +16,7 @@ export default combineReducers({
   currentChat,
   currentMatches,
   date,
-  intro,
+  ui,
   matchesAll,
   matchQueue
 })

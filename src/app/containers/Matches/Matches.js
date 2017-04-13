@@ -46,10 +46,7 @@ class Matches extends Component {
   }
 
   _onLeftButtonPress() {
-    const { navigator } = this.props
-    navigator.push({
-      title: 'Store'
-    })
+    this.props.openDrawer()
   }
 
   _onRightButtonPress() {
