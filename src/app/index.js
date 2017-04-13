@@ -12,6 +12,7 @@ import Chat from './containers/Chat/Chat'
 import Dev from './containers/Dev/Dev'
 import Intro from './containers/Intro/Intro'
 import Matches from './containers/Matches/Matches'
+import Store from './containers/Store/Store'
 
 class App extends Component {
   render() {
@@ -20,7 +21,8 @@ class App extends Component {
       {title: 'Intro', index: 0},
       {title: 'Matches', index: 1},
       {title: 'Chat', index: 2},
-      {title: 'Dev', index: 3}
+      {title: 'Dev', index: 3},
+      {title: 'Store', index: 4}
     ]
     const firstRoute = intro.intro_finished ? routes[1] : routes[0]
     return (
@@ -55,6 +57,9 @@ class App extends Component {
 
       case 'Matches':
         return this._renderScene(<Matches navigator={navigator}/>)
+
+      case 'Store':
+        return this._renderScene(<Store navigator={navigator}/>)
     }
   }
 }
