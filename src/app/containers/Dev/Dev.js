@@ -2,6 +2,7 @@
 import React from 'react'
 import {
   Button,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -12,6 +13,8 @@ import moment from 'moment'
 
 import { advanceDateDay } from '../../actions/date'
 import { findMatches, tryAdvanceMatchQueue } from '../../actions/matches'
+import { invJumpsAdd, invKeysAdd } from '../../actions/inventory'
+import { LIGHT_GRAY } from '../../lib/colors'
 import { perStore } from '../../../Client'
 
 class Dev extends React.Component {
@@ -33,6 +36,16 @@ class Dev extends React.Component {
     dispatch(findMatches(currentMatches, matchQueue, activeChats))
   }
 
+  _onAddJumpsPress = () => {
+    const { dispatch } = this.props
+    dispatch(invJumpsAdd(3))
+  }
+
+  _onAddKeysPress = () => {
+    const { dispatch } = this.props
+    dispatch(invKeysAdd(3))
+  }
+
   _onPurgePress = () => {
     perStore.purge()
     alert('Data purged, force stop the app, and restart')
@@ -47,82 +60,127 @@ class Dev extends React.Component {
           tintColor={"#F8F8F8"}
           title={{title: 'Dev'}}
         />
-        <View style={[styles.row, styles.header]}>
-          <View style={styles.col1}>
-            <Text style={styles.headerText}>
-              Dates
-            </Text>
+        <ScrollView>
+          <View style={styles.section}>
+            <View style={[styles.row, styles.header]}>
+              <View style={styles.col1}>
+                <Text style={styles.headerText}>
+                  Dates
+                </Text>
+              </View>
+              <View style={styles.col2}>
+              </View>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.col1}>
+                <Text>
+                  Date First Opened
+                </Text>
+              </View>
+              <View style={styles.col2}>
+                <Text>
+                  {moment.unix(date.first_open.actual).format("MM-DD-YYYY")}
+                </Text>
+              </View>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.col1}>
+                <Text>
+                  Actual Date Last Opened
+                </Text>
+              </View>
+              <View style={styles.col2}>
+                <Text>
+                  {moment.unix(date.opened_today.actual).format("MM-DD-YYYY")}
+                </Text>
+              </View>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.col1}>
+                <Text>
+                  Date Opened Change
+                </Text>
+              </View>
+              <View style={styles.col2}>
+                <Text>
+                  {String(date.opened_today.change_day)}
+                </Text>
+                <Button
+                  onPress={this._onAdvanceDayPress}
+                  title="Advance Day"
+                  color="#841584"
+                />
+              </View>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.col1}>
+                <Text>
+                  Modified Date Opened
+                </Text>
+              </View>
+              <View style={styles.col2}>
+                <Text>
+                  {moment.unix(date.opened_today.modified).format("MM-DD-YYYY")}
+                </Text>
+              </View>
+            </View>
           </View>
-          <View style={styles.col2}>
+          <View style={styles.section}>
+            <View style={[styles.row, styles.header]}>
+              <View style={styles.col1}>
+                <Text style={styles.headerText}>
+                  Data
+                </Text>
+              </View>
+              <View style={styles.col2}>
+                <Button
+                  onPress={this._onPurgePress}
+                  title="Purge"
+                  color="#841584"
+                />
+              </View>
+            </View>
           </View>
-        </View>
-        <View style={styles.row}>
-          <View style={styles.col1}>
-            <Text>
-              Date First Opened
-            </Text>
+          <View style={styles.section}>
+            <View style={[styles.row, styles.header]}>
+              <View style={styles.col1}>
+                <Text style={styles.headerText}>
+                  Inventory
+                </Text>
+              </View>
+              <View style={styles.col2}>
+              </View>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.col1}>
+                <Text>
+                  Jumps
+                </Text>
+              </View>
+              <View style={styles.col2}>
+                <Button
+                  onPress={this._onAddJumpsPress}
+                  title="Add 3 Jumps"
+                  color="#841584"
+                />
+              </View>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.col1}>
+                <Text>
+                  Keys
+                </Text>
+              </View>
+              <View style={styles.col2}>
+                <Button
+                  onPress={this._onAddKeysPress}
+                  title="Add 3 Keys"
+                  color="#841584"
+                />
+              </View>
+            </View>
           </View>
-          <View style={styles.col2}>
-            <Text>
-              {moment.unix(date.first_open.actual).format("MM-DD-YYYY")}
-            </Text>
-          </View>
-        </View>
-        <View style={styles.row}>
-          <View style={styles.col1}>
-            <Text>
-              Actual Date Last Opened
-            </Text>
-          </View>
-          <View style={styles.col2}>
-            <Text>
-              {moment.unix(date.opened_today.actual).format("MM-DD-YYYY")}
-            </Text>
-          </View>
-        </View>
-        <View style={styles.row}>
-          <View style={styles.col1}>
-            <Text>
-              Date Opened Change
-            </Text>
-          </View>
-          <View style={styles.col2}>
-            <Text>
-              {String(date.opened_today.change_day)}
-            </Text>
-            <Button
-              onPress={this._onAdvanceDayPress}
-              title="Advance Day"
-              color="#841584"
-            />
-          </View>
-        </View>
-        <View style={styles.row}>
-          <View style={styles.col1}>
-            <Text>
-              Modified Date Opened
-            </Text>
-          </View>
-          <View style={styles.col2}>
-            <Text>
-              {moment.unix(date.opened_today.modified).format("MM-DD-YYYY")}
-            </Text>
-          </View>
-        </View>
-        <View style={[styles.row, styles.header]}>
-          <View style={styles.col1}>
-            <Text style={styles.headerText}>
-              Data
-            </Text>
-          </View>
-          <View style={styles.col2}>
-            <Button
-              onPress={this._onPurgePress}
-              title="Purge"
-              color="#841584"
-            />
-          </View>
-        </View>
+        </ScrollView>
       </View>
     )
   }
@@ -131,6 +189,9 @@ class Dev extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  section: {
+    marginBottom: 10
   },
   row: {
     flexDirection: 'row'
@@ -143,11 +204,14 @@ const styles = StyleSheet.create({
     flex: 0.3
   },
   header: {
-    marginTop: 10,
-    marginBottom: 10
+    backgroundColor: LIGHT_GRAY,
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#DDDDDD'
   },
   headerText: {
-    fontSize: 20
+    fontSize: 20,
   }
 })
 
