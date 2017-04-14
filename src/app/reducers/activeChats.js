@@ -145,7 +145,7 @@ export default function activeChats(state = initialState, action) {
           },
           terminate: {
             ...aaChat.terminate,
-            dateRetry: timNow
+            dateRetry: timNow - 1000
           }
         }
       }

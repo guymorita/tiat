@@ -16,9 +16,23 @@ export function invJumpsAdd(quantity) {
   }
 }
 
+export function invJumpsSubtract(quantity) {
+  return {
+    type: INV_JUMPS_SUBTRACT,
+    quantity
+  }
+}
+
 export function invKeysAdd(quantity) {
   return {
     type: INV_KEYS_ADD,
+    quantity
+  }
+}
+
+export function invKeysSubtract(quantity) {
+  return {
+    type: INV_KEYS_SUBTRACT,
     quantity
   }
 }
@@ -34,9 +48,4 @@ export function inventoryChange(prod) {
   }
 }
 
-export function invKeysSubtract(quantity) {
-  return {
-    type: INV_KEYS_SUBTRACT,
-    quantity
-  }
-}
+

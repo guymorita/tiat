@@ -26,6 +26,17 @@ export default function storeIOS(state = initialState, action) {
           jumps: currentJumps + action.quantity
         }
       }
+
+    case INV_JUMPS_SUBTRACT:
+      const curJumps = state.current.jumps
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          jumps: curJumps - action.quantity
+        }
+      }
+
     case INV_KEYS_ADD:
       const currentKeys = state.current.keys
       return {

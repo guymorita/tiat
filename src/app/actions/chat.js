@@ -9,6 +9,10 @@ import {
   dateNow
 } from './date'
 
+import {
+  invJumpsSubtract
+} from './inventory'
+
 export const INIT_ACTIVE_CHAT = 'INIT_ACTIVE_CHAT'
 export const PUSH_NEXT_MESSAGE = 'PUSH_NEXT_MESSAGE'
 export const BRANCH_LINEAR = 'BRANCH_LINEAR'
@@ -85,6 +89,8 @@ function hasLongWaitForMessage(activeChat) {
 }
 
 function waitTerminateComplete(activeChat, date) {
+  console.log('dateNow(date)', dateNow(date))
+  console.log('activeChat.terminate.dateRetry', activeChat.terminate.dateRetry)
   return dateNow(date) > activeChat.terminate.dateRetry
 }
 
@@ -333,10 +339,11 @@ export function jumpUseTry(key) {
     if (jumps < 1) {
       Alert.alert(
         'Not enough jumps',
-        'Please wait until tomorrow or purchase more jumps'
+        'Please wait or purchase more jumps'
       )
     } else {
       dispatch(clearWait(key))
+      dispatch(invJumpsSubtract(1))
       Alert.alert(
         'Jumped!',
         ''
