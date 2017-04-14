@@ -18,8 +18,16 @@ import reactMixin from 'react-mixin'
 import timerMixin from 'react-timer-mixin'
 import PushNotification from 'react-native-push-notification'
 
-import { BABY_BLUE, LIGHT_GRAY, getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
-import { getMatch, initActiveChat, nextStep, switchBranchPushMessage, shouldWait } from '../../actions/chat'
+import { BABY_BLUE, LIGHT_GRAY, LIGHT_PURPLE, getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
+import {
+  getMatch,
+  initActiveChat,
+  jumpUseTry,
+  nextStep,
+  switchBranchPushMessage,
+  shouldLongWait,
+  shouldWait
+} from '../../actions/chat'
 
 const TEXT_COLOR_LIGHT = 'white'
 
@@ -56,6 +64,11 @@ class Chat extends React.Component {
     const { key } = curChat
     this.setState({userHasInteracted: true})
     dispatch(switchBranchPushMessage(key, option.target_thread))
+  }
+
+  _onJumpPress(key) {
+    const { dispatch } = this.props
+    dispatch(jumpUseTry(key))
   }
 
   _onTryAgainPress() {
@@ -121,7 +134,7 @@ class Chat extends React.Component {
   renderWaitingFooter(timeToRestart) {
     return (
       <Text style={styles.footerText}>
-        Wait {moment.duration(timeToRestart * 1000).humanize()}
+        Wait {moment.duration(timeToRestart * 1000).humanize()} or Use a Jump
       </Text>
     );
   }
@@ -167,6 +180,9 @@ class Chat extends React.Component {
     let renderInputContent = this.renderNextBubble
     if (curChat && curChat.atBranch) {
       renderInputContent = this.renderBranchOptions
+    } else if (curChat && shouldLongWait(curChat, date)) {
+      const { key } = curChat
+      renderInputContent = this.renderJumpBubble.bind(this, key)
     } else if (curChat && shouldWait(curChat, date)) {
       renderInputContent = this.renderWaitingBubble
     } else if (curChat && curChat.terminate.isTerminated) {
@@ -226,6 +242,18 @@ class Chat extends React.Component {
     );
   }
 
+  renderJumpBubble = (key) => {
+    return (
+      <TouchableOpacity onPress={this._onJumpPress.bind(this, key)}>
+        <View style={[styles.bubbleBase, styles.centerBubble, styles.longWaitBubble]}>
+          <Text style={styles.whiteText}>
+            Jump
+          </Text>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+
   renderWaitingBubble = () => {
     return (
       <TouchableOpacity onPress={() => {}}>
@@ -242,7 +270,7 @@ class Chat extends React.Component {
     return (
       <TouchableOpacity onPress={this._onTryAgainPress.bind(this)}>
         <View style={[styles.bubbleBase, styles.centerBubble, styles.endBubble]}>
-          <Text style={styles.endText}>
+          <Text style={styles.whiteText}>
             Try again
           </Text>
         </View>
@@ -288,7 +316,7 @@ class Chat extends React.Component {
     const hasNewMessage = this.state.messages.length !== messages.length
     if (hasNewMessage) {
       this.setState({
-        messages: GiftedChat.append(this.state.messages, messages[messages.length - 1]),
+        messages: GiftedChat.append(this.state.messages, messages[messages.length - 1])
       })
     }
   }
@@ -375,13 +403,16 @@ const styles = StyleSheet.create({
     paddingRight: 50,
     alignItems: 'center',
   },
+  longWaitBubble: {
+    backgroundColor: LIGHT_PURPLE
+  },
   waitBubble: {
     backgroundColor: LIGHT_GRAY
   },
   endBubble: {
     backgroundColor: '#888'
   },
-  endText: {
+  whiteText: {
     color: 'white'
   },
   nextBubbleText: {

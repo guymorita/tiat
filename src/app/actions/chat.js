@@ -1,4 +1,7 @@
 
+import {
+  Alert
+} from 'react-native'
 import _ from 'lodash'
 import moment from 'moment'
 
@@ -11,9 +14,25 @@ export const PUSH_NEXT_MESSAGE = 'PUSH_NEXT_MESSAGE'
 export const BRANCH_LINEAR = 'BRANCH_LINEAR'
 export const BRANCH_MULTI = 'BRANCH_MULTI'
 export const BRANCH_TERMINAL = 'BRANCH_TERMINAL'
+export const CLEAR_WAIT = 'CLEAR_WAIT'
 export const SWITCH_BRANCH = 'SWITCH_BRANCH'
 export const SWITCH_CHAT = 'SWITCH_CHAT'
 export const TRY_PUSH_NEXT_MESSAGE = 'TRY_PUSH_NEXT_MESSAGE'
+
+const LONG_WAIT_IN_SEC = 300
+
+// INIT
+
+export function initSwitchChat(key) {
+  return (dispatch, getState) => {
+    const state = getState()
+    const activeChat = getActiveChat(state, key)
+    dispatch(switchChat(key))
+    if (_.isEmpty(activeChat)) {
+      return dispatch(initActiveChat(key))
+    }
+  }
+}
 
 export function initActiveChat(key) {
   return {
@@ -39,6 +58,8 @@ export function getMatch(state, key) {
   return state.matchesAll.find((match) => { return match.key === key })
 }
 
+// WAIT
+
 function waitMessageComplete(activeChat) {
   const { wait } = activeChat
   const timeNow = moment().unix()
@@ -46,9 +67,21 @@ function waitMessageComplete(activeChat) {
   return waitDone
 }
 
+function longWaitMessage(activeChat) {
+  const { wait } = activeChat
+  const timeNow = moment().unix()
+  const hasLongWait = timeNow + LONG_WAIT_IN_SEC < wait.time_wait_finish
+  return hasLongWait
+}
+
 function shouldWaitForMessage(activeChat) {
   const { currently_waiting } = activeChat.wait
   return currently_waiting && !waitMessageComplete(activeChat)
+}
+
+function hasLongWaitForMessage(activeChat) {
+  const { currently_waiting } = activeChat.wait
+  return currently_waiting && longWaitMessage(activeChat)
 }
 
 function waitTerminateComplete(activeChat, date) {
@@ -64,16 +97,11 @@ export function shouldWait(activeChat, date) {
   return shouldWaitForMessage(activeChat) || shouldWaitForTerminate(activeChat, date)
 }
 
-export function initSwitchChat(key) {
-  return (dispatch, getState) => {
-    const state = getState()
-    const activeChat = getActiveChat(state, key)
-    dispatch(switchChat(key))
-    if (_.isEmpty(activeChat)) {
-      return dispatch(initActiveChat(key))
-    }
-  }
+export function shouldLongWait(activeChat, date) {
+  return hasLongWaitForMessage(activeChat) || shouldWaitForTerminate(activeChat, date)
 }
+
+// MESSAGE
 
 export function setChaId(nextMessage) {
   // main character needs to be 1 to render on the right side
@@ -164,7 +192,10 @@ function tryPushFemaleNextMessageWithTimeout(key, nextMessage) {
 
     dispatch(tryPushNextMessage(key, lastMessage))
 
+    // special functionality for a long wait?
+
     if (!currently_waiting) {
+      // if long wait, no timeouts, just set to
       let sum_wait_wait_millisec = 0
       const msgsLength = messagesToQueue.length
       for (var i = 0; i < msgsLength; i++) {
@@ -176,11 +207,13 @@ function tryPushFemaleNextMessageWithTimeout(key, nextMessage) {
         setTimeout(() => {
           dispatch(pushNextMessageAddChar(key, msg, {keepWaiting}))
         }, sum_wait_wait_millisec)
-      };
+        // dispatch(addTimeout(key, waitTimeout))
+      }
     }
 
     if (waitMessageComplete(activeChat)) {
       messagesToQueue.forEach(function (msg) {
+        // used when the waiting button had the next button functionality and you got stuck.
         dispatch(pushNextMessageAddChar(key, msg))
       })
     }
@@ -189,11 +222,13 @@ function tryPushFemaleNextMessageWithTimeout(key, nextMessage) {
 
 function tryPushNextMessageWithTimeout(key, nextMessage) {
   return (dispatch, getState) => {
-    const { cha_id } = nextMessage
+    const { cha_id, wait_sec } = nextMessage
     // user or narrator
     if (cha_id < 100) {
       dispatch(tryPushNextMessage(key, nextMessage))
       dispatch(pushNextMessageAddChar(key, nextMessage))
+    } else if (wait_sec > LONG_WAIT_IN_SEC) {
+      dispatch(tryPushNextMessage(key, nextMessage))
     } else {
       dispatch(tryPushFemaleNextMessageWithTimeout(key, nextMessage))
     }
@@ -210,6 +245,8 @@ function createNextMessage(activeChat, currentThread) {
     dispatch(tryPushNextMessageWithTimeout(key, nextMessage))
   }
 }
+
+// BRANCH
 
 function switchBranch(key, branch_target) {
   return {
@@ -272,6 +309,38 @@ export function nextStep(key) {
       dispatch(createNextMessage(activeChat, currentThread))
     } else {
       dispatch(execBranch(activeChat, threads, date))
+    }
+
+  }
+}
+
+// JUMP
+
+function clearWait(key) {
+  return {
+    type: CLEAR_WAIT,
+    key
+  }
+}
+
+export function jumpUseTry(key) {
+  return (dispatch, getState) => {
+    const state = getState()
+    const { inventory } = state
+    const { current } = inventory
+    const { jumps } = current
+
+    if (jumps < 1) {
+      Alert.alert(
+        'Not enough jumps',
+        'Please wait until tomorrow or purchase more jumps'
+      )
+    } else {
+      dispatch(clearWait(key))
+      Alert.alert(
+        'Jumped!',
+        ''
+      )
     }
 
   }

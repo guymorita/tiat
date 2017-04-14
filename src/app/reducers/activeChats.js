@@ -4,6 +4,7 @@ import moment from 'moment'
 import {
   BRANCH_MULTI,
   BRANCH_TERMINAL,
+  CLEAR_WAIT,
   findActiveChatIndex,
   INIT_ACTIVE_CHAT,
   PUSH_NEXT_MESSAGE,
@@ -125,6 +126,27 @@ export default function activeChats(state = initialState, action) {
           thread: action.branch_target,
           msg_id: 0,
           atBranch: false
+        }
+      }
+
+    case CLEAR_WAIT:
+      const aaChat = state[action.key]
+      const timNow = moment().unix()
+      return {
+        ...state,
+        [action.key]: {
+          ...aaChat,
+          wait: {
+            ...aaChat.wait,
+            time_last_interaction: timNow,
+            time_end_wait: timNow,
+            wait_message_id: 0,
+            currently_waiting: false
+          },
+          terminate: {
+            ...aaChat.terminate,
+            dateRetry: timNow
+          }
         }
       }
 
