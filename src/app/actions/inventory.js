@@ -33,3 +33,10 @@ export function inventoryChange(prod) {
     }
   }
 }
+
+export function invKeysSubtract(quantity) {
+  return {
+    type: INV_KEYS_SUBTRACT,
+    quantity
+  }
+}

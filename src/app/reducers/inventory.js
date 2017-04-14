@@ -35,6 +35,15 @@ export default function storeIOS(state = initialState, action) {
           keys: currentKeys + action.quantity
         }
       }
+    case INV_KEYS_SUBTRACT:
+      const curKeys = state.current.keys
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          keys: curKeys - action.quantity
+        }
+      }
     default:
       return state
   }

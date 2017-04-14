@@ -40,7 +40,6 @@ export function productBuy(key) {
         dispatch(productBuySuccess(response))
         const prod = findProduct(key)
         dispatch(inventoryChange(prod))
-        //unlock store here.
       }
     });
   }

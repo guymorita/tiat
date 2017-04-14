@@ -20,7 +20,7 @@ export default class InventoryPreview extends Component {
           {jumps}
         </Text>
         <Image
-          source={require('./keysCircleSmall.png')}
+          source={require('./keyCircleSmall.png')}
           style={styles.invPreviewImage}
         />
         <Text style={styles.invPreviewText}>

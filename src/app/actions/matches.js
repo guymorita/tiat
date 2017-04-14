@@ -1,10 +1,15 @@
 
+import {
+  Alert
+} from 'react-native'
 import _ from 'lodash'
 import moment from 'moment'
 
 import {
   dayFromDate
 } from './date'
+
+import { invKeysSubtract } from './inventory'
 
 export const ADVANCE_MATCH_QUEUE = 'ADVANCE_MATCH_QUEUE'
 export const FIND_MATCHES_TO_SHOW = 'FIND_MATCHES_TO_SHOW'
@@ -14,7 +19,7 @@ export const INIT_MATCH_QUEUE = 'INIT_MATCH_QUEUE'
 const MIN_NUM_RANDOM_MATCHES_PER_DAY = 1
 const MAX_NUM_RANDOM_MATCHES_PER_DAY = 2
 
-const NUM_MATCHES_DAY_1 = 3
+const NUM_MATCHES_DAY_1 = 4
 const NUM_MATCHES_DAY_2 = 2
 
 const NUM_MAX_NEW_MATCHES = 3
@@ -67,9 +72,46 @@ export function tryAdvanceMatchQueue() {
     const state = getState()
     const { date, matchQueue } = state
     if (date.opened_today.modified_day !== matchQueue.current_day.day_of_month) {
-
       const nextDay = getNewMatchQueueNextDay(state, date)
       dispatch(advanceMatchQueue(date, nextDay))
+    }
+  }
+}
+
+export function forceAdvanceMatchQueue() {
+  return (dispatch, getState) => {
+    const state = getState()
+    const { date, matchQueue } = state
+    const nextDay = getNewMatchQueueNextDay(state, date)
+    dispatch(advanceMatchQueue(date, nextDay))
+  }
+}
+
+export function tryPurchaseMatches() {
+  return (dispatch, getState) => {
+    const state = getState()
+    const { activeChats, currentMatches, inventory } = state
+    const { current } = inventory
+    const { keys } = current
+    const overNewLimit = overNewMatchLimit(currentMatches, activeChats, NUM_MAX_NEW_MATCHES)
+    const keyCost = 2
+    if (keys < keyCost) {
+      Alert.alert(
+        'Not enough keys',
+        'Please purchase keys to get new matches'
+      )
+    } else if (overNewLimit) {
+      Alert.alert(
+        'Not yet!',
+        'Plesae start more of your current conversations first'
+      )
+    } else {
+      dispatch(forceAdvanceMatchQueue())
+      dispatch(invKeysSubtract(keyCost))
+      Alert.alert(
+        'You have new matches!',
+        ''
+      )
     }
   }
 }
@@ -87,6 +129,10 @@ function importFinished() {
   }
 }
 
+function overNewMatchLimit(currentMatches, activeChats, maxNumNew) {
+  return currentMatches.length >= (_.keys(activeChats).length + maxNumNew)
+}
+
 export function findMatches(currentMatches, matchQueue, activeChats) {
   return (dispatch) => {
     const { current_day } = matchQueue
@@ -100,8 +146,9 @@ export function findMatches(currentMatches, matchQueue, activeChats) {
     // FIX filter matches with incomplete timer out
     const matchDupe = match => allCurrentKeys.includes(match.key)
     let newMatches = _.reject(queue, matchDupe)
-    const overNewMatchLimit = allCurrentKeys.length >= (_.keys(activeChats).length + NUM_MAX_NEW_MATCHES)
-    if (overNewMatchLimit) {
+
+    const overLimit = overNewMatchLimit(currentMatches, activeChats, NUM_MAX_NEW_MATCHES)
+    if (overLimit) {
       newMatches = []
     }
 
