@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   Image,
-  NativeModules,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -9,38 +8,12 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import NavigationBar from 'react-native-navbar'
-const { InAppUtils } = NativeModules
+
+import { fetchProducts, formatProducts, productBuy } from '../../actions/store' // platform specific
 
 import { LIGHT_PURPLE, TINDER_COLOR } from '../../lib/colors'
 
-export default class Store extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      jumpProducts: [
-        {
-          key: 'com.heywing.wingjumps.3',
-          text: '3 Jumps for $0.99'
-        },
-        {
-          key: 'com.heywing.wingjumps.7',
-          text: '7 Jumps for $1.99'
-        },
-        {
-          key: 'com.heywing.wingjumps.18',
-          text: '18 Jumps for $4.99'
-        },
-      ],
-      keyProducts: [
-        {
-          key: 'com.heywing.wingkeys.3',
-          text: '3 Keys for $2.99'
-        }
-      ]
-    }
-  }
-
-
+class Store extends React.Component {
   leftButtonConfig = {
     title: '≡',
     tintColor: 'black',
@@ -52,21 +25,18 @@ export default class Store extends React.Component {
   }
 
   _onJumpPress = (key) => {
-    console.log('key', key)
+    const { dispatch } = this.props
+    dispatch(productBuy(key))
   }
 
   _onKeyPress = (key) => {
-    console.log('key', key)
+    const { dispatch } = this.props
+    dispatch(productBuy(key))
   }
 
   componentWillMount() {
-    var products = [
-      'com.heywing.wingkeys.3',
-    ];
-    // InAppUtils.loadProducts(products, (error, products) => {
-    //   console.log('products', products);
-    //   console.log('error', error);
-    // });
+    const { dispatch } = this.props
+    dispatch(fetchProducts())
   }
 
   _renderJumpsSection = () => {
@@ -84,12 +54,12 @@ export default class Store extends React.Component {
             Skip the wait
           </Text>
         </View>
-        {this.state.jumpProducts.map((prod) => {
+        {this.props.products && this.props.products.jumpProducts.map((prod) => {
           return (
-            <TouchableOpacity key={prod.key} onPress={this._onJumpPress(prod.key)}>
+            <TouchableOpacity key={prod.key} onPress={() => {this._onJumpPress(prod.key)}}>
               <View style={[styles.productButton, styles.jumpButton]}>
                 <Text style={styles.productButtonText}>
-                  {prod.text}
+                  {prod.title} for {prod.priceString}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -115,12 +85,12 @@ export default class Store extends React.Component {
             Unlock new matches
           </Text>
         </View>
-        {this.state.keyProducts.map((prod) => {
+        {this.props.products && this.props.products.keyProducts.map((prod) => {
           return (
-            <TouchableOpacity key={prod.key} onPress={this._onKeyPress(prod.key)}>
+            <TouchableOpacity key={prod.key} onPress={() => {this._onKeyPress(prod.key)}}>
               <View style={[styles.productButton, styles.keyButton]}>
                 <Text style={styles.productButtonText}>
-                  {prod.text}
+                  {prod.title} for {prod.priceString}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -166,18 +136,18 @@ const styles = StyleSheet.create({
   },
   sectionHeaderTextMain: {
     marginLeft: 10,
-    marginRight: 15,
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: '600',
     color: 'white'
   },
   sectionHeaderTextSub: {
-    marginLeft: 15,
     fontSize: 16,
     fontWeight: '500',
     color: 'white'
   },
   circleImage: {
+    marginLeft: 12,
+    marginRight: 12,
     width: 44,
     height: 44
   },
@@ -201,3 +171,13 @@ const styles = StyleSheet.create({
     backgroundColor: TINDER_COLOR
   }
 })
+
+const mapStateToProps = function(state) {
+  const { store } = state
+  const { liveProducts } = store
+  return {
+    products: formatProducts(liveProducts)
+  }
+}
+
+export default connect(mapStateToProps)(Store)

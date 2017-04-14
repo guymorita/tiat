@@ -27,11 +27,12 @@ class ControlPanel extends Component {
   }
 
   render() {
+    const { inventory } = this.props
     return (
       <View style={styles.container}>
         <NavigationBar
             tintColor={"#F8F8F8"}
-            title={{title: "Wing"}}
+            title={{title: `Jumps ${inventory.current.jumps} | Keys ${inventory.current.keys}`}}
           />
         <View>
           <TouchableOpacity onPress={this._onChatPress.bind(this)}>
@@ -78,4 +79,9 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connect()(ControlPanel)
+const mapStateToProps = function(state) {
+  const { inventory } = state
+  return { inventory }
+}
+
+export default connect(mapStateToProps)(ControlPanel)
