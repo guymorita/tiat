@@ -9,6 +9,8 @@ import {
 import NavigationBar from 'react-native-navbar'
 import { connect } from 'react-redux'
 
+import InventoryPreview from './InventoryPreview'
+
 class ControlPanel extends Component {
   _onChatPress = () => {
     const { closeDrawer, navigator } = this.props
@@ -32,7 +34,7 @@ class ControlPanel extends Component {
       <View style={styles.container}>
         <NavigationBar
             tintColor={"#F8F8F8"}
-            title={{title: `Jumps ${inventory.current.jumps} | Keys ${inventory.current.keys}`}}
+            title={<InventoryPreview jumps={inventory.current.jumps} keys={inventory.current.keys} />}
           />
         <View>
           <TouchableOpacity onPress={this._onChatPress.bind(this)}>

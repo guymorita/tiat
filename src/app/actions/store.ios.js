@@ -1,6 +1,5 @@
 
 import {
-  AlertIOS,
   NativeModules,
 } from 'react-native'
 const { InAppUtils } = NativeModules
@@ -33,7 +32,7 @@ function productBuySuccess(response) {
 
 
 export function productBuy(key) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(productBuyTry(key))
     InAppUtils.purchaseProduct(key, (error, response) => {
     // NOTE for v3.0: User can cancel the payment which will be availble as error object here.
@@ -41,7 +40,6 @@ export function productBuy(key) {
         dispatch(productBuySuccess(response))
         const prod = findProduct(key)
         dispatch(inventoryChange(prod))
-        AlertIOS.alert('Purchase Successful', 'Your Transaction ID is ' + response.transactionIdentifier);
         //unlock store here.
       }
     });
