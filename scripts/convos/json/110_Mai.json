@@ -2,57 +2,27 @@
   "a": {
     "messages": [
       {
-        "text": "Hey Ana! Nice to meet you :)",
+        "text": "Hey Mai -- how's it goin?",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "How was your day?",
+        "text": "Lol",
         "msg_id": 1,
-        "cha_id": 1,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "Hey :)",
+        "text": "Good",
         "msg_id": 2,
-        "cha_id": 101,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "It was good, work work work lol",
+        "text": "Why are you up so late",
         "msg_id": 3,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "And you?",
-        "msg_id": 4,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Hahaha same",
-        "msg_id": 5,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "What do you do for work?",
-        "msg_id": 6,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "I'm a pharmacist",
-        "msg_id": 7,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "And you?",
-        "msg_id": 8,
-        "cha_id": 101,
+        "cha_id": 110,
         "wait_sec": 2
       }
     ],
@@ -63,12 +33,12 @@
       "options": [
         {
           "dec_id": 0,
-          "text": "Make a bad joke and be playful",
+          "text": "You're looking to meet some cool people",
           "target_thread": "b"
         },
         {
           "dec_id": 1,
-          "text": "Play it straight and let her know you have an impressive job",
+          "text": "Up late finishing some stuff",
           "target_thread": "c"
         }
       ]
@@ -77,33 +47,33 @@
   "b": {
     "messages": [
       {
-        "text": "I'm a professional juggler",
+        "text": "Just looking to meet some cool people",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Kidding. Sorry, that was lame",
+        "text": "Hahh and how's that going?",
         "msg_id": 1,
-        "cha_id": 1,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "I'm a software engineer",
+        "text": "So far haven't met any, =P",
         "msg_id": 2,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Hahaha. That's really cool actually",
+        "text": "Yeah me either",
         "msg_id": 3,
-        "cha_id": 101,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "Nice work. Making fun of yourself showed some confidence. Now...",
+        "text": "And what about you?",
         "msg_id": 4,
-        "cha_id": 2,
+        "cha_id": 1,
         "wait_sec": 2
       }
     ],
@@ -117,45 +87,15 @@
   "c": {
     "messages": [
       {
-        "text": "I'm a software engineer at Google actually",
+        "text": "To meet you =P Jk. Just getting some work done",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Ah, one of those guys haha",
+        "text": "You?",
         "msg_id": 1,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Hahaha, what does that mean?",
-        "msg_id": 2,
         "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "Oh you know, tech bros lol",
-        "msg_id": 3,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "I wouldn't say I'm a tech bro haha",
-        "msg_id": 4,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "Okay haha, good to know",
-        "msg_id": 5,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Ouch. Got burned a little there. Moving on...",
-        "msg_id": 6,
-        "cha_id": 2,
         "wait_sec": 2
       }
     ],
@@ -167,7 +107,50 @@
     }
   },
   "d": {
-    "messages": [],
+    "messages": [
+      {
+        "text": "Lol",
+        "msg_id": 0,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "It's 3am here",
+        "msg_id": 1,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I'm in bed",
+        "msg_id": 2,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Of course",
+        "msg_id": 3,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Freezing",
+        "msg_id": 4,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Gruuu gruuuu",
+        "msg_id": 5,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Lollll",
+        "msg_id": 6,
+        "cha_id": 1,
+        "wait_sec": 2
+      }
+    ],
     "platform": "tinder",
     "branch": {
       "branch_type": "multi",
@@ -175,12 +158,12 @@
       "options": [
         {
           "dec_id": 0,
-          "text": "Start getting at her intentions on this app",
+          "text": "Offer to warm her up",
           "target_thread": "e"
         },
         {
           "dec_id": 1,
-          "text": "Express interest in her job",
+          "text": "Brainstorm ways for her to warm up",
           "target_thread": "f"
         }
       ]
@@ -189,103 +172,190 @@
   "e": {
     "messages": [
       {
-        "text": "So have you met any cool people on this app?",
+        "text": "Well how about I come over and warm you up",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Well I met you ;)",
+        "text": "Mmmmm no thanks I'm good",
         "msg_id": 1,
-        "cha_id": 101,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "Awww you're sweet",
+        "text": "A bit creepy to offer to warm her up. She doesn't even know you yet.",
         "msg_id": 2,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "What about you?",
-        "msg_id": 3,
-        "cha_id": 101,
+        "cha_id": 2,
         "wait_sec": 2
       }
     ],
     "platform": "tinder",
     "branch": {
-      "branch_type": "linear",
-      "branch_target": "g",
+      "branch_type": "terminal",
+      "branch_target": "",
       "options": []
     }
   },
   "f": {
     "messages": [
       {
-        "text": "So what got you interested in becoming a pharmacist?",
+        "text": "Put some more blankets on!",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "I don't know haha, it pays well",
+        "text": "And hungry",
         "msg_id": 1,
-        "cha_id": 101,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "job stability",
+        "text": "Or find a cuddle buddy",
         "msg_id": 2,
-        "cha_id": 101,
+        "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "fair enough haha",
+        "text": "What are you going to eat?",
         "msg_id": 3,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Hmmm. That subject didn't seem to interesting to her. Let's try this...",
+        "text": "I want a bowl of soup now",
         "msg_id": 4,
-        "cha_id": 2,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "So have you met any cool people on this app?",
+        "text": "Lol",
         "msg_id": 5,
-        "cha_id": 1,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "Well I met you ;)",
+        "text": "It's late",
         "msg_id": 6,
-        "cha_id": 101,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "Awww you're sweet",
+        "text": "Can't cook or go out",
         "msg_id": 7,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "That sounds good",
+        "msg_id": 8,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "What about you?",
-        "msg_id": 8,
-        "cha_id": 101,
+        "text": "Where is open?",
+        "msg_id": 9,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "I'll just wait until tmrw morning awww",
+        "msg_id": 10,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I put a big blanket on me",
+        "msg_id": 11,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahah go to bed ;)",
+        "msg_id": 12,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "But I think I need a cuddle to warm me up",
+        "msg_id": 13,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Wear a sweater?",
+        "msg_id": 14,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Are you a good cuddle buddy?",
+        "msg_id": 15,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Yes I am",
+        "msg_id": 16,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "But when I fell asleep",
+        "msg_id": 17,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I have no ideas",
+        "msg_id": 18,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahahah",
+        "msg_id": 19,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahah",
+        "msg_id": 20,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Lucid dreamer?",
+        "msg_id": 21,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Lol",
+        "msg_id": 22,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I don't know",
+        "msg_id": 23,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "But my body gets too hot if I sleep with someone",
+        "msg_id": 24,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "So better to sleep alone",
+        "msg_id": 25,
+        "cha_id": 110,
         "wait_sec": 2
       }
     ],
-    "platform": "tinder",
-    "branch": {
-      "branch_type": "linear",
-      "branch_target": "g",
-      "options": []
-    }
-  },
-  "g": {
-    "messages": [],
     "platform": "tinder",
     "branch": {
       "branch_type": "multi",
@@ -293,13 +363,13 @@
       "options": [
         {
           "dec_id": 0,
-          "text": "Be honest about your love life",
-          "target_thread": "h"
+          "text": "Agree that sleeping hot is the worst",
+          "target_thread": "g"
         },
         {
           "dec_id": 1,
-          "text": "Shrug it off and move forward",
-          "target_thread": "i"
+          "text": "Say that it would be different with you",
+          "target_thread": "h"
         }
       ]
     }
@@ -307,117 +377,51 @@
   "h": {
     "messages": [
       {
-        "text": "Yeah, I've met some great women on this app",
+        "text": "Well if you were with me it'd be different",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Lol. So you meet a lot of girls?",
+        "text": "Why's that?",
         "msg_id": 1,
-        "cha_id": 101,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "Hahaha",
+        "text": "At the least you wouldn't be alone",
         "msg_id": 2,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Mayyybeee",
+        "text": "Yeah..",
         "msg_id": 3,
-        "cha_id": 1,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "LOL",
+        "text": "Lay off a bit next time. Instead of directly trying to build physical intimacy, try heating up the conversation in other ways.",
         "msg_id": 4,
-        "cha_id": 101,
+        "cha_id": 2,
         "wait_sec": 2
       },
       {
-        "text": "Sorry, may have been too honest there",
+        "text": "I prefer cuddling",
         "msg_id": 5,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "It's all good. I can appreciate that",
+        "text": "Haha",
         "msg_id": 6,
-        "cha_id": 101,
+        "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Thanks haha",
+        "text": "Agree to disagree",
         "msg_id": 7,
         "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "And are you saying you haven't met guys from here?",
-        "msg_id": 8,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "Well I never said that ;) hahaa",
-        "msg_id": 9,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Hahaha nice",
-        "msg_id": 10,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "Good experience?",
-        "msg_id": 11,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "For the most part. There are some creeps on here",
-        "msg_id": 12,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Oh bummer. Yeah, I've heard some stories from my girl friends",
-        "msg_id": 13,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "I think there are a some good people on here too",
-        "msg_id": 14,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "Are you a good person? hahaha",
-        "msg_id": 15,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Jk",
-        "msg_id": 16,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "I like to think so lol",
-        "msg_id": 17,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "Nice work.",
-        "msg_id": 18,
-        "cha_id": 2,
         "wait_sec": 2
       }
     ],
@@ -428,54 +432,279 @@
       "options": []
     }
   },
-  "i": {
+  "g": {
     "messages": [
       {
-        "text": "Hmmm. I haven't really met anyone yet",
+        "text": "Haha",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Really? You haven't been on a Tinder date?",
+        "text": "Yeah overheating is the worst",
         "msg_id": 1,
-        "cha_id": 101,
+        "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "I mean I may have been on or two",
+        "text": "Can't have that",
         "msg_id": 2,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Lol",
+        "text": "Or you have to put ac down to 18 degrees",
         "msg_id": 3,
-        "cha_id": 101,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "So you have met people then?",
+        "text": "Then it's fine",
         "msg_id": 4,
-        "cha_id": 101,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "Well yeah, just not that many haha",
+        "text": "Hahahahahaha",
         "msg_id": 5,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Yeah... 18 degrees and the other person might freeze",
+        "msg_id": 6,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "I see lol",
-        "msg_id": 6,
-        "cha_id": 101,
+        "text": "Good solution for me babe",
+        "msg_id": 7,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "Whomp whomp.",
-        "msg_id": 7,
-        "cha_id": 2,
+        "text": "Lol",
+        "msg_id": 8,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "My body temperature",
+        "msg_id": 9,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Easily gets hotter than others",
+        "msg_id": 10,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Dang you run really hot",
+        "msg_id": 11,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "That's the problem",
+        "msg_id": 12,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Me too",
+        "msg_id": 13,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Haahahahah",
+        "msg_id": 14,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "That's why nobody wants to sleep with me",
+        "msg_id": 15,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Even my sister",
+        "msg_id": 16,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "She always says",
+        "msg_id": 17,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "You're damn hot",
+        "msg_id": 18,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Get away from me",
+        "msg_id": 19,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I hate you",
+        "msg_id": 20,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahahahaha",
+        "msg_id": 21,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahhahaha",
+        "msg_id": 22,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "When I want to tease her",
+        "msg_id": 23,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I touch her by my legs",
+        "msg_id": 24,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "And say",
+        "msg_id": 25,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Sister",
+        "msg_id": 26,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I want to sleep with you tonight",
+        "msg_id": 27,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "She says no way",
+        "msg_id": 28,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Are you dreaming",
+        "msg_id": 29,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahahahahahahah",
+        "msg_id": 30,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "And she's like oh hell no",
+        "msg_id": 31,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Nice",
+        "msg_id": 32,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "You should and better sleep alone",
+        "msg_id": 33,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Haha yeah",
+        "msg_id": 34,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Yeah I know",
+        "msg_id": 35,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "But I prefer sleep alone",
+        "msg_id": 36,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Sleeping",
+        "msg_id": 37,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahahahaha",
+        "msg_id": 38,
+        "cha_id": 110,
+        "wait_sec": 2
+      }
+    ],
+    "platform": "tinder",
+    "branch": {
+      "branch_type": "multi",
+      "branch_target": "",
+      "options": [
+        {
+          "dec_id": 0,
+          "text": "Say you prefer cuddling",
+          "target_thread": "h"
+        },
+        {
+          "dec_id": 1,
+          "text": "Agree that sleeping alone is better",
+          "target_thread": "i"
+        }
+      ]
+    }
+  },
+  "i": {
+    "messages": [
+      {
+        "text": "Yeah I prefer alone too lol",
+        "msg_id": 0,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Haha you don't love cuddles anymore?",
+        "msg_id": 1,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "The occassional cuddle doesn't hurt :)",
+        "msg_id": 2,
+        "cha_id": 1,
         "wait_sec": 2
       }
     ],
@@ -487,7 +716,86 @@
     }
   },
   "j": {
-    "messages": [],
+    "messages": [
+      {
+        "text": ":))))",
+        "msg_id": 0,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I like cuddling too",
+        "msg_id": 1,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Spooning",
+        "msg_id": 2,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "My favorite",
+        "msg_id": 3,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I might kick you off the bed while I sleep though",
+        "msg_id": 4,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "No arms or shoulder pillows",
+        "msg_id": 5,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahahaha",
+        "msg_id": 6,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Sometimes I do that",
+        "msg_id": 7,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahahaha",
+        "msg_id": 8,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I'm the same",
+        "msg_id": 9,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahahaahahahahahah",
+        "msg_id": 10,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "So rude",
+        "msg_id": 11,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Both of us",
+        "msg_id": 12,
+        "cha_id": 110,
+        "wait_sec": 2
+      }
+    ],
     "platform": "tinder",
     "branch": {
       "branch_type": "multi",
@@ -495,12 +803,12 @@
       "options": [
         {
           "dec_id": 0,
-          "text": "Push the envelope and find out what she's looking for",
+          "text": "Joke that she's more rude",
           "target_thread": "k"
         },
         {
           "dec_id": 1,
-          "text": "Be forward and ask her out?",
+          "text": "Big spoon or small spoon?",
           "target_thread": "l"
         }
       ]
@@ -509,57 +817,27 @@
   "k": {
     "messages": [
       {
-        "text": "So what are you looking for on this app? Dating, relationship, friends, fun?",
+        "text": "Haha no, more you",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Hahahaha",
+        "text": "Me?! Whyy",
         "msg_id": 1,
-        "cha_id": 101,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "Straight to the point, huh?",
+        "text": "You kick people off the bed after freezing them with your a/c",
         "msg_id": 2,
-        "cha_id": 101,
+        "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Hahaha",
+        "text": "Hahahahahah maybee",
         "msg_id": 3,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "It would be awesome to meet someone that I really click with",
-        "msg_id": 4,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Right on. I respect that",
-        "msg_id": 5,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "Hahaha. And you?",
-        "msg_id": 6,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Fun? ;)",
-        "msg_id": 7,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "You doubled down, and now she's calling you out.",
-        "msg_id": 8,
-        "cha_id": 2,
+        "cha_id": 110,
         "wait_sec": 2
       }
     ],
@@ -573,1191 +851,471 @@
   "l": {
     "messages": [
       {
-        "text": "So would you like to have dinner sometime?",
+        "text": "Are you big spoon or small spoon?",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Sure haha",
+        "text": "I'm a small spoon",
         "msg_id": 1,
-        "cha_id": 101,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "Cool",
+        "text": "The cutest spoon you have ever seen in your life",
         "msg_id": 2,
-        "cha_id": 1,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "What's your schedule like?",
+        "text": "Haha ok",
         "msg_id": 3,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Sorry to say, this is where the conversation dies. Better luck next time",
+        "text": "Ehell yah",
         "msg_id": 4,
-        "cha_id": 2,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahahahaha",
+        "msg_id": 5,
+        "cha_id": 110,
         "wait_sec": 2
       }
     ],
     "platform": "tinder",
     "branch": {
-      "branch_type": "terminal",
-      "branch_target": "",
+      "branch_type": "linear",
+      "branch_target": "m",
       "options": []
     }
   },
   "m": {
-    "messages": [],
+    "messages": [
+      {
+        "text": "😆",
+        "msg_id": 0,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "We'd never know",
+        "msg_id": 1,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Haha",
+        "msg_id": 2,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "🙆🏻🙆🏻",
+        "msg_id": 3,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "That's the cuddling emoji!",
+        "msg_id": 4,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻🙆🏻",
+        "msg_id": 5,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahhaahah",
+        "msg_id": 6,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Lol too much cuddle now",
+        "msg_id": 7,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Yeah",
+        "msg_id": 8,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I wish I had one now",
+        "msg_id": 9,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Lol",
+        "msg_id": 10,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I'm overheating",
+        "msg_id": 11,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahahahahah",
+        "msg_id": 12,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Move over",
+        "msg_id": 13,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "You're too damn hot",
+        "msg_id": 14,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Kick your ass out of my bed",
+        "msg_id": 15,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Sleep on the floor tonight",
+        "msg_id": 16,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Bring it",
+        "msg_id": 17,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Bye bye",
+        "msg_id": 18,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Bahaahah",
+        "msg_id": 19,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Try and kick me",
+        "msg_id": 20,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "I'll pull you with me",
+        "msg_id": 21,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "I'm kicking you now",
+        "msg_id": 22,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Never",
+        "msg_id": 23,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Oh please",
+        "msg_id": 24,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "🙅🏻🙅🏻🙅🏻🙅🏻🙅🏻",
+        "msg_id": 25,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "👅👅👅👅",
+        "msg_id": 26,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "🙆🏻🙆🏻🙆🏻",
+        "msg_id": 27,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "😝😝😝😝😝🤗",
+        "msg_id": 28,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "😍",
+        "msg_id": 29,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "You have to sleep on the ground",
+        "msg_id": 30,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I mean",
+        "msg_id": 31,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Floor",
+        "msg_id": 32,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I will throw you a blanket if you're nice",
+        "msg_id": 33,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "How about outside",
+        "msg_id": 34,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "And a pillow",
+        "msg_id": 35,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Come cuddle outside",
+        "msg_id": 36,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "I might get cold",
+        "msg_id": 37,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "I'm good at it",
+        "msg_id": 38,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Come here",
+        "msg_id": 39,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I'll give you a cuddle",
+        "msg_id": 40,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I dunno how I feel about that now... After you kicked me out",
+        "msg_id": 41,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "It'll take some nice pillow talk as well",
+        "msg_id": 42,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahahaha",
+        "msg_id": 43,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Sounds good",
+        "msg_id": 44,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Let's do it",
+        "msg_id": 45,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I give you 10mins to finish everything",
+        "msg_id": 46,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Then I will kick you out of the house",
+        "msg_id": 47,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hahahahaha",
+        "msg_id": 48,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "With your luggage",
+        "msg_id": 49,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Damn you're cold 😋",
+        "msg_id": 50,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "What are you up to this weekend?",
+        "msg_id": 51,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "I'm kidding",
+        "msg_id": 52,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I'm flying to the beach",
+        "msg_id": 53,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Hey you",
+        "msg_id": 54,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "I'm going to bed now",
+        "msg_id": 55,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Tmrw have to wake up early",
+        "msg_id": 56,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Okays",
+        "msg_id": 57,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "6",
+        "msg_id": 58,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Only have a few hours",
+        "msg_id": 59,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Do you have whatsapp?",
+        "msg_id": 60,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Yeah",
+        "msg_id": 61,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Add me mai12345",
+        "msg_id": 62,
+        "cha_id": 110,
+        "wait_sec": 2
+      },
+      {
+        "text": "Send me message",
+        "msg_id": 63,
+        "cha_id": 110,
+        "wait_sec": 2
+      }
+    ],
     "platform": "tinder",
     "branch": {
-      "branch_type": "multi",
-      "branch_target": "",
-      "options": [
-        {
-          "dec_id": 0,
-          "text": "Be honest about your casual intentions",
-          "target_thread": "n"
-        },
-        {
-          "dec_id": 1,
-          "text": "Agree with her and lock in the date",
-          "target_thread": "o"
-        }
-      ]
+      "branch_type": "linear",
+      "branch_target": "n",
+      "options": []
     }
   },
   "n": {
     "messages": [
       {
-        "text": "Hahaha good question",
+        "text": "Hey there",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "I guess if I'm honest with myself, I just got out of a relationship, and have been focusing on work",
+        "text": "Hiii good night!",
         "msg_id": 1,
-        "cha_id": 1,
+        "cha_id": 110,
         "wait_sec": 2
       },
       {
-        "text": "So dating, friends, and fun. I generally like meeting new people :)",
+        "text": "Night night",
         "msg_id": 2,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Me too :)",
+        "text": "Looks like that worked out ok. She led most the conversation but you kept it light and didn't overreach. Schedule a date when she's back.",
         "msg_id": 3,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "It would be fun to meet in person sometime. Let me know if you'd like to get coffee or lunch someday.",
-        "msg_id": 4,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "My number is 555.555.5555 full name is Colin Potrero, for Facebook stalking purposes ;)",
-        "msg_id": 5,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "I'd like that haha.",
-        "msg_id": 6,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "My number is 555.555.5555",
-        "msg_id": 7,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Awesome. You were up front, and now you're on the same page.",
-        "msg_id": 8,
         "cha_id": 2,
         "wait_sec": 2
       }
     ],
-    "platform": "tinder",
-    "branch": {
-      "branch_type": "linear",
-      "branch_target": "p",
-      "options": []
-    }
-  },
-  "o": {
-    "messages": [
-      {
-        "text": "I didn't mean it like that haha",
-        "msg_id": 0,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "Really? lol",
-        "msg_id": 1,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Nah, I would say that I'm looking for someone that I really click with as well",
-        "msg_id": 2,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "So you're more the relationship type?",
-        "msg_id": 3,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Yeah, I mean relationships and dating",
-        "msg_id": 4,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "Haha okay",
-        "msg_id": 5,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "It would be fun to meet in person sometime. Let me know if you'd like to get coffee or lunch someday.",
-        "msg_id": 6,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "My number is 555.555.5555 full name is Colin Potrero, for Facebook stalking purposes ;)",
-        "msg_id": 7,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "I'd like that haha.",
-        "msg_id": 8,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "My number is 555.555.5555",
-        "msg_id": 9,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Well, you got the date. But does she really have the right impression for what you want?",
-        "msg_id": 10,
-        "cha_id": 2,
-        "wait_sec": 2
-      }
-    ],
-    "platform": "tinder",
-    "branch": {
-      "branch_type": "linear",
-      "branch_target": "p",
-      "options": []
-    }
-  },
-  "p": {
-    "messages": [
-      {
-        "text": "Good move with putting her in control of the date. Lunch or coffee during the day is always a safe bet.",
-        "msg_id": 0,
-        "cha_id": 2,
-        "wait_sec": 2
-      }
-    ],
-    "platform": "tinder",
-    "branch": {
-      "branch_type": "linear",
-      "branch_target": "q",
-      "options": []
-    }
-  },
-  "q": {
-    "messages": [
-      {
-        "text": "Hello there :) This is Colin",
-        "msg_id": 0,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "heyyy",
-        "msg_id": 1,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "hahaha",
-        "msg_id": 2,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "what are you up to right now?",
-        "msg_id": 3,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "just off work, heading to the gym",
-        "msg_id": 4,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "nice",
-        "msg_id": 5,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "what do you like to do for exercise?",
-        "msg_id": 6,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "I usually take the classes haha",
-        "msg_id": 7,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "tonight i'm taking the kickboxing one",
-        "msg_id": 8,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "oh cool!",
-        "msg_id": 9,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "remind me not to mess with you haha",
-        "msg_id": 10,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "yeah, you better not ;)",
-        "msg_id": 11,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "hahaha",
-        "msg_id": 12,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "of course not",
-        "msg_id": 13,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "so what's your schedule like this week?",
-        "msg_id": 14,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "hmmmm",
-        "msg_id": 15,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "i'm free on Saturday during the day, but work in the late afternoon",
-        "msg_id": 16,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "or in the evening on Wednesday and Thursday",
-        "msg_id": 17,
-        "cha_id": 101,
-        "wait_sec": 2
-      }
-    ],
-    "platform": "iMessage",
-    "branch": {
-      "branch_type": "multi",
-      "branch_target": "",
-      "options": [
-        {
-          "dec_id": 0,
-          "text": "Ask her out to dinner",
-          "target_thread": "r"
-        },
-        {
-          "dec_id": 1,
-          "text": "Stick with the plan for a day date",
-          "target_thread": "s"
-        }
-      ]
-    }
-  },
-  "r": {
-    "messages": [
-      {
-        "text": "would you like to meet for dinner in the city on Thursday evening?",
-        "msg_id": 0,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "that could work",
-        "msg_id": 1,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "would after 7:30 be okay?",
-        "msg_id": 2,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "works for me :)",
-        "msg_id": 3,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "okay, it's a date :)",
-        "msg_id": 4,
-        "cha_id": 101,
-        "wait_sec": 2
-      }
-    ],
-    "platform": "iMessage",
-    "branch": {
-      "branch_type": "linear",
-      "branch_target": "t",
-      "options": []
-    }
-  },
-  "s": {
-    "messages": [
-      {
-        "text": "okay cool, so Saturday works best for coffee or lunch?",
-        "msg_id": 0,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "yeah, that would work",
-        "msg_id": 1,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "right on. what time is good?",
-        "msg_id": 2,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "let me check my schedule. i think i have work at 2",
-        "msg_id": 3,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "okay, so maybe lunch at 12?",
-        "msg_id": 4,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "i think so",
-        "msg_id": 5,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "let me text you when we get closer to the weekend",
-        "msg_id": 6,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Well, she definitely wanted to have dinner, and this is where it drops off.",
-        "msg_id": 7,
-        "cha_id": 2,
-        "wait_sec": 2
-      }
-    ],
-    "platform": "iMessage",
-    "branch": {
-      "branch_type": "terminal",
-      "branch_target": "",
-      "options": []
-    }
-  },
-  "t": {
-    "messages": [],
-    "platform": "iMessage",
-    "branch": {
-      "branch_type": "multi",
-      "branch_target": "",
-      "options": [
-        {
-          "dec_id": 0,
-          "text": "Send a text to check in.",
-          "target_thread": "u"
-        },
-        {
-          "dec_id": 1,
-          "text": "Wait until tomorrow.",
-          "target_thread": "v"
-        }
-      ]
-    }
-  },
-  "u": {
-    "messages": [
-      {
-        "text": "How's your week going so far?",
-        "msg_id": 0,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "hey :)",
-        "msg_id": 1,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "it's going okay, work hours have been pretty crazy",
-        "msg_id": 2,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "yeah, what's the schedule for the pharmacy, is it 24 hours?",
-        "msg_id": 3,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "luckily we close at 10, my schedule has just been busier than usual this month",
-        "msg_id": 4,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "ahhhhh",
-        "msg_id": 5,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "yeah, I think you work harder than me for sure haha",
-        "msg_id": 6,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "Lol. I doubt software engineering is easy",
-        "msg_id": 7,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "meh",
-        "msg_id": 8,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "anyways haha, does tomorrow night still work well for you?",
-        "msg_id": 9,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "yep :)",
-        "msg_id": 10,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "where are we meeting?",
-        "msg_id": 11,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "let's see. what are you in the mood for?",
-        "msg_id": 12,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "I'm not picky when it comes to food",
-        "msg_id": 13,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "hmmmm",
-        "msg_id": 14,
-        "cha_id": 1,
-        "wait_sec": 2
-      }
-    ],
-    "platform": "iMessage",
-    "branch": {
-      "branch_type": "linear",
-      "branch_target": "w",
-      "options": []
-    }
-  },
-  "v": {
-    "messages": [
-      {
-        "text": "hey there! still good for tonight?",
-        "msg_id": 0,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "hey there",
-        "msg_id": 1,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "i'm sorry to do this but i think i need to reschedule",
-        "msg_id": 2,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "is that okay?",
-        "msg_id": 3,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "oh",
-        "msg_id": 4,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "yeah, that's okay",
-        "msg_id": 5,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "okay cool",
-        "msg_id": 6,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "thanks :)",
-        "msg_id": 7,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Bummer. I guess waiting until the last minute didn't make her feel like she was a priority.",
-        "msg_id": 8,
-        "cha_id": 2,
-        "wait_sec": 2
-      }
-    ],
-    "platform": "iMessage",
-    "branch": {
-      "branch_type": "terminal",
-      "branch_target": "",
-      "options": []
-    }
-  },
-  "w": {
-    "messages": [],
-    "platform": "iMessage",
-    "branch": {
-      "branch_type": "multi",
-      "branch_target": "",
-      "options": [
-        {
-          "dec_id": 0,
-          "text": "Present some options to her.",
-          "target_thread": "x"
-        },
-        {
-          "dec_id": 1,
-          "text": "Ask her what her favorite restaurants are.",
-          "target_thread": "y"
-        }
-      ]
-    }
-  },
-  "x": {
-    "messages": [
-      {
-        "text": "okay, i have 3 options",
-        "msg_id": 0,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "gourmet BQQ, pho, or this chinese thai fusion place",
-        "msg_id": 1,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "such good options! hard to choose",
-        "msg_id": 2,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Hmmmmm",
-        "msg_id": 3,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Pho!",
-        "msg_id": 4,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "wise decision",
-        "msg_id": 5,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": ":)",
-        "msg_id": 6,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Okay, Sunflower Vietnamese Restaurant on connecticut street at 7:30?",
-        "msg_id": 7,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "perfect!",
-        "msg_id": 8,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "great, looking forward to it :)",
-        "msg_id": 9,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "me too",
-        "msg_id": 10,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "see ya manana",
-        "msg_id": 11,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "see you then",
-        "msg_id": 12,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "running late, sorry",
-        "msg_id": 13,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "no rush, take your time :)",
-        "msg_id": 14,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "thank you, i'm about 15 min away now",
-        "msg_id": 15,
-        "cha_id": 101,
-        "wait_sec": 2
-      }
-    ],
-    "platform": "iMessage",
-    "branch": {
-      "branch_type": "linear",
-      "branch_target": "z",
-      "options": []
-    }
-  },
-  "y": {
-    "messages": [
-      {
-        "text": "what are some of your favorite restaurants?",
-        "msg_id": 0,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "hahaha, making me do the work?",
-        "msg_id": 1,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "hahaha, you'd rather i pick?",
-        "msg_id": 2,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "yeah, i'm sure you can figure out how to use yelp lol",
-        "msg_id": 3,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Being lazy and unassertive doesn't seem to fly here. Here's a better idea...",
-        "msg_id": 4,
-        "cha_id": 2,
-        "wait_sec": 2
-      },
-      {
-        "text": "okay, i have 3 options",
-        "msg_id": 5,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "gourmet BQQ, pho, or this chinese thai fusion place",
-        "msg_id": 6,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "such good options! hard to choose",
-        "msg_id": 7,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Hmmmmm",
-        "msg_id": 8,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Pho!",
-        "msg_id": 9,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "wise decision",
-        "msg_id": 10,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": ":)",
-        "msg_id": 11,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "Okay, Sunflower Vietnamese Restaurant on connecticut street at 7:30?",
-        "msg_id": 12,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "perfect!",
-        "msg_id": 13,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "great, looking forward to it :)",
-        "msg_id": 14,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "me too",
-        "msg_id": 15,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "see ya manana",
-        "msg_id": 16,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "see you then",
-        "msg_id": 17,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "running late, sorry",
-        "msg_id": 18,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "no rush, take your time :)",
-        "msg_id": 19,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "thank you, i'm about 15 min away now",
-        "msg_id": 20,
-        "cha_id": 101,
-        "wait_sec": 2
-      }
-    ],
-    "platform": "iMessage",
-    "branch": {
-      "branch_type": "linear",
-      "branch_target": "z",
-      "options": []
-    }
-  },
-  "z": {
-    "messages": [
-      {
-        "text": "got home safe, thanks again for tonight. I had fun meeting you",
-        "msg_id": 0,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "me too. i had a great time :)",
-        "msg_id": 1,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "i honestly haven't been on that many tinder dates, and it always makes me a little nervous meeting people",
-        "msg_id": 2,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "oh yeah? why's that?",
-        "msg_id": 3,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "well, sometimes guys are just creepy, or you show up and they don't look like their picture haha",
-        "msg_id": 4,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "like they are older and fatter in real life lol",
-        "msg_id": 5,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "hahahaha",
-        "msg_id": 6,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "hopefully i didn't dissapoint ;)",
-        "msg_id": 7,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "not at all! you looked just like your pictures :)",
-        "msg_id": 8,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "that's a good thing",
-        "msg_id": 9,
-        "cha_id": 101,
-        "wait_sec": 2
-      }
-    ],
-    "platform": "iMessage",
-    "branch": {
-      "branch_type": "multi",
-      "branch_target": "",
-      "options": [
-        {
-          "dec_id": 0,
-          "text": "Return the compliment as she gave it to you",
-          "target_thread": "za"
-        },
-        {
-          "dec_id": 1,
-          "text": "Flatter her and lay it on thick",
-          "target_thread": "zb"
-        }
-      ]
-    }
-  },
-  "za": {
-    "messages": [
-      {
-        "text": "thank you, you're very sweet",
-        "msg_id": 0,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "you look just like your pictures too",
-        "msg_id": 1,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "that's a good thing too",
-        "msg_id": 2,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "hahaha",
-        "msg_id": 3,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "thanks",
-        "msg_id": 4,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "You had a good date. You're taking things slow. The only concern is your intentions. If you want something more serious, you're playing the right cards. If you're looking for casual, you need to take more risk and let your intentions be know.",
-        "msg_id": 5,
-        "cha_id": 2,
-        "wait_sec": 2
-      }
-    ],
-    "platform": "iMessage",
-    "branch": {
-      "branch_type": "terminal",
-      "branch_target": "",
-      "options": []
-    }
-  },
-  "zb": {
-    "messages": [
-      {
-        "text": "why thank you :)",
-        "msg_id": 0,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "i have to say i found you to be quite gorgeous",
-        "msg_id": 1,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "even more than in your pictures",
-        "msg_id": 2,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "sweet talker",
-        "msg_id": 3,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "seriously",
-        "msg_id": 4,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "i never said i did like sweet talkers ;)",
-        "msg_id": 5,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "(smug emoji)",
-        "msg_id": 6,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "in fact, i was finding it pretty hard not to kiss you at the end of the date",
-        "msg_id": 7,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "i really wish you had....",
-        "msg_id": 8,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "oh yeah?",
-        "msg_id": 9,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "yes",
-        "msg_id": 10,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "had i known that i would have turned the car around!",
-        "msg_id": 11,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "such a shame",
-        "msg_id": 12,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "although....",
-        "msg_id": 13,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "hahaha",
-        "msg_id": 14,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "although what?",
-        "msg_id": 15,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "it's only 10, and i actually don't work tomorrow",
-        "msg_id": 16,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "oh yeah? :)",
-        "msg_id": 17,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "yupppp",
-        "msg_id": 18,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "maybe i can come back and give you a good night kiss",
-        "msg_id": 19,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "hahahaha",
-        "msg_id": 20,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "mayyyybee",
-        "msg_id": 21,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "or maybe we can the new Chappelle standup on Netflix?",
-        "msg_id": 22,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "i'm out the door right now",
-        "msg_id": 23,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "lol seriously?",
-        "msg_id": 24,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "yep. see you in 20",
-        "msg_id": 25,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "hahaha okay, i'll make some popcorn",
-        "msg_id": 26,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "woah! fireworks. she kinda handed this one to you. good job picking up on the signals. have fun, and remember to be a gentleman.",
-        "msg_id": 27,
-        "cha_id": 2,
-        "wait_sec": 2
-      }
-    ],
-    "platform": "iMessage",
+    "platform": "whatsapp",
     "branch": {
       "branch_type": "terminal",
       "branch_target": "",

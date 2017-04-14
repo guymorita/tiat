@@ -14,7 +14,9 @@ const createMessage = function(element, curThreadLen, femaleCharId) {
   charId = Number(charId)
   let { wait_sec } = element
   // REMOVE this later
-  wait_sec = charId < 0 ? 0 : 2
+  if (wait_sec < 60) {
+    wait_sec = charId < 0 ? 0 : 2
+  }
   return {
     text: element.text,
     msg_id: curThreadLen,

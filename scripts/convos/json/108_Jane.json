@@ -65,7 +65,7 @@
         "text": "Hmmmm. Not getting a response. Want to try another message or move on?",
         "msg_id": 10,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": "14400"
       }
     ],
     "platform": "tinder",
@@ -98,7 +98,7 @@
         "text": "Hey, no worries. The important thing is that you were polite. Lashing out when people don't respond is never okay.",
         "msg_id": 1,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": "14400"
       }
     ],
     "platform": "tinder",

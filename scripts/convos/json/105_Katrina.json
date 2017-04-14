@@ -14,7 +14,7 @@
         "wait_sec": 2
       },
       {
-        "text": "It was okay, and urs?",
+        "text": "It was okay, and yours?",
         "msg_id": 2,
         "cha_id": 105,
         "wait_sec": 2
@@ -38,7 +38,7 @@
         "wait_sec": 2
       },
       {
-        "text": "Okay, clearly something is goin on here haha. What's your move?",
+        "text": "Okay, clearly something is going on here with the \"heyyy\" and the winky face. What's your move?",
         "msg_id": 6,
         "cha_id": 2,
         "wait_sec": 2
@@ -101,7 +101,7 @@
         "wait_sec": 2
       },
       {
-        "text": "Well, it's pretty clear that she is looking for some entertainment. Counter to popular belief, you it's still a decision at this point.",
+        "text": "Well, it's pretty clear that she is looking for something. Your choice on how to proceed.",
         "msg_id": 6,
         "cha_id": 2,
         "wait_sec": 2
@@ -198,7 +198,7 @@
         "text": "That could be fun ;)",
         "msg_id": 1,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": "3600"
       },
       {
         "text": "But, I have something to tell you first",
@@ -715,7 +715,7 @@
         "wait_sec": 2
       },
       {
-        "text": "Although this can be a bold move, I think in this case it's fair. It might even be a leading question...",
+        "text": "Although this can be a bold move, I think in this case it's fair since she likes pictures. It might even be a leading question...",
         "msg_id": 9,
         "cha_id": 2,
         "wait_sec": 2
@@ -880,38 +880,44 @@
         "wait_sec": 2
       },
       {
-        "text": "that sounds good to me haha",
+        "text": "Given the context this works perfectly. In other circumstances, not so much.",
         "msg_id": 22,
-        "cha_id": 105,
+        "cha_id": 2,
         "wait_sec": 2
       },
       {
-        "text": ";)",
+        "text": "that sounds good to me haha",
         "msg_id": 23,
         "cha_id": 105,
         "wait_sec": 2
       },
       {
-        "text": "Great",
+        "text": ";)",
         "msg_id": 24,
-        "cha_id": 1,
+        "cha_id": 105,
         "wait_sec": 2
       },
       {
-        "text": "I'll text you Thursday AM",
+        "text": "Great",
         "msg_id": 25,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Okay! Talk soon",
+        "text": "I'll text you Thursday AM",
         "msg_id": 26,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "Okay! Talk soon",
+        "msg_id": 27,
         "cha_id": 105,
         "wait_sec": 2
       },
       {
         "text": "Well! This should be a fun time. Make sure to be polite and be safe :)",
-        "msg_id": 27,
+        "msg_id": 28,
         "cha_id": 2,
         "wait_sec": 2
       }

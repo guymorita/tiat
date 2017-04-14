@@ -17,7 +17,7 @@
         "text": "Sometimes people just don't respond. It's nothing personal. Keep on moving, and maintain a positive attitude.",
         "msg_id": 2,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": "14400"
       }
     ],
     "platform": "tinder",

@@ -20,7 +20,7 @@
         "wait_sec": 2
       },
       {
-        "text": "It was good, work work work lol",
+        "text": "It was good, work work work haha",
         "msg_id": 3,
         "cha_id": 101,
         "wait_sec": 2
@@ -32,7 +32,7 @@
         "wait_sec": 2
       },
       {
-        "text": "Hahaha same",
+        "text": "Haha same here",
         "msg_id": 5,
         "cha_id": 1,
         "wait_sec": 2
@@ -95,13 +95,13 @@
         "wait_sec": 2
       },
       {
-        "text": "Hahaha. That's really cool actually",
+        "text": "That's really cool actually, and I like lame jokes ;)",
         "msg_id": 3,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
-        "text": "Nice work. Making fun of yourself showed some confidence. Now...",
+        "text": "Nice work. If you don't take yourself too seriously, it puts other people at ease",
         "msg_id": 4,
         "cha_id": 2,
         "wait_sec": 2
@@ -123,13 +123,13 @@
         "wait_sec": 2
       },
       {
-        "text": "Ah, one of those guys haha",
+        "text": "Ah, one of those guys...",
         "msg_id": 1,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
-        "text": "Hahaha, what does that mean?",
+        "text": "Haha, what does that mean?",
         "msg_id": 2,
         "cha_id": 1,
         "wait_sec": 2
@@ -201,14 +201,20 @@
         "wait_sec": 2
       },
       {
-        "text": "Awww you're sweet",
+        "text": "Quite flirtatious! Try being polite and complimentary in return, but not creepy.",
         "msg_id": 2,
+        "cha_id": 2,
+        "wait_sec": 2
+      },
+      {
+        "text": "Awww you're sweet",
+        "msg_id": 3,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
         "text": "What about you?",
-        "msg_id": 3,
+        "msg_id": 4,
         "cha_id": 101,
         "wait_sec": 2
       }
@@ -265,14 +271,20 @@
         "wait_sec": 2
       },
       {
-        "text": "Awww you're sweet",
+        "text": "Quite flirtatious! Try being polite and complimentary in return, but not creepy.",
         "msg_id": 7,
+        "cha_id": 2,
+        "wait_sec": 2
+      },
+      {
+        "text": "Awww you're sweet",
+        "msg_id": 8,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
         "text": "What about you?",
-        "msg_id": 8,
+        "msg_id": 9,
         "cha_id": 101,
         "wait_sec": 2
       }
@@ -313,7 +325,7 @@
         "wait_sec": 2
       },
       {
-        "text": "Lol. So you meet a lot of girls?",
+        "text": "Hah! So you meet a lot of girls?",
         "msg_id": 1,
         "cha_id": 101,
         "wait_sec": 2
@@ -355,68 +367,74 @@
         "wait_sec": 2
       },
       {
-        "text": "And are you saying you haven't met guys from here?",
+        "text": "Most people appreciate honesty and transparency. It's a common courtesy in dating.",
         "msg_id": 8,
+        "cha_id": 2,
+        "wait_sec": 2
+      },
+      {
+        "text": "And are you saying you haven't met guys from here?",
+        "msg_id": 9,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Well I never said that ;) hahaa",
-        "msg_id": 9,
+        "text": "Well I never said that ;)",
+        "msg_id": 10,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
         "text": "Hahaha nice",
-        "msg_id": 10,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "Good experience?",
         "msg_id": 11,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "For the most part. There are some creeps on here",
+        "text": "Good experience?",
         "msg_id": 12,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "For the most part. There are some creeps on here",
+        "msg_id": 13,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
         "text": "Oh bummer. Yeah, I've heard some stories from my girl friends",
-        "msg_id": 13,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "I think there are a some good people on here too",
         "msg_id": 14,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Are you a good person? hahaha",
+        "text": "I think there are a some good people on here too",
         "msg_id": 15,
-        "cha_id": 101,
+        "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Jk",
+        "text": "Are you a good person? haha",
         "msg_id": 16,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
-        "text": "I like to think so lol",
+        "text": "Kidding",
         "msg_id": 17,
+        "cha_id": 101,
+        "wait_sec": 2
+      },
+      {
+        "text": "I like to think so :)",
+        "msg_id": 18,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
         "text": "Nice work.",
-        "msg_id": 18,
+        "msg_id": 19,
         "cha_id": 2,
         "wait_sec": 2
       }
@@ -427,6 +445,29 @@
       "branch_target": "j",
       "options": []
     }
+  },
+  "": {
+    "messages": [
+      {
+        "text": "Keep in mind that these apps can be a much different experience for women. Guys aren't always polite.",
+        "msg_id": 0,
+        "cha_id": 2,
+        "wait_sec": 2
+      },
+      {
+        "text": "Even if this is different from what you want, be respectful and chill about it.",
+        "msg_id": 1,
+        "cha_id": 2,
+        "wait_sec": 2
+      },
+      {
+        "text": "Great. Being honest and positive is generally appreciated by most people",
+        "msg_id": 2,
+        "cha_id": 2,
+        "wait_sec": 2
+      }
+    ],
+    "platform": ""
   },
   "i": {
     "messages": [
@@ -467,7 +508,7 @@
         "wait_sec": 2
       },
       {
-        "text": "I see lol",
+        "text": "I see",
         "msg_id": 6,
         "cha_id": 101,
         "wait_sec": 2
@@ -597,7 +638,7 @@
         "wait_sec": 2
       },
       {
-        "text": "Sorry to say, this is where the conversation dies. Better luck next time",
+        "text": "Sorry to say, this is where the conversation dies. Plenty of fish in the sea.",
         "msg_id": 4,
         "cha_id": 2,
         "wait_sec": 2
@@ -816,7 +857,7 @@
         "text": "just off work, heading to the gym",
         "msg_id": 4,
         "cha_id": 101,
-        "wait_sec": 2
+        "wait_sec": "10800"
       },
       {
         "text": "nice",
@@ -1072,13 +1113,13 @@
         "wait_sec": 2
       },
       {
-        "text": "yeah, I think you work harder than me for sure haha",
+        "text": "yeah, I think you work harder than me for sure",
         "msg_id": 6,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "Lol. I doubt software engineering is easy",
+        "text": "Maybe. I doubt software engineering is easy",
         "msg_id": 7,
         "cha_id": 101,
         "wait_sec": 2
@@ -1102,26 +1143,32 @@
         "wait_sec": 2
       },
       {
-        "text": "where are we meeting?",
+        "text": "Asking if the date still works for the person gives them the flexibility to say yes or no. This is a good thing.",
         "msg_id": 11,
+        "cha_id": 2,
+        "wait_sec": 2
+      },
+      {
+        "text": "where are we meeting?",
+        "msg_id": 12,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
         "text": "let's see. what are you in the mood for?",
-        "msg_id": 12,
+        "msg_id": 13,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
         "text": "I'm not picky when it comes to food",
-        "msg_id": 13,
+        "msg_id": 14,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
         "text": "hmmmm",
-        "msg_id": 14,
+        "msg_id": 15,
         "cha_id": 1,
         "wait_sec": 2
       }
@@ -1310,8 +1357,14 @@
         "wait_sec": 2
       },
       {
-        "text": "thank you, i'm about 15 min away now",
+        "text": "Good response. Life happens. Getting bent out of shape over punctuality is never attractive.",
         "msg_id": 15,
+        "cha_id": 2,
+        "wait_sec": 2
+      },
+      {
+        "text": "thank you, i'm about 15 min away now",
+        "msg_id": 16,
         "cha_id": 101,
         "wait_sec": 2
       }
@@ -1332,19 +1385,19 @@
         "wait_sec": 2
       },
       {
-        "text": "hahaha, making me do the work?",
+        "text": "Making me do the work? haha",
         "msg_id": 1,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
-        "text": "hahaha, you'd rather i pick?",
+        "text": "hahahaOh",
         "msg_id": 2,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "yeah, i'm sure you can figure out how to use yelp lol",
+        "text": "yeah, i'm sure you can figure out how to use yelp ;)",
         "msg_id": 3,
         "cha_id": 101,
         "wait_sec": 2
@@ -1446,8 +1499,14 @@
         "wait_sec": 2
       },
       {
-        "text": "thank you, i'm about 15 min away now",
+        "text": "Good response. Life happens. Getting bent out of shape over punctuality is never attractive.",
         "msg_id": 20,
+        "cha_id": 2,
+        "wait_sec": 2
+      },
+      {
+        "text": "thank you, i'm about 15 min away now",
+        "msg_id": 21,
         "cha_id": 101,
         "wait_sec": 2
       }
@@ -1498,7 +1557,7 @@
         "wait_sec": 2
       },
       {
-        "text": "hahahaha",
+        "text": "hahaha",
         "msg_id": 6,
         "cha_id": 1,
         "wait_sec": 2
@@ -1534,7 +1593,7 @@
         },
         {
           "dec_id": 1,
-          "text": "Flatter her and lay it on thick",
+          "text": "Flatter her a bit more",
           "target_thread": "zb"
         }
       ]
@@ -1573,7 +1632,7 @@
         "wait_sec": 2
       },
       {
-        "text": "You had a good date. You're taking things slow. The only concern is your intentions. If you want something more serious, you're playing the right cards. If you're looking for casual, you need to take more risk and let your intentions be know.",
+        "text": "You had a good date. You're taking things slow. The only concern is your intentions. If you want something more serious, you're playing the right cards. If you're looking for casual, you need to take more risk and let your intentions be known.",
         "msg_id": 5,
         "cha_id": 2,
         "wait_sec": 2
@@ -1607,152 +1666,176 @@
         "wait_sec": 2
       },
       {
-        "text": "sweet talker",
+        "text": "Good compliment. It's always good to be genuine and not creepy.",
         "msg_id": 3,
+        "cha_id": 2,
+        "wait_sec": 2
+      },
+      {
+        "text": "well you're quite the sweet talker",
+        "msg_id": 4,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
         "text": "seriously",
-        "msg_id": 4,
+        "msg_id": 5,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
         "text": "i never said i did like sweet talkers ;)",
-        "msg_id": 5,
+        "msg_id": 6,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
         "text": "(smug emoji)",
-        "msg_id": 6,
-        "cha_id": 1,
-        "wait_sec": 2
-      },
-      {
-        "text": "in fact, i was finding it pretty hard not to kiss you at the end of the date",
         "msg_id": 7,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "i really wish you had....",
+        "text": "in fact, i was finding it pretty hard not to kiss you at the end of the date",
         "msg_id": 8,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "i really wish you had....",
+        "msg_id": 9,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
         "text": "oh yeah?",
-        "msg_id": 9,
+        "msg_id": 10,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
         "text": "yes",
-        "msg_id": 10,
+        "msg_id": 11,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
         "text": "had i known that i would have turned the car around!",
-        "msg_id": 11,
+        "msg_id": 12,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
         "text": "such a shame",
-        "msg_id": 12,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "although....",
         "msg_id": 13,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
-        "text": "hahaha",
+        "text": "although....",
         "msg_id": 14,
-        "cha_id": 1,
+        "cha_id": 101,
         "wait_sec": 2
       },
       {
-        "text": "although what?",
+        "text": "hahaha",
         "msg_id": 15,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "it's only 10, and i actually don't work tomorrow",
+        "text": "although what?",
         "msg_id": 16,
-        "cha_id": 101,
-        "wait_sec": 2
-      },
-      {
-        "text": "oh yeah? :)",
-        "msg_id": 17,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "yupppp",
-        "msg_id": 18,
+        "text": "it's only 10, and i actually don't work tomorrow",
+        "msg_id": 17,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
-        "text": "maybe i can come back and give you a good night kiss",
+        "text": "That seems like an invitation, so good time to make a move, but make sure to still be polite and without expectations",
+        "msg_id": 18,
+        "cha_id": 2,
+        "wait_sec": 2
+      },
+      {
+        "text": "oh yeah? :)",
         "msg_id": 19,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "hahahaha",
+        "text": "yupppp",
         "msg_id": 20,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
-        "text": "mayyyybee",
+        "text": "maybe i can come back and give you a good night kiss",
         "msg_id": 21,
-        "cha_id": 101,
+        "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "or maybe we can the new Chappelle standup on Netflix?",
+        "text": "haha",
         "msg_id": 22,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
-        "text": "i'm out the door right now",
+        "text": "mayyyybee (smug emoji)",
         "msg_id": 23,
-        "cha_id": 1,
+        "cha_id": 101,
         "wait_sec": 2
       },
       {
-        "text": "lol seriously?",
+        "text": "or maybe we can watch the new Chappelle standup on Netflix?",
         "msg_id": 24,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
-        "text": "yep. see you in 20",
+        "text": "i'm out the door right now",
         "msg_id": 25,
         "cha_id": 1,
         "wait_sec": 2
       },
       {
-        "text": "hahaha okay, i'll make some popcorn",
+        "text": "lol seriously?",
         "msg_id": 26,
         "cha_id": 101,
         "wait_sec": 2
       },
       {
-        "text": "woah! fireworks. she kinda handed this one to you. good job picking up on the signals. have fun, and remember to be a gentleman.",
+        "text": "if you'd like, then most definitely",
         "msg_id": 27,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "sure haha. come on over",
+        "msg_id": 28,
+        "cha_id": 101,
+        "wait_sec": 2
+      },
+      {
+        "text": "great! see you in 20",
+        "msg_id": 29,
+        "cha_id": 1,
+        "wait_sec": 2
+      },
+      {
+        "text": "haha okay, i'll make some popcorn",
+        "msg_id": 30,
+        "cha_id": 101,
+        "wait_sec": 2
+      },
+      {
+        "text": "Woah! fireworks. She kinda handed this one to you. Good job picking up on the signals. Have fun, and remember to be a gentleman.",
+        "msg_id": 31,
         "cha_id": 2,
         "wait_sec": 2
       }

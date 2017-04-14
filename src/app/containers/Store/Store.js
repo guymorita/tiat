@@ -189,6 +189,7 @@ const styles = StyleSheet.create({
   circleImage: {
     marginLeft: 12,
     marginRight: 12,
+    marginTop: 6,
     width: 44,
     height: 44
   },

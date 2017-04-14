@@ -231,7 +231,7 @@
         "wait_sec": 2
       },
       {
-        "text": "I like going out to eat as well haha. I also like going on hikes, and checking out museums and art shows.",
+        "text": "I like going out to eat as well :) I also like going on hikes, and checking out museums and art shows.",
         "msg_id": 4,
         "cha_id": 1,
         "wait_sec": 2
@@ -293,7 +293,7 @@
         "text": "Sometimes people just don't respond. It's nothing personal. Keep on moving, and maintain a positive attitude.",
         "msg_id": 1,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": "14400"
       }
     ],
     "platform": "tinder",

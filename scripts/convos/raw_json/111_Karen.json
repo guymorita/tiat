@@ -1,0 +1,10 @@
+[
+{"type":"self","text":"Hey Em! Nice to meet you :) How was your day?","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"girl","text":"Hello :)","platform":"tinder","wait_sec":"2","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"girl","text":"It was okay, and yours?","platform":"tinder","wait_sec":"1","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"self","text":"Mine was pretty great. Just went to work and then the gym","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"self","text":"What are you up to this evening?","platform":"tinder","wait_sec":"2","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"self","text":"How is your week going so far?","platform":"tinder","wait_sec":"2","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"narrator","text":"No response here. It's nothing personal. Check out some other matches and don't let it get you down.","platform":"tinder","wait_sec":"14400","thread":"a","next_thread":"","terminal":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"branch","text":"","platform":"tinder","wait_sec":"0","thread":"a","next_thread":"","terminal":"TRUE","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""}
+]
