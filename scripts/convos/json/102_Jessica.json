@@ -237,7 +237,12 @@
         "wait_sec": 2
       }
     ],
-    "platform": "tinder"
+    "platform": "tinder",
+    "branch": {
+      "branch_type": "linear",
+      "branch_target": "g",
+      "options": []
+    }
   },
   "f": {
     "messages": [

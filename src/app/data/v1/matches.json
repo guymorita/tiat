@@ -1,5 +1,5 @@
 {
-  "date": 1492201699,
+  "date": 1492210770,
   "version": 1,
   "matches": [
     {
@@ -2104,7 +2104,12 @@
               "wait_sec": 2
             }
           ],
-          "platform": "tinder"
+          "platform": "tinder",
+          "branch": {
+            "branch_type": "linear",
+            "branch_target": "g",
+            "options": []
+          }
         },
         "f": {
           "messages": [
