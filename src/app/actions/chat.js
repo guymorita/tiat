@@ -18,7 +18,7 @@ export const PUSH_NEXT_MESSAGE = 'PUSH_NEXT_MESSAGE'
 export const BRANCH_LINEAR = 'BRANCH_LINEAR'
 export const BRANCH_MULTI = 'BRANCH_MULTI'
 export const BRANCH_TERMINAL = 'BRANCH_TERMINAL'
-export const CLEAR_WAIT = 'CLEAR_WAIT'
+export const WAIT_CLEAR_JUMP = 'WAIT_CLEAR_JUMP'
 export const SWITCH_BRANCH = 'SWITCH_BRANCH'
 export const SWITCH_CHAT = 'SWITCH_CHAT'
 export const TRY_PUSH_NEXT_MESSAGE = 'TRY_PUSH_NEXT_MESSAGE'
@@ -64,33 +64,31 @@ export function getMatch(state, key) {
 
 // WAIT
 
-function waitMessageComplete(activeChat) {
+function waitMessageComplete(activeChat, date) {
   const { wait } = activeChat
-  const timeNow = moment().unix()
-  const waitDone = timeNow > wait.time_wait_finish
+  const timeNow = date.opened_today.modified
+  const waitDone = timeNow - 10 > wait.time_end_wait
   return waitDone
 }
 
-function longWaitMessage(activeChat) {
+function longWaitMessage(activeChat, date) {
   const { wait } = activeChat
-  const timeNow = moment().unix()
-  const hasLongWait = timeNow + LONG_WAIT_IN_SEC < wait.time_wait_finish
+  const timeNow = date.opened_today.modified
+  const hasLongWait = timeNow + LONG_WAIT_IN_SEC < wait.time_end_wait
   return hasLongWait
 }
 
-function shouldWaitForMessage(activeChat) {
+function shouldWaitForMessage(activeChat, date) {
   const { currently_waiting } = activeChat.wait
-  return currently_waiting && !waitMessageComplete(activeChat)
+  return currently_waiting && !waitMessageComplete(activeChat, date)
 }
 
-function hasLongWaitForMessage(activeChat) {
+function hasLongWaitForMessage(activeChat, date) {
   const { currently_waiting } = activeChat.wait
-  return currently_waiting && longWaitMessage(activeChat)
+  return currently_waiting && longWaitMessage(activeChat, date)
 }
 
 function waitTerminateComplete(activeChat, date) {
-  console.log('dateNow(date)', dateNow(date))
-  console.log('activeChat.terminate.dateRetry', activeChat.terminate.dateRetry)
   return dateNow(date) > activeChat.terminate.dateRetry
 }
 
@@ -100,11 +98,16 @@ function shouldWaitForTerminate(activeChat, date) {
 }
 
 export function shouldWait(activeChat, date) {
-  return shouldWaitForMessage(activeChat) || shouldWaitForTerminate(activeChat, date)
+  return shouldWaitForMessage(activeChat, date) || shouldWaitForTerminate(activeChat, date)
 }
 
 export function shouldLongWait(activeChat, date) {
-  return hasLongWaitForMessage(activeChat) || shouldWaitForTerminate(activeChat, date)
+  return hasLongWaitForMessage(activeChat, date) || shouldWaitForTerminate(activeChat, date)
+}
+
+export function hasJumped(activeChat) {
+  const { jumped } = activeChat.wait
+  return jumped
 }
 
 // MESSAGE
@@ -195,46 +198,76 @@ function tryPushFemaleNextMessageWithTimeout(key, nextMessage) {
 
     const messagesToQueue = getMessagesToQueue(messages, cha_id, msg_id)
     const lastMessage = _.last(messagesToQueue)
-
+    // console.log('try push')
     dispatch(tryPushNextMessage(key, lastMessage))
 
-    // special functionality for a long wait?
-
     if (!currently_waiting) {
-      // if long wait, no timeouts, just set to
       let sum_wait_wait_millisec = 0
       const msgsLength = messagesToQueue.length
       for (var i = 0; i < msgsLength; i++) {
         const msg = messagesToQueue[i]
         const { wait_sec } = msg
-        const wait_millisec = wait_sec * 1001
+        const wait_millisec = wait_sec * 1000
         sum_wait_wait_millisec = sum_wait_wait_millisec + wait_millisec
         const keepWaiting = msg.msg_id !== lastMessage.msg_id
         setTimeout(() => {
           dispatch(pushNextMessageAddChar(key, msg, {keepWaiting}))
         }, sum_wait_wait_millisec)
-        // dispatch(addTimeout(key, waitTimeout))
       }
     }
 
-    if (waitMessageComplete(activeChat)) {
-      messagesToQueue.forEach(function (msg) {
-        // used when the waiting button had the next button functionality and you got stuck.
-        dispatch(pushNextMessageAddChar(key, msg))
-      })
-    }
+    // sometimes it doesn't queue all of the messages in the same batch
+    // sometimes it thinks the waitMessageComplete. can't unstuck yourself
+    // doesn't know how to handle non-terminal jumps
+    // next button flips on the second to last instead of the last. race condition with time.
+
+    // console.log('waitMessageComplete(activeChat)', waitMessageComplete(activeChat))
+
+    // if (waitMessageComplete(activeChat)) {
+    //   messagesToQueue.forEach(function (msg) {
+    //     // used when the waiting button had the next button functionality and you got stuck.
+    //     dispatch(pushNextMessageAddChar(key, msg))
+    //   })
+    // }
+
+    // current problems
+    // 1. doesn't put the jump button away after the day is fast forwarded
+    // 2. doesn't jump on a terminal
   }
 }
 
-function tryPushNextMessageWithTimeout(key, nextMessage) {
+function tryPushNextMessageWithTimeout(activeChat, nextMessage) {
   return (dispatch, getState) => {
     const { cha_id, wait_sec } = nextMessage
+    const { key } = activeChat
     // user or narrator
     if (cha_id < 100) {
       dispatch(tryPushNextMessage(key, nextMessage))
       dispatch(pushNextMessageAddChar(key, nextMessage))
     } else if (wait_sec > LONG_WAIT_IN_SEC) {
-      dispatch(tryPushNextMessage(key, nextMessage))
+      const { wait } = activeChat
+      const { jumped } = wait
+      if (!jumped) {
+        dispatch(tryPushNextMessage(key, nextMessage))
+      } else {
+        dispatch(pushNextMessageAddChar(key, nextMessage))
+      }
+      // if they jumped, let them through
+      // first time, they encounter the long wait
+      // currently_waiting = false
+      // set it to true. show them the long wait thing
+
+      // if they jump = currently_waiting = false
+      // how does it know it's not the first time seeing it?
+
+      // if (shouldWait(activeChat)) {
+        // console.log("shouldWait(activeChat)", shouldWait(activeChat))
+        // dispatch(tryPushNextMessage(key, nextMessage))
+        // is it done waiting?
+        // console.log('try jump')
+      // } else {
+
+      // }
     } else {
       dispatch(tryPushFemaleNextMessageWithTimeout(key, nextMessage))
     }
@@ -246,9 +279,8 @@ function createNextMessage(activeChat, currentThread) {
     const { msg_id } = activeChat
     const { messages } = currentThread
     const nextMessage = messages.find((msg) => { return msg.msg_id === msg_id })
-    const { key } = activeChat
 
-    dispatch(tryPushNextMessageWithTimeout(key, nextMessage))
+    dispatch(tryPushNextMessageWithTimeout(activeChat, nextMessage))
   }
 }
 
@@ -322,9 +354,9 @@ export function nextStep(key) {
 
 // JUMP
 
-function clearWait(key) {
+function waitClearJump(key) {
   return {
-    type: CLEAR_WAIT,
+    type: WAIT_CLEAR_JUMP,
     key
   }
 }
@@ -342,8 +374,10 @@ export function jumpUseTry(key) {
         'Please wait or purchase more jumps'
       )
     } else {
-      dispatch(clearWait(key))
       dispatch(invJumpsSubtract(1))
+      dispatch(waitClearJump(key))
+      dispatch(nextStep(key))
+      // if next is message, push the message
       Alert.alert(
         'Jumped!',
         ''

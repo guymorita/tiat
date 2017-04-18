@@ -4,7 +4,7 @@ import moment from 'moment'
 import {
   BRANCH_MULTI,
   BRANCH_TERMINAL,
-  CLEAR_WAIT,
+  WAIT_CLEAR_JUMP,
   findActiveChatIndex,
   INIT_ACTIVE_CHAT,
   PUSH_NEXT_MESSAGE,
@@ -87,7 +87,8 @@ export default function activeChats(state = initialState, action) {
           },
           wait: {
             ...activeChat.wait,
-            currently_waiting: options.keepWaiting || false
+            currently_waiting: options.keepWaiting || false,
+            jumped: false
           }
         }
       }
@@ -97,11 +98,16 @@ export default function activeChats(state = initialState, action) {
       const newMsg = action.nextMessage
 
       const timeNow = moment().unix()
-      const currentWaitEndTime = acChat.wait.time_wait_finish
+      // get current wait
+      const currentWaitEndTime = acChat.wait.time_end_wait
+      // find the new possible wait with the new message
       const newPotentialWaitTime = timeNow + newMsg.wait_sec
+      // if they aren't done with the old wait, use the old time. don't set a new wait time
       const currentlyWaiting = timeNow < currentWaitEndTime
+      console.log('currentlyWaiting', currentlyWaiting)
+      // if it tells it that it's currently waiting
 
-      const newEndWaitTime = currentlyWaiting ? currentWaitEndTime : newPotentialWaitTime
+      const newEndWaitTime = newPotentialWaitTime // currentlyWaiting ? currentWaitEndTime : newPotentialWaitTime
 
       return {
         ...state,
@@ -129,7 +135,7 @@ export default function activeChats(state = initialState, action) {
         }
       }
 
-    case CLEAR_WAIT:
+    case WAIT_CLEAR_JUMP:
       const aaChat = state[action.key]
       const timNow = moment().unix()
       return {
@@ -141,7 +147,8 @@ export default function activeChats(state = initialState, action) {
             time_last_interaction: timNow,
             time_end_wait: timNow,
             wait_message_id: 0,
-            currently_waiting: false
+            currently_waiting: false,
+            jumped: true
           },
           terminate: {
             ...aaChat.terminate,

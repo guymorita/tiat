@@ -1884,7 +1884,7 @@
               "text": "Nice to meet you too",
               "msg_id": 2,
               "cha_id": 102,
-              "wait_sec": 2
+              "wait_sec": 3000
             },
             {
               "text": "So far so good. And with you?",

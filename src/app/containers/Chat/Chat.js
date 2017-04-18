@@ -22,6 +22,7 @@ import { BABY_BLUE, LIGHT_GRAY, LIGHT_PURPLE, getBackgroundStyle, getBackgroundC
 import {
   getMatch,
   initActiveChat,
+  hasJumped,
   jumpUseTry,
   nextStep,
   switchBranchPushMessage,
@@ -37,7 +38,8 @@ class Chat extends React.Component {
     this.state = {
       messages: [],
       animatedStartValue: new Animated.Value(0),
-      userHasInteracted: false
+      userHasInteracted: false,
+      buttonsDisabled: false
     }
   }
 
@@ -53,29 +55,35 @@ class Chat extends React.Component {
   }
 
   _onNextPress() {
+    if (this.state.buttonsDisabled) return
     const { curChat, dispatch } = this.props
     const { key } = curChat
-    this.setState({userHasInteracted: true})
+    this.setState({userHasInteracted: true, buttonsDisabled: true})
     dispatch(nextStep(key))
   }
 
   _onOptionPress(option) {
+    if (this.state.buttonsDisabled) return
     const { curChat, dispatch } = this.props
     const { key } = curChat
-    this.setState({userHasInteracted: true})
+    this.setState({userHasInteracted: true, buttonsDisabled: true})
     dispatch(switchBranchPushMessage(key, option.target_thread))
   }
 
   _onJumpPress(key) {
+    if (this.state.buttonsDisabled) return
     const { dispatch } = this.props
+    this.setState({userHasInteracted: true, buttonsDisabled: true})
     dispatch(jumpUseTry(key))
   }
 
   _onTryAgainPress() {
+    if (this.state.buttonsDisabled) return
     const { curChat, dispatch } = this.props
     const { key } = curChat
     this.setState({
-      messages: []
+      messages: [],
+      buttonsDisabled: true
     }, () => {
       dispatch(initActiveChat(key))
     })
@@ -176,14 +184,15 @@ class Chat extends React.Component {
 
   renderInputToolbar() {
     const { curChat, date } = this.props
+    console.log('date', date)
 
     let renderInputContent = this.renderNextBubble
     if (curChat && curChat.atBranch) {
       renderInputContent = this.renderBranchOptions
-    } else if (curChat && shouldLongWait(curChat, date)) {
+    } else if (curChat && shouldLongWait(curChat, date) && !hasJumped(curChat)) {
       const { key } = curChat
       renderInputContent = this.renderJumpBubble.bind(this, key)
-    } else if (curChat && shouldWait(curChat, date)) {
+    } else if (curChat && shouldWait(curChat, date) && !hasJumped(curChat)) {
       renderInputContent = this.renderWaitingBubble
     } else if (curChat && curChat.terminate.isTerminated) {
       renderInputContent = this.renderTerminatedBubble
@@ -286,7 +295,7 @@ class Chat extends React.Component {
   }
 
   componentWillMount() {
-    const { curChat } = this.props
+    const { curChat, date, dispatch } = this.props
     let initialMessages = []
 
     if (curChat) {
@@ -305,6 +314,10 @@ class Chat extends React.Component {
     if (!isActive) {
       return
     }
+
+    this.setState({
+      buttonsDisabled: false
+    })
 
     const { giftedChat } = curChat
     const { messages } = giftedChat
