@@ -2374,7 +2374,7 @@
               "wait_sec": 2
             }
           ],
-          "platform": "",
+          "platform": "iMessage",
           "branch": {
             "branch_type": "linear",
             "branch_target": "k",

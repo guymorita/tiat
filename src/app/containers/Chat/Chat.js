@@ -26,9 +26,9 @@ import {
   getNextMessage,
   getNextNextMessage,
   hasJumped,
+  hasLongWait,
   isUserOrNarrator,
   jumpUseTry,
-  LONG_WAIT_IN_SEC,
   nextStep,
   switchBranchPushMessage,
   shouldWaitForMessage,
@@ -476,7 +476,7 @@ const getCurrentInput = function(curChat, curThread, date) {
 
   if (!curMessage || !nextMessage || curMessage.cha_id !== nextMessage.cha_id) return NEXT
 
-  if (curMessage.wait_sec > LONG_WAIT_IN_SEC) {
+  if (hasLongWait(curMessage)) {
     return JUMP
   } else {
     return WAIT

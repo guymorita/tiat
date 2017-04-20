@@ -22,7 +22,7 @@ export const WAIT_CLEAR_JUMP = 'WAIT_CLEAR_JUMP'
 export const SWITCH_BRANCH = 'SWITCH_BRANCH'
 export const SWITCH_CHAT = 'SWITCH_CHAT'
 
-export const LONG_WAIT_IN_SEC = 300
+const LONG_WAIT_IN_SEC = 300
 
 // INIT
 
@@ -85,6 +85,11 @@ export function shouldWaitForMessage(activeChat, curThread, date) {
 
 function waitTerminateComplete(activeChat, date) {
   return dateNow(date) > activeChat.terminate.dateRetry
+}
+
+export function hasLongWait(message) {
+  const { wait_sec } = message
+  return wait_sec > LONG_WAIT_IN_SEC
 }
 
 export function shouldWaitForTerminate(activeChat, date) {
@@ -151,7 +156,7 @@ function pushFemaleNextMessageWithTimeout(key, nextMessage, nextNextMessage) {
 
     if (nextMessage.cha_id === nextNextMessage.cha_id) {
       const { wait_sec } = nextMessage
-      if (wait_sec > LONG_WAIT_IN_SEC) return
+      if (hasLongWait(nextMessage)) return
       setTimeout(() => {
         dispatch(nextStep(key))
       }, wait_sec * 1000)
