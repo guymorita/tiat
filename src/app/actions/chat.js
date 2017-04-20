@@ -3,7 +3,6 @@ import {
   Alert
 } from 'react-native'
 import _ from 'lodash'
-import moment from 'moment'
 
 import {
   dateNow
@@ -72,8 +71,8 @@ export function isUserOrNarrator(cha_id) {
 function waitMessageComplete(activeChat, curThread, date) {
   const { wait } = activeChat
   const { time_last_interaction } = wait
-  const currentMessage = getCurrentMessage(activeChat, curThread)
-  const { wait_sec } = currentMessage
+  const curMessage = getCurrentMessage(activeChat, curThread)
+  const { wait_sec } = curMessage
   const timeNow = dateNow(date)
   const waitDone = timeNow > time_last_interaction + wait_sec
   return waitDone
@@ -132,7 +131,7 @@ function pushNextMessage(key, nextMessage) {
   }
 }
 
-function pushNextMessageAddChar(key, nextMessage) {
+function pushNextMessageAddChar(key, curThread, nextMessage) {
   return (dispatch, getState) => {
     const state = getState()
     const activeChat = getActiveChat(state, key)
@@ -142,14 +141,15 @@ function pushNextMessageAddChar(key, nextMessage) {
     nextMessage.user._id = setChaId(nextMessage)
     nextMessage.user.avatar = getThumb(state.characters, activeChat, nextMessage)
     nextMessage._id = giftedChat.nextLine
+    nextMessage.platform = curThread.platform
     dispatch(pushNextMessage(key, nextMessage))
   }
 }
 
-function pushFemaleNextMessageWithTimeout(key, nextMessage, nextNextMessage) {
+function pushFemaleNextMessageWithTimeout(key, curThread, nextMessage, nextNextMessage) {
   return (dispatch) => {
     dispatch(
-      pushNextMessageAddChar(key, nextMessage)
+      pushNextMessageAddChar(key, curThread, nextMessage)
     )
 
     if (!nextNextMessage) return
@@ -164,15 +164,14 @@ function pushFemaleNextMessageWithTimeout(key, nextMessage, nextNextMessage) {
   }
 }
 
-function pushNextMessageWithTimeout(activeChat, nextMessage, nextNextMessage) {
+function pushNextMessageWithTimeout(activeChat, curThread, nextMessage, nextNextMessage) {
   return (dispatch, getState) => {
     const { cha_id } = nextMessage
     const { key } = activeChat
-    // user or narrator
     if (isUserOrNarrator(cha_id)) {
-      dispatch(pushNextMessageAddChar(key, nextMessage))
+      dispatch(pushNextMessageAddChar(key, curThread, nextMessage))
     } else {
-      dispatch(pushFemaleNextMessageWithTimeout(key, nextMessage, nextNextMessage))
+      dispatch(pushFemaleNextMessageWithTimeout(key, curThread, nextMessage, nextNextMessage))
     }
   }
 }
@@ -234,8 +233,6 @@ function execBranch(activeChat, threads, date) {
         key
       }
     case 'terminal':
-      // FIX it's depending on opened_today which could have been a while ago, dateNow would work
-      // better but harder for debugging
       return {
         type: BRANCH_TERMINAL,
         key,
@@ -262,7 +259,7 @@ export function nextStep(key) {
     if (!nextIsBranch) {
       const nextMessage = getNextMessage(activeChat, currentThread)
       const nextNextMessage = getNextNextMessage(activeChat, currentThread)
-      dispatch(pushNextMessageWithTimeout(activeChat, nextMessage, nextNextMessage))
+      dispatch(pushNextMessageWithTimeout(activeChat, currentThread, nextMessage, nextNextMessage))
     } else {
       dispatch(execBranch(activeChat, threads, date))
     }

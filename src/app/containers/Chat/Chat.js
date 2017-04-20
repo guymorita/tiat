@@ -101,8 +101,10 @@ class Chat extends React.Component {
   }
 
   renderBubble(props) {
-    const firstBgColor = getBackgroundColor(this.props.platform)
     const { currentMessage } = props
+    const { platform } = currentMessage
+    const firstBgColor = getBackgroundColor(platform)
+
     const secondBgColor = currentMessage.cha_id === 2 ? BABY_BLUE : LIGHT_GRAY
 
     return (
@@ -226,17 +228,18 @@ class Chat extends React.Component {
     const { branch } = curThread
     const { options } = branch
 
-    return this.renderOptionBubbles(options)
+    return this.renderOptionBubbles(options, curThread)
   }
 
-  renderOptionBubbles(options) {
+  renderOptionBubbles(options, curThread) {
     return options.map((option) => {
-      { return this.renderOptionBubble(option) }
+      { return this.renderOptionBubble(option, curThread) }
     })
   }
 
-  renderOptionBubble(option) {
-    const backgroundStyle = getBackgroundStyle(this.props.platform)
+  renderOptionBubble(option, curThread) {
+    const { platform } = curThread
+    const backgroundStyle = getBackgroundStyle(platform)
 
     return (
       <TouchableOpacity key={option.dec_id} style={styles.optionBubbleTouch} onPress={this._onOptionPress.bind(this, option)}>
