@@ -213,7 +213,7 @@ class Chat extends React.Component {
   }
 
   renderInputToolbar() {
-    const { curChat, curInput, date } = this.props
+    const { curChat, curInput } = this.props
     const { key } = curChat
 
     return (
@@ -224,7 +224,7 @@ class Chat extends React.Component {
   }
 
   renderBranchOptions = () => {
-    const { curChat, curThread, match } = this.props
+    const { curChat, curThread } = this.props
     const { branch } = curThread
     const { options } = branch
 
