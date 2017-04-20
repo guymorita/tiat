@@ -49,11 +49,11 @@ export default function activeChats(state = initialState, action) {
       const newChat = {
         key: action.key,
         thread: 'a',
-        msg_id: 0,
+        next_msg_id: 0,
         atBranch: false,
         giftedChat: {
           messages: [],
-          currentLine: 0
+          nextLine: 0
         },
         wait: {
           time_last_interaction: 0,
@@ -78,10 +78,10 @@ export default function activeChats(state = initialState, action) {
         ...state,
         [action.key]: {
           ...activeChat,
-          msg_id: activeChat.msg_id + 1,
+          next_msg_id: activeChat.next_msg_id + 1,
           giftedChat: {
             messages: activeChat.giftedChat.messages.concat(action.nextMessage),
-            currentLine: activeChat.giftedChat.currentLine + 1
+            nextLine: activeChat.giftedChat.nextLine + 1
           },
           wait: {
             ...activeChat.wait,
@@ -98,7 +98,7 @@ export default function activeChats(state = initialState, action) {
         [action.key]: {
           ...aChat,
           thread: action.branch_target,
-          msg_id: 0,
+          next_msg_id: 0,
           atBranch: false
         }
       }

@@ -22,12 +22,16 @@ import { BABY_BLUE, LIGHT_GRAY, LIGHT_PURPLE, getBackgroundStyle, getBackgroundC
 import {
   getMatch,
   initActiveChat,
+  getCurrentMessage,
+  getNextMessage,
+  getNextNextMessage,
   hasJumped,
+  isUserOrNarrator,
   jumpUseTry,
+  LONG_WAIT_IN_SEC,
   nextStep,
   switchBranchPushMessage,
-  shouldLongWait,
-  shouldWait,
+  shouldWaitForMessage,
   shouldWaitForTerminate
 } from '../../actions/chat'
 
@@ -199,6 +203,8 @@ class Chat extends React.Component {
         return this.renderJumpBubble
       case TRY_AGAIN:
         return this.renderTerminatedBubble
+      case WAIT:
+        return this.renderWaitingBubble
       default:
         return this.renderNextBubble
     }
@@ -207,12 +213,6 @@ class Chat extends React.Component {
   renderInputToolbar() {
     const { curChat, curInput, date } = this.props
     const { key } = curChat
-    // } else if (curChat && shouldLongWait(curChat, date) && !hasJumped(curChat)) {
-    //   const { key } = curChat
-    //   renderInputContent = this.renderJumpBubble.bind(this, key)
-    // } else if (curChat && shouldWait(curChat, date) && !hasJumped(curChat)) {
-    //   renderInputContent = this.renderWaitingBubble
-    // }
 
     return (
       <View style={styles.inputToolbar}>
@@ -222,9 +222,8 @@ class Chat extends React.Component {
   }
 
   renderBranchOptions = () => {
-    const { curChat, match } = this.props
-    const currentThread = match.threads[curChat.thread]
-    const { branch } = currentThread
+    const { curChat, curThread, match } = this.props
+    const { branch } = curThread
     const { options } = branch
 
     return this.renderOptionBubbles(options)
@@ -459,31 +458,29 @@ const styles = StyleSheet.create({
   }
 })
 
-const getCurrentInput = function(curChat, date) {
+const getCurrentInput = function(curChat, curThread, date) {
   if (curChat.atBranch) return OPTIONS
   if (curChat.terminate.isTerminated) {
-    console.log('shouldWaitForTerminate(curChat, date)', shouldWaitForTerminate(curChat, date))
     if (shouldWaitForTerminate(curChat, date) && !hasJumped(curChat)) {
       return JUMP
     }
     return TRY_AGAIN
   }
-  // should be waiting?
 
-  // is terminated?
-  // wait is over?
-  // Y - show TRY_AGAIN
-  // N - show JUMP
+  const curMessage = getCurrentMessage(curChat, curThread)
+  const nextMessage = getNextMessage(curChat, curThread)
 
-  // has a wait
-  // wait is over?
-  // Y - show normal input
-  // N
-  // long wait?
-  // Y - show JUMP
-  // N - show WAIT
+  const { cha_id } = curMessage || nextMessage
+  if (isUserOrNarrator(cha_id)) return NEXT
+  if (!shouldWaitForMessage(curChat, curThread, date)) return NEXT
 
-  return NEXT
+  if (!curMessage || !nextMessage || curMessage.cha_id !== nextMessage.cha_id) return NEXT
+
+  if (curMessage.wait_sec > LONG_WAIT_IN_SEC) {
+    return JUMP
+  } else {
+    return WAIT
+  }
 }
 
 const mapStateToProps = function(state) {
@@ -494,16 +491,18 @@ const mapStateToProps = function(state) {
   const curChat = activeChats[key]
   const isActive = !_.isEmpty(curChat)
   const platform = match && match.threads[curChat.thread].platform
-  let curInput
+  let curInput, curThread
 
   if (isActive) {
-    curInput = getCurrentInput(curChat, date)
+    curThread = match.threads[curChat.thread]
+    curInput = getCurrentInput(curChat, curThread, date)
   }
 
   return {
     characters,
     curChat,
     curInput,
+    curThread,
     date,
     isActive,
     key,
