@@ -57,9 +57,6 @@ export default function activeChats(state = initialState, action) {
         },
         wait: {
           time_last_interaction: 0,
-          time_end_wait: 0,
-          wait_message_id: 0,
-          currently_waiting: false
         },
         terminate: {
           isTerminated: false,
@@ -75,6 +72,7 @@ export default function activeChats(state = initialState, action) {
     case PUSH_NEXT_MESSAGE:
       const activeChat = state[action.key]
       const { options } = action
+      const tiNow = moment().unix()
 
       return {
         ...state,
@@ -87,38 +85,8 @@ export default function activeChats(state = initialState, action) {
           },
           wait: {
             ...activeChat.wait,
-            currently_waiting: options.keepWaiting || false,
+            time_last_interaction: tiNow,
             jumped: false
-          }
-        }
-      }
-
-    case TRY_PUSH_NEXT_MESSAGE:
-      const acChat = state[action.key]
-      const newMsg = action.nextMessage
-
-      const timeNow = moment().unix()
-      // get current wait
-      const currentWaitEndTime = acChat.wait.time_end_wait
-      // find the new possible wait with the new message
-      const newPotentialWaitTime = timeNow + newMsg.wait_sec
-      // if they aren't done with the old wait, use the old time. don't set a new wait time
-      const currentlyWaiting = timeNow < currentWaitEndTime
-      console.log('currentlyWaiting', currentlyWaiting)
-      // if it tells it that it's currently waiting
-
-      const newEndWaitTime = newPotentialWaitTime // currentlyWaiting ? currentWaitEndTime : newPotentialWaitTime
-
-      return {
-        ...state,
-        [action.key]: {
-          ...acChat,
-          wait: {
-            ...acChat.wait,
-            time_last_interaction: timeNow,
-            time_end_wait: newEndWaitTime,
-            wait_message_id: newMsg.msg_id,
-            currently_waiting: true
           }
         }
       }
@@ -145,9 +113,6 @@ export default function activeChats(state = initialState, action) {
           wait: {
             ...aaChat.wait,
             time_last_interaction: timNow,
-            time_end_wait: timNow,
-            wait_message_id: 0,
-            currently_waiting: false,
             jumped: true
           },
           terminate: {

@@ -21,7 +21,6 @@ export const BRANCH_TERMINAL = 'BRANCH_TERMINAL'
 export const WAIT_CLEAR_JUMP = 'WAIT_CLEAR_JUMP'
 export const SWITCH_BRANCH = 'SWITCH_BRANCH'
 export const SWITCH_CHAT = 'SWITCH_CHAT'
-export const TRY_PUSH_NEXT_MESSAGE = 'TRY_PUSH_NEXT_MESSAGE'
 
 const LONG_WAIT_IN_SEC = 300
 
@@ -132,16 +131,15 @@ function getThumb(characters, activeChat, nextMessage) {
   return character.images.thumb
 }
 
-function pushNextMessage(key, nextMessage, options = {}) {
+function pushNextMessage(key, nextMessage) {
   return {
     type: PUSH_NEXT_MESSAGE,
     key,
-    nextMessage,
-    options
+    nextMessage
   }
 }
 
-function pushNextMessageAddChar(key, nextMessage, options = {}) {
+function pushNextMessageAddChar(key, nextMessage) {
   return (dispatch, getState) => {
     const state = getState()
     const activeChat = getActiveChat(state, key)
@@ -151,137 +149,60 @@ function pushNextMessageAddChar(key, nextMessage, options = {}) {
     nextMessage.user._id = setChaId(nextMessage)
     nextMessage.user.avatar = getThumb(state.characters, activeChat, nextMessage)
     nextMessage._id = giftedChat.currentLine
-    dispatch(pushNextMessage(key, nextMessage, options))
+    dispatch(pushNextMessage(key, nextMessage))
   }
 }
 
-function tryPushNextMessage(key, nextMessage) {
-  return {
-    type: TRY_PUSH_NEXT_MESSAGE,
-    key,
-    nextMessage
+function pushFemaleNextMessageWithTimeout(key, nextMessage, nextNextMessage) {
+  return (dispatch) => {
+    dispatch(
+      pushNextMessageAddChar(key, nextMessage)
+    )
+
+    if (!nextNextMessage) return
+
+    if (nextMessage.cha_id === nextNextMessage.cha_id) {
+      const { wait_sec } = nextNextMessage
+      setTimeout(() => {
+        dispatch(nextStep(key))
+      }, wait_sec * 1000)
+    }
   }
 }
 
-function getMessagesToQueue(messages, cha_id, msg_id) {
-  const messagesToQueue = []
-
-  let pullMessage = false
-  for (var i = 0; i < messages.length; i++) {
-    const currentMessage = messages[i]
-    if (msg_id === currentMessage.msg_id) {
-      pullMessage = true
-    }
-    if (pullMessage) {
-      messagesToQueue.push(currentMessage)
-    }
-    const nextNextMessage = messages[i+1]
-    const nextMessageEnd = !nextNextMessage || nextNextMessage.cha_id !== cha_id
-    if (pullMessage && nextMessageEnd) {
-      pullMessage = false
-    }
-  };
-  return messagesToQueue
-}
-
-function tryPushFemaleNextMessageWithTimeout(key, nextMessage) {
+function pushNextMessageWithTimeout(activeChat, nextMessage, nextNextMessage) {
   return (dispatch, getState) => {
-    const state = getState()
-    const activeChat = getActiveChat(state, key)
-    const { wait } = activeChat
-    const { currently_waiting } = wait
-    const { cha_id, msg_id } = nextMessage
-
-    const match = getMatch(state, key)
-    const currentThread = match.threads[activeChat.thread]
-    const { messages } = currentThread
-
-    const messagesToQueue = getMessagesToQueue(messages, cha_id, msg_id)
-    const lastMessage = _.last(messagesToQueue)
-    // console.log('try push')
-    dispatch(tryPushNextMessage(key, lastMessage))
-
-    if (!currently_waiting) {
-      let sum_wait_wait_millisec = 0
-      const msgsLength = messagesToQueue.length
-      for (var i = 0; i < msgsLength; i++) {
-        const msg = messagesToQueue[i]
-        const { wait_sec } = msg
-        const wait_millisec = wait_sec * 1000
-        sum_wait_wait_millisec = sum_wait_wait_millisec + wait_millisec
-        const keepWaiting = msg.msg_id !== lastMessage.msg_id
-        setTimeout(() => {
-          dispatch(pushNextMessageAddChar(key, msg, {keepWaiting}))
-        }, sum_wait_wait_millisec)
-      }
-    }
-
-    // sometimes it doesn't queue all of the messages in the same batch
-    // sometimes it thinks the waitMessageComplete. can't unstuck yourself
-    // doesn't know how to handle non-terminal jumps
-    // next button flips on the second to last instead of the last. race condition with time.
-
-    // console.log('waitMessageComplete(activeChat)', waitMessageComplete(activeChat))
-
-    // if (waitMessageComplete(activeChat)) {
-    //   messagesToQueue.forEach(function (msg) {
-    //     // used when the waiting button had the next button functionality and you got stuck.
-    //     dispatch(pushNextMessageAddChar(key, msg))
-    //   })
-    // }
-
-    // current problems
-    // 1. doesn't put the jump button away after the day is fast forwarded
-    // 2. doesn't jump on a terminal
-  }
-}
-
-function tryPushNextMessageWithTimeout(activeChat, nextMessage) {
-  return (dispatch, getState) => {
-    const { cha_id, wait_sec } = nextMessage
+    const { cha_id } = nextMessage
     const { key } = activeChat
     // user or narrator
     if (cha_id < 100) {
-      dispatch(tryPushNextMessage(key, nextMessage))
       dispatch(pushNextMessageAddChar(key, nextMessage))
-    } else if (wait_sec > LONG_WAIT_IN_SEC) {
-      const { wait } = activeChat
-      const { jumped } = wait
-      if (!jumped) {
-        dispatch(tryPushNextMessage(key, nextMessage))
-      } else {
-        dispatch(pushNextMessageAddChar(key, nextMessage))
-      }
-      // if they jumped, let them through
-      // first time, they encounter the long wait
-      // currently_waiting = false
-      // set it to true. show them the long wait thing
-
-      // if they jump = currently_waiting = false
-      // how does it know it's not the first time seeing it?
-
-      // if (shouldWait(activeChat)) {
-        // console.log("shouldWait(activeChat)", shouldWait(activeChat))
-        // dispatch(tryPushNextMessage(key, nextMessage))
-        // is it done waiting?
-        // console.log('try jump')
-      // } else {
-
-      // }
     } else {
-      dispatch(tryPushFemaleNextMessageWithTimeout(key, nextMessage))
+      dispatch(pushFemaleNextMessageWithTimeout(key, nextMessage, nextNextMessage))
     }
   }
 }
 
-function createNextMessage(activeChat, currentThread) {
-  return (dispatch, getState) => {
-    const { msg_id } = activeChat
-    const { messages } = currentThread
-    const nextMessage = messages.find((msg) => { return msg.msg_id === msg_id })
+function findMessage(msg_id, messages) {
+  return messages.find((msg) => { return msg.msg_id === msg_id })
+}
 
-    dispatch(tryPushNextMessageWithTimeout(activeChat, nextMessage))
-  }
+function getNextMessage(activeChat, currentThread) {
+  const { msg_id } = activeChat
+  const { messages } = currentThread
+  const nextMessage = findMessage(msg_id, messages)
+  return nextMessage
+}
+
+function getNextNextMessage(activeChat, currentThread) {
+  const { msg_id } = activeChat
+  const { messages } = currentThread
+  const nextMessage = findMessage(msg_id + 1, messages)
+  return nextMessage
+}
+
+function messagesSameChar(message1, message2) {
+  return message1.cha_id === message2.cha_id
 }
 
 // BRANCH
@@ -344,7 +265,9 @@ export function nextStep(key) {
       nextIsBranch = msg_id > lastMessage.msg_id
     }
     if (!nextIsBranch) {
-      dispatch(createNextMessage(activeChat, currentThread))
+      const nextMessage = getNextMessage(activeChat, currentThread)
+      const nextNextMessage = getNextNextMessage(activeChat, currentThread)
+      dispatch(pushNextMessageWithTimeout(activeChat, nextMessage, nextNextMessage))
     } else {
       dispatch(execBranch(activeChat, threads, date))
     }

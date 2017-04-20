@@ -30,6 +30,12 @@ import {
   shouldWait
 } from '../../actions/chat'
 
+const NEXT = 'NEXT'
+const OPTIONS = 'OPTIONS'
+const WAIT = 'WAIT'
+const JUMP = 'JUMP'
+const TRY_AGAIN = 'TRY_AGAIN'
+
 const TEXT_COLOR_LIGHT = 'white'
 
 class Chat extends React.Component {
@@ -149,12 +155,12 @@ class Chat extends React.Component {
 
   renderFooter () {
     const { userHasInteracted } = this.state
-    const { isActive, curChat, date } = this.props
+    const { curChat, date } = this.props
     let footerComp = this.renderTapBelow
     let waitingToRestart = false
 
-    const isTerminated = isActive && curChat.terminate.isTerminated
-    if (isActive && isTerminated) {
+    const isTerminated = curChat.terminate.isTerminated
+    if (isTerminated) {
       const dateNow = date.opened_today.modified
       const { dateRetry } = curChat.terminate
       waitingToRestart = dateRetry > dateNow
@@ -182,25 +188,31 @@ class Chat extends React.Component {
     }
   }
 
-  renderInputToolbar() {
-    const { curChat, date } = this.props
-    console.log('date', date)
-
-    let renderInputContent = this.renderNextBubble
-    if (curChat && curChat.atBranch) {
-      renderInputContent = this.renderBranchOptions
-    } else if (curChat && shouldLongWait(curChat, date) && !hasJumped(curChat)) {
-      const { key } = curChat
-      renderInputContent = this.renderJumpBubble.bind(this, key)
-    } else if (curChat && shouldWait(curChat, date) && !hasJumped(curChat)) {
-      renderInputContent = this.renderWaitingBubble
-    } else if (curChat && curChat.terminate.isTerminated) {
-      renderInputContent = this.renderTerminatedBubble
+  getInput = (curInput) => {
+    switch(curInput) {
+      case NEXT:
+        return this.renderNextBubble
+      case OPTIONS:
+        return this.renderBranchOptions
+      default:
+        return this.renderNextBubble
     }
+  }
+
+  renderInputToolbar() {
+    const { curChat, curInput, date } = this.props
+    // } else if (curChat && shouldLongWait(curChat, date) && !hasJumped(curChat)) {
+    //   const { key } = curChat
+    //   renderInputContent = this.renderJumpBubble.bind(this, key)
+    // } else if (curChat && shouldWait(curChat, date) && !hasJumped(curChat)) {
+    //   renderInputContent = this.renderWaitingBubble
+    // } else if (curChat && curChat.terminate.isTerminated) {
+    //   renderInputContent = this.renderTerminatedBubble
+    // }
 
     return (
       <View style={styles.inputToolbar}>
-        {renderInputContent()}
+        {this.getInput(curInput)()}
       </View>
     )
   }
@@ -309,11 +321,7 @@ class Chat extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { isActive, curChat } = nextProps
-
-    if (!isActive) {
-      return
-    }
+    const { curChat } = nextProps
 
     this.setState({
       buttonsDisabled: false
@@ -355,11 +363,12 @@ class Chat extends React.Component {
 
   render() {
     const { characters, curChat, isActive } = this.props
-    let first_name = "Ann"
-    if (isActive) {
-      const char = characters.find((cha) => { return cha.key === curChat.key})
-      first_name = char && char.first_name
+    if (!isActive) {
+      return (<View><Text>...</Text></View>)
     }
+
+    const char = characters.find((cha) => { return cha.key === curChat.key})
+    const first_name = char && char.first_name
 
     return (
       <View style={styles.container}>
@@ -446,6 +455,13 @@ const styles = StyleSheet.create({
   }
 })
 
+const getCurrentInput = function(curChat) {
+  if (curChat.atBranch) {
+    return OPTIONS
+  }
+  return NEXT
+}
+
 const mapStateToProps = function(state) {
   const { activeChats, characters, currentChat, date } = state
   const { key } = currentChat
@@ -453,11 +469,17 @@ const mapStateToProps = function(state) {
   const match = getMatch(state, key)
   const curChat = activeChats[key]
   const isActive = !_.isEmpty(curChat)
-  const platform = match && match.threads[curChat.thread].platform || 'tinder'
+  const platform = match && match.threads[curChat.thread].platform
+  let curInput
+
+  if (isActive) {
+    curInput = getCurrentInput(curChat)
+  }
 
   return {
     characters,
     curChat,
+    curInput,
     date,
     isActive,
     key,
