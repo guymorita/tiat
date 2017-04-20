@@ -91,7 +91,7 @@ function waitTerminateComplete(activeChat, date) {
   return dateNow(date) > activeChat.terminate.dateRetry
 }
 
-function shouldWaitForTerminate(activeChat, date) {
+export function shouldWaitForTerminate(activeChat, date) {
   const { isTerminated } = activeChat.terminate
   return isTerminated && !waitTerminateComplete(activeChat, date)
 }
@@ -199,10 +199,6 @@ function getNextNextMessage(activeChat, currentThread) {
   const { messages } = currentThread
   const nextMessage = findMessage(msg_id + 1, messages)
   return nextMessage
-}
-
-function messagesSameChar(message1, message2) {
-  return message1.cha_id === message2.cha_id
 }
 
 // BRANCH

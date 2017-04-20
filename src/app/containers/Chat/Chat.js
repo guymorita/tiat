@@ -27,7 +27,8 @@ import {
   nextStep,
   switchBranchPushMessage,
   shouldLongWait,
-  shouldWait
+  shouldWait,
+  shouldWaitForTerminate
 } from '../../actions/chat'
 
 const NEXT = 'NEXT'
@@ -194,6 +195,10 @@ class Chat extends React.Component {
         return this.renderNextBubble
       case OPTIONS:
         return this.renderBranchOptions
+      case JUMP:
+        return this.renderJumpBubble
+      case TRY_AGAIN:
+        return this.renderTerminatedBubble
       default:
         return this.renderNextBubble
     }
@@ -201,18 +206,17 @@ class Chat extends React.Component {
 
   renderInputToolbar() {
     const { curChat, curInput, date } = this.props
+    const { key } = curChat
     // } else if (curChat && shouldLongWait(curChat, date) && !hasJumped(curChat)) {
     //   const { key } = curChat
     //   renderInputContent = this.renderJumpBubble.bind(this, key)
     // } else if (curChat && shouldWait(curChat, date) && !hasJumped(curChat)) {
     //   renderInputContent = this.renderWaitingBubble
-    // } else if (curChat && curChat.terminate.isTerminated) {
-    //   renderInputContent = this.renderTerminatedBubble
     // }
 
     return (
       <View style={styles.inputToolbar}>
-        {this.getInput(curInput)()}
+        {this.getInput(curInput)(key)}
       </View>
     )
   }
@@ -455,10 +459,30 @@ const styles = StyleSheet.create({
   }
 })
 
-const getCurrentInput = function(curChat) {
-  if (curChat.atBranch) {
-    return OPTIONS
+const getCurrentInput = function(curChat, date) {
+  if (curChat.atBranch) return OPTIONS
+  if (curChat.terminate.isTerminated) {
+    console.log('shouldWaitForTerminate(curChat, date)', shouldWaitForTerminate(curChat, date))
+    if (shouldWaitForTerminate(curChat, date) && !hasJumped(curChat)) {
+      return JUMP
+    }
+    return TRY_AGAIN
   }
+  // should be waiting?
+
+  // is terminated?
+  // wait is over?
+  // Y - show TRY_AGAIN
+  // N - show JUMP
+
+  // has a wait
+  // wait is over?
+  // Y - show normal input
+  // N
+  // long wait?
+  // Y - show JUMP
+  // N - show WAIT
+
   return NEXT
 }
 
@@ -473,7 +497,7 @@ const mapStateToProps = function(state) {
   let curInput
 
   if (isActive) {
-    curInput = getCurrentInput(curChat)
+    curInput = getCurrentInput(curChat, date)
   }
 
   return {
