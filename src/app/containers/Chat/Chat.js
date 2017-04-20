@@ -189,7 +189,7 @@ class Chat extends React.Component {
         </View>
       )
     } else {
-      return (<View></View>)
+      return (<View style={styles.footer}></View>)
     }
   }
 
