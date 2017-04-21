@@ -27,6 +27,9 @@ import {
   getNextNextMessage,
   hasJumped,
   hasLongWait,
+  isAtFirstMessage,
+  isCurrentlyWaiting,
+  isTerminated,
   isUserOrNarrator,
   jumpUseTry,
   nextStep,
@@ -243,7 +246,7 @@ class Chat extends React.Component {
 
     return (
       <TouchableOpacity key={option.dec_id} style={styles.optionBubbleTouch} onPress={this._onOptionPress.bind(this, option)}>
-        <View  style={[styles.bubbleBase, styles.optionBubble, backgroundStyle]}>
+        <View style={[styles.bubbleBase, styles.optionBubble, backgroundStyle]}>
           <Text
             style={styles.optionBubbleText}
             numberOfLines={2}>
@@ -463,27 +466,18 @@ const styles = StyleSheet.create({
 
 const getCurrentInput = function(curChat, curThread, date) {
   if (curChat.atBranch) return OPTIONS
-  if (curChat.terminate.isTerminated) {
-    if (shouldWaitForTerminate(curChat, date) && !hasJumped(curChat)) {
-      return JUMP
-    }
+  if (isTerminated(curChat)) {
+    if (shouldWaitForTerminate(curChat, date) && !hasJumped(curChat)) return JUMP
     return TRY_AGAIN
   }
+  if (isAtFirstMessage(curChat)) return NEXT
 
-  const curMessage = getCurrentMessage(curChat, curThread)
   const nextMessage = getNextMessage(curChat, curThread)
+  if (nextMessage && hasLongWait(nextMessage)) return JUMP
 
-  const { cha_id } = curMessage || nextMessage
-  if (isUserOrNarrator(cha_id)) return NEXT
-  if (!shouldWaitForMessage(curChat, curThread, date)) return NEXT
+  if (isCurrentlyWaiting(curChat) && shouldWaitForMessage(curChat, curThread, date)) return WAIT
 
-  if (!curMessage || !nextMessage || curMessage.cha_id !== nextMessage.cha_id) return NEXT
-
-  if (hasLongWait(curMessage)) {
-    return JUMP
-  } else {
-    return WAIT
-  }
+  return NEXT
 }
 
 const mapStateToProps = function(state) {

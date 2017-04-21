@@ -71,7 +71,6 @@ export default function activeChats(state = initialState, action) {
 
     case PUSH_NEXT_MESSAGE:
       const activeChat = state[action.key]
-      const { options } = action
       const tiNow = moment().unix()
 
       return {
@@ -86,7 +85,23 @@ export default function activeChats(state = initialState, action) {
           wait: {
             ...activeChat.wait,
             time_last_interaction: tiNow,
-            jumped: false
+            jumped: false,
+            currently_waiting: false
+          }
+        }
+      }
+
+    case TRY_PUSH_NEXT_MESSAGE:
+      const activChat = state[action.key]
+      const tNow = moment().unix()
+      return {
+        ...state,
+        [action.key]: {
+          ...activChat,
+          wait: {
+            ...activChat.wait,
+            time_last_interaction: tNow,
+            currently_waiting: true
           }
         }
       }

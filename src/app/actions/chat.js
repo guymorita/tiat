@@ -20,6 +20,7 @@ export const BRANCH_TERMINAL = 'BRANCH_TERMINAL'
 export const WAIT_CLEAR_JUMP = 'WAIT_CLEAR_JUMP'
 export const SWITCH_BRANCH = 'SWITCH_BRANCH'
 export const SWITCH_CHAT = 'SWITCH_CHAT'
+export const TRY_PUSH_NEXT_MESSAGE = 'TRY_PUSH_NEXT_MESSAGE'
 
 const LONG_WAIT_IN_SEC = 300
 
@@ -82,6 +83,10 @@ export function shouldWaitForMessage(activeChat, curThread, date) {
   return !waitMessageComplete(activeChat, curThread, date)
 }
 
+export function isCurrentlyWaiting(activeChat) {
+  return activeChat.wait.currently_waiting
+}
+
 function waitTerminateComplete(activeChat, date) {
   return dateNow(date) > activeChat.terminate.dateRetry
 }
@@ -123,6 +128,13 @@ function getThumb(characters, activeChat, nextMessage) {
   return character.images.thumb
 }
 
+function tryPushNextMessageAddChar(key) {
+  return {
+    type: TRY_PUSH_NEXT_MESSAGE,
+    key
+  }
+}
+
 function pushNextMessage(key, nextMessage) {
   return {
     type: PUSH_NEXT_MESSAGE,
@@ -147,20 +159,21 @@ function pushNextMessageAddChar(key, curThread, nextMessage) {
 }
 
 function pushFemaleNextMessageWithTimeout(key, curThread, nextMessage, nextNextMessage) {
-  return (dispatch) => {
-    dispatch(
-      pushNextMessageAddChar(key, curThread, nextMessage)
-    )
+  return (dispatch, getState) => {
+    dispatch(tryPushNextMessageAddChar(key, curThread))
 
-    if (!nextNextMessage) return
-
-    if (nextMessage.cha_id === nextNextMessage.cha_id) {
-      const { wait_sec } = nextMessage
+    const hasMoreMessages = nextNextMessage && nextMessage.cha_id === nextNextMessage.cha_id
+    let dispatchNextStep = false
+    if (hasMoreMessages) {
       if (hasLongWait(nextMessage)) return
-      setTimeout(() => {
-        dispatch(nextStep(key))
-      }, wait_sec * 1000)
+      dispatchNextStep = true
     }
+
+    const { wait_sec } = nextMessage
+    setTimeout(() => {
+      dispatch(pushNextMessageAddChar(key, curThread, nextMessage))
+      if (dispatchNextStep) dispatch(nextStep(key))
+    }, wait_sec * 1000)
   }
 }
 
@@ -197,6 +210,10 @@ export function getNextMessage(activeChat, currentThread) {
 
 export function getNextNextMessage(activeChat, currentThread) {
   return getMessage(activeChat, currentThread, 1)
+}
+
+export function isAtFirstMessage(activeChat) {
+  return activeChat.next_msg_id === 0
 }
 
 // BRANCH
@@ -241,14 +258,21 @@ function execBranch(activeChat, threads, date) {
   }
 }
 
+function getCurThread(state, activeChat) {
+  const { key } = activeChat
+  const match = getMatch(state, key)
+  const { threads } = match
+  const currentThread = threads[activeChat.thread]
+  return currentThread
+}
+
 export function nextStep(key) {
   return (dispatch, getState) => {
     const state = getState()
     const activeChat = getActiveChat(state, key)
+    const currentThread = getCurThread(state, activeChat)
     const match = getMatch(state, key)
-    const { date } = state
     const { threads } = match
-    const currentThread = threads[activeChat.thread]
     const { next_msg_id } = activeChat
     const { messages } = currentThread
     let nextIsBranch = true
@@ -261,10 +285,15 @@ export function nextStep(key) {
       const nextNextMessage = getNextNextMessage(activeChat, currentThread)
       dispatch(pushNextMessageWithTimeout(activeChat, currentThread, nextMessage, nextNextMessage))
     } else {
+      const { date } = state
       dispatch(execBranch(activeChat, threads, date))
     }
 
   }
+}
+
+export function isTerminated(activeChat) {
+  return activeChat.terminate.isTerminated
 }
 
 // JUMP
@@ -291,8 +320,12 @@ export function jumpUseTry(key) {
     } else {
       dispatch(invJumpsSubtract(1))
       dispatch(waitClearJump(key))
-      dispatch(nextStep(key))
-      // if next is message, push the message
+      const activeChat = getActiveChat(state, key)
+      if (!isTerminated(activeChat)) {
+        const currentThread = getCurThread(state, activeChat)
+        const nextMessage = getNextMessage(activeChat, currentThread)
+        dispatch(pushNextMessageAddChar(key, currentThread, nextMessage))
+      }
       Alert.alert(
         'Jumped!',
         ''
