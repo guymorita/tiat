@@ -10,11 +10,12 @@ import { connect } from 'react-redux'
 import Drawer from 'react-native-drawer'
 
 import Chat from './containers/Chat/Chat'
+import ControlPanel from './containers/ControlPanel/ControlPanel'
 import Dev from './containers/Dev/Dev'
 import Intro from './containers/Intro/Intro'
 import Matches from './containers/Matches/Matches'
+import Profile from './containers/Matches/Profile'
 import Store from './containers/Store/Store'
-import ControlPanel from './containers/ControlPanel/ControlPanel'
 
 import { openDrawer, closeDrawer } from './actions/ui'
 
@@ -40,7 +41,8 @@ class App extends Component {
       {title: 'Matches', index: 1},
       {title: 'Chat', index: 2},
       {title: 'Dev', index: 3},
-      {title: 'Store', index: 4}
+      {title: 'Store', index: 4},
+      {title: 'Profile', index: 5}
     ]
     const firstRoute = ui.intro_finished ? routes[1] : routes[0]
 
@@ -87,6 +89,9 @@ class App extends Component {
 
       case 'Store':
         return this._renderScene(<Store navigator={navigator} {...this.props}/>)
+
+      case 'Profile':
+        return this._renderScene(<Profile navigator={navigator} {...this.props}/>)
     }
   }
 }

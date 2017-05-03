@@ -13,3 +13,4 @@ key,cha_id,first_name,age,distance_in_miles,school,raw_bio,thumb,photo_0,photo_1
 111_Karen,111,Karen,28,,Occidental College,Guys with shirtless pics need not apply.,https://s3-ap-southeast-1.amazonaws.com/tiat-images/111_Karen_0.jpeg,,,
 112_Mina,112,Mina,20,3,University of Colorado,Graphic designer living in the city. Loves pizza and naps. My friends made me do this,https://s3-ap-southeast-1.amazonaws.com/tiat-images/112_Mina_0.jpeg,,,
 113_Ashley,113,Ashley,21,2,Rice University,Only swiping because I'm bored. Just being honest :D,https://s3-ap-southeast-1.amazonaws.com/tiat-images/113_Ashley_0.jpg,,,
+2_Shakespeare,2,Shakespeare,453,1,The Guild School in Stratford,The Original Romancer. You know this.,https://www.playshakespeare.com/images/avatar/thumb_1b09da63a23c12d8d02185e9.jpg,,,

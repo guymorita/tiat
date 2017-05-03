@@ -38,6 +38,10 @@ import {
   shouldWaitForTerminate
 } from '../../actions/chat'
 
+import {
+  characterSwitch
+} from '../../actions/character'
+
 const NEXT = 'NEXT'
 const OPTIONS = 'OPTIONS'
 const WAIT = 'WAIT'
@@ -100,6 +104,15 @@ class Chat extends React.Component {
       buttonsDisabled: true
     }, () => {
       dispatch(initActiveChat(key))
+    })
+  }
+
+  _onPressAvatar(usr) {
+    const { dispatch, navigator } = this.props
+    const { _id } = usr
+    dispatch(characterSwitch(_id))
+    navigator.push({
+      title: 'Profile'
     })
   }
 
@@ -387,6 +400,7 @@ class Chat extends React.Component {
           title={{title: first_name}}
         />
         <GiftedChat
+          onPressAvatar={this._onPressAvatar.bind(this)}
           renderBubble={this.renderBubble.bind(this)}
           renderFooter={this.renderFooter.bind(this)}
           renderInputToolbar={this.renderInputToolbar.bind(this)}

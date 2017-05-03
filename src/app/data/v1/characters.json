@@ -1,5 +1,5 @@
 {
-  "date": 1491103547898,
+  "date": 1493785510,
   "version": 1,
   "characters": [
     {
@@ -210,6 +210,21 @@
         "photo_1": "",
         "photo_2": "",
         "thumb": "https://s3-ap-southeast-1.amazonaws.com/tiat-images/113_Ashley_0.jpg"
+      }
+    },
+    {
+      "key": "2_Shakespeare",
+      "cha_id": 2,
+      "first_name": "Shakespeare",
+      "age": 453,
+      "distance_in_miles": 1,
+      "school": "The Guild School in Stratford",
+      "raw_bio": "The Original Romancer. You know this.",
+      "images": {
+        "photo_0": "",
+        "photo_1": "",
+        "photo_2": "",
+        "thumb": "https://www.playshakespeare.com/images/avatar/thumb_1b09da63a23c12d8d02185e9.jpg"
       }
     }
   ]
