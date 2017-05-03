@@ -5,43 +5,43 @@
         "text": "Hey Katrina! Nice to meet you :) How was your day?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Heyyyy",
         "msg_id": 1,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "It was okay, and yours?",
         "msg_id": 2,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Hahaha",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "It was chill, just worked for the most part",
         "msg_id": 4,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Okay ;)",
         "msg_id": 5,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Okay, clearly something is going on here with the \"heyyy\" and the winky face. What's your move?",
         "msg_id": 6,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -68,43 +68,43 @@
         "text": "So what are you up to tonight?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Hmmmmm",
         "msg_id": 1,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Good question hahaha",
         "msg_id": 2,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Just at home now, but I'm feeling pretty bored",
         "msg_id": 3,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Oh yeah?",
         "msg_id": 4,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Yeah haha",
         "msg_id": 5,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Well, it's pretty clear that she is looking for something. Your choice on how to proceed.",
         "msg_id": 6,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -120,43 +120,43 @@
         "text": "So have you met any cool people on this app?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I have met a few, yeah ;)",
         "msg_id": 1,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "lol",
         "msg_id": 2,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "nice haha",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": ";)",
         "msg_id": 4,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "so what are you up to tonight?",
         "msg_id": 5,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I'm just at home right now",
         "msg_id": 6,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -192,7 +192,7 @@
         "text": "Want to hang out tonight?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "That could be fun ;)",
@@ -204,67 +204,67 @@
         "text": "But, I have something to tell you first",
         "msg_id": 2,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Hahaha okay",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "So, I have a boyfriend",
         "msg_id": 4,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "But we have an open relationship",
         "msg_id": 5,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Ah, okay",
         "msg_id": 6,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "That's cool",
         "msg_id": 7,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Good job. Have an open mind, and be polite and understand of other people's relationship preferences and sexuality.",
         "msg_id": 8,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Thanks!",
         "msg_id": 9,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "So I can meet up, but there are some rules",
         "msg_id": 10,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "We can hangout, but I'm not available for dating",
         "msg_id": 11,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Is that okay with you?",
         "msg_id": 12,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -280,97 +280,97 @@
         "text": "We should totally meet up sometime.",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I would be down to meet tonight, but I'm exhausted",
         "msg_id": 1,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Hahaha, it's all good :)",
         "msg_id": 2,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Want to meet up another time this week?",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "That could work :)",
         "msg_id": 4,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "But, I have something to tell you first",
         "msg_id": 5,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Hahaha okay",
         "msg_id": 6,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "So, I have a boyfriend",
         "msg_id": 7,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "But we have an open relationship",
         "msg_id": 8,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Ah, okay",
         "msg_id": 9,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "That's cool",
         "msg_id": 10,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Good job. Have an open mind, and be polite and understand of other people's relationship preferences and sexuality.",
         "msg_id": 11,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Thanks!",
         "msg_id": 12,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "So I can meet up, but there are some rules",
         "msg_id": 13,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "We can hangout, but I'm not available for dating",
         "msg_id": 14,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Is that okay with you?",
         "msg_id": 15,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -406,37 +406,37 @@
         "text": "Yeah, I like to think I'm a pretty open minded guy :)",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Okay cool :)",
         "msg_id": 1,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I like open minded guys ;)",
         "msg_id": 2,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": ":)",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "There's another rule though...",
         "msg_id": 4,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "My boyfriend likes me to take pictures and video when I'm with other people",
         "msg_id": 5,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -452,31 +452,31 @@
         "text": "I can totally respect that, but it's not quite what I'm looking for right now",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I understand :)",
         "msg_id": 1,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I hope you find what you're looking for though",
         "msg_id": 2,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Same to you!",
         "msg_id": 3,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Nice. Even though you two weren't looking for the same thing, you ended the conversation in a polite way :)",
         "msg_id": 4,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -512,103 +512,103 @@
         "text": "Kinky",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I could be into that",
         "msg_id": 1,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "really?",
         "msg_id": 2,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "yeah haha",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "There would need to be some rules for us though",
         "msg_id": 4,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Hahaha okay",
         "msg_id": 5,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I need to be able to take the pictures and video",
         "msg_id": 6,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I don't want my face to be in the pictures or videos, just for personal reasons",
         "msg_id": 7,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "That makes sense",
         "msg_id": 8,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "No problem :)",
         "msg_id": 9,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "The only other thing is that we use protection, I'm pretty strict with the whole condoms thing",
         "msg_id": 10,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Absolutely",
         "msg_id": 11,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I'm glad that you're careful and upfront :)",
         "msg_id": 12,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Of course :)",
         "msg_id": 13,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Shall we continue this conversation over text?",
         "msg_id": 14,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Yes please!",
         "msg_id": 15,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "My number is 555.555.5555",
         "msg_id": 16,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -624,31 +624,31 @@
         "text": "I can totally respect that, but I'm not quite comfortable with that",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I understand :)",
         "msg_id": 1,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I hope you find what you're looking for though",
         "msg_id": 2,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Same to you!",
         "msg_id": 3,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Nice. Even though you two weren't looking for the same thing, you ended the conversation in a polite way :)",
         "msg_id": 4,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -664,67 +664,67 @@
         "text": "This is Colin :)",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Hey there",
         "msg_id": 1,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "So when is good for you to meet?",
         "msg_id": 2,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Let's see",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "It's already late tonight",
         "msg_id": 4,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "So another day this week would be best",
         "msg_id": 5,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Okay haha",
         "msg_id": 6,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": ":)",
         "msg_id": 7,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Can I see more pictures of you?",
         "msg_id": 8,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Although this can be a bold move, I think in this case it's fair since she likes pictures. It might even be a leading question...",
         "msg_id": 9,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "What kind of pictures do you want to see? ;)",
         "msg_id": 10,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "iMessage",
@@ -751,175 +751,175 @@
         "text": "I am glad to check out whatever you'd like to share with me :)",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Hahaha",
         "msg_id": 1,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Let's start with some normal pics haha",
         "msg_id": 2,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Works for me",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "{pic 1}",
         "msg_id": 4,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "{pic 2}",
         "msg_id": 5,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Wow. You are quite beautiful",
         "msg_id": 6,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Everyone likes compliments, especially a genuine one",
         "msg_id": 7,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Why thank you ;)",
         "msg_id": 8,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Your turn",
         "msg_id": 9,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Okay haha",
         "msg_id": 10,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "{pic 1}",
         "msg_id": 11,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "{pic 2}",
         "msg_id": 12,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "You're not so bad yourself ;)",
         "msg_id": 13,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Awwww shucks",
         "msg_id": 14,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Thank you haha",
         "msg_id": 15,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "So what evenings are you free this week?",
         "msg_id": 16,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I'm free Wednesday, Thursday, and Sunday",
         "msg_id": 17,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Just let me know in advance",
         "msg_id": 18,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Okay",
         "msg_id": 19,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Let's plan for Thursday eveing after 8pm?",
         "msg_id": 20,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I guess we can \"netflix and chill\"? haha",
         "msg_id": 21,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Given the context this works perfectly. In other circumstances, not so much.",
         "msg_id": 22,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "that sounds good to me haha",
         "msg_id": 23,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": ";)",
         "msg_id": 24,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Great",
         "msg_id": 25,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I'll text you Thursday AM",
         "msg_id": 26,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Okay! Talk soon",
         "msg_id": 27,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Well! This should be a fun time. Make sure to be polite and be safe :)",
         "msg_id": 28,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "iMessage",
@@ -935,157 +935,157 @@
         "text": "Let's start with some regular pics haha",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Hahaha okay",
         "msg_id": 1,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "{pic 1}",
         "msg_id": 2,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "{pic 2}",
         "msg_id": 3,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Wow. You are quite beautiful",
         "msg_id": 4,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Everyone likes compliments, especially a genuine one",
         "msg_id": 5,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Why thank you ;)",
         "msg_id": 6,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Your turn",
         "msg_id": 7,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Okay haha",
         "msg_id": 8,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "{pic 1}",
         "msg_id": 9,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "{pic 2}",
         "msg_id": 10,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "You're not so bad yourself ;)",
         "msg_id": 11,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Awwww shucks",
         "msg_id": 12,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Thank you haha",
         "msg_id": 13,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "So what evenings are you free this week?",
         "msg_id": 14,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I'm free Wednesday, Thursday, and Sunday",
         "msg_id": 15,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Just let me know in advance",
         "msg_id": 16,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Okay",
         "msg_id": 17,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Let's plan for Thursday eveing after 8pm?",
         "msg_id": 18,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I guess we can \"netflix and chill\"? haha",
         "msg_id": 19,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "that sounds good to me haha",
         "msg_id": 20,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": ";)",
         "msg_id": 21,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Great",
         "msg_id": 22,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I'll text you Thursday AM",
         "msg_id": 23,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Okay! Talk soon",
         "msg_id": 24,
         "cha_id": 105,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Well! This should be a fun time. Make sure to be polite and be safe :)",
         "msg_id": 25,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "iMessage",

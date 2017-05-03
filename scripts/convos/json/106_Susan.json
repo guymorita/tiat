@@ -5,7 +5,7 @@
         "text": "Hello Susan! How is your day going?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Sometimes people just don't respond. It's nothing personal. Keep on moving, and maintain a positive attitude.",

@@ -5,31 +5,31 @@
         "text": "Hey Em",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "How's your weekend going?",
         "msg_id": 1,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Hey",
         "msg_id": 2,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "It's good! Chill weekend",
         "msg_id": 3,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "How was yours?",
         "msg_id": 4,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -56,7 +56,7 @@
         "text": "Nice, yeah mine was pretty chill too. Just went out with some friends and hung out a lot outside lol",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -72,7 +72,7 @@
         "text": "It was pretty good. Caught up on some work and caught a bit of sun",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -88,31 +88,31 @@
         "text": "Is that your dog in the photos?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "He's my brothers",
         "msg_id": 1,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Such a big cute pie",
         "msg_id": 2,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Haha yeah he is",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "She doesn't seem too engaged in the conversation. Find some way to bring out the emotion or excitement.",
         "msg_id": 4,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -139,49 +139,49 @@
         "text": "So I'm guessing you're from Canada then?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Yap",
         "msg_id": 1,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Vancouver",
         "msg_id": 2,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Sweet, I've heard Vancouver is fun. How long u been in NY now?",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Almost 3 months. Love it",
         "msg_id": 4,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Slow it with the questions. She doesn't seem to be wanting to open up.",
         "msg_id": 5,
         "cha_id": 2,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Lol u don't like talking on Tinder do you",
         "msg_id": 6,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Hahah how'd you know?",
         "msg_id": 7,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -197,67 +197,67 @@
         "text": "What's his name / how old is he?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "His name is Lunchbox and he's 6",
         "msg_id": 1,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Dogs are the best hehe",
         "msg_id": 2,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I know!! Right",
         "msg_id": 3,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "My pup's name is Rolo. He loves to cuddle",
         "msg_id": 4,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "How long have you had him for?",
         "msg_id": 5,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Since he was 4 months",
         "msg_id": 6,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Awww that's sweeet. You've had him since he was a puppy",
         "msg_id": 7,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Yep",
         "msg_id": 8,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "I'd love to meet Lunchbox sometime",
         "msg_id": 9,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Yeah we should meet up",
         "msg_id": 10,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
@@ -273,37 +273,37 @@
         "text": "Wanna get coffee later this week? I'll show you a couple of my favorite spots in the city",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Yes I'm down. But it'll have to be next week? I'm going to DC tmr to take care of my aunties dog. She's going away for the week",
         "msg_id": 1,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Haha aw that's cute. And yeah, next week works fine",
         "msg_id": 2,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "What's your number?",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "555-555-5555",
         "msg_id": 4,
         "cha_id": 104,
-        "wait_sec": 2
+        "wait_sec": 0.5
       },
       {
         "text": "Cool I'll text you so you have my # too",
         "msg_id": 5,
         "cha_id": 1,
-        "wait_sec": 2
+        "wait_sec": 0.5
       }
     ],
     "platform": "tinder",
