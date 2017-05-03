@@ -5,61 +5,61 @@
         "text": "Hello Lucy! Nice to \"meet\" you haha",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "How is your day going?",
         "msg_id": 1,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Hello there",
         "msg_id": 2,
         "cha_id": 108,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "So far, so good, thanks for asking :)",
         "msg_id": 3,
         "cha_id": 108,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "And you?",
         "msg_id": 4,
         "cha_id": 108,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "I'm well, thanks, just at work right now",
         "msg_id": 5,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "That's good",
         "msg_id": 6,
         "cha_id": 108,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "What do you do for work?",
         "msg_id": 7,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "I'm a software engineer",
         "msg_id": 8,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "And you?",
         "msg_id": 9,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Hmmmm. Not getting a response. Want to try another message or move on?",
@@ -92,7 +92,7 @@
         "text": "Hola! Just wanted to see if you'd like to keep chatting :)",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Hey, no worries. The important thing is that you were polite. Lashing out when people don't respond is never okay.",
@@ -114,7 +114,7 @@
         "text": "Hey, no worries. The important thing is that you were polite. Lashing out when people don't respond is never okay.",
         "msg_id": 0,
         "cha_id": 2,
-        "wait_sec": 0.5
+        "wait_sec": 1
       }
     ],
     "platform": "tinder",

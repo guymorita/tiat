@@ -5,37 +5,37 @@
         "text": "Hello Jessica- nice to meet you!",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "How is your week going so far?",
         "msg_id": 1,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Nice to meet you too",
         "msg_id": 2,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "So far so good. And with you?",
         "msg_id": 3,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Pretty great. This weather has been amazing, so I got some time outdoors today.",
         "msg_id": 4,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Nice job keeping it positive. People are generally attracted to positive energy.",
         "msg_id": 5,
         "cha_id": 2,
-        "wait_sec": 0.5
+        "wait_sec": 1
       }
     ],
     "platform": "tinder",
@@ -62,55 +62,55 @@
         "text": "Have you met any cool people on this app yet?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Hahaha, I've met a few people",
         "msg_id": 1,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "But honestly, I mostly use it for entertainment",
         "msg_id": 2,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "When I'm bored lol",
         "msg_id": 3,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "How about you?",
         "msg_id": 4,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Yeah, I've met some great women on this app",
         "msg_id": 5,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "I think meeting new people is one of the best parts of life, so overall I think dating apps are net positive",
         "msg_id": 6,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "That's what I'm talking about with positive vibes. Nice work. Let's see how she responds",
         "msg_id": 7,
         "cha_id": 2,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "I totally agree :)",
         "msg_id": 8,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       }
     ],
     "platform": "tinder",
@@ -126,55 +126,55 @@
         "text": "What do you do for work? :)",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "I work as a clinical assistant for a chronic pain clinic and functional rehab center",
         "msg_id": 1,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "What do you do?",
         "msg_id": 2,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Wow. That sounds like a really cool job. How long have you been in healthcare for?",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "I'm a software engineer",
         "msg_id": 4,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "I actually just graduated a year ago. I was an EMT for a little bit and then in this job since then.",
         "msg_id": 5,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "That's cool. Did you study engineering in school?",
         "msg_id": 6,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "I did, but honestly I learned more outside of school than in school.",
         "msg_id": 7,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "It's nice to get to know people. But conversation like this can get really dry talking through an app. Perhaps try another topic?",
         "msg_id": 8,
         "cha_id": 2,
-        "wait_sec": 0.5
+        "wait_sec": 1
       }
     ],
     "platform": "tinder",
@@ -210,31 +210,31 @@
         "text": "So what are some of your favorite date activities?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Hahaha",
         "msg_id": 1,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Hmmmm. I like going out to eat. I think most people do haha",
         "msg_id": 2,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "How about you?",
         "msg_id": 3,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "I like going out to eat as well :) I also like going on hikes, and checking out museums and art shows.",
         "msg_id": 4,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       }
     ],
     "platform": "tinder",
@@ -250,13 +250,13 @@
         "text": "So what do you like to do when you're not working?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Sorry to say, this is where the conversation ends. Next time try asking some questions that are a little more interesting or unexpected.",
         "msg_id": 1,
         "cha_id": 2,
-        "wait_sec": 0.5
+        "wait_sec": 1
       }
     ],
     "platform": "tinder",
@@ -292,7 +292,7 @@
         "text": "So would you like to go out to dinner sometime?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Sometimes people just don't respond. It's nothing personal. Keep on moving, and maintain a positive attitude.",
@@ -314,73 +314,73 @@
         "text": "There's this weekly event at the academy of sciences called nightlife, have you heard of it?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "I have not. What is it?",
         "msg_id": 1,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Basically the academy of sciences has all of these cool exhibits and an aquarium, and they do an after hours event on Thursday nights with music and drinks.",
         "msg_id": 2,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "It's a pretty fun time",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "It sounds really neat :)",
         "msg_id": 4,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Would you be open to going this Thursday? Maybe we can get something to eat before or after?",
         "msg_id": 5,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Yeah, that sounds like fun :)",
         "msg_id": 6,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "great!",
         "msg_id": 7,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Want to coordinate over text? My number is 555.555.5555.",
         "msg_id": 8,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Sure",
         "msg_id": 9,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "My number is 555.555.5555",
         "msg_id": 10,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Sounds like a super fun event, great move offering a unqiue date idea.",
         "msg_id": 11,
         "cha_id": 2,
-        "wait_sec": 0.5
+        "wait_sec": 1
       }
     ],
     "platform": "tinder",
@@ -396,115 +396,115 @@
         "text": "Hello there :) This is Colin",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Hey Colin :)",
         "msg_id": 1,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "How's your evening going?",
         "msg_id": 2,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Pretty well, just at home cooking dinner",
         "msg_id": 3,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Nice! What are you cooking?",
         "msg_id": 4,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Pasta and salad",
         "msg_id": 5,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "What are you up to?",
         "msg_id": 6,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Was about to head to the gym actually",
         "msg_id": 7,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Sublte information that displays that you're heathly and well rounded can go a long way.",
         "msg_id": 8,
         "cha_id": 2,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Nice :)",
         "msg_id": 9,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "So for this Thursday, the event goes from 6-10. When is a good time for you?",
         "msg_id": 10,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Hmmmm",
         "msg_id": 11,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "I think 7 or 8 would be best",
         "msg_id": 12,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Either works for me. Should we say 7:30?",
         "msg_id": 13,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Also, would you like me to pick you up, or would you like to meet there?",
         "msg_id": 14,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Good move. Sometimes women don't like the idea of a stranger picking them up. It's always nice to offer, but make it an option.",
         "msg_id": 15,
         "cha_id": 2,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "You can pick me up at my place at 7:30.",
         "msg_id": 16,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "My address is 1223 Potrero",
         "msg_id": 17,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Great! See you Thursday at 7:30",
         "msg_id": 18,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       }
     ],
     "platform": "",
@@ -540,25 +540,25 @@
         "text": "Hey Jessica! Still on for tomorrow night?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Yessir :)",
         "msg_id": 1,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Great! I'll see you at 7:30. Looking forward to it.",
         "msg_id": 2,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Me too :)",
         "msg_id": 3,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       }
     ],
     "platform": "iMessage",
@@ -574,31 +574,31 @@
         "text": "Hey Jessica! Still on for tonight?",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Hey there",
         "msg_id": 1,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Yep. 7:30?",
         "msg_id": 2,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Yeah! Looking forward to it.",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Me too :)",
         "msg_id": 4,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       }
     ],
     "platform": "iMessage",
@@ -614,37 +614,37 @@
         "text": "Thanks for meeting up with me tonight Jessica!",
         "msg_id": 0,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Thank you for dinner :)",
         "msg_id": 1,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "You're welcome :)",
         "msg_id": 2,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "I hope you have a good night",
         "msg_id": 3,
         "cha_id": 1,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "You too",
         "msg_id": 4,
         "cha_id": 102,
-        "wait_sec": 0.5
+        "wait_sec": 1
       },
       {
         "text": "Okay okay. Seems like you had a decent date. Wait a couple days, and follow up to see how she is and ask her out again.",
         "msg_id": 5,
         "cha_id": 2,
-        "wait_sec": 0.5
+        "wait_sec": 1
       }
     ],
     "platform": "iMessage",
