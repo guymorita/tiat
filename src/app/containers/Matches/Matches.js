@@ -103,7 +103,7 @@ class Matches extends Component {
       <View style={styles.container}>
         <NavigationBar
           leftButton={this.leftButtonConfig}
-          rightButton={__DEV__ ? this.devButtonConfig : this.blankButtonConfig}
+          rightButton={this.devButtonConfig}
           tintColor={"#F8F8F8"}
           title={{title: "Chats"}}
         />

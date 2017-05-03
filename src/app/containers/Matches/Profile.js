@@ -46,6 +46,8 @@ class Profile extends React.Component {
 
     const firstImage = (id) => { return imageMapping[id] }
 
+    if (!char) return (<View></View>)
+
     const { age, distance_in_miles, first_name, raw_bio, school } = char
 
     return (
