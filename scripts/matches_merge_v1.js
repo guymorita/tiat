@@ -24,14 +24,18 @@ fs.readdirSync(normalizedPath).forEach(function(file) {
   const femaleKey = path.basename(matchPath, '.json');
   const [femaleChaId, femaleFirstName] = femaleKey.split('_');
 
-  const matchFile = require(matchPath);
+  const matchThreads = require(matchPath);
+  const numThreads = Object.keys(matchThreads).length;
   const matchMeta = {
     key: femaleKey,
     characters: {
       lead_female_key: femaleKey,
       lead_male_key: matchJoinDict[femaleKey]
     },
-    threads: matchFile
+    threads: matchThreads,
+    options: {
+      jumpable: numThreads > 1
+    }
   };
 
   matchBlob.matches.push(matchMeta);

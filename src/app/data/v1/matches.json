@@ -1,5 +1,5 @@
 {
-  "date": 1493786944,
+  "date": 1496111643,
   "version": 1,
   "matches": [
     {
@@ -1857,6 +1857,9 @@
             "options": []
           }
         }
+      },
+      "options": {
+        "jumpable": true
       }
     },
     {
@@ -2521,6 +2524,9 @@
             "options": []
           }
         }
+      },
+      "options": {
+        "jumpable": true
       }
     },
     {
@@ -2558,6 +2564,9 @@
             "options": []
           }
         }
+      },
+      "options": {
+        "jumpable": false
       }
     },
     {
@@ -2881,6 +2890,9 @@
             "options": []
           }
         }
+      },
+      "options": {
+        "jumpable": true
       }
     },
     {
@@ -3986,6 +3998,9 @@
             "options": []
           }
         }
+      },
+      "options": {
+        "jumpable": true
       }
     },
     {
@@ -4017,6 +4032,9 @@
             "options": []
           }
         }
+      },
+      "options": {
+        "jumpable": false
       }
     },
     {
@@ -4054,6 +4072,9 @@
             "options": []
           }
         }
+      },
+      "options": {
+        "jumpable": false
       }
     },
     {
@@ -4188,6 +4209,9 @@
             "options": []
           }
         }
+      },
+      "options": {
+        "jumpable": true
       }
     },
     {
@@ -4815,6 +4839,9 @@
             "options": []
           }
         }
+      },
+      "options": {
+        "jumpable": true
       }
     },
     {
@@ -6147,6 +6174,9 @@
             "options": []
           }
         }
+      },
+      "options": {
+        "jumpable": true
       }
     },
     {
@@ -6208,6 +6238,9 @@
             "options": []
           }
         }
+      },
+      "options": {
+        "jumpable": false
       }
     },
     {
@@ -6341,6 +6374,9 @@
             "options": []
           }
         }
+      },
+      "options": {
+        "jumpable": false
       }
     },
     {
@@ -6546,6 +6582,9 @@
             "options": []
           }
         }
+      },
+      "options": {
+        "jumpable": false
       }
     }
   ]

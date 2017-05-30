@@ -47,6 +47,7 @@ const OPTIONS = 'OPTIONS'
 const WAIT = 'WAIT'
 const JUMP = 'JUMP'
 const TRY_AGAIN = 'TRY_AGAIN'
+const BACK = 'BACK'
 
 const TEXT_COLOR_LIGHT = 'white'
 
@@ -223,6 +224,8 @@ class Chat extends React.Component {
         return this.renderTerminatedBubble
       case WAIT:
         return this.renderWaitingBubble
+      case BACK:
+        return this.renderBackBubble
       default:
         return this.renderNextBubble
     }
@@ -319,6 +322,18 @@ class Chat extends React.Component {
         </View>
       </TouchableOpacity>
     );
+  }
+
+  renderBackBubble = () => {
+    return (
+      <TouchableOpacity onPress={this._onBackPress.bind(this)}>
+        <View style={[styles.bubbleBase, styles.centerBubble, styles.waitBubble]}>
+          <Text>
+            Back
+          </Text>
+        </View>
+      </TouchableOpacity>
+    )
   }
 
   renderAccessory(props) {
@@ -478,16 +493,24 @@ const styles = StyleSheet.create({
   }
 })
 
-const getCurrentInput = function(curChat, curThread, date) {
+const getCurrentInput = function(curChat, curThread, date, jumpable) {
   if (curChat.atBranch) return OPTIONS
+
   if (isTerminated(curChat)) {
-    if (shouldWaitForTerminate(curChat, date) && !hasJumped(curChat)) return JUMP
+    if (shouldWaitForTerminate(curChat, date) && !hasJumped(curChat)) {
+      if (jumpable) {
+        return JUMP
+      } else {
+        return BACK
+      }
+    }
     return TRY_AGAIN
   }
   if (isAtFirstMessage(curChat)) return NEXT
 
   const nextMessage = getNextMessage(curChat, curThread)
-  if (nextMessage && hasLongWait(nextMessage)) return JUMP
+  // FIX add logic for if it's not jumpable
+  if (nextMessage && hasLongWait(nextMessage) && jumpable) return JUMP
 
   if (isCurrentlyWaiting(curChat) && shouldWaitForMessage(curChat, curThread, date)) return WAIT
 
@@ -501,12 +524,13 @@ const mapStateToProps = function(state) {
   const match = getMatch(state, key)
   const curChat = activeChats[key]
   const isActive = !_.isEmpty(curChat)
+  const jumpable = match && match.options.jumpable
   const platform = match && match.threads[curChat.thread].platform
   let curInput, curThread
 
   if (isActive) {
     curThread = match.threads[curChat.thread]
-    curInput = getCurrentInput(curChat, curThread, date)
+    curInput = getCurrentInput(curChat, curThread, date, jumpable)
   }
 
   return {
