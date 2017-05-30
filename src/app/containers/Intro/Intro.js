@@ -15,16 +15,13 @@ class Intro extends Component {
     })
   }
 
-  onSkipBtnHandle = (index) => {
-    this.pushMatches()
-  }
-
   doneBtnHandle = () => {
     this.pushMatches()
   }
 
   render() {
     const pageArray = [{
+      title: 'Ethical Dating Advice',
       description: 'Learn fliratious and respectful online conversation through real chat stories.',
       img: require('./onboarding1.png'),
       imgStyle: {
@@ -35,17 +32,18 @@ class Intro extends Component {
       fontColor: '#fff',
       level: 10,
     }, {
-      description: 'Jump into one of our chat stories and "choose your own ending"',
-      img: require('./onboarding2.png'),
+      title: 'New Matches Daily',
+      img: require('./onboarding4.png'),
       imgStyle: {
-        height: 508 / 2.5,
-        width: 499 / 2.5
+        height: 150 / 2.5,
+        width: 630 / 2.5
       },
       backgroundColor: LIGHT_BLUE,
       fontColor: '#fff',
       level: 10,
     }, {
-      description: 'Get helpful tips and insight from our modern day romance specialist',
+      title: 'Instant feedback',
+      description: 'Get helpful tips and insight from our modern romance specialist',
       img: require('./onboarding3.png'),
       imgStyle: {
         height: 310 / 2.5,
@@ -58,7 +56,7 @@ class Intro extends Component {
     return (
       <AppIntro
         onDoneBtnClick={this.doneBtnHandle}
-        onSkipBtnClick={this.onSkipBtnHandle}
+        showSkipButton={false}
         pageArray={pageArray}
         customStyles={customIntroStyles}
       />
@@ -76,8 +74,8 @@ const customIntroStyles = {
     marginBottom: 35
   },
   title: {
-    paddingBottom: 0,
-    height: 0
+    textAlign: 'center',
+
   },
   description: {
     fontSize: 16,
