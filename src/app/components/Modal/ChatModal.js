@@ -8,13 +8,21 @@ import {
   View
 } from 'react-native'
 import Modal from 'react-native-modalbox'
-import { TINDER_COLOR } from '../../lib/colors'
+import { TINDER_COLOR, SUCCESS_GREEN } from '../../lib/colors'
 
 export default class ChatModal extends React.Component {
   render() {
-    const { open, type } = this.props
+    const { open, text, type } = this.props
 
-    const addnStyle = type === "success" ? styles.success : styles.fail
+    const success = type === "success";
+
+    const addnStyle = success ? styles.success : styles.fail
+    const title = success ? "Great!" : "Oops!"
+    const imgMap = {
+      'success': require('./success.png'),
+      'fail': require('./fail.png')
+    };
+    const img = imgMap[type]
 
     return (
       <Modal
@@ -22,19 +30,23 @@ export default class ChatModal extends React.Component {
         position={"center"}
         backdrop={true}
         backdropOpacity={0.3}
+        backdropPressToClose={true}
         isOpen={open}
         ref={"modal"}
       >
         <View style={styles.container}>
           <View style={[styles.upper, addnStyle]}>
             <Image
-              source={require('./fail.png')}
+              source={img}
               style={styles.sign}
             />
           </View>
           <View style={[styles.bottom]}>
+            <Text style={styles.headerText}>
+              {title}
+            </Text>
             <Text>
-              Sorry you failed
+              {text}
             </Text>
           </View>
         </View>
@@ -63,19 +75,20 @@ const styles = StyleSheet.create({
   },
 
   upper: {
-    backgroundColor: "green",
     width: MODAL_EDGE_LENGTH,
-    height: MODAL_EDGE_LENGTH / 2,
+    height: MODAL_EDGE_LENGTH * 0.55,
     alignItems: 'center',
     justifyContent: 'center'
   },
 
   bottom: {
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1
   },
 
   success: {
-    backgroundColor: "green"
+    backgroundColor: SUCCESS_GREEN
   },
 
   fail: {
@@ -85,5 +98,10 @@ const styles = StyleSheet.create({
   sign: {
     width: 75,
     height: 75
+  },
+
+  headerText: {
+    fontSize: 24,
+    marginBottom: 10
   }
 })

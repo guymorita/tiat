@@ -1,5 +1,5 @@
 {
-  "date": 1496360789,
+  "date": 1496443943,
   "version": 1,
   "matches": [
     {
@@ -670,7 +670,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "fail"
+              "terminal_type": "fail",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -1100,7 +1101,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "fail"
+              "terminal_type": "fail",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -1298,7 +1300,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "fail"
+              "terminal_type": "fail",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -1711,7 +1714,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "success"
+              "terminal_type": "success",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -1917,7 +1921,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "success"
+              "terminal_type": "success",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -2210,7 +2215,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "fail"
+              "terminal_type": "fail",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -2258,7 +2264,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "fail"
+              "terminal_type": "fail",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -2618,7 +2625,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "success"
+              "terminal_type": "success",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -3137,7 +3145,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "success"
+              "terminal_type": "success",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -3317,7 +3326,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "success"
+              "terminal_type": "success",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -3594,7 +3604,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "success"
+              "terminal_type": "success",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -3764,7 +3775,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "success"
+              "terminal_type": "success",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -4100,7 +4112,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "success"
+              "terminal_type": "success",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -4144,7 +4157,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "fail"
+              "terminal_type": "fail",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -4551,7 +4565,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "success"
+              "terminal_type": "success",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -4798,7 +4813,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "success"
+              "terminal_type": "success",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -5202,7 +5218,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "success"
+              "terminal_type": "success",
+              "text": ""
             },
             "text": "",
             "options": []
@@ -5660,7 +5677,8 @@
             "branch_type": "terminal",
             "branch_target": "",
             "terminal_options": {
-              "terminal_type": "success"
+              "terminal_type": "success",
+              "text": ""
             },
             "text": "",
             "options": []

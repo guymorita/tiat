@@ -45,6 +45,7 @@ import {
 import NavTitle from '../Matches/NavTitle'
 import BackButton from '../../components/Nav/BackButton'
 import ChatModal from '../../components/Modal/ChatModal'
+import Confetti from '../../modules/react-native-confetti'
 
 const NEXT = 'NEXT'
 const OPTIONS = 'OPTIONS'
@@ -363,24 +364,30 @@ class Chat extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { curChat } = nextProps
+    const { curChat, isTerm } = nextProps
 
     this.setState({
       buttonsDisabled: false
     })
 
+    if (!curChat) return
+
     const { giftedChat } = curChat
     const { messages } = giftedChat
-
-    if (curChat.terminate.isTerminated) {
-      PushNotification.requestPermissions()
-    }
 
     const hasNewMessage = this.state.messages.length !== messages.length
     if (hasNewMessage) {
       this.setState({
         messages: GiftedChat.append(this.state.messages, messages[messages.length - 1])
       })
+    }
+
+    if (isTerm) {
+      PushNotification.requestPermissions()
+      this._onToggleModal()
+      if(this._confettiView) {
+        this._confettiView.startConfetti();
+      }
     }
   }
 
@@ -403,14 +410,21 @@ class Chat extends React.Component {
     )
   }
 
+  componentWillUnmount() {
+    if (this._confettiView) {
+      this._confettiView.stopConfetti = true;
+    }
+  }
+
   render() {
-    const { characters, curChat, curThread, isActive } = this.props
+    const { characters, curChat, curThread, isActive, terminal_options } = this.props
     if (!isActive) {
       return (<View><Text>...</Text></View>)
     }
 
     const char = characters.find((cha) => { return cha.key === curChat.key})
     const first_name = char && char.first_name
+    const { terminal_type, text } = terminal_options
 
     return (
       <View style={styles.container}>
@@ -431,8 +445,8 @@ class Chat extends React.Component {
             _id: 1,
           }}
         />
-        <Button title="Toggle Modal" onPress={() => this._onToggleModal()}>Basic modal</Button>
-        <ChatModal type={"fail"} open={this.state.modalOpen} />
+        <ChatModal type={terminal_type} open={this.state.modalOpen} text={text}/>
+        <Confetti ref={(node) => this._confettiView = node}/>
       </View>
     );
   }
@@ -500,10 +514,10 @@ const styles = StyleSheet.create({
   }
 })
 
-const getCurrentInput = function(curChat, curThread, date, jumpable) {
+const getCurrentInput = function(curChat, curThread, date, isTerm, jumpable) {
   if (curChat.atBranch) return OPTIONS
 
-  if (isTerminated(curChat)) {
+  if (isTerm) {
     if (shouldWaitForTerminate(curChat, date) && !hasJumped(curChat)) {
       if (jumpable) {
         return JUMP
@@ -534,10 +548,14 @@ const mapStateToProps = function(state) {
   const jumpable = match && match.options.jumpable
   const platform = match && match.threads[curChat.thread].platform
   let curInput, curThread
+  let isTerm = false
+  let terminal_options = {}
 
   if (isActive) {
     curThread = match.threads[curChat.thread]
-    curInput = getCurrentInput(curChat, curThread, date, jumpable)
+    isTerm = isTerminated(curChat)
+    curInput = getCurrentInput(curChat, curThread, date, isTerm, jumpable)
+    terminal_options = curThread.branch.terminal_options
   }
 
   return {
@@ -547,9 +565,11 @@ const mapStateToProps = function(state) {
     curThread,
     date,
     isActive,
+    isTerm,
     key,
     match,
-    platform
+    platform,
+    terminal_options
   }
 }
 

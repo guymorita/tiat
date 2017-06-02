@@ -25,7 +25,8 @@
       "branch_type": "terminal",
       "branch_target": "",
       "terminal_options": {
-        "terminal_type": "fail"
+        "terminal_type": "fail",
+        "text": ""
       },
       "text": "",
       "options": []

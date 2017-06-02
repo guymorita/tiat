@@ -439,7 +439,8 @@
       "branch_type": "terminal",
       "branch_target": "",
       "terminal_options": {
-        "terminal_type": "success"
+        "terminal_type": "success",
+        "text": ""
       },
       "text": "",
       "options": []

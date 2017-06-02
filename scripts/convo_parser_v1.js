@@ -89,12 +89,13 @@ const createMultiBranch = function(element) {
 };
 
 const createTerminalBranch = function(element) {
-  const { terminal_type } = element;
+  const { terminal_type, text } = element;
   return {
     branch_type: 'terminal',
     branch_target: '',
     terminal_options: {
-      terminal_type
+      terminal_type,
+      text
     },
     text: element.text,
     options: []
