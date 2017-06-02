@@ -42,6 +42,8 @@ import {
   characterSwitch
 } from '../../actions/character'
 
+import NavTitle from '../Matches/NavTitle'
+
 const NEXT = 'NEXT'
 const OPTIONS = 'OPTIONS'
 const WAIT = 'WAIT'
@@ -412,7 +414,7 @@ class Chat extends React.Component {
         <NavigationBar
           leftButton={this.leftButtonConfig}
           tintColor={"#F8F8F8"}
-          title={{title: first_name}}
+          title={<NavTitle character={char} />}
         />
         <GiftedChat
           onPressAvatar={this._onPressAvatar.bind(this)}
