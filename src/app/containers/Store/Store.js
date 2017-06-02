@@ -12,16 +12,12 @@ import NavigationBar from 'react-native-navbar'
 
 import { fetchProducts, formatProducts, productBuy } from '../../actions/store' // platform specific
 import { tryPurchaseMatches } from '../../actions/matches'
+import HamburgerButton from '../../components/Nav/HamburgerButton'
+import Title from '../../components/Nav/Title'
 
 import { LIGHT_BLUE, LIGHT_PURPLE, TINDER_COLOR } from '../../lib/colors'
 
 class Store extends React.Component {
-  leftButtonConfig = {
-    title: '≡',
-    tintColor: 'black',
-    handler: () => this._onLeftButtonPress()
-  }
-
   _onLeftButtonPress() {
     this.props.openDrawer()
   }
@@ -140,9 +136,9 @@ class Store extends React.Component {
     return (
       <View style={styles.container}>
         <NavigationBar
-          leftButton={this.leftButtonConfig}
+          leftButton={<HamburgerButton onHamPress={this._onLeftButtonPress.bind(this)} />}
           tintColor={"#F8F8F8"}
-          title={{title: "Store"}}
+          title={<Title text={"Store"} />}
         />
         <ScrollView>
           {this._renderJumpsSection()}

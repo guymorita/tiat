@@ -13,6 +13,8 @@ import NavigationBar from 'react-native-navbar'
 import { findMatches, initMatchQueue, tryAdvanceMatchQueue } from '../../actions/matches'
 import { updateActualDate } from '../../actions/date'
 import MatchCell from './MatchCell'
+import HamburgerButton from '../../components/Nav/HamburgerButton'
+import Title from '../../components/Nav/Title'
 import { tryCreatePushNotification } from '../../actions/pushNotification'
 
 class Matches extends Component {
@@ -26,12 +28,6 @@ class Matches extends Component {
       dataSource: ds.cloneWithRows([]),
       ds
     }
-  }
-
-  leftButtonConfig = {
-    title: '≡',
-    tintColor: 'black',
-    handler: () => this._onLeftButtonPress()
   }
 
   devButtonConfig = {
@@ -102,10 +98,10 @@ class Matches extends Component {
     return (
       <View style={styles.container}>
         <NavigationBar
-          leftButton={this.leftButtonConfig}
+          leftButton={<HamburgerButton onHamPress={this._onLeftButtonPress.bind(this)}/>}
           rightButton={this.devButtonConfig}
           tintColor={"#F8F8F8"}
-          title={{title: "Chats"}}
+          title={<Title text={"Chats"} />}
         />
         <ListView
           dataSource={this.state.dataSource}

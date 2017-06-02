@@ -29,7 +29,8 @@ export default class NavTitle extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    height: 40
   },
   name: {
     fontSize: 16,

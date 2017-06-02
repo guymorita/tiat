@@ -43,6 +43,7 @@ import {
 } from '../../actions/character'
 
 import NavTitle from '../Matches/NavTitle'
+import BackButton from '../../components/Nav/BackButton'
 
 const NEXT = 'NEXT'
 const OPTIONS = 'OPTIONS'
@@ -62,12 +63,6 @@ class Chat extends React.Component {
       userHasInteracted: false,
       buttonsDisabled: false
     }
-  }
-
-  leftButtonConfig = {
-    title: 'Back',
-    tintColor: 'black',
-    handler: () => this._onBackPress(),
   }
 
   _onBackPress() {
@@ -412,7 +407,7 @@ class Chat extends React.Component {
     return (
       <View style={styles.container}>
         <NavigationBar
-          leftButton={this.leftButtonConfig}
+          leftButton={<BackButton onBackPress={this._onBackPress.bind(this)} />}
           tintColor={"#F8F8F8"}
           title={<NavTitle character={char} />}
         />
