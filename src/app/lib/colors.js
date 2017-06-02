@@ -5,6 +5,8 @@ import {
 
 export const TINDER_COLOR = '#EC736B'
 const IMESSAGE_COLOR = '#2D75FA'
+const BUMBLE_COLOR = '#F3C84A'
+const WHATSAPP_COLOR = '#E8FFCD'
 
 export const LIGHT_BLUE = '#60B9F9'
 export const BABY_BLUE = '#D0E2F4'
@@ -17,6 +19,10 @@ export const getBackgroundStyle = (platform) => {
       return styles.backgroundTinder
     case 'iMessage':
       return styles.backgroundiMessage
+    case 'bumble':
+      return styles.backgroundBumble
+    case 'whatsapp':
+      return styles.backgroundWhatsapp
   }
 }
 
@@ -26,6 +32,10 @@ export const getBackgroundColor = (platform) => {
       return TINDER_COLOR
     case 'iMessage':
       return IMESSAGE_COLOR
+    case 'bumble':
+      return BUMBLE_COLOR
+    case 'whatsapp':
+      return WHATSAPP_COLOR
   }
 }
 
@@ -35,5 +45,11 @@ const styles = StyleSheet.create({
   },
   backgroundiMessage: {
     backgroundColor: IMESSAGE_COLOR
+  },
+  backgroundBumble: {
+    backgroundColor: BUMBLE_COLOR
+  },
+  backgroundWhatsapp: {
+    backgroundColor: WHATSAPP_COLOR
   }
 })
