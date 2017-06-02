@@ -2,7 +2,7 @@
   "a": {
     "messages": [
       {
-        "text": "Hey Ana! Nice to meet you :)",
+        "text": "Hey Ana! Nice to meet you 😊",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 1
@@ -14,7 +14,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Hey :)",
+        "text": "Hey 😊",
         "msg_id": 2,
         "cha_id": 101,
         "wait_sec": 1
@@ -44,14 +44,20 @@
         "wait_sec": 1
       },
       {
-        "text": "I'm a pharmacist",
+        "text": "I deal drugs",
         "msg_id": 7,
         "cha_id": 101,
         "wait_sec": 1
       },
       {
-        "text": "And you?",
+        "text": "Aka I'm a pharmacist",
         "msg_id": 8,
+        "cha_id": 101,
+        "wait_sec": 1
+      },
+      {
+        "text": "And you?",
+        "msg_id": 9,
         "cha_id": 101,
         "wait_sec": 1
       }
@@ -60,6 +66,8 @@
     "branch": {
       "branch_type": "multi",
       "branch_target": "",
+      "terminal_options": {},
+      "text": "Decision time...",
       "options": [
         {
           "dec_id": 0,
@@ -89,7 +97,7 @@
         "wait_sec": 1
       },
       {
-        "text": "I'm a software engineer",
+        "text": "I'm in sales at Google",
         "msg_id": 2,
         "cha_id": 1,
         "wait_sec": 1
@@ -101,7 +109,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Nice work. If you don't take yourself too seriously, it puts other people at ease",
+        "text": "Nice work. If you don't take yourself too seriously, it puts other people at ease. But you don't want to be a dancing clown either.",
         "msg_id": 4,
         "cha_id": 2,
         "wait_sec": 1
@@ -111,13 +119,15 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "d",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
   "c": {
     "messages": [
       {
-        "text": "I'm a software engineer at Google actually",
+        "text": "I'm in sales at Google actually",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 1
@@ -147,7 +157,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Okay haha, good to know",
+        "text": "Okay, good to know",
         "msg_id": 5,
         "cha_id": 101,
         "wait_sec": 1
@@ -163,6 +173,8 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "d",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -172,6 +184,8 @@
     "branch": {
       "branch_type": "multi",
       "branch_target": "",
+      "terminal_options": {},
+      "text": "",
       "options": [
         {
           "dec_id": 0,
@@ -223,6 +237,8 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "g",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -293,6 +309,8 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "g",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -302,6 +320,8 @@
     "branch": {
       "branch_type": "multi",
       "branch_target": "",
+      "terminal_options": {},
+      "text": "Okay, so she's interested, but now you're in spotlight.",
       "options": [
         {
           "dec_id": 0,
@@ -361,7 +381,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Thanks haha",
+        "text": "Thanks",
         "msg_id": 7,
         "cha_id": 1,
         "wait_sec": 1
@@ -403,38 +423,44 @@
         "wait_sec": 1
       },
       {
-        "text": "Oh bummer. Yeah, I've heard some stories from my girl friends",
+        "text": "Keep in mind that these apps can be a much different experience for women. Guys aren't always polite.",
         "msg_id": 14,
-        "cha_id": 1,
+        "cha_id": 2,
         "wait_sec": 1
       },
       {
-        "text": "I think there are a some good people on here too",
+        "text": "Oh bummer. Yeah, I've heard some stories from my girl friends",
         "msg_id": 15,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
-        "text": "Are you a good person? haha",
+        "text": "I think there are a some good people on here too",
         "msg_id": 16,
-        "cha_id": 101,
+        "cha_id": 1,
         "wait_sec": 1
       },
       {
-        "text": "Kidding",
+        "text": "Are you a good person?",
         "msg_id": 17,
         "cha_id": 101,
         "wait_sec": 1
       },
       {
-        "text": "I like to think so :)",
+        "text": "Kidding",
         "msg_id": 18,
+        "cha_id": 101,
+        "wait_sec": 1
+      },
+      {
+        "text": "I like to think so 😊",
+        "msg_id": 19,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
         "text": "Nice work.",
-        "msg_id": 19,
+        "msg_id": 20,
         "cha_id": 2,
         "wait_sec": 1
       }
@@ -443,31 +469,10 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "j",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
-  },
-  "": {
-    "messages": [
-      {
-        "text": "Keep in mind that these apps can be a much different experience for women. Guys aren't always polite.",
-        "msg_id": 0,
-        "cha_id": 2,
-        "wait_sec": 1
-      },
-      {
-        "text": "Even if this is different from what you want, be respectful and chill about it.",
-        "msg_id": 1,
-        "cha_id": 2,
-        "wait_sec": 1
-      },
-      {
-        "text": "Great. Being honest and positive is generally appreciated by most people",
-        "msg_id": 2,
-        "cha_id": 2,
-        "wait_sec": 1
-      }
-    ],
-    "platform": ""
   },
   "i": {
     "messages": [
@@ -484,7 +489,7 @@
         "wait_sec": 1
       },
       {
-        "text": "I mean I may have been on or two",
+        "text": "I mean I may have been on one or two",
         "msg_id": 2,
         "cha_id": 1,
         "wait_sec": 1
@@ -524,6 +529,8 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "j",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -533,6 +540,8 @@
     "branch": {
       "branch_type": "multi",
       "branch_target": "",
+      "terminal_options": {},
+      "text": "",
       "options": [
         {
           "dec_id": 0,
@@ -556,27 +565,27 @@
         "wait_sec": 1
       },
       {
-        "text": "Hahahaha",
+        "text": "Straight to the point, huh?",
         "msg_id": 1,
         "cha_id": 101,
         "wait_sec": 1
       },
       {
-        "text": "Straight to the point, huh?",
+        "text": "Yep",
         "msg_id": 2,
-        "cha_id": 101,
-        "wait_sec": 1
-      },
-      {
-        "text": "Hahaha",
-        "msg_id": 3,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
         "text": "It would be awesome to meet someone that I really click with",
-        "msg_id": 4,
+        "msg_id": 3,
         "cha_id": 101,
+        "wait_sec": 1
+      },
+      {
+        "text": "Even if this is different from what you want, be respectful and chill about it.",
+        "msg_id": 4,
+        "cha_id": 2,
         "wait_sec": 1
       },
       {
@@ -586,7 +595,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Hahaha. And you?",
+        "text": "And you?",
         "msg_id": 6,
         "cha_id": 101,
         "wait_sec": 1
@@ -608,6 +617,8 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "m",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -620,7 +631,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Sure haha",
+        "text": "Sure",
         "msg_id": 1,
         "cha_id": 101,
         "wait_sec": 1
@@ -648,6 +659,10 @@
     "branch": {
       "branch_type": "terminal",
       "branch_target": "",
+      "terminal_options": {
+        "terminal_type": "fail"
+      },
+      "text": "",
       "options": []
     }
   },
@@ -657,6 +672,8 @@
     "branch": {
       "branch_type": "multi",
       "branch_target": "",
+      "terminal_options": {},
+      "text": "",
       "options": [
         {
           "dec_id": 0,
@@ -674,7 +691,7 @@
   "n": {
     "messages": [
       {
-        "text": "Hahaha good question",
+        "text": "Haha good question",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 1
@@ -686,7 +703,7 @@
         "wait_sec": 1
       },
       {
-        "text": "So dating, friends, and fun. I generally like meeting new people :)",
+        "text": "So dating, friends, and fun. I generally like meeting new people 😊",
         "msg_id": 2,
         "cha_id": 1,
         "wait_sec": 1
@@ -732,8 +749,27 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "p",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
+  },
+  "": {
+    "messages": [
+      {
+        "text": "Great. Being honest and positive is generally appreciated by most people",
+        "msg_id": 0,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "This can go either way. Giving options first can show thought and assertiveness. Leaving it open gives a higher chance that she will enjoy the spot and feel comfortable.",
+        "msg_id": 1,
+        "cha_id": 2,
+        "wait_sec": 1
+      }
+    ],
+    "platform": ""
   },
   "o": {
     "messages": [
@@ -786,7 +822,7 @@
         "wait_sec": 1
       },
       {
-        "text": "I'd like that haha.",
+        "text": "I'd like that.",
         "msg_id": 8,
         "cha_id": 101,
         "wait_sec": 1
@@ -808,6 +844,8 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "p",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -824,6 +862,8 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "q",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -842,98 +882,92 @@
         "wait_sec": 1
       },
       {
-        "text": "hahaha",
+        "text": "what are you up to right now?",
         "msg_id": 2,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
-        "text": "what are you up to right now?",
-        "msg_id": 3,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
         "text": "just off work, heading to the gym",
-        "msg_id": 4,
+        "msg_id": 3,
         "cha_id": 101,
         "wait_sec": "10800"
       },
       {
         "text": "nice",
-        "msg_id": 5,
+        "msg_id": 4,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
         "text": "what do you like to do for exercise?",
-        "msg_id": 6,
+        "msg_id": 5,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
-        "text": "I usually take the classes haha",
+        "text": "I usually take the classes",
+        "msg_id": 6,
+        "cha_id": 101,
+        "wait_sec": 1
+      },
+      {
+        "text": "tonight i'm taking the kickboxing one but also really into bikram",
         "msg_id": 7,
         "cha_id": 101,
         "wait_sec": 1
       },
       {
-        "text": "tonight i'm taking the kickboxing one",
-        "msg_id": 8,
-        "cha_id": 101,
-        "wait_sec": 1
-      },
-      {
         "text": "oh cool!",
-        "msg_id": 9,
+        "msg_id": 8,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
         "text": "remind me not to mess with you haha",
-        "msg_id": 10,
+        "msg_id": 9,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
         "text": "yeah, you better not ;)",
-        "msg_id": 11,
+        "msg_id": 10,
         "cha_id": 101,
         "wait_sec": 1
       },
       {
         "text": "hahaha",
-        "msg_id": 12,
+        "msg_id": 11,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
         "text": "of course not",
-        "msg_id": 13,
+        "msg_id": 12,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
         "text": "so what's your schedule like this week?",
-        "msg_id": 14,
+        "msg_id": 13,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
         "text": "hmmmm",
-        "msg_id": 15,
+        "msg_id": 14,
         "cha_id": 101,
         "wait_sec": 1
       },
       {
         "text": "i'm free on Saturday during the day, but work in the late afternoon",
-        "msg_id": 16,
+        "msg_id": 15,
         "cha_id": 101,
         "wait_sec": 1
       },
       {
         "text": "or in the evening on Wednesday and Thursday",
-        "msg_id": 17,
+        "msg_id": 16,
         "cha_id": 101,
         "wait_sec": 1
       }
@@ -942,6 +976,8 @@
     "branch": {
       "branch_type": "multi",
       "branch_target": "",
+      "terminal_options": {},
+      "text": "Decision time...",
       "options": [
         {
           "dec_id": 0,
@@ -977,7 +1013,7 @@
         "wait_sec": 1
       },
       {
-        "text": "works for me :)",
+        "text": "works for me 😊",
         "msg_id": 3,
         "cha_id": 1,
         "wait_sec": 1
@@ -993,6 +1029,8 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "t",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -1051,6 +1089,10 @@
     "branch": {
       "branch_type": "terminal",
       "branch_target": "",
+      "terminal_options": {
+        "terminal_type": "fail"
+      },
+      "text": "",
       "options": []
     }
   },
@@ -1060,6 +1102,8 @@
     "branch": {
       "branch_type": "multi",
       "branch_target": "",
+      "terminal_options": {},
+      "text": "Your date is coming up tomorrow.",
       "options": [
         {
           "dec_id": 0,
@@ -1083,7 +1127,7 @@
         "wait_sec": 1
       },
       {
-        "text": "hey :)",
+        "text": "hey 😊",
         "msg_id": 1,
         "cha_id": 101,
         "wait_sec": 1
@@ -1119,7 +1163,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Maybe. I doubt software engineering is easy",
+        "text": "Maybe. I doubt sales is easy",
         "msg_id": 7,
         "cha_id": 101,
         "wait_sec": 1
@@ -1177,6 +1221,8 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "w",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -1225,13 +1271,13 @@
         "wait_sec": 1
       },
       {
-        "text": "thanks :)",
+        "text": "thanks 😊",
         "msg_id": 7,
         "cha_id": 101,
         "wait_sec": 1
       },
       {
-        "text": "Bummer. I guess waiting until the last minute didn't make her feel like she was a priority.",
+        "text": "Bummer. She didn't have it in her calendar and the last minute outreach didn't make her feel like she was a priority. This can go either way.",
         "msg_id": 8,
         "cha_id": 2,
         "wait_sec": 1
@@ -1241,6 +1287,10 @@
     "branch": {
       "branch_type": "terminal",
       "branch_target": "",
+      "terminal_options": {
+        "terminal_type": "fail"
+      },
+      "text": "",
       "options": []
     }
   },
@@ -1250,6 +1300,8 @@
     "branch": {
       "branch_type": "multi",
       "branch_target": "",
+      "terminal_options": {},
+      "text": "Decision time...",
       "options": [
         {
           "dec_id": 0,
@@ -1373,6 +1425,8 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "z",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -1445,7 +1499,7 @@
         "wait_sec": 1
       },
       {
-        "text": ":)",
+        "text": "😊",
         "msg_id": 11,
         "cha_id": 101,
         "wait_sec": 1
@@ -1463,7 +1517,7 @@
         "wait_sec": 1
       },
       {
-        "text": "great, looking forward to it :)",
+        "text": "great, looking forward to it 😊",
         "msg_id": 14,
         "cha_id": 1,
         "wait_sec": 1
@@ -1515,6 +1569,8 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "z",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -1585,6 +1641,8 @@
     "branch": {
       "branch_type": "multi",
       "branch_target": "",
+      "terminal_options": {},
+      "text": "",
       "options": [
         {
           "dec_id": 0,
@@ -1642,6 +1700,10 @@
     "branch": {
       "branch_type": "terminal",
       "branch_target": "",
+      "terminal_options": {
+        "terminal_type": "success"
+      },
+      "text": "",
       "options": []
     }
   },
@@ -1690,7 +1752,7 @@
         "wait_sec": 1
       },
       {
-        "text": "(smug emoji)",
+        "text": "😏",
         "msg_id": 7,
         "cha_id": 1,
         "wait_sec": 1
@@ -1762,7 +1824,7 @@
         "wait_sec": 1
       },
       {
-        "text": "oh yeah? :)",
+        "text": "oh yeah? 😊",
         "msg_id": 19,
         "cha_id": 1,
         "wait_sec": 1
@@ -1786,7 +1848,7 @@
         "wait_sec": 1
       },
       {
-        "text": "mayyyybee (smug emoji)",
+        "text": "mayyyybee 😏",
         "msg_id": 23,
         "cha_id": 101,
         "wait_sec": 1
@@ -1844,6 +1906,10 @@
     "branch": {
       "branch_type": "terminal",
       "branch_target": "",
+      "terminal_options": {
+        "terminal_type": "success"
+      },
+      "text": "",
       "options": []
     }
   }

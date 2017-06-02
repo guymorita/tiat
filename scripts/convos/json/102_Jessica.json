@@ -2,21 +2,21 @@
   "a": {
     "messages": [
       {
-        "text": "Hello Jessica- nice to meet you!",
+        "text": "Hey Kevin, nice to meet you",
         "msg_id": 0,
-        "cha_id": 1,
+        "cha_id": 102,
         "wait_sec": 1
       },
       {
-        "text": "How is your week going so far?",
+        "text": "Hello Jessica- nice to meet you too!",
         "msg_id": 1,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
-        "text": "Nice to meet you too",
+        "text": "How is your week going so far?",
         "msg_id": 2,
-        "cha_id": 102,
+        "cha_id": 1,
         "wait_sec": 1
       },
       {
@@ -38,10 +38,12 @@
         "wait_sec": 1
       }
     ],
-    "platform": "tinder",
+    "platform": "bumble",
     "branch": {
       "branch_type": "multi",
       "branch_target": "",
+      "terminal_options": {},
+      "text": "Where should we take this conversation?",
       "options": [
         {
           "dec_id": 0,
@@ -113,10 +115,12 @@
         "wait_sec": 1
       }
     ],
-    "platform": "tinder",
+    "platform": "bumble",
     "branch": {
       "branch_type": "linear",
       "branch_target": "d",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -177,19 +181,23 @@
         "wait_sec": 1
       }
     ],
-    "platform": "tinder",
+    "platform": "bumble",
     "branch": {
       "branch_type": "linear",
       "branch_target": "d",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
   "d": {
     "messages": [],
-    "platform": "tinder",
+    "platform": "bumble",
     "branch": {
       "branch_type": "multi",
       "branch_target": "",
+      "terminal_options": {},
+      "text": "",
       "options": [
         {
           "dec_id": 0,
@@ -237,10 +245,12 @@
         "wait_sec": 1
       }
     ],
-    "platform": "tinder",
+    "platform": "bumble",
     "branch": {
       "branch_type": "linear",
       "branch_target": "g",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -259,19 +269,25 @@
         "wait_sec": 1
       }
     ],
-    "platform": "tinder",
+    "platform": "bumble",
     "branch": {
       "branch_type": "terminal",
       "branch_target": "",
+      "terminal_options": {
+        "terminal_type": "fail"
+      },
+      "text": "",
       "options": []
     }
   },
   "g": {
     "messages": [],
-    "platform": "tinder",
+    "platform": "bumble",
     "branch": {
       "branch_type": "multi",
       "branch_target": "",
+      "terminal_options": {},
+      "text": "",
       "options": [
         {
           "dec_id": 0,
@@ -301,10 +317,14 @@
         "wait_sec": "14400"
       }
     ],
-    "platform": "tinder",
+    "platform": "bumble",
     "branch": {
       "branch_type": "terminal",
       "branch_target": "",
+      "terminal_options": {
+        "terminal_type": "fail"
+      },
+      "text": "",
       "options": []
     }
   },
@@ -383,10 +403,12 @@
         "wait_sec": 1
       }
     ],
-    "platform": "tinder",
+    "platform": "bumble",
     "branch": {
       "branch_type": "linear",
       "branch_target": "j",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -441,7 +463,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Sublte information that displays that you're heathly and well rounded can go a long way.",
+        "text": "Subtle information that displays that you're heathly and well rounded can go a long way.",
         "msg_id": 8,
         "cha_id": 2,
         "wait_sec": 1
@@ -507,10 +529,12 @@
         "wait_sec": 1
       }
     ],
-    "platform": "",
+    "platform": "iMessage",
     "branch": {
       "branch_type": "linear",
       "branch_target": "k",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -520,6 +544,8 @@
     "branch": {
       "branch_type": "multi",
       "branch_target": "",
+      "terminal_options": {},
+      "text": "Your date is coming up tomorrow.",
       "options": [
         {
           "dec_id": 0,
@@ -565,6 +591,8 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "n",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -605,6 +633,8 @@
     "branch": {
       "branch_type": "linear",
       "branch_target": "n",
+      "terminal_options": {},
+      "text": "",
       "options": []
     }
   },
@@ -651,6 +681,10 @@
     "branch": {
       "branch_type": "terminal",
       "branch_target": "",
+      "terminal_options": {
+        "terminal_type": "success"
+      },
+      "text": "",
       "options": []
     }
   }

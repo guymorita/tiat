@@ -2,118 +2,435 @@
   "a": {
     "messages": [
       {
-        "text": "Hello Lucy! Nice to \"meet\" you haha",
+        "text": "Hi Jane- nice to meet you! How is your week going so far?",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
-        "text": "How is your day going?",
+        "text": "It's going! How about you ?",
         "msg_id": 1,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "Hello there",
-        "msg_id": 2,
         "cha_id": 108,
         "wait_sec": 1
       },
       {
-        "text": "So far, so good, thanks for asking :)",
+        "text": "Super busy, but really well :) Are you in the city or the east bay?",
+        "msg_id": 2,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "City! You?",
         "msg_id": 3,
         "cha_id": 108,
         "wait_sec": 1
       },
       {
-        "text": "And you?",
+        "text": "Just finished dinner w some friends and was explaining tinder! This is addicting hehe",
         "msg_id": 4,
         "cha_id": 108,
         "wait_sec": 1
       },
       {
-        "text": "I'm well, thanks, just at work right now",
+        "text": "Emeryville, so right across the bridge.",
         "msg_id": 5,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
-        "text": "That's good",
+        "text": "Your where ikea and eq3 are!",
         "msg_id": 6,
         "cha_id": 108,
         "wait_sec": 1
       },
       {
-        "text": "What do you do for work?",
+        "text": "Yeah it is! Hahaha",
         "msg_id": 7,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
-        "text": "I'm a software engineer",
+        "text": "Yep! That's right haha",
         "msg_id": 8,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
-        "text": "And you?",
+        "text": ":). What do you do besides sit at the park ?",
         "msg_id": 9,
-        "cha_id": 1,
+        "cha_id": 108,
         "wait_sec": 1
       },
       {
-        "text": "Hmmmm. Not getting a response. Want to try another message or move on?",
+        "text": "Lol. I started a small company that makes commercials for tech industry companies www.glassandmarker.com",
         "msg_id": 10,
-        "cha_id": 2,
-        "wait_sec": "14400"
-      }
-    ],
-    "platform": "tinder",
-    "branch": {
-      "branch_type": "multi",
-      "branch_target": "",
-      "options": [
-        {
-          "dec_id": 0,
-          "text": "Send a friendly follow up message",
-          "target_thread": "b"
-        },
-        {
-          "dec_id": 1,
-          "text": "Move on",
-          "target_thread": "c"
-        }
-      ]
-    }
-  },
-  "b": {
-    "messages": [
-      {
-        "text": "Hola! Just wanted to see if you'd like to keep chatting :)",
-        "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
-        "text": "Hey, no worries. The important thing is that you were polite. Lashing out when people don't respond is never okay.",
-        "msg_id": 1,
-        "cha_id": 2,
-        "wait_sec": "14400"
-      }
-    ],
-    "platform": "tinder",
-    "branch": {
-      "branch_type": "terminal",
-      "branch_target": "",
-      "options": []
-    }
-  },
-  "c": {
-    "messages": [
+        "text": "What do you do for work?",
+        "msg_id": 11,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
       {
-        "text": "Hey, no worries. The important thing is that you were polite. Lashing out when people don't respond is never okay.",
-        "msg_id": 0,
-        "cha_id": 2,
+        "text": "Oh cool, you're techie! Well nerd alert over here... I'm an accountant",
+        "msg_id": 12,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "I think being an accountant is a super valuable job! We had a horrible CPA our first year, and switched to a better firm, and it makes a big difference! What interests you in finance?",
+        "msg_id": 13,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Sorry I was just juicing !",
+        "msg_id": 14,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Beets carrots and orwnges",
+        "msg_id": 15,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Oranges*",
+        "msg_id": 16,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Haha, actually been doing accounting for almost 10 yrs, thinking of my next move :)",
+        "msg_id": 17,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "We'll ses",
+        "msg_id": 18,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "See*",
+        "msg_id": 19,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "How healthy of you!",
+        "msg_id": 20,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": ":)",
+        "msg_id": 21,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Well so this could be a deal breaker for ya!",
+        "msg_id": 22,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "I just got braces! Full braces",
+        "msg_id": 23,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Top and bottom",
+        "msg_id": 24,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "So you're greeting a little tired of finance? What do you think you might get into next?",
+        "msg_id": 25,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Oh that's cute! And smart, gotta take care of those pearly whites!",
+        "msg_id": 26,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Haha. Well I can't give away all my secrets! We haven't even met yet. I already know, just need to commit to it",
+        "msg_id": 27,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "I don't know why that would be a deal breaker haha.",
+        "msg_id": 28,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "It'll be a big lifestyle change to, I have a sweet little set up where I'm at now. So will be an adjustment financially",
+        "msg_id": 29,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Haha! Well now I look 22",
+        "msg_id": 30,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": ";)",
+        "msg_id": 31,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Hahaha",
+        "msg_id": 32,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "So out of curiosity, what are you in the market for in terms of using Tinder? Usually a question that I ask in person, but I thought I'd throw it out there :)",
+        "msg_id": 33,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Haha! Ok so this is literally my 2nd day!",
+        "msg_id": 34,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Of being on here! I signed up last night at the giants baseball game as one of my gfs highly recommended it!",
+        "msg_id": 35,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "I've been on maybe a bit more than 24 hours",
+        "msg_id": 36,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Oh cool! How do you like it so far?",
+        "msg_id": 37,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "It's fun! How long have you been on this?",
+        "msg_id": 38,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "I mean truthfully what do you use this for?",
+        "msg_id": 39,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Yeah I think it's pretty fun too! I've been on it for maybe a month now",
+        "msg_id": 40,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "I use it to meet people! And it works really well :)",
+        "msg_id": 41,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Are you just looking to hook up w girls?",
+        "msg_id": 42,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Bc honestly my gay friend showed me this a month ago and I dismissed it bc I thought it was like grinder! (Gay hookup app)",
+        "msg_id": 43,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Hahahaha. It's definitely not grinder",
+        "msg_id": 44,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "I'm not looking for casual sex, if that's what your asking. But I also wouldn't say that I'm looking for a long term serious relationship",
+        "msg_id": 45,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Well some guy already asked me! So I wasn't sure. Anyway thats Not for me",
+        "msg_id": 46,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Yeah i am. Maybe this isnt The Best avenue for me :)",
+        "msg_id": 47,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "I'm in a place right now where I'm dating. Sometimes that's coffee or dinner, sometimes that means making new friends, sometimes more than friends",
+        "msg_id": 48,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Yeah, I'm in a diff space than you",
+        "msg_id": 49,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "I totally respect that! :)",
+        "msg_id": 50,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "I've been in sf 8 yrs now. Been all over the world and happy place",
+        "msg_id": 51,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Would love to share w someone special",
+        "msg_id": 52,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Have you tried ok Cupid?",
+        "msg_id": 53,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "So casual is not for me!",
+        "msg_id": 54,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Yeah. Moved onto match now ;)",
+        "msg_id": 55,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Awwww that's so sweet :)",
+        "msg_id": 56,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Yeah my friends have liked match.com",
+        "msg_id": 57,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "I guess if I want to be real serious I gotta get on eharmony!!!",
+        "msg_id": 58,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Yeah, 27 is too young for me ;)",
+        "msg_id": 59,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "No! That's for old people. You're young",
+        "msg_id": 60,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "You boys wanna just have fun, diff place in life is all",
+        "msg_id": 61,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "S'all good though",
+        "msg_id": 62,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Lol. I'll take that as a compliment",
+        "msg_id": 63,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "I do want to have fun!",
+        "msg_id": 64,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "As you should ;)",
+        "msg_id": 65,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "And so do women, thank you very much ;)",
+        "msg_id": 66,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Well I truly hope you find a wonderful caring partner to share your life with!",
+        "msg_id": 67,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Just based off your energy, you seem like a catch! :)",
+        "msg_id": 68,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Aww gracias!",
+        "msg_id": 69,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "And you will continue to do well on This I'm sure of it ;)",
+        "msg_id": 70,
+        "cha_id": 108,
+        "wait_sec": 1
+      },
+      {
+        "text": "Take care :)",
+        "msg_id": 71,
+        "cha_id": 108,
         "wait_sec": 1
       }
     ],
@@ -121,6 +438,10 @@
     "branch": {
       "branch_type": "terminal",
       "branch_target": "",
+      "terminal_options": {
+        "terminal_type": "success"
+      },
+      "text": "",
       "options": []
     }
   }

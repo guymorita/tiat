@@ -37,25 +37,29 @@ const getCharId = function(element, femaleCharId) {
 };
 
 const createBranch = function(element) {
-    const isLinearBranch = element.next_thread;
-    const isTerminal = element.terminal;
-    const isMultiBranch = element.option_a_text;
+  const { branch_type } = element;
+  const isLinearBranch = element.next_thread;
+  const isTerminal = element.terminal;
+  const isMultiBranch = element.option_a_text;
 
-    if (isLinearBranch) {
+  switch (branch_type) {
+    case "linear":
       return createLinearBranch(element);
-    } else if (isMultiBranch) {
+    case "multi":
       return createMultiBranch(element);
-    } else if (isTerminal) {
+    case "terminal":
       return createTerminalBranch(element);
-    } else {
+    default:
       throw Error('Error branching');
-    }
+  }
 };
 
 const createLinearBranch = function(element) {
   return {
     branch_type: 'linear',
     branch_target: element.next_thread,
+    terminal_options: {},
+    text: element.text,
     options: []
   }
 };
@@ -78,14 +82,21 @@ const createMultiBranch = function(element) {
   return {
     branch_type: 'multi',
     branch_target: '',
+    terminal_options: {},
+    text: element.text,
     options
   }
 };
 
 const createTerminalBranch = function(element) {
+  const { terminal_type } = element;
   return {
     branch_type: 'terminal',
     branch_target: '',
+    terminal_options: {
+      terminal_type
+    },
+    text: element.text,
     options: []
   }
 };
