@@ -44,6 +44,7 @@ import {
 
 import NavTitle from '../Matches/NavTitle'
 import BackButton from '../../components/Nav/BackButton'
+import ChatModal from '../../components/Modal/ChatModal'
 
 const NEXT = 'NEXT'
 const OPTIONS = 'OPTIONS'
@@ -61,8 +62,15 @@ class Chat extends React.Component {
       messages: [],
       animatedStartValue: new Animated.Value(0),
       userHasInteracted: false,
-      buttonsDisabled: false
+      buttonsDisabled: false,
+      modalOpen: false
     }
+  }
+
+  _onToggleModal() {
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    })
   }
 
   _onBackPress() {
@@ -396,7 +404,7 @@ class Chat extends React.Component {
   }
 
   render() {
-    const { characters, curChat, isActive } = this.props
+    const { characters, curChat, curThread, isActive } = this.props
     if (!isActive) {
       return (<View><Text>...</Text></View>)
     }
@@ -423,6 +431,8 @@ class Chat extends React.Component {
             _id: 1,
           }}
         />
+        <Button title="Toggle Modal" onPress={() => this._onToggleModal()}>Basic modal</Button>
+        <ChatModal type={"fail"} open={this.state.modalOpen} />
       </View>
     );
   }
