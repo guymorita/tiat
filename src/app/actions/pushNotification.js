@@ -12,7 +12,6 @@ PushNotification.configure({
   },
   requestPermissions: false,
 })
-PushNotification.cancelAllLocalNotifications()
 
 function pushNotificationFired(notification) {
   return {
@@ -35,9 +34,10 @@ export function tryCreatePushNotification() {
     if (!hasMatchesTmrw) {
       return
     }
-    const dateToSend = moment().add(1, 'days').hour(12)
-    // const dateToSend = moment().add(3, 'seconds')
+    const randInt = Math.floor(Math.random() * 180)
+    const dateToSend = moment().add(1, 'days').hour(11).add(randInt, 'minutes')
     const text = "You have new matches!"
+    PushNotification.cancelAllLocalNotifications()
     PushNotification.localNotificationSchedule({
       message: text,
       date: dateToSend.toDate()
