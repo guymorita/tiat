@@ -194,12 +194,11 @@ class Chat extends React.Component {
 
   renderFooter () {
     const { userHasInteracted } = this.state
-    const { curChat, date } = this.props
+    const { curChat, date, isTerm } = this.props
     let footerComp = this.renderTapBelow
     let waitingToRestart = false
 
-    const isTerminated = curChat.terminate.isTerminated
-    if (isTerminated) {
+    if (isTerm) {
       const dateNow = date.opened_today.modified
       const { dateRetry } = curChat.terminate
       waitingToRestart = dateRetry > dateNow
@@ -373,7 +372,8 @@ class Chat extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { curChat, isTerm } = nextProps
+    const { curChat, isTerm, terminal_options } = nextProps
+    const { terminal_type } = terminal_options
 
     this.setState({
       buttonsDisabled: false
@@ -394,7 +394,7 @@ class Chat extends React.Component {
     if (isTerm) {
       PushNotification.requestPermissions()
       this._onToggleModal()
-      if(this._confettiView) {
+      if(this._confettiView && terminal_type === 'success') {
         this._confettiView.startConfetti();
       }
     }
