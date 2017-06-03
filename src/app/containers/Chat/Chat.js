@@ -123,6 +123,15 @@ class Chat extends React.Component {
     })
   }
 
+  _onPressTitle(char) {
+    const { dispatch, navigator } = this.props
+    const { cha_id } = char
+    dispatch(characterSwitch(cha_id))
+    navigator.push({
+      title: 'Profile'
+    })
+  }
+
   renderBubble(props) {
     const { currentMessage } = props
     const { platform } = currentMessage
@@ -431,7 +440,7 @@ class Chat extends React.Component {
         <NavigationBar
           leftButton={<BackButton onBackPress={this._onBackPress.bind(this)} />}
           tintColor={"#F8F8F8"}
-          title={<NavTitle character={char} />}
+          title={<NavTitle character={char} onPress={this._onPressTitle.bind(this, char)} />}
         />
         <GiftedChat
           onPressAvatar={this._onPressAvatar.bind(this)}

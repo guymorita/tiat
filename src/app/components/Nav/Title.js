@@ -7,7 +7,7 @@ import {
   View
 } from 'react-native'
 
-export default class Title extends React.Component {
+export default class NavTitle extends React.Component {
   render() {
     const { text } = this.props
     return (
