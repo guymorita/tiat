@@ -5,6 +5,8 @@ import moment from 'moment'
 export const CREATE_PUSH_NOTIFICATION = 'CREATE_PUSH_NOTIFICATION'
 export const PUSH_NOTIFICATION_FIRED = 'PUSH_NOTIFICATION_FIRED'
 
+const MESSAGE_SCHEDULE_DAYS = [1, 3, 5, 7]
+
 PushNotification.configure({
   // (required) Called when a remote or local notification is opened or received
   onNotification: function(notification) {
@@ -34,14 +36,26 @@ export function tryCreatePushNotification() {
     if (!hasMatchesTmrw) {
       return
     }
-    const randInt = Math.floor(Math.random() * 180)
-    const dateToSend = moment().add(1, 'days').hour(11).add(randInt, 'minutes')
-    const text = "You have new matches!"
+
     PushNotification.cancelAllLocalNotifications()
-    PushNotification.localNotificationSchedule({
-      message: text,
-      date: dateToSend.toDate()
-    });
-    dispatch(createPushNotification(text, dateToSend))
+    const textMessages = [
+      "You have new matches!",
+      "Check in for new matches!",
+      "Looks like you have some new messages"
+    ]
+
+    MESSAGE_SCHEDULE_DAYS.forEach((day) => {
+      let randInt = () => { return Math.floor(Math.random() * 180) }
+      let randMessage = () => { return textMessages[Math.floor(Math.random() * textMessages.length)] }
+
+      let dateToSend = moment().add(day, 'days').hour(11).add(randInt(), 'minutes')
+
+      PushNotification.localNotificationSchedule({
+        message: randMessage(),
+        date: dateToSend.toDate()
+      });
+    })
+
+    dispatch(createPushNotification())
   }
 }
