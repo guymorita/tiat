@@ -1,9 +1,16 @@
 
-import { INTRO_FINISHED, OPEN_DRAWER, CLOSE_DRAWER } from '../actions/ui'
+import { INTRO_FINISHED,
+  OPEN_DRAWER,
+  CLOSE_DRAWER,
+  NOTIF_NEW_MATCHES_DAILY
+} from '../actions/ui'
 
 const initialState = {
   intro_finished: false,
-  drawer_opened: false
+  drawer_opened: false,
+  notif_new_matches_daily: false,
+  notif_inform_users_on_jumps: false,
+  requested_push_notifications: false
 }
 
 export default function currentMatches(state = initialState, action) {
@@ -22,6 +29,11 @@ export default function currentMatches(state = initialState, action) {
       return {
         ...state,
         drawer_opened: false
+      }
+    case NOTIF_NEW_MATCHES_DAILY:
+      return {
+        ...state,
+        notif_new_matches_daily: true
       }
     default:
       return state

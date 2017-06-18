@@ -12,6 +12,10 @@ import {
   invJumpsSubtract
 } from './inventory'
 
+import {
+  notifNewMatchesDaily
+} from './ui'
+
 export const INIT_ACTIVE_CHAT = 'INIT_ACTIVE_CHAT'
 export const PUSH_NEXT_MESSAGE = 'PUSH_NEXT_MESSAGE'
 export const BRANCH_LINEAR = 'BRANCH_LINEAR'
@@ -24,13 +28,25 @@ export const TRY_PUSH_NEXT_MESSAGE = 'TRY_PUSH_NEXT_MESSAGE'
 
 const LONG_WAIT_IN_SEC = 300
 
+const NUM_MATCHES_TO_ALERT_DAILY_MATCHES = 2
+
 // INIT
 
 export function initSwitchChat(key) {
   return (dispatch, getState) => {
     const state = getState()
+    const { activeChats, ui } = state
     const activeChat = getActiveChat(state, key)
     dispatch(switchChat(key))
+    const showDailyConvoModal = !ui.notif_new_matches_daily && Object.keys(activeChats).length === NUM_MATCHES_TO_ALERT_DAILY_MATCHES
+
+    if (showDailyConvoModal) {
+      Alert.alert(
+        'Nice job, check DAILY for new matches'
+      )
+      dispatch(notifNewMatchesDaily())
+    }
+
     if (_.isEmpty(activeChat)) {
       return dispatch(initActiveChat(key))
     }
