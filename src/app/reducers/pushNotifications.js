@@ -1,5 +1,8 @@
 
-import { CREATE_PUSH_NOTIFICATION, PUSH_NOTIFICATION_FIRED } from '../actions/pushNotifications'
+import {
+  CREATE_PUSH_NOTIFICATION,
+  PUSH_NOTIFICATION_FIRED
+} from '../actions/pushNotifications'
 
 const initialState = {
   queued_message: {

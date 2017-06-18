@@ -3,6 +3,7 @@ import {
   Alert
 } from 'react-native'
 import _ from 'lodash'
+import PushNotification from 'react-native-push-notification'
 
 import {
   dateNow
@@ -16,6 +17,10 @@ import {
   notifNewMatchesDaily
 } from './ui'
 
+import {
+  pushNotificationPermissionReq
+} from './pushNotification'
+
 export const INIT_ACTIVE_CHAT = 'INIT_ACTIVE_CHAT'
 export const PUSH_NEXT_MESSAGE = 'PUSH_NEXT_MESSAGE'
 export const BRANCH_LINEAR = 'BRANCH_LINEAR'
@@ -25,10 +30,12 @@ export const WAIT_CLEAR_JUMP = 'WAIT_CLEAR_JUMP'
 export const SWITCH_BRANCH = 'SWITCH_BRANCH'
 export const SWITCH_CHAT = 'SWITCH_CHAT'
 export const TRY_PUSH_NEXT_MESSAGE = 'TRY_PUSH_NEXT_MESSAGE'
+export const FINISH_CHAT = 'FINISH_CHAT'
 
 const LONG_WAIT_IN_SEC = 300
 
-const NUM_MATCHES_TO_ALERT_DAILY_MATCHES = 2
+const NUM_MATCHES_TO_ALERT_DAILY_MATCHES = 1
+const NUM_MATCHES_TO_REQ_PUSH_NOTIF = 2
 
 // INIT
 
@@ -39,12 +46,18 @@ export function initSwitchChat(key) {
     const activeChat = getActiveChat(state, key)
     dispatch(switchChat(key))
     const showDailyConvoModal = !ui.notif_new_matches_daily && Object.keys(activeChats).length === NUM_MATCHES_TO_ALERT_DAILY_MATCHES
+    const showPushNotifRequest = !ui.requested_push_notifications && Object.keys(activeChats).length === NUM_MATCHES_TO_REQ_PUSH_NOTIF
 
     if (showDailyConvoModal) {
       Alert.alert(
         'Nice job, check DAILY for new matches'
       )
       dispatch(notifNewMatchesDaily())
+    }
+
+    if (showPushNotifRequest) {
+      PushNotification.requestPermissions()
+      dispatch(pushNotificationPermissionReq())
     }
 
     if (_.isEmpty(activeChat)) {
@@ -347,7 +360,15 @@ export function jumpUseTry(key) {
         ''
       )
     }
+  }
+}
 
+// FINISH
+
+export function finishChat(key) {
+  return {
+    type: FINISH_CHAT,
+    key
   }
 }
 

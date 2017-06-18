@@ -1,6 +1,7 @@
 
 import React from 'react'
 import {
+  Alert,
   Animated,
   Button,
   Platform,
@@ -16,12 +17,12 @@ import _ from 'lodash'
 import moment from 'moment'
 import reactMixin from 'react-mixin'
 import timerMixin from 'react-timer-mixin'
-import PushNotification from 'react-native-push-notification'
 
 import { BABY_BLUE, LIGHT_GRAY, LIGHT_PURPLE, getBackgroundStyle, getBackgroundColor } from '../../lib/colors'
 import {
   getMatch,
   initActiveChat,
+  finishChat,
   getCurrentMessage,
   getNextMessage,
   getNextNextMessage,
@@ -42,6 +43,10 @@ import {
   characterSwitch
 } from '../../actions/character'
 
+import {
+  notifInformUsersOnJumps
+} from '../../actions/ui'
+
 import NavTitle from '../Matches/NavTitle'
 import BackButton from '../../components/Nav/BackButton'
 import ChatModal from '../../components/Modal/ChatModal'
@@ -56,6 +61,16 @@ const BACK = 'BACK'
 
 const TEXT_COLOR_LIGHT = 'white'
 
+const tryAlertInformJumps = (ui, curInput, dispatch) => {
+  if (!ui.notif_inform_users_on_jumps && curInput === JUMP) {
+    Alert.alert(
+      `You'll need to use a jump!`,
+      'Jumps help you to speed through and restart conversations. Alternatively you can wait. You start with some jumps and you can always purchase more in the Store.'
+    )
+    dispatch(notifInformUsersOnJumps())
+  }
+}
+
 class Chat extends React.Component {
   constructor(props) {
     super(props);
@@ -68,9 +83,15 @@ class Chat extends React.Component {
     }
   }
 
-  _onToggleModal() {
+  _onOpenModal() {
     this.setState({
-      modalOpen: !this.state.modalOpen
+      modalOpen: true
+    })
+  }
+
+  _onCloseModal() {
+    this.setState({
+      modalOpen: false
     })
   }
 
@@ -372,7 +393,7 @@ class Chat extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { curChat, isTerm, terminal_options } = nextProps
+    const { curChat, curInput, dispatch, isTerm, terminal_options, ui } = nextProps
     const { terminal_type } = terminal_options
 
     this.setState({
@@ -380,6 +401,8 @@ class Chat extends React.Component {
     })
 
     if (!curChat) return
+
+    tryAlertInformJumps(ui, curInput, dispatch)
 
     const { giftedChat } = curChat
     const { messages } = giftedChat
@@ -392,10 +415,15 @@ class Chat extends React.Component {
     }
 
     if (isTerm) {
-      PushNotification.requestPermissions()
-      this._onToggleModal()
-      if(this._confettiView && terminal_type === 'success') {
-        this._confettiView.startConfetti();
+      const { key } = curChat
+      if (!curChat.terminate.showedEndingSeq) {
+        this._onOpenModal()
+        if(this._confettiView && terminal_type === 'success') {
+          this._confettiView.startConfetti();
+        }
+        dispatch(finishChat(key))
+      } else {
+        this._onCloseModal()
       }
     }
   }
@@ -421,7 +449,7 @@ class Chat extends React.Component {
 
   componentWillUnmount() {
     if (this._confettiView) {
-      this._confettiView.stopConfetti = true;
+      this._confettiView.stopConfettiAnimation()
     }
   }
 
@@ -548,7 +576,7 @@ const getCurrentInput = function(curChat, curThread, date, isTerm, jumpable) {
 }
 
 const mapStateToProps = function(state) {
-  const { activeChats, characters, currentChat, date } = state
+  const { activeChats, characters, currentChat, date, ui } = state
   const { key } = currentChat
 
   const match = getMatch(state, key)
@@ -578,7 +606,8 @@ const mapStateToProps = function(state) {
     key,
     match,
     platform,
-    terminal_options
+    terminal_options,
+    ui
   }
 }
 

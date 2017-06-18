@@ -10,7 +10,8 @@ import {
   PUSH_NEXT_MESSAGE,
   setChaId,
   SWITCH_BRANCH,
-  TRY_PUSH_NEXT_MESSAGE
+  TRY_PUSH_NEXT_MESSAGE,
+  FINISH_CHAT
 } from '../actions/chat'
 
 const initialState = {
@@ -61,7 +62,8 @@ export default function activeChats(state = initialState, action) {
         terminate: {
           isTerminated: false,
           dateLastTerminated: 1000,
-          dateRetry: 1000
+          dateRetry: 1000,
+          showedEndingSeq: false
         }
       }
       return {
@@ -133,6 +135,19 @@ export default function activeChats(state = initialState, action) {
           terminate: {
             ...aaChat.terminate,
             dateRetry: timNow - 1000
+          }
+        }
+      }
+
+    case FINISH_CHAT:
+      const aaaChat = state[action.key]
+      return {
+        ...state,
+        [action.key]: {
+          ...aaaChat,
+          terminate: {
+            ...aaaChat.terminate,
+            showedEndingSeq: true
           }
         }
       }

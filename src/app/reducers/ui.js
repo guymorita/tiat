@@ -2,8 +2,13 @@
 import { INTRO_FINISHED,
   OPEN_DRAWER,
   CLOSE_DRAWER,
-  NOTIF_NEW_MATCHES_DAILY
+  NOTIF_NEW_MATCHES_DAILY,
+  NOTIF_INFORM_USERS_ON_JUMPS
 } from '../actions/ui'
+
+import {
+  PUSH_NOTIFICATION_PERMISSION_REQ
+} from '../actions/pushNotification'
 
 const initialState = {
   intro_finished: false,
@@ -34,6 +39,16 @@ export default function currentMatches(state = initialState, action) {
       return {
         ...state,
         notif_new_matches_daily: true
+      }
+    case NOTIF_INFORM_USERS_ON_JUMPS:
+      return {
+        ...state,
+        notif_inform_users_on_jumps: true
+      }
+    case PUSH_NOTIFICATION_PERMISSION_REQ:
+      return {
+        ...state,
+        requested_push_notifications: true
       }
     default:
       return state

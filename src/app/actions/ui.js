@@ -4,6 +4,7 @@ export const INTRO_FINISHED = 'INTRO_FINISHED'
 export const OPEN_DRAWER = 'OPEN_DRAWER'
 export const CLOSE_DRAWER = 'CLOSE_DRAWER'
 export const NOTIF_NEW_MATCHES_DAILY = 'NOTIF_NEW_MATCHES_DAILY'
+export const NOTIF_INFORM_USERS_ON_JUMPS = 'NOTIF_INFORM_USERS_ON_JUMPS'
 
 export function introFinished() {
   return {
@@ -26,5 +27,11 @@ export function closeDrawer() {
 export function notifNewMatchesDaily() {
   return {
     type: NOTIF_NEW_MATCHES_DAILY
+  }
+}
+
+export function notifInformUsersOnJumps() {
+  return {
+    type: NOTIF_INFORM_USERS_ON_JUMPS
   }
 }

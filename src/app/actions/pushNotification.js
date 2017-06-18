@@ -4,6 +4,7 @@ import moment from 'moment'
 
 export const CREATE_PUSH_NOTIFICATION = 'CREATE_PUSH_NOTIFICATION'
 export const PUSH_NOTIFICATION_FIRED = 'PUSH_NOTIFICATION_FIRED'
+export const PUSH_NOTIFICATION_PERMISSION_REQ = 'PUSH_NOTIFICATION_PERMISSION_REQ'
 
 const MESSAGE_SCHEDULE_DAYS = [1, 3, 5, 7]
 
@@ -14,6 +15,12 @@ PushNotification.configure({
   },
   requestPermissions: false,
 })
+
+export function pushNotificationPermissionReq() {
+  return {
+    type: PUSH_NOTIFICATION_PERMISSION_REQ
+  }
+}
 
 function pushNotificationFired(notification) {
   return {
