@@ -23,7 +23,11 @@ export function dateNow(date = {}) {
 }
 
 export function dayFromDate(date, adj_days=0) {
-  return Number(moment.unix(date).add(adj_days, 'days').format('D'))
+  let altDate = date
+  if (!Number.isInteger(altDate)) {
+    altDate = altDate._i/1000
+  }
+  return Number(moment.unix(altDate).add(adj_days, 'days').format('D'))
 }
 
 export function modi_date(actual, change) {
