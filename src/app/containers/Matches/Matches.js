@@ -16,6 +16,7 @@ import MatchCell from './MatchCell'
 import HamburgerButton from '../../components/Nav/HamburgerButton'
 import Title from '../../components/Nav/Title'
 import { tryCreatePushNotification } from '../../actions/pushNotification'
+import Purchase from './Purchase'
 
 class Matches extends Component {
   constructor(props) {
@@ -50,6 +51,11 @@ class Matches extends Component {
     navigator.push({
       title: 'Dev'
     })
+  }
+
+  _onPurchasePress() {
+    const { dispatch } = this.props
+
   }
 
   _handleAppStateChange = (nextAppState) => {
@@ -110,6 +116,7 @@ class Matches extends Component {
           renderRow={(rowData) =>
             <MatchCell matchInfo={rowData} navigator={navigator}/>
           }
+          renderFooter={() => <Purchase />}
         />
       </View>
     );
