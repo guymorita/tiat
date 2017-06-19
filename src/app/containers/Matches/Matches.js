@@ -10,7 +10,6 @@ import {
 import { connect } from 'react-redux'
 import NavigationBar from 'react-native-navbar'
 
-import { updateDateDay } from '../../actions/date'
 import { tryFindMatches, initMatches } from '../../actions/matches'
 import MatchCell from './MatchCell'
 import HamburgerButton from '../../components/Nav/HamburgerButton'
@@ -67,8 +66,6 @@ class Matches extends Component {
 
   componentWillMount() {
     const { activeChats, currentMatches, dispatch } = this.props
-
-    dispatch(updateDateDay())
 
     if (!currentMatches.length) {
       dispatch(initMatches())

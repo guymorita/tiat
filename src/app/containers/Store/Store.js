@@ -27,14 +27,9 @@ class Store extends React.Component {
     dispatch(productBuy(key))
   }
 
-  _onKeyPress = (key) => {
+  _onMatchPress = (key) => {
     const { dispatch } = this.props
-    dispatch(productBuy(key))
-  }
-
-  _onMatchPress = () => {
-    const { dispatch } = this.props
-    dispatch(tryPurchaseMatches())
+    dispatch(tryPurchaseMatches(key))
   }
 
   componentWillMount() {
@@ -47,14 +42,14 @@ class Store extends React.Component {
       <View style={styles.section}>
         <View style={[styles.sectionHeader, styles.purpleBackground]}>
           <Text style={styles.sectionHeaderTextMain}>
-            Jumps
+            Skips
           </Text>
           <Image
             source={require('./jumpCircle.png')}
             style={styles.circleImage}
           />
           <Text style={styles.sectionHeaderTextSub}>
-            Skip the wait
+            Skip the waits
           </Text>
         </View>
         {this.props.products && this.props.products.jumpProducts.map((prod) => {
@@ -73,36 +68,6 @@ class Store extends React.Component {
     );
   }
 
-  _renderKeysSection = () => {
-    return (
-      <View style={styles.section}>
-        <View style={[styles.sectionHeader, styles.blueBackground]}>
-          <Text style={styles.sectionHeaderTextMain}>
-            Keys
-          </Text>
-          <Image
-            source={require('./keyCircle.png')}
-            style={styles.circleImage}
-          />
-          <Text style={styles.sectionHeaderTextSub}>
-            Unlock new matches
-          </Text>
-        </View>
-        {this.props.products && this.props.products.keyProducts.map((prod) => {
-          return (
-            <TouchableOpacity key={prod.key} onPress={() => {this._onKeyPress(prod.key)}}>
-              <View style={[styles.productButton, styles.blueBackground]}>
-                <Text style={styles.productButtonText}>
-                  {prod.title} for {prod.priceString}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          )
-        })}
-      </View>
-    );
-  }
-
   _renderMatchesSection = () => {
     return (
       <View style={styles.section}>
@@ -117,17 +82,17 @@ class Store extends React.Component {
           <Text style={styles.sectionHeaderTextSub}>
           </Text>
         </View>
-        <TouchableOpacity onPress={() => {this._onMatchPress()}}>
-          <View style={[styles.productButton, styles.redBackground]}>
-            <Text style={styles.productButtonText}>
-              New Matches for 2
-            </Text>
-            <Image
-              source={require('./keyCircleSmall.png')}
-              style={styles.keyImageSmall}
-            />
-          </View>
-        </TouchableOpacity>
+        {this.props.products && this.props.products.matchProducts.map((prod) => {
+          return (
+            <TouchableOpacity key={prod.key} onPress={() => {this._onMatchPress(prod.key)}}>
+              <View style={[styles.productButton, styles.redBackground]}>
+                <Text style={styles.productButtonText}>
+                  {prod.title} for {prod.priceString}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          )
+        })}
       </View>
     );
   }
@@ -142,7 +107,6 @@ class Store extends React.Component {
         />
         <ScrollView>
           {this._renderJumpsSection()}
-          {this._renderKeysSection()}
           {this._renderMatchesSection()}
         </ScrollView>
       </View>

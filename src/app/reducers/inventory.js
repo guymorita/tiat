@@ -1,15 +1,12 @@
 
 import {
   INV_JUMPS_ADD,
-  INV_JUMPS_SUBTRACT,
-  INV_KEYS_ADD,
-  INV_KEYS_SUBTRACT
+  INV_JUMPS_SUBTRACT
 } from '../actions/inventory'
 
 const initialState = {
   current: {
-    jumps: 1,
-    keys: 0
+    jumps: 1
   },
   history: [
   ]
@@ -37,24 +34,6 @@ export default function storeIOS(state = initialState, action) {
         }
       }
 
-    case INV_KEYS_ADD:
-      const currentKeys = state.current.keys
-      return {
-        ...state,
-        current: {
-          ...state.current,
-          keys: currentKeys + action.quantity
-        }
-      }
-    case INV_KEYS_SUBTRACT:
-      const curKeys = state.current.keys
-      return {
-        ...state,
-        current: {
-          ...state.current,
-          keys: curKeys - action.quantity
-        }
-      }
     default:
       return state
   }

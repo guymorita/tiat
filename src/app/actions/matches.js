@@ -7,10 +7,12 @@ import moment from 'moment'
 
 import {
   dayFromDate,
-  dateNow
+  dateNow,
+  updateDateDay
 } from './date'
-
 import { invKeysSubtract } from './inventory'
+
+import { productBuy } from './store' // platform specific
 
 export const ADVANCE_MATCH_QUEUE = 'ADVANCE_MATCH_QUEUE'
 export const FIND_MATCHES_TO_SHOW = 'FIND_MATCHES_TO_SHOW'
@@ -28,32 +30,18 @@ function formatMatches(matches, date) {
   return matches.map((match) => { return { key: match.key, date_matched: date }})
 }
 
-export function tryPurchaseMatches() {
+export function tryPurchaseMatches(key) {
   return (dispatch, getState) => {
     const state = getState()
-    const { activeChats, currentMatches, inventory } = state
-    const { current } = inventory
-    const { keys } = current
-    const overNewLimit = overNewMatchLimit(currentMatches, activeChats, NUM_MAX_NEW_MATCHES)
-    const keyCost = 2
-    if (keys < keyCost) {
+    const { matchesAll, currentMatches } = state
+    const noMoreMatches = currentMatches.length >= matchesAll.length
+    if (noMoreMatches) {
       Alert.alert(
-        'Not enough keys',
-        'Please purchase keys to get new matches'
-      )
-    } else if (overNewLimit) {
-      Alert.alert(
-        'Not yet!',
-        'Plesae start more of your current conversations first'
+        'There are no more matches!',
+        `We are adding more soon =)`
       )
     } else {
-      // TODO
-      // dispatch(forceAdvanceMatchQueue())
-      dispatch(invKeysSubtract(keyCost))
-      Alert.alert(
-        'You have new matches!',
-        ''
-      )
+      dispatch(productBuy(key))
     }
   }
 }
@@ -65,7 +53,7 @@ function findMatchesToShow(matches) {
   }
 }
 
-function findRandNumMatches() {
+export function findRandNumMatches() {
   return (dispatch) => {
     const range = MAX_NUM_RANDOM_MATCHES_PER_DAY - MIN_NUM_RANDOM_MATCHES_PER_DAY
     const numRandomMatches = Math.floor(Math.random()*(range + 1))+MIN_NUM_RANDOM_MATCHES_PER_DAY
@@ -84,6 +72,7 @@ export function tryFindMatches() {
     if (day !== date.opened_today.actual_day) {
       dispatch(findRandNumMatches())
     }
+    dispatch(updateDateDay())
   }
 }
 

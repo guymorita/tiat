@@ -6,46 +6,73 @@ import {
   TouchableOpacity,
   View
 } from 'react-native'
+import { connect } from 'react-redux'
+import { fetchProducts, formatProducts } from '../../actions/store' // platform specific
+import { tryPurchaseMatches } from '../../actions/matches'
+
 
 import { TINDER_COLOR } from '../../lib/colors'
 
-export default class Purchase extends Component {
-  _onPressCell() {
+class Purchase extends Component {
+  _onMatchPress = (key) => {
+    const { dispatch } = this.props
+    dispatch(tryPurchaseMatches(key))
+  }
 
+  componentWillMount() {
+    const { dispatch } = this.props
+    dispatch(fetchProducts())
   }
 
   render() {
-
     return (
-      <TouchableOpacity onPress={this._onPressCell.bind(this)}>
-        <View style={styles.container}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>
-              More Matches
-            </Text>
-          </View>
-        </View>
-      </TouchableOpacity>
-    );
+      <View>
+        {this.props.products && this.props.products.matchProducts.map((prod) => {
+          return (
+            <TouchableOpacity key={prod.key} onPress={() => {this._onMatchPress(prod.key)}}>
+              <View style={[styles.productButton, styles.redBackground]}>
+                <Text style={styles.productButtonText}>
+                  {prod.title}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          )
+        })}
+      </View>
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
-  button: {
+  redBackground: {
+    backgroundColor: TINDER_COLOR
+  },
+  productButton: {
     margin: 16,
+    marginBottom: 20,
     borderRadius: 12,
-    height: 60,
-    backgroundColor: TINDER_COLOR,
+    height: 54,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row'
   },
-  buttonText: {
+  productButtonText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: '600'
   }
 })
+
+
+const mapStateToProps = function(state) {
+  const { store } = state
+  const { liveProducts } = store
+  return {
+    products: formatProducts(liveProducts)
+  }
+}
+
+export default connect(mapStateToProps)(Purchase)

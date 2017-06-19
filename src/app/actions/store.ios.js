@@ -1,6 +1,7 @@
 
 import {
-  NativeModules,
+  Alert,
+  NativeModules
 } from 'react-native'
 const { InAppUtils } = NativeModules
 
@@ -8,13 +9,17 @@ import {
   inventoryChange
 } from './inventory'
 
+import {
+  findRandNumMatches
+} from './matches'
+
 const FETCH_IOS_PRODUCTS = 'FETCH_IOS_PRODUCTS'
 export const RECEIVE_IOS_PRODUCTS = 'RECEIVE_IOS_PRODUCTS'
 const PRODUCT_IOS_BUY_TRY = 'PRODUCT_IOS_BUY_TRY'
 export const PRODUCT_IOS_BUY_SUCCESS = 'PRODUCT_IOS_BUY_SUCCESS'
 
-export const JUMP = 'JUMP'
-export const KEY = 'KEY'
+export const SKIP = 'SKIP'
+export const MORE_MATCHES = 'MORE_MATCHES'
 
 function productBuyTry(key) {
   return {
@@ -30,16 +35,33 @@ function productBuySuccess(response) {
   }
 }
 
+function routeProduct(key) {
+  return (dispatch) => {
+    const prod = findProduct(key)
+    switch (prod.type) {
+      case MORE_MATCHES:
+        dispatch(findRandNumMatches())
+        Alert.alert(
+          'You have new matches!',
+          ''
+        )
+      case SKIP:
+        dispatch(inventoryChange(prod))
+      default:
+        return
+    }
+  }
+}
 
-export function productBuy(key) {
+export function productBuy(key, success, fail) {
   return (dispatch) => {
     dispatch(productBuyTry(key))
     InAppUtils.purchaseProduct(key, (error, response) => {
-    // NOTE for v3.0: User can cancel the payment which will be availble as error object here.
+      if (error) console.log("error", error)
+      // NOTE for v3.0: User can cancel the payment which will be availble as error object here.
       if(response && response.productIdentifier) {
         dispatch(productBuySuccess(response))
-        const prod = findProduct(key)
-        dispatch(inventoryChange(prod))
+        dispatch(routeProduct(key))
       }
     });
   }
@@ -60,24 +82,19 @@ function _fetchIOSProducts() {
 
 const requestProducts = [
   {
-    key: 'com.heywing.wingkeys.3',
-    type: KEY,
+    key: 'com.heywing.matches.more',
+    type: MORE_MATCHES,
+    quantity: 1
+  },
+  {
+    key: 'com.heywing.skips.3',
+    type: SKIP,
     quantity: 3
   },
   {
-    key: 'com.heywing.wingjumps.3',
-    type: JUMP,
-    quantity: 3
-  },
-  {
-    key: 'com.heywing.wingjumps.7',
-    type: JUMP,
+    key: 'com.heywing.skips.7',
+    type: SKIP,
     quantity: 7
-  },
-  {
-    key: 'com.heywing.wingjumps.18',
-    type: JUMP,
-    quantity: 18
   }
 ]
 
@@ -115,15 +132,15 @@ function getProduct(product) {
 const priceLowToHigh = (a, b) => { return a.price - b.price }
 
 function getJumpProducts(products) {
-  const isJump = (prod) => {return prod.title.includes("Jump")}
+  const isJump = (prod) => {return prod.title.includes("Skip")}
   filteredProds = products.filter(isJump)
   filteredProds.sort(priceLowToHigh)
   return filteredProds.map((prod) => {return getProduct(prod)})
 }
 
-function getKeyProducts(products) {
-  const isKey = (prod) => {return prod.title.includes("Key")}
-  filteredProds = products.filter(isKey)
+function getMatchProducts(products) {
+  const isJump = (prod) => {return prod.title.includes("Matches")}
+  filteredProds = products.filter(isJump)
   filteredProds.sort(priceLowToHigh)
   return filteredProds.map((prod) => {return getProduct(prod)})
 }
@@ -131,6 +148,6 @@ function getKeyProducts(products) {
 export function formatProducts(products) {
   return {
     jumpProducts: getJumpProducts(products),
-    keyProducts: getKeyProducts(products)
+    matchProducts: getMatchProducts(products)
   }
 }
