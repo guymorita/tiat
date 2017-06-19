@@ -11,8 +11,8 @@ import { connect } from 'react-redux'
 import NavigationBar from 'react-native-navbar'
 import moment from 'moment'
 
-import { findMatches } from '../../actions/matches'
-import { invJumpsAdd, invKeysAdd } from '../../actions/inventory'
+import { findRandNumMatches } from '../../actions/matches'
+import { invJumpsAdd } from '../../actions/inventory'
 import { LIGHT_GRAY } from '../../lib/colors'
 import { perStore } from '../../../Client'
 
@@ -28,20 +28,14 @@ class Dev extends React.Component {
     navigator.pop()
   }
 
-  _onAdvanceDayPress = () => {
-    const { activeChats, currentMatches, dispatch } = this.props
-
-    // TODO advance stuff
+  _onMoreMatchesPress = () => {
+    const { dispatch } = this.props
+    dispatch(findRandNumMatches())
   }
 
   _onAddJumpsPress = () => {
     const { dispatch } = this.props
     dispatch(invJumpsAdd(3))
-  }
-
-  _onAddKeysPress = () => {
-    const { dispatch } = this.props
-    dispatch(invKeysAdd(3))
   }
 
   _onPurgePress = () => {
@@ -104,8 +98,8 @@ class Dev extends React.Component {
                   {String(date.opened_today.change_day)}
                 </Text>
                 <Button
-                  onPress={this._onAdvanceDayPress}
-                  title="Advance Day"
+                  onPress={this._onMoreMatchesPress}
+                  title="More Matches"
                   color="#841584"
                 />
               </View>
@@ -140,27 +134,13 @@ class Dev extends React.Component {
             <View style={styles.row}>
               <View style={styles.col1}>
                 <Text>
-                  Jumps
+                  Skips
                 </Text>
               </View>
               <View style={styles.col2}>
                 <Button
                   onPress={this._onAddJumpsPress}
-                  title="Add 3 Jumps"
-                  color="#841584"
-                />
-              </View>
-            </View>
-            <View style={styles.row}>
-              <View style={styles.col1}>
-                <Text>
-                  Keys
-                </Text>
-              </View>
-              <View style={styles.col2}>
-                <Button
-                  onPress={this._onAddKeysPress}
-                  title="Add 3 Keys"
+                  title="Add 3 Skips"
                   color="#841584"
                 />
               </View>
