@@ -20,7 +20,7 @@
         "wait_sec": 1
       },
       {
-        "text": "It was good, work work work haha",
+        "text": "It was good, work work work",
         "msg_id": 3,
         "cha_id": 101,
         "wait_sec": 1
@@ -50,13 +50,13 @@
         "wait_sec": 1
       },
       {
-        "text": "Aka I'm a pharmacist",
+        "text": "Aka I'm a pharmacist lol",
         "msg_id": 8,
         "cha_id": 101,
         "wait_sec": 1
       },
       {
-        "text": "And you?",
+        "text": "You?",
         "msg_id": 9,
         "cha_id": 101,
         "wait_sec": 1
@@ -76,7 +76,7 @@
         },
         {
           "dec_id": 1,
-          "text": "Play it straight and let her know you have an impressive job",
+          "text": "Play it straight and show off your job",
           "target_thread": "c"
         }
       ]
@@ -139,7 +139,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Haha, what does that mean?",
+        "text": "Lol, what does that mean?",
         "msg_id": 2,
         "cha_id": 1,
         "wait_sec": 1
@@ -189,7 +189,7 @@
       "options": [
         {
           "dec_id": 0,
-          "text": "Start getting at her intentions on this app",
+          "text": "Start getting at her intentions",
           "target_thread": "e"
         },
         {
@@ -221,14 +221,20 @@
         "wait_sec": 1
       },
       {
-        "text": "Awww you're sweet",
+        "text": "Great job digging into a slightly taboo topic. It shows that you're comfortable with who you are.",
         "msg_id": 3,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "Awww you're sweet",
+        "msg_id": 4,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
         "text": "What about you?",
-        "msg_id": 4,
+        "msg_id": 5,
         "cha_id": 101,
         "wait_sec": 1
       }
@@ -251,7 +257,7 @@
         "wait_sec": 1
       },
       {
-        "text": "I don't know haha, it pays well",
+        "text": "I don't know, it pays well",
         "msg_id": 1,
         "cha_id": 101,
         "wait_sec": 1
@@ -263,7 +269,7 @@
         "wait_sec": 1
       },
       {
-        "text": "fair enough haha",
+        "text": "fair enough",
         "msg_id": 3,
         "cha_id": 1,
         "wait_sec": 1
@@ -293,14 +299,20 @@
         "wait_sec": 1
       },
       {
-        "text": "Awww you're sweet",
+        "text": "Great job digging into a slightly taboo topic. It shows that you're comfortable with who you are.",
         "msg_id": 8,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "Awww you're sweet",
+        "msg_id": 9,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
         "text": "What about you?",
-        "msg_id": 9,
+        "msg_id": 10,
         "cha_id": 101,
         "wait_sec": 1
       }
@@ -363,7 +375,7 @@
         "wait_sec": 1
       },
       {
-        "text": "LOL",
+        "text": "Lol",
         "msg_id": 4,
         "cha_id": 101,
         "wait_sec": 1
@@ -423,7 +435,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Keep in mind that these apps can be a much different experience for women. Guys aren't always polite.",
+        "text": "Keep in mind that these apps can be a much different experience for women. Guys aren't always considerate and trustworthy.",
         "msg_id": 14,
         "cha_id": 2,
         "wait_sec": 1
@@ -545,7 +557,7 @@
       "options": [
         {
           "dec_id": 0,
-          "text": "Push the envelope and find out what she's looking for",
+          "text": "Find out what she's looking for",
           "target_thread": "k"
         },
         {
@@ -710,38 +722,44 @@
         "wait_sec": 1
       },
       {
-        "text": "Me too :)",
+        "text": "Great. Being honest and positive is generally appreciated by most people",
         "msg_id": 3,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "Me too :)",
+        "msg_id": 4,
         "cha_id": 101,
         "wait_sec": 1
       },
       {
         "text": "It would be fun to meet in person sometime. Let me know if you'd like to get coffee or lunch someday.",
-        "msg_id": 4,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "My number is 555.555.5555 full name is Colin Potrero, for Facebook stalking purposes ;)",
         "msg_id": 5,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
-        "text": "I'd like that haha.",
+        "text": "My number is (256) 333-5956 full name is Colin Potrero, for Facebook stalking purposes ;)",
         "msg_id": 6,
-        "cha_id": 101,
+        "cha_id": 1,
         "wait_sec": 1
       },
       {
-        "text": "My number is 555.555.5555",
+        "text": "I'd like that haha.",
         "msg_id": 7,
         "cha_id": 101,
         "wait_sec": 1
       },
       {
-        "text": "Awesome. You were up front, and now you're on the same page.",
+        "text": "My number is 2564722841",
         "msg_id": 8,
+        "cha_id": 101,
+        "wait_sec": 1
+      },
+      {
+        "text": "Awesome. You were up front, and now you're on the same page.",
+        "msg_id": 9,
         "cha_id": 2,
         "wait_sec": 1
       }
@@ -754,23 +772,6 @@
       "text": "",
       "options": []
     }
-  },
-  "": {
-    "messages": [
-      {
-        "text": "Great. Being honest and positive is generally appreciated by most people",
-        "msg_id": 0,
-        "cha_id": 2,
-        "wait_sec": 1
-      },
-      {
-        "text": "This can go either way. Giving options first can show thought and assertiveness. Leaving it open gives a higher chance that she will enjoy the spot and feel comfortable.",
-        "msg_id": 1,
-        "cha_id": 2,
-        "wait_sec": 1
-      }
-    ],
-    "platform": ""
   },
   "o": {
     "messages": [
@@ -817,7 +818,7 @@
         "wait_sec": 1
       },
       {
-        "text": "My number is 555.555.5555 full name is Colin Potrero, for Facebook stalking purposes ;)",
+        "text": "My number is (256) 333-5956 full name is Colin Potrero, for Facebook stalking purposes ;)",
         "msg_id": 7,
         "cha_id": 1,
         "wait_sec": 1
@@ -829,7 +830,7 @@
         "wait_sec": 1
       },
       {
-        "text": "My number is 555.555.5555",
+        "text": "My number is 2564722841",
         "msg_id": 9,
         "cha_id": 101,
         "wait_sec": 1
@@ -892,7 +893,7 @@
         "text": "just off work, heading to the gym",
         "msg_id": 3,
         "cha_id": 101,
-        "wait_sec": "10800"
+        "wait_sec": "2700"
       },
       {
         "text": "nice",
@@ -913,7 +914,7 @@
         "wait_sec": 1
       },
       {
-        "text": "tonight i'm taking the kickboxing one but also really into bikram",
+        "text": "tonight i'm taking the kickboxing one but also really into hot yoga",
         "msg_id": 7,
         "cha_id": 101,
         "wait_sec": 1
@@ -925,7 +926,7 @@
         "wait_sec": 1
       },
       {
-        "text": "remind me not to mess with you haha",
+        "text": "remind me not to mess with you",
         "msg_id": 9,
         "cha_id": 1,
         "wait_sec": 1
@@ -1109,12 +1110,12 @@
       "options": [
         {
           "dec_id": 0,
-          "text": "Send a text to check in.",
+          "text": "Text the day before to check in.",
           "target_thread": "u"
         },
         {
           "dec_id": 1,
-          "text": "Wait until tomorrow.",
+          "text": "Wait until day of.",
           "target_thread": "v"
         }
       ]
@@ -1207,14 +1208,20 @@
         "wait_sec": 1
       },
       {
-        "text": "I'm not picky when it comes to food",
+        "text": "This can go either way. Giving options first can show you're thoughtful. Leaving it open gives a higher chance that she will enjoy the spot and feel comfortable - if she has a ready answer.",
         "msg_id": 14,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "I'm not picky when it comes to food",
+        "msg_id": 15,
         "cha_id": 101,
         "wait_sec": 1
       },
       {
         "text": "hmmmm",
-        "msg_id": 15,
+        "msg_id": 16,
         "cha_id": 1,
         "wait_sec": 1
       }
@@ -1313,7 +1320,7 @@
         },
         {
           "dec_id": 1,
-          "text": "Ask her what her favorite restaurants are.",
+          "text": "Ask what her favorite restaurants are",
           "target_thread": "y"
         }
       ]
@@ -1442,13 +1449,13 @@
         "wait_sec": 1
       },
       {
-        "text": "Making me do the work? haha",
+        "text": "Making me do the work?",
         "msg_id": 1,
         "cha_id": 101,
         "wait_sec": 1
       },
       {
-        "text": "hahahaOh",
+        "text": ";)",
         "msg_id": 2,
         "cha_id": 1,
         "wait_sec": 1
@@ -1464,114 +1471,12 @@
         "msg_id": 4,
         "cha_id": 2,
         "wait_sec": 1
-      },
-      {
-        "text": "okay, i have 3 options",
-        "msg_id": 5,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "gourmet BQQ, pho, or this chinese thai fusion place",
-        "msg_id": 6,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "such good options! hard to choose",
-        "msg_id": 7,
-        "cha_id": 101,
-        "wait_sec": 1
-      },
-      {
-        "text": "Hmmmmm",
-        "msg_id": 8,
-        "cha_id": 101,
-        "wait_sec": 1
-      },
-      {
-        "text": "Pho!",
-        "msg_id": 9,
-        "cha_id": 101,
-        "wait_sec": 1
-      },
-      {
-        "text": "wise decision",
-        "msg_id": 10,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "😊",
-        "msg_id": 11,
-        "cha_id": 101,
-        "wait_sec": 1
-      },
-      {
-        "text": "Okay, Sunflower Vietnamese Restaurant on connecticut street at 7:30?",
-        "msg_id": 12,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "perfect!",
-        "msg_id": 13,
-        "cha_id": 101,
-        "wait_sec": 1
-      },
-      {
-        "text": "great, looking forward to it 😊",
-        "msg_id": 14,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "me too",
-        "msg_id": 15,
-        "cha_id": 101,
-        "wait_sec": 1
-      },
-      {
-        "text": "see ya manana",
-        "msg_id": 16,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "see you then",
-        "msg_id": 17,
-        "cha_id": 101,
-        "wait_sec": 1
-      },
-      {
-        "text": "running late, sorry",
-        "msg_id": 18,
-        "cha_id": 101,
-        "wait_sec": 1
-      },
-      {
-        "text": "no rush, take your time :)",
-        "msg_id": 19,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "Good response. Life happens. Getting bent out of shape over punctuality is never attractive.",
-        "msg_id": 20,
-        "cha_id": 2,
-        "wait_sec": 1
-      },
-      {
-        "text": "thank you, i'm about 15 min away now",
-        "msg_id": 21,
-        "cha_id": 101,
-        "wait_sec": 1
       }
     ],
     "platform": "iMessage",
     "branch": {
       "branch_type": "linear",
-      "branch_target": "z",
+      "branch_target": "x",
       "terminal_options": {},
       "text": "",
       "options": []
@@ -1649,7 +1554,7 @@
       "options": [
         {
           "dec_id": 0,
-          "text": "Return the compliment as she gave it to you",
+          "text": "Return the compliment",
           "target_thread": "za"
         },
         {
@@ -1750,7 +1655,7 @@
         "wait_sec": 1
       },
       {
-        "text": "i never said i did like sweet talkers ;)",
+        "text": "i never said i didn't like sweet talkers ;)",
         "msg_id": 6,
         "cha_id": 101,
         "wait_sec": 1
@@ -1892,18 +1797,6 @@
         "msg_id": 29,
         "cha_id": 1,
         "wait_sec": 1
-      },
-      {
-        "text": "haha okay, i'll make some popcorn",
-        "msg_id": 30,
-        "cha_id": 101,
-        "wait_sec": 1
-      },
-      {
-        "text": "Woah! fireworks. She kinda handed this one to you. Good job picking up on the signals. Have fun, and remember to be a gentleman.",
-        "msg_id": 31,
-        "cha_id": 2,
-        "wait_sec": 1
       }
     ],
     "platform": "iMessage",
@@ -1912,9 +1805,9 @@
       "branch_target": "",
       "terminal_options": {
         "terminal_type": "success",
-        "text": ""
+        "text": "Woah! fireworks. She kinda handed this one to you. Good job picking up on the signals. Have fun, and remember to be a gentleman."
       },
-      "text": "",
+      "text": "Woah! fireworks. She kinda handed this one to you. Good job picking up on the signals. Have fun, and remember to be a gentleman.",
       "options": []
     }
   }

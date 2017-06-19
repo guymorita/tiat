@@ -1,0 +1,9 @@
+type,text,platform,wait_sec,thread,branch_type,terminal_type,next_thread,option_a_text,option_a_thread,option_b_text,option_b_thread
+self,Hey Mina! Nice to meet you :) How was your day?,tinder,0,a,,,,,,,
+girl,Hello :),tinder,2,a,,,,,,,
+girl,"It was okay, and yours?",tinder,1,a,,,,,,,
+self,Mine was pretty great. Just went to work and then the gym,tinder,0,a,,,,,,,
+self,What are you up to this evening?,tinder,2,a,,,,,,,
+self,How is your week going so far?,tinder,2,a,,,,,,,
+narrator,No response here. It's nothing personal. Check out some other matches and don't let it get you down.,tinder,14400,a,,,,,,,
+branch,Sometimes (often times) they go this way. Let's move on :),tinder,0,a,terminal,success,,,,,

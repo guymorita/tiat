@@ -1,0 +1,59 @@
+{
+  "a": {
+    "messages": [
+      {
+        "text": "Hey Mina! Nice to meet you :) How was your day?",
+        "msg_id": 0,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Hello :)",
+        "msg_id": 1,
+        "cha_id": 112,
+        "wait_sec": 1
+      },
+      {
+        "text": "It was okay, and yours?",
+        "msg_id": 2,
+        "cha_id": 112,
+        "wait_sec": 1
+      },
+      {
+        "text": "Mine was pretty great. Just went to work and then the gym",
+        "msg_id": 3,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "What are you up to this evening?",
+        "msg_id": 4,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "How is your week going so far?",
+        "msg_id": 5,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "No response here. It's nothing personal. Check out some other matches and don't let it get you down.",
+        "msg_id": 6,
+        "cha_id": 2,
+        "wait_sec": "14400"
+      }
+    ],
+    "platform": "tinder",
+    "branch": {
+      "branch_type": "terminal",
+      "branch_target": "",
+      "terminal_options": {
+        "terminal_type": "success",
+        "text": "Sometimes (often times) they go this way. Let's move on :)"
+      },
+      "text": "Sometimes (often times) they go this way. Let's move on :)",
+      "options": []
+    }
+  }
+}

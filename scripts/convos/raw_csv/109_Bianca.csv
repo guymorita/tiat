@@ -1,0 +1,10 @@
+type,text,platform,wait_sec,thread,branch_type,terminal_type,next_thread,option_a_text,option_a_thread,option_b_text,option_b_thread
+self,How to charm a hot babe on Tinder,tinder,0,a,,,,,,,
+self,Whoops! meant to type that into google! 🙈,tinder,0,a,,,,,,,
+girl,Hey! Haha what did Google tell you?,tinder,0,a,,,,,,,
+self,{pic of hopeless for love},tinder,0,a,,,,,,,
+girl,Hahaha,tinder,0,a,,,,,,,
+girl,How many girls has this worked on... cause it's funny,tinder,0,a,,,,,,,
+self,Mmmm I can't lie - a few,tinder,0,a,,,,,,,
+self,How's your week going so far?,tinder,0,a,,,,,,,
+branch,"No response. Plenty of fish in the sea, as they say. Chin up and chat with someone else :)",tinder,0,a,terminal,success,,,,,

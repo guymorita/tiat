@@ -109,7 +109,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Such a big cute pie",
+        "text": "Such a big cutie pie",
         "msg_id": 2,
         "cha_id": 104,
         "wait_sec": 1
@@ -195,6 +195,12 @@
         "text": "Hahah how'd you know?",
         "msg_id": 7,
         "cha_id": 104,
+        "wait_sec": 1
+      },
+      {
+        "text": "Well played. Sometimes the best move is to go directly to meeting up or texting instead of chit chat on the platform. A lot of folks are busy and want to skip the penpal phase.",
+        "msg_id": 8,
+        "cha_id": 2,
         "wait_sec": 1
       }
     ],
@@ -300,7 +306,7 @@
         "wait_sec": 1
       },
       {
-        "text": "555-555-5555",
+        "text": "(256) 472-2841",
         "msg_id": 4,
         "cha_id": 104,
         "wait_sec": 1

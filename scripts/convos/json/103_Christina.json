@@ -8,21 +8,21 @@
         "wait_sec": 1
       },
       {
-        "text": "Heyyyy",
+        "text": "A little vanilla but that's ok. On one side there is less wordsmithing, on the other she might filter it out as generic. In any case, your profile is more important than your opener.",
         "msg_id": 1,
-        "cha_id": 103,
+        "cha_id": 2,
         "wait_sec": 1
       },
       {
-        "text": "It was okay, and yours?",
+        "text": "Heyyyy",
         "msg_id": 2,
         "cha_id": 103,
         "wait_sec": 1
       },
       {
-        "text": "Hahaha",
+        "text": "It was okay, and yours?",
         "msg_id": 3,
-        "cha_id": 1,
+        "cha_id": 103,
         "wait_sec": 1
       },
       {
@@ -53,7 +53,7 @@
       "options": [
         {
           "dec_id": 0,
-          "text": "Make a strong move and ask what she's doing tonight",
+          "text": "Make a bold move, ask her plans tonight",
           "target_thread": "b"
         },
         {
@@ -79,7 +79,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Good question hahaha",
+        "text": "Good question",
         "msg_id": 2,
         "cha_id": 103,
         "wait_sec": 1
@@ -139,7 +139,7 @@
         "wait_sec": 1
       },
       {
-        "text": "nice haha",
+        "text": "nice",
         "msg_id": 3,
         "cha_id": 1,
         "wait_sec": 1
@@ -188,7 +188,7 @@
         },
         {
           "dec_id": 1,
-          "text": "Not in the mood tonight. Push for another time",
+          "text": "Not in the mood today. Push until later",
           "target_thread": "f"
         }
       ]
@@ -403,7 +403,7 @@
       "options": [
         {
           "dec_id": 0,
-          "text": "It's cool with you, and you're interested",
+          "text": "Cool with you, and you're interested",
           "target_thread": "h"
         },
         {
@@ -532,7 +532,7 @@
   "k": {
     "messages": [
       {
-        "text": "Kinky",
+        "text": "Interesting...",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 1
@@ -592,7 +592,7 @@
         "wait_sec": 1
       },
       {
-        "text": "The only other thing is that we use protection, I'm pretty strict with the whole condoms thing",
+        "text": "The only other thing is that we use protection, I'm pretty strict with that whole thing",
         "msg_id": 10,
         "cha_id": 1,
         "wait_sec": 1
@@ -628,7 +628,7 @@
         "wait_sec": 1
       },
       {
-        "text": "My number is 555.555.5555",
+        "text": "My number is 2564722841",
         "msg_id": 16,
         "cha_id": 103,
         "wait_sec": 1
@@ -737,221 +737,6 @@
         "msg_id": 7,
         "cha_id": 103,
         "wait_sec": 1
-      },
-      {
-        "text": "Can I see more pictures of you?",
-        "msg_id": 8,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "Although this can be a bold move, I think in this case it's fair since she likes pictures. It might even be a leading question...",
-        "msg_id": 9,
-        "cha_id": 2,
-        "wait_sec": 1
-      },
-      {
-        "text": "What kind of pictures do you want to see? ;)",
-        "msg_id": 10,
-        "cha_id": 103,
-        "wait_sec": 1
-      }
-    ],
-    "platform": "iMessage",
-    "branch": {
-      "branch_type": "multi",
-      "branch_target": "",
-      "terminal_options": {},
-      "text": "",
-      "options": [
-        {
-          "dec_id": 0,
-          "text": "Turn this into a kinky conversation",
-          "target_thread": "n"
-        },
-        {
-          "dec_id": 1,
-          "text": "Keep it PG-13",
-          "target_thread": "o"
-        }
-      ]
-    }
-  },
-  "n": {
-    "messages": [
-      {
-        "text": "I am glad to check out whatever you'd like to share with me :)",
-        "msg_id": 0,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "Hahaha",
-        "msg_id": 1,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Let's start with some normal pics haha",
-        "msg_id": 2,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Works for me",
-        "msg_id": 3,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "{pic 1}",
-        "msg_id": 4,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "{pic 2}",
-        "msg_id": 5,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Wow. You are quite beautiful",
-        "msg_id": 6,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "Everyone likes compliments, especially a genuine one",
-        "msg_id": 7,
-        "cha_id": 2,
-        "wait_sec": 1
-      },
-      {
-        "text": "Why thank you ;)",
-        "msg_id": 8,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Your turn",
-        "msg_id": 9,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Okay haha",
-        "msg_id": 10,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "{pic 1}",
-        "msg_id": 11,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "{pic 2}",
-        "msg_id": 12,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "You're not so bad yourself ;)",
-        "msg_id": 13,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Awwww shucks",
-        "msg_id": 14,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "Thank you haha",
-        "msg_id": 15,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "So what evenings are you free this week?",
-        "msg_id": 16,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "I'm free Wednesday, Thursday, and Sunday",
-        "msg_id": 17,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Just let me know in advance",
-        "msg_id": 18,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Okay",
-        "msg_id": 19,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "Let's plan for Thursday eveing after 8pm?",
-        "msg_id": 20,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "I guess we can \"netflix and chill\"? haha",
-        "msg_id": 21,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "Given the context this works perfectly. In other circumstances, not so much.",
-        "msg_id": 22,
-        "cha_id": 2,
-        "wait_sec": 1
-      },
-      {
-        "text": "that sounds good to me haha",
-        "msg_id": 23,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": ";)",
-        "msg_id": 24,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Great",
-        "msg_id": 25,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "I'll text you Thursday AM",
-        "msg_id": 26,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "Okay! Talk soon",
-        "msg_id": 27,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Well! This should be a fun time. Make sure to be polite and be safe :)",
-        "msg_id": 28,
-        "cha_id": 2,
-        "wait_sec": 1
       }
     ],
     "platform": "iMessage",
@@ -960,180 +745,9 @@
       "branch_target": "",
       "terminal_options": {
         "terminal_type": "success",
-        "text": ""
+        "text": "Well done. Never would have expected the conversation to go like this but it's great you had an open mind."
       },
-      "text": "",
-      "options": []
-    }
-  },
-  "o": {
-    "messages": [
-      {
-        "text": "Let's start with some regular pics haha",
-        "msg_id": 0,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "Hahaha okay",
-        "msg_id": 1,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "{pic 1}",
-        "msg_id": 2,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "{pic 2}",
-        "msg_id": 3,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Wow. You are quite beautiful",
-        "msg_id": 4,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "Everyone likes compliments, especially a genuine one",
-        "msg_id": 5,
-        "cha_id": 2,
-        "wait_sec": 1
-      },
-      {
-        "text": "Why thank you ;)",
-        "msg_id": 6,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Your turn",
-        "msg_id": 7,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Okay haha",
-        "msg_id": 8,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "{pic 1}",
-        "msg_id": 9,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "{pic 2}",
-        "msg_id": 10,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "You're not so bad yourself ;)",
-        "msg_id": 11,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Awwww shucks",
-        "msg_id": 12,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "Thank you haha",
-        "msg_id": 13,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "So what evenings are you free this week?",
-        "msg_id": 14,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "I'm free Wednesday, Thursday, and Sunday",
-        "msg_id": 15,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Just let me know in advance",
-        "msg_id": 16,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Okay",
-        "msg_id": 17,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "Let's plan for Thursday eveing after 8pm?",
-        "msg_id": 18,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "I guess we can \"netflix and chill\"? haha",
-        "msg_id": 19,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "that sounds good to me haha",
-        "msg_id": 20,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": ";)",
-        "msg_id": 21,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Great",
-        "msg_id": 22,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "I'll text you Thursday AM",
-        "msg_id": 23,
-        "cha_id": 1,
-        "wait_sec": 1
-      },
-      {
-        "text": "Okay! Talk soon",
-        "msg_id": 24,
-        "cha_id": 103,
-        "wait_sec": 1
-      },
-      {
-        "text": "Well! This should be a fun time. Make sure to be polite and be safe :)",
-        "msg_id": 25,
-        "cha_id": 2,
-        "wait_sec": 1
-      }
-    ],
-    "platform": "iMessage",
-    "branch": {
-      "branch_type": "terminal",
-      "branch_target": "",
-      "terminal_options": {
-        "terminal_type": "success",
-        "text": ""
-      },
-      "text": "",
+      "text": "Well done. Never would have expected the conversation to go like this but it's great you had an open mind.",
       "options": []
     }
   }

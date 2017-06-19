@@ -151,7 +151,7 @@
         "wait_sec": 1
       },
       {
-        "text": "I'm a software engineer",
+        "text": "I'm in business analytics",
         "msg_id": 4,
         "cha_id": 1,
         "wait_sec": 1
@@ -163,7 +163,7 @@
         "wait_sec": 1
       },
       {
-        "text": "That's cool. Did you study engineering in school?",
+        "text": "That's cool. Did you study analytics in school?",
         "msg_id": 6,
         "cha_id": 102,
         "wait_sec": 1
@@ -239,8 +239,14 @@
         "wait_sec": 1
       },
       {
-        "text": "I like going out to eat as well :) I also like going on hikes, and checking out museums and art shows.",
+        "text": "She's not really opening up much but that's ok. Keep it positive and be the first to open up.",
         "msg_id": 4,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "I like going out to eat as well :) I also like going on hikes, and checking out museums and art shows.",
+        "msg_id": 5,
         "cha_id": 1,
         "wait_sec": 1
       }
@@ -315,7 +321,7 @@
         "text": "Sometimes people just don't respond. It's nothing personal. Keep on moving, and maintain a positive attitude.",
         "msg_id": 1,
         "cha_id": 2,
-        "wait_sec": "14400"
+        "wait_sec": "2700"
       }
     ],
     "platform": "bumble",
@@ -381,7 +387,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Want to coordinate over text? My number is 555.555.5555.",
+        "text": "Want to coordinate over text? My number is (256) 333-5956",
         "msg_id": 8,
         "cha_id": 1,
         "wait_sec": 1
@@ -393,13 +399,13 @@
         "wait_sec": 1
       },
       {
-        "text": "My number is 555.555.5555",
+        "text": "My number is 2564722841",
         "msg_id": 10,
         "cha_id": 102,
         "wait_sec": 1
       },
       {
-        "text": "Sounds like a super fun event, great move offering a unqiue date idea.",
+        "text": "Sounds like a super fun event, great move offering a unique date idea.",
         "msg_id": 11,
         "cha_id": 2,
         "wait_sec": 1
@@ -465,68 +471,74 @@
         "wait_sec": 1
       },
       {
-        "text": "Subtle information that displays that you're heathly and well rounded can go a long way.",
+        "text": "Subtle information that displays that you're healthy and well rounded can go a long way.",
         "msg_id": 8,
         "cha_id": 2,
         "wait_sec": 1
       },
       {
-        "text": "Nice :)",
+        "text": "Good that you're not readily available or \"doing nothing\". Dating is like scarcity in economics. Everyone wants what is low in supply.",
         "msg_id": 9,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "Nice :)",
+        "msg_id": 10,
         "cha_id": 102,
         "wait_sec": 1
       },
       {
         "text": "So for this Thursday, the event goes from 6-10. When is a good time for you?",
-        "msg_id": 10,
+        "msg_id": 11,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
         "text": "Hmmmm",
-        "msg_id": 11,
-        "cha_id": 102,
-        "wait_sec": 1
-      },
-      {
-        "text": "I think 7 or 8 would be best",
         "msg_id": 12,
         "cha_id": 102,
         "wait_sec": 1
       },
       {
-        "text": "Either works for me. Should we say 7:30?",
+        "text": "I think 7 or 8 would be best",
         "msg_id": 13,
-        "cha_id": 1,
+        "cha_id": 102,
         "wait_sec": 1
       },
       {
-        "text": "Also, would you like me to pick you up, or would you like to meet there?",
+        "text": "Either works for me. Should we say 7:30?",
         "msg_id": 14,
         "cha_id": 1,
         "wait_sec": 1
       },
       {
-        "text": "Good move. Sometimes women don't like the idea of a stranger picking them up. It's always nice to offer, but make it an option.",
+        "text": "Also, would you like me to pick you up, or would you like to meet there?",
         "msg_id": 15,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Good move. Sometimes women don't like the idea of a stranger picking them up. It's always nice to offer, but make it an option.",
+        "msg_id": 16,
         "cha_id": 2,
         "wait_sec": 1
       },
       {
         "text": "You can pick me up at my place at 7:30.",
-        "msg_id": 16,
-        "cha_id": 102,
-        "wait_sec": 1
-      },
-      {
-        "text": "My address is 1223 Potrero",
         "msg_id": 17,
         "cha_id": 102,
         "wait_sec": 1
       },
       {
-        "text": "Great! See you Thursday at 7:30",
+        "text": "My address is 1228 Potrero in the Mission",
         "msg_id": 18,
+        "cha_id": 102,
+        "wait_sec": 1
+      },
+      {
+        "text": "Great! See you Thursday at 7:30",
+        "msg_id": 19,
         "cha_id": 1,
         "wait_sec": 1
       }
@@ -551,12 +563,12 @@
       "options": [
         {
           "dec_id": 0,
-          "text": "Send a text to check in.",
+          "text": "Text the day before to check in",
           "target_thread": "l"
         },
         {
           "dec_id": 1,
-          "text": "Wait until tomorrow.",
+          "text": "Wait until day of",
           "target_thread": "m"
         }
       ]
@@ -583,7 +595,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Me too :)",
+        "text": "Same!",
         "msg_id": 3,
         "cha_id": 102,
         "wait_sec": 1
@@ -625,7 +637,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Me too :)",
+        "text": "Same!",
         "msg_id": 4,
         "cha_id": 102,
         "wait_sec": 1
@@ -649,7 +661,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Thank you for dinner :)",
+        "text": "Thank you for dinner :) Twas yummy",
         "msg_id": 1,
         "cha_id": 102,
         "wait_sec": 1
@@ -667,15 +679,9 @@
         "wait_sec": 1
       },
       {
-        "text": "You too",
+        "text": "Night!",
         "msg_id": 4,
         "cha_id": 102,
-        "wait_sec": 1
-      },
-      {
-        "text": "Okay okay. Seems like you had a decent date. Wait a couple days, and follow up to see how she is and ask her out again.",
-        "msg_id": 5,
-        "cha_id": 2,
         "wait_sec": 1
       }
     ],
@@ -685,9 +691,9 @@
       "branch_target": "",
       "terminal_options": {
         "terminal_type": "success",
-        "text": ""
+        "text": "Okay okay. Seems like you had a decent date. Wait a couple days, and follow up to see how she is and ask her out again."
       },
-      "text": "",
+      "text": "Okay okay. Seems like you had a decent date. Wait a couple days, and follow up to see how she is and ask her out again.",
       "options": []
     }
   }

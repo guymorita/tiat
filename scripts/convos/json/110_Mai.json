@@ -1,0 +1,569 @@
+{
+  "a": {
+    "messages": [
+      {
+        "text": "Hello Joe",
+        "msg_id": 0,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Hello Mai! Nice to \"meet\" you :) How was your week?",
+        "msg_id": 1,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Nice to \"meet\" you too,Joe ;) Weekend has been busy and finally relaxing at home. How's your weekend?",
+        "msg_id": 2,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Very nice! Did you do anything exciting? I spent lots of time with friends and exercising. I also cooked a lot of food :)",
+        "msg_id": 3,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "I also met with friends on Saturday and watched movie. But today I had some me time and I went bike shopping- proudly got my first road bike ;)",
+        "msg_id": 4,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "She seems keen to open up and tell you about herself. Good start!",
+        "msg_id": 5,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "That's great! Are you in brooklyn or the city?",
+        "msg_id": 6,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "I'm in the city. You?",
+        "msg_id": 7,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "I'm right across the bridge in Brooklyn :)",
+        "msg_id": 8,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Are you a photographer?",
+        "msg_id": 9,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Cool. You need cross the bridge dude ;)",
+        "msg_id": 10,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "I'm not a photographer but was interested in playing with cameras before. Why?",
+        "msg_id": 11,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Very flirty. Also inquisitive which is always a good sign. Already lots of things she's thrown out there that you can talk about.",
+        "msg_id": 12,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "I do all the time! I love the city. Where do you live in the city?",
+        "msg_id": 13,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Just curious. Saw your picture",
+        "msg_id": 14,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "What do you do for work?",
+        "msg_id": 15,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "I live on Chelsea. Not that far away from the bridge;)",
+        "msg_id": 16,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Finance. How about you? Do you work in the city?",
+        "msg_id": 17,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "I run a small creative agency. We're over in Williamsburg",
+        "msg_id": 18,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "That's cool! Where did you go to school?",
+        "msg_id": 19,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "This is starting to feel like a job interview. Let's move on to a more interesting question.",
+        "msg_id": 20,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "Sounds cool. What kind of creativity do you do?",
+        "msg_id": 21,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Columbia",
+        "msg_id": 22,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "We make online videos!",
+        "msg_id": 23,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "What kind of finance do you do? Did you like Columbia?",
+        "msg_id": 24,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "I work in banking. Yes I did enjoy studying in Columbia. I think everyone likes their own schools.",
+        "msg_id": 25,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "That's awesome!",
+        "msg_id": 26,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "I actually wasn't too thrilled with my undergrad. If I could do it again, I'd go elsewhere lol",
+        "msg_id": 27,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Did you also go to Columbia?",
+        "msg_id": 28,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Nope! NYC.",
+        "msg_id": 29,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "I went to NYC once, the neighborhood is beautiful.",
+        "msg_id": 30,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "It is a very beautiful location!",
+        "msg_id": 31,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Yes. San Diego is a beautiful town",
+        "msg_id": 32,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "This conversation is getting dull really quickly. Since it's moving along quickly it's more acceptable, but let's try to move the conversation to something exciting or interesting.",
+        "msg_id": 33,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "Let's try getting to her intentions on the app.",
+        "msg_id": 34,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "How do you like tinder? Have you met with anyone yet?",
+        "msg_id": 35,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Just started playing. Heard a lot of good and bad things about it. I think it all depends on how you use it.",
+        "msg_id": 36,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "How do you think?",
+        "msg_id": 37,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "She's new to it and seems open to finding out more.",
+        "msg_id": 38,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "I think it's great! I've had it since it came out 2 years ago, and I've met a lot of cool people. Maybe it's because I'm a guy, or I've just been fortunate meeting people",
+        "msg_id": 39,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "What bad things have you heard?",
+        "msg_id": 40,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Some people say it's just a hookup place",
+        "msg_id": 41,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Even that's not 100% bad comment",
+        "msg_id": 42,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Interesting! Didn't expect that. Let's see where this goes.",
+        "msg_id": 43,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "Maybe some people use it that way. I don't think hooking up is negative as well. People use it for different things",
+        "msg_id": 44,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "I don't think of tinder as a dating site for relationships like match or eharmony",
+        "msg_id": 45,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "But I use it to meet people and go on dates, not one night stands or anything",
+        "msg_id": 46,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Me neither. Dating site should have more info than a photo and some height.",
+        "msg_id": 47,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Nothing is wrong about one night stands. Sometimes people intend to continue but things don't always go as anticipated.",
+        "msg_id": 48,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Hahaha. Yeah, it's a little superficial",
+        "msg_id": 49,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "That's true",
+        "msg_id": 50,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "It's very superficial! Plus I don't really manage my fb very well",
+        "msg_id": 51,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "But tinder cuts off the bullshit.",
+        "msg_id": 52,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Haha. I only keep up with my FB for work stuff",
+        "msg_id": 53,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "But I like tinder because it's like, you get to meet a person that you think is cute, and you can take it from there",
+        "msg_id": 54,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "I barely update anything, but check friends' updates time to time",
+        "msg_id": 55,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Friends, hook up, dating, casual sex, relationship, business connection... Anything is possible",
+        "msg_id": 56,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "True. Like I said, it cuts off the bullshit. Chemistry starts from superficial anyway.",
+        "msg_id": 57,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Hahaha. That is usually the case",
+        "msg_id": 58,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Need go to bed",
+        "msg_id": 59,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Same here!",
+        "msg_id": 60,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Continue this conversation later? :)",
+        "msg_id": 61,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Sure",
+        "msg_id": 62,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Good night Joe. 7182852627",
+        "msg_id": 63,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Sleep well Mai!",
+        "msg_id": 64,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Well done. You stayed honest about your intentions and so did she. She was comfortable opening up.",
+        "msg_id": 65,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "Hey Mai! How's your day going so far?",
+        "msg_id": 66,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Hey Joe!",
+        "msg_id": 67,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Cray cray",
+        "msg_id": 68,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Just finish gym and going to grab lunch",
+        "msg_id": 69,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Busy busy! But it sounds like a good day :) What do you like to do when you go to the gym?",
+        "msg_id": 70,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Be a little careful here. She may be giving the hint that she's busy right now and pushing to hard to force a conversation can feel needy.",
+        "msg_id": 71,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "Just ran and was on stepping machine for an hour today. I also do the group exercise like Pilate and spinning a lot.",
+        "msg_id": 72,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Work has been very stressful recently, need work out more to relax. How's your day going so far?",
+        "msg_id": 73,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Wow! That's a ton of cardio!",
+        "msg_id": 74,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Why is work so stressful? Big project? Long hours?",
+        "msg_id": 75,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "It's going well. Relatively relaxed, but still busy",
+        "msg_id": 76,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Reorg and it's chaos",
+        "msg_id": 77,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "But I'm still very excited about my new bike haha like a little girl. Checking components and accessories.",
+        "msg_id": 78,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "She's enjoys exercise including biking, let's see where this goes. Any time she references feeling girly feelings is generally a good thing.",
+        "msg_id": 79,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "You're gonna be a critical mass and bike partier? ;)",
+        "msg_id": 80,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "I'm pretty picky lol but try to be a bit more serious on cycling at this point. Not sure about the party for now ;) but will definitely join some clubs.",
+        "msg_id": 81,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Awesome! So you're going to be like an exercise cyclist? My parents are really into cycling. They've both done the aids ride.",
+        "msg_id": 82,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Maybe next time call it a charity ride. Just a thought.",
+        "msg_id": 83,
+        "cha_id": 2,
+        "wait_sec": 1
+      },
+      {
+        "text": "I'm still beginner but that's gonna change with time. Sounds like you should get a bike too ;)",
+        "msg_id": 84,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "I know I know. Brooklyn you drive a lot though :/",
+        "msg_id": 85,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Haha the city is totally not bike friendly but cycling is not about commute though ;) ;)",
+        "msg_id": 86,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "It's a lifestyle, I know lol",
+        "msg_id": 87,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Want to add me on FB? Joe Portman :)",
+        "msg_id": 88,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Added ;)",
+        "msg_id": 89,
+        "cha_id": 110,
+        "wait_sec": 1
+      },
+      {
+        "text": "Do you use FB messenger at all?",
+        "msg_id": 90,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Yes I use fb messenger. But it works bad sometimes",
+        "msg_id": 91,
+        "cha_id": 110,
+        "wait_sec": 1
+      }
+    ],
+    "platform": "bumble",
+    "branch": {
+      "branch_type": "terminal",
+      "branch_target": "",
+      "terminal_options": {
+        "terminal_type": "success",
+        "text": "Well that worked out in the end. The conversation got the emotions stirring at times and flowed well. Not the greatest interaction of all time, but it's all part of the journey."
+      },
+      "text": "Well that worked out in the end. The conversation got the emotions stirring at times and flowed well. Not the greatest interaction of all time, but it's all part of the journey.",
+      "options": []
+    }
+  }
+}

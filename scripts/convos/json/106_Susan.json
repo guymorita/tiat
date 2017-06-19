@@ -32,7 +32,7 @@
         "wait_sec": 1
       },
       {
-        "text": "A point to make here. Notice that disagreement and differences can spark more lively conversation than when you just go along with what people say. Debate can cause good friction.",
+        "text": "A point to make here. Notice that disagreement and differences can spark more lively conversation than if you were a yes man? So long as it's not about something serious or contentious then a battle of wits can get be fun and exciting.",
         "msg_id": 5,
         "cha_id": 2,
         "wait_sec": 1
@@ -68,7 +68,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Most women appreciate a man who has some cooking skills. Also shows that you could cook dinner for 2.",
+        "text": "Most women appreciate a man who has some cooking skills. Also shows that you could cook dinner for 2. After all, who doesn't like it when someone cooks for them?",
         "msg_id": 11,
         "cha_id": 2,
         "wait_sec": 1
@@ -109,7 +109,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Bold move. I would say it's a little too early in the conversation to suggest a date.",
+        "text": "Bold move. I'd say it's a little too early in the conversation to suggest a date.",
         "msg_id": 2,
         "cha_id": 2,
         "wait_sec": 1
@@ -269,7 +269,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Positivity counts for a lot. Plus, who doesn't like meeting new people",
+        "text": "Positivity counts for a lot. Plus, who doesn't like meeting new people?",
         "msg_id": 2,
         "cha_id": 2,
         "wait_sec": 1
@@ -311,7 +311,7 @@
         "wait_sec": 1
       },
       {
-        "text": "Good question. I'm not looking for something causual if that's what you're asking",
+        "text": "Good question. I'm not looking for something casual if that's what you're asking",
         "msg_id": 3,
         "cha_id": 106,
         "wait_sec": 1
@@ -377,7 +377,7 @@
         "wait_sec": 1
       },
       {
-        "text": "It's always important to be cordial, especially when its not a match. Good job leaving things on a good note",
+        "text": "It's always important to be cordial, especially when it's not a match. Good job leaving things on a good note",
         "msg_id": 14,
         "cha_id": 2,
         "wait_sec": 1
@@ -517,7 +517,7 @@
         "wait_sec": 1
       },
       {
-        "text": "My number is 555.555.5555",
+        "text": "My number is (256) 333-5956",
         "msg_id": 7,
         "cha_id": 106,
         "wait_sec": 1
@@ -559,7 +559,7 @@
         "wait_sec": 1
       },
       {
-        "text": "My number is 555.555.5555",
+        "text": "My number is (256) 333-5956",
         "msg_id": 3,
         "cha_id": 106,
         "wait_sec": 1
@@ -583,7 +583,7 @@
   "j": {
     "messages": [
       {
-        "text": "Hello Bianca! This is Collin :)",
+        "text": "Hello Bianca! This is John :)",
         "msg_id": 0,
         "cha_id": 1,
         "wait_sec": 1

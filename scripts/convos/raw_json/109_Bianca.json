@@ -1,0 +1,11 @@
+[
+{"type":"self","text":"How to charm a hot babe on Tinder","platform":"tinder","wait_sec":"0","thread":"a","branch_type":"","terminal_type":"","next_thread":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"self","text":"Whoops! meant to type that into google! 🙈","platform":"tinder","wait_sec":"0","thread":"a","branch_type":"","terminal_type":"","next_thread":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"girl","text":"Hey! Haha what did Google tell you?","platform":"tinder","wait_sec":"0","thread":"a","branch_type":"","terminal_type":"","next_thread":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"self","text":"{pic of hopeless for love}","platform":"tinder","wait_sec":"0","thread":"a","branch_type":"","terminal_type":"","next_thread":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"girl","text":"Hahaha","platform":"tinder","wait_sec":"0","thread":"a","branch_type":"","terminal_type":"","next_thread":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"girl","text":"How many girls has this worked on... cause it's funny","platform":"tinder","wait_sec":"0","thread":"a","branch_type":"","terminal_type":"","next_thread":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"self","text":"Mmmm I can't lie - a few","platform":"tinder","wait_sec":"0","thread":"a","branch_type":"","terminal_type":"","next_thread":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"self","text":"How's your week going so far?","platform":"tinder","wait_sec":"0","thread":"a","branch_type":"","terminal_type":"","next_thread":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""},
+{"type":"branch","text":"No response. Plenty of fish in the sea, as they say. Chin up and chat with someone else :)","platform":"tinder","wait_sec":"0","thread":"a","branch_type":"terminal","terminal_type":"success","next_thread":"","option_a_text":"","option_a_thread":"","option_b_text":"","option_b_thread":""}
+]

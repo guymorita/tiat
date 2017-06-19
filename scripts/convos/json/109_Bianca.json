@@ -1,0 +1,65 @@
+{
+  "a": {
+    "messages": [
+      {
+        "text": "How to charm a hot babe on Tinder",
+        "msg_id": 0,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Whoops! meant to type that into google! 🙈",
+        "msg_id": 1,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Hey! Haha what did Google tell you?",
+        "msg_id": 2,
+        "cha_id": 109,
+        "wait_sec": 1
+      },
+      {
+        "text": "{pic of hopeless for love}",
+        "msg_id": 3,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "Hahaha",
+        "msg_id": 4,
+        "cha_id": 109,
+        "wait_sec": 1
+      },
+      {
+        "text": "How many girls has this worked on... cause it's funny",
+        "msg_id": 5,
+        "cha_id": 109,
+        "wait_sec": 1
+      },
+      {
+        "text": "Mmmm I can't lie - a few",
+        "msg_id": 6,
+        "cha_id": 1,
+        "wait_sec": 1
+      },
+      {
+        "text": "How's your week going so far?",
+        "msg_id": 7,
+        "cha_id": 1,
+        "wait_sec": 1
+      }
+    ],
+    "platform": "tinder",
+    "branch": {
+      "branch_type": "terminal",
+      "branch_target": "",
+      "terminal_options": {
+        "terminal_type": "success",
+        "text": "No response. Plenty of fish in the sea, as they say. Chin up and chat with someone else :)"
+      },
+      "text": "No response. Plenty of fish in the sea, as they say. Chin up and chat with someone else :)",
+      "options": []
+    }
+  }
+}
