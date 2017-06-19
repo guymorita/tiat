@@ -447,7 +447,7 @@
         "wait_sec": 1
       },
       {
-        "text": "My boyfriend likes me to take pictures and video when I'm with other people",
+        "text": "My boyfriend likes me to take video when I'm with other people",
         "msg_id": 5,
         "cha_id": 103,
         "wait_sec": 1
@@ -456,7 +456,7 @@
     "platform": "tinder",
     "branch": {
       "branch_type": "linear",
-      "branch_target": "g",
+      "branch_target": "j",
       "terminal_options": {},
       "text": "",
       "options": []
@@ -518,7 +518,7 @@
       "options": [
         {
           "dec_id": 0,
-          "text": "You're down with the naughty pics",
+          "text": "You're down",
           "target_thread": "k"
         },
         {
@@ -668,12 +668,6 @@
         "msg_id": 3,
         "cha_id": 103,
         "wait_sec": 1
-      },
-      {
-        "text": "Nice. Even though you two weren't looking for the same thing, you ended the conversation in a polite way :)",
-        "msg_id": 4,
-        "cha_id": 2,
-        "wait_sec": 1
       }
     ],
     "platform": "tinder",
@@ -682,9 +676,9 @@
       "branch_target": "",
       "terminal_options": {
         "terminal_type": "success",
-        "text": ""
+        "text": "Nice. Even though you two weren't looking for the same thing, you ended the conversation in a polite way :)"
       },
-      "text": "",
+      "text": "Nice. Even though you two weren't looking for the same thing, you ended the conversation in a polite way :)",
       "options": []
     }
   },
