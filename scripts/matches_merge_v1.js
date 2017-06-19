@@ -3,11 +3,12 @@ const fs = require('fs-extra');
 const path = require('path');
 const JSON3 = require('json3');
 const util = require('util');
-const moment = require('moment')
+const moment = require('moment');
+const hash = require('object-hash');
 
 const normalizedPath = path.join(__dirname + '/convos/json/');
 
-const OUTPUT_JSON = './src/app/data/v1/matches.json'
+const OUTPUT_JSON = './src/app/data/v1/matches.json';
 
 const matchJoinDict = require('./characters/match_join_dict.js');
 
@@ -38,11 +39,13 @@ fs.readdirSync(normalizedPath).forEach(function(file) {
     }
   };
 
+  matchMeta.hash = hash(matchMeta);
   matchBlob.matches.push(matchMeta);
 });
 
 // console.log(util.inspect(matchBlob, {showHidden: false, depth: 4}));
 
+matchBlob.hash = hash(matchBlob);
 saveThreadsJson = JSON3.stringify(matchBlob, null, 2);
 
 fs.outputFileSync(OUTPUT_JSON, saveThreadsJson);

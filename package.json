@@ -35,6 +35,7 @@
     "csvtojson": "^1.1.4",
     "jest": "19.0.2",
     "json3": "^3.3.2",
+    "object-hash": "^1.1.8",
     "react-test-renderer": "~15.4.1"
   },
   "jest": {
