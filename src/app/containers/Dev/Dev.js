@@ -11,8 +11,7 @@ import { connect } from 'react-redux'
 import NavigationBar from 'react-native-navbar'
 import moment from 'moment'
 
-import { advanceDateDay } from '../../actions/date'
-import { findMatches, tryAdvanceMatchQueue } from '../../actions/matches'
+import { findMatches } from '../../actions/matches'
 import { invJumpsAdd, invKeysAdd } from '../../actions/inventory'
 import { LIGHT_GRAY } from '../../lib/colors'
 import { perStore } from '../../../Client'
@@ -30,10 +29,9 @@ class Dev extends React.Component {
   }
 
   _onAdvanceDayPress = () => {
-    const { activeChats, currentMatches, dispatch, matchQueue } = this.props
-    dispatch(advanceDateDay())
-    dispatch(tryAdvanceMatchQueue())
-    dispatch(findMatches(currentMatches, matchQueue, activeChats))
+    const { activeChats, currentMatches, dispatch } = this.props
+
+    // TODO advance stuff
   }
 
   _onAddJumpsPress = () => {
@@ -110,18 +108,6 @@ class Dev extends React.Component {
                   title="Advance Day"
                   color="#841584"
                 />
-              </View>
-            </View>
-            <View style={styles.row}>
-              <View style={styles.col1}>
-                <Text>
-                  Modified Date Opened
-                </Text>
-              </View>
-              <View style={styles.col2}>
-                <Text>
-                  {moment.unix(date.opened_today.modified).format("MM-DD-YYYY")}
-                </Text>
               </View>
             </View>
           </View>
@@ -216,12 +202,11 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { activeChats, currentMatches, date, matchQueue } = state
+  const { activeChats, currentMatches, date } = state
   return {
     activeChats,
     currentMatches,
-    date,
-    matchQueue
+    date
   }
 }
 

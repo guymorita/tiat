@@ -9,7 +9,6 @@ import date from './date'
 import inventory from './inventory'
 import ui from './ui'
 import matchesAll from './matchesAll'
-import matchQueue from './matchQueue'
 import store from './store'
 
 export default combineReducers({
@@ -20,7 +19,6 @@ export default combineReducers({
   date,
   inventory,
   matchesAll,
-  matchQueue,
   store,
   ui
 })

@@ -38,9 +38,8 @@ function createPushNotification() {
 export function tryCreatePushNotification() {
   return (dispatch, getState) => {
     const state = getState()
-    const { date, matchQueue } = state
-    const hasMatchesTmrw = matchQueue.next_day.random_num_matches > 0
-    if (!hasMatchesTmrw) {
+    const { currentMatches, date, matchesAll } = state
+    if (currentMatches.length >= matchesAll.length) {
       return
     }
 

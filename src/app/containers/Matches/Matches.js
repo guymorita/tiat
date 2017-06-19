@@ -10,8 +10,8 @@ import {
 import { connect } from 'react-redux'
 import NavigationBar from 'react-native-navbar'
 
-import { findMatches, initMatchQueue, tryAdvanceMatchQueue } from '../../actions/matches'
-import { updateActualDate } from '../../actions/date'
+import { updateDateDay } from '../../actions/date'
+import { tryFindMatches, initMatches } from '../../actions/matches'
 import MatchCell from './MatchCell'
 import HamburgerButton from '../../components/Nav/HamburgerButton'
 import Title from '../../components/Nav/Title'
@@ -66,15 +66,14 @@ class Matches extends Component {
   }
 
   componentWillMount() {
-    const { activeChats, currentMatches, date, dispatch, matchesAll, matchQueue } = this.props
+    const { activeChats, currentMatches, dispatch } = this.props
 
-    dispatch(updateActualDate())
-    dispatch(tryAdvanceMatchQueue())
+    dispatch(updateDateDay())
 
-    if (!matchQueue.init_finish) {
-      dispatch(initMatchQueue(matchesAll, date))
+    if (!currentMatches.length) {
+      dispatch(initMatches())
     } else {
-      dispatch(findMatches(currentMatches, matchQueue, activeChats))
+      dispatch(tryFindMatches(currentMatches, activeChats))
     }
 
     this.setState({
@@ -83,8 +82,7 @@ class Matches extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { activeChats, currentMatches, dispatch, matchQueue } = nextProps
-    dispatch(findMatches(currentMatches, matchQueue, activeChats))
+    const { activeChats, currentMatches, dispatch } = nextProps
 
     this.setState({
       dataSource: this.state.ds.cloneWithRows(currentMatches)
@@ -137,13 +135,11 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { activeChats, currentMatches, date, matchesAll, matchQueue } = state
+  const { activeChats, currentMatches, date } = state
   return {
     activeChats,
     currentMatches,
-    date,
-    matchesAll,
-    matchQueue
+    date
   }
 }
 

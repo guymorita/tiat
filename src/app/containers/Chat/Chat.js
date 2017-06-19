@@ -220,7 +220,7 @@ class Chat extends React.Component {
     let waitingToRestart = false
 
     if (isTerm) {
-      const dateNow = date.opened_today.modified
+      const dateNow = date.opened_today.actual
       const { dateRetry } = curChat.terminate
       waitingToRestart = dateRetry > dateNow
 

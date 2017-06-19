@@ -1,12 +1,12 @@
 
 import moment from 'moment'
 
-export const ADVANCE_DATE_DAY = 'ADVANCE_DATE_DAY'
-export const UPDATE_ACTUAL_DATE = 'UPDATE_ACTUAL_DATE'
+export const UPDATE_DATE_DAY = 'UPDATE_DATE_DAY'
 
-export function advanceDateDay() {
+export function updateDateDay(day) {
   return {
-    type: ADVANCE_DATE_DAY
+    type: UPDATE_DATE_DAY,
+    day
   }
 }
 
@@ -15,11 +15,7 @@ export function conv_to_unix(date) {
 }
 
 export function dateNow(date = {}) {
-  if (__DEV__) {
-    return date.opened_today.modified
-  } else {
-    return moment().unix()
-  }
+  return moment().unix()
 }
 
 export function dayFromDate(date, adj_days=0) {
@@ -32,10 +28,4 @@ export function dayFromDate(date, adj_days=0) {
 
 export function modi_date(actual, change) {
   return moment.unix(actual).add(change, 'days')
-}
-
-export function updateActualDate() {
-  return {
-    type: UPDATE_ACTUAL_DATE
-  }
 }
