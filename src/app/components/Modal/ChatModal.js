@@ -10,6 +10,10 @@ import {
 import Modal from 'react-native-modalbox'
 import { TINDER_COLOR, SUCCESS_GREEN } from '../../lib/colors'
 
+const randInArr = (arr) => {
+  return arr[Math.floor(Math.random() * arr.length)]
+}
+
 export default class ChatModal extends React.Component {
   render() {
     const { open, text, type } = this.props
@@ -17,7 +21,18 @@ export default class ChatModal extends React.Component {
     const success = type === "success";
 
     const addnStyle = success ? styles.success : styles.fail
-    const title = success ? "Great!" : "Oops!"
+    const failMessages = [
+      "Oops!",
+      "Oh no!"
+    ]
+
+    const successMessages = [
+      "Well done!",
+      "Great!",
+      "Booyah!"
+    ]
+
+    const title = success ? randInArr(successMessages) : randInArr(failMessages)
     const imgMap = {
       'success': require('./success.png'),
       'fail': require('./fail.png')
@@ -45,9 +60,18 @@ export default class ChatModal extends React.Component {
             <Text style={styles.headerText}>
               {title}
             </Text>
-            <Text>
+            <Text style={styles.text}>
               {text}
             </Text>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity onPress={this.props.close}>
+                <View style={[styles.productButton, styles.redBackground]}>
+                  <Text style={styles.productButtonText}>
+                    ✗ Close
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>
@@ -55,8 +79,8 @@ export default class ChatModal extends React.Component {
   }
 }
 
-const MODAL_EDGE_LENGTH = 300
-
+const MODAL_WIDTH_LENGTH = 300
+const MODAL_HEIGHT_LENGTH = 400
 
 const styles = StyleSheet.create({
   modal: {
@@ -65,8 +89,8 @@ const styles = StyleSheet.create({
   },
 
   modal3: {
-    width: MODAL_EDGE_LENGTH,
-    height: MODAL_EDGE_LENGTH
+    width: MODAL_WIDTH_LENGTH,
+    height: MODAL_HEIGHT_LENGTH
   },
 
   container: {
@@ -75,16 +99,18 @@ const styles = StyleSheet.create({
   },
 
   upper: {
-    width: MODAL_EDGE_LENGTH,
-    height: MODAL_EDGE_LENGTH * 0.55,
+    width: MODAL_WIDTH_LENGTH,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flex: 1,
+    padding: 20
   },
 
   bottom: {
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1
+    flex: -1,
+    padding: 20
   },
 
   success: {
@@ -102,6 +128,33 @@ const styles = StyleSheet.create({
 
   headerText: {
     fontSize: 24,
-    marginBottom: 10
+    marginBottom: 10,
+    fontWeight: '500',
+    color: '#333'
+  },
+  text: {
+    color: '#333'
+  },
+  buttonContainer: {
+    bottom: 0
+  },
+  redBackground: {
+    backgroundColor: TINDER_COLOR
+  },
+  productButton: {
+    margin: 16,
+    marginBottom: 20,
+    borderRadius: 12,
+    height: 45,
+    width: 100,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  productButtonText: {
+    color: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 16,
+    fontWeight: '500'
   }
 })

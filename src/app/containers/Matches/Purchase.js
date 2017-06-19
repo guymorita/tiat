@@ -10,7 +10,6 @@ import { connect } from 'react-redux'
 import { fetchProducts, formatProducts } from '../../actions/store' // platform specific
 import { tryPurchaseMatches } from '../../actions/matches'
 
-
 import { TINDER_COLOR } from '../../lib/colors'
 
 class Purchase extends Component {

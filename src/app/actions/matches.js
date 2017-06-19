@@ -84,14 +84,6 @@ function overNewMatchLimit(currentMatches, activeChats, maxNumNew) {
   return currentMatches.length >= (_.keys(activeChats).length + maxNumNew)
 }
 
-function tryPushMatchToCurrent() {
-  return (dispatch, getState) => {
-    const state = getState()
-    const { date } = state
-
-  }
-}
-
 function pushMatchToCurrent(i = 0) {
   return (dispatch, getState) => {
     const state = getState()
