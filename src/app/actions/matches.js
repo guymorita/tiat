@@ -92,13 +92,13 @@ function tryPushMatchToCurrent() {
   }
 }
 
-function pushMatchToCurrent() {
+function pushMatchToCurrent(i = 0) {
   return (dispatch, getState) => {
     const state = getState()
     const { matchesAll, currentMatches } = state
     const allMatchedKeys = currentMatches.map((match) => { return match.key})
     const allNotMatched = matchesAll.filter((match) => { return !allMatchedKeys.includes(match.key)})
-    const firstMatch = allNotMatched[0]
+    const firstMatch = allNotMatched[i]
     const firstMatchArr = [firstMatch]
     const newMatchList = firstMatchArr.concat(currentMatches)
     dispatch(findMatchesToShow(newMatchList))
@@ -107,8 +107,8 @@ function pushMatchToCurrent() {
 
 export function initMatches() {
   return (dispatch) => {
-    for (let i = 0; i < NUM_MATCHES_DAY_1; i++ ) {
-      dispatch(pushMatchToCurrent())
+    for (let i = NUM_MATCHES_DAY_1 - 1; i >= 0; i-- ) {
+      dispatch(pushMatchToCurrent(i))
     }
   }
 }
