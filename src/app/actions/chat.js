@@ -50,7 +50,8 @@ export function initSwitchChat(key) {
 
     if (showDailyConvoModal) {
       Alert.alert(
-        'Nice job, check DAILY for new matches'
+        'Nice job, check DAILY for new matches',
+        'Be sure to ACCEPT notifications'
       )
       dispatch(notifNewMatchesDaily())
     }

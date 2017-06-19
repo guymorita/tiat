@@ -4,7 +4,7 @@ import AppIntro from 'react-native-app-intro'
 import { connect } from 'react-redux'
 
 import { introFinished } from '../../actions/ui'
-import { LIGHT_BLUE, TINDER_COLOR } from '../../lib/colors'
+import { LIGHT_BLUE, LIGHT_PURPLE, TINDER_COLOR } from '../../lib/colors'
 
 class Intro extends Component {
   pushMatches = () => {
@@ -21,8 +21,7 @@ class Intro extends Component {
 
   render() {
     const pageArray = [{
-      title: 'Ethical Dating Advice',
-      description: 'Learn fliratious and respectful online conversation through real chat stories.',
+      title: 'Ethical Flirting Coach',
       img: require('./onboarding1.png'),
       imgStyle: {
         height: 156 / 2,
@@ -49,7 +48,7 @@ class Intro extends Component {
         height: 310 / 2.5,
         width: 630 / 2.5,
       },
-      backgroundColor: TINDER_COLOR,
+      backgroundColor: LIGHT_PURPLE,
       fontColor: '#fff',
       level: 10,
     }];
@@ -75,7 +74,8 @@ const customIntroStyles = {
   },
   title: {
     textAlign: 'center',
-
+    fontSize: 28,
+    fontWeight: '500'
   },
   description: {
     fontSize: 16,
