@@ -54,10 +54,14 @@ function findMatchesToShow(matches) {
 }
 
 export function findRandNumMatches() {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const state = getState()
+    const { currentMatches, matchesAll } = state
+    const matchesLeft = matchesAll.length - currentMatches.length
     const range = MAX_NUM_RANDOM_MATCHES_PER_DAY - MIN_NUM_RANDOM_MATCHES_PER_DAY
     const numRandomMatches = Math.floor(Math.random()*(range + 1))+MIN_NUM_RANDOM_MATCHES_PER_DAY
-    for (let i = 0; i < numRandomMatches; i++ ) {
+    const lesserOf = matchesLeft < numRandomMatches ? matchesLeft : numRandomMatches
+    for (let i = 0; i < lesserOf; i++ ) {
       dispatch(pushMatchToCurrent())
     }
   }
