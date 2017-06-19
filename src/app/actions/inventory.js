@@ -24,7 +24,7 @@ export function invJumpsSubtract(quantity) {
 export function inventoryChange(prod) {
   return (dispatch) => {
     const { quantity } = prod
-    if (prod.type === JUMP) {
+    if (prod.type === SKIP) {
       dispatch(invJumpsAdd(quantity))
     }
   }
