@@ -21,7 +21,8 @@ class Intro extends Component {
 
   render() {
     const pageArray = [{
-      title: 'Ethical Flirting Coach',
+      title: 'Master Ethical Flirting',
+      description: 'Learn fliratious and respectful text conversation through real chat stories.',
       img: require('./onboarding1.png'),
       imgStyle: {
         height: 156 / 2,
@@ -31,17 +32,18 @@ class Intro extends Component {
       fontColor: '#fff',
       level: 10,
     }, {
-      title: 'New Matches Daily',
-      img: require('./onboarding4.png'),
+      title: 'Choose Your Own Path',
+      description: 'Will you choose to play it safe or take a little risk. Find out which works better!',
+      img: require('./onboarding5.png'),
       imgStyle: {
-        height: 150 / 2.5,
-        width: 630 / 2.5
+        height: 350 / 1.5,
+        width: 420 / 1.5
       },
       backgroundColor: LIGHT_BLUE,
       fontColor: '#fff',
       level: 10,
     }, {
-      title: 'Instant feedback',
+      title: 'Get Instant Feedback',
       description: 'Get helpful tips and insight from our modern romance specialist',
       img: require('./onboarding3.png'),
       imgStyle: {
