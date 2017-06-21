@@ -15,6 +15,7 @@
     "react-mixin": "^3.0.5",
     "react-native": "0.43.3",
     "react-native-app-intro": "^1.1.5",
+    "react-native-billing": "^2.3.0",
     "react-native-drawer": "^2.3.0",
     "react-native-gifted-chat": "github:faridsafi/react-native-gifted-chat",
     "react-native-in-app-utils": "^5.2.3",
