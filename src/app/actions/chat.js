@@ -246,6 +246,12 @@ export function isAtFirstMessage(activeChat) {
   return activeChat.next_msg_id === 0
 }
 
+export function isAtLastMessage(activeChat, currentThread) {
+  const { messages } = currentThread
+  const lastMessage = messages[messages.length - 1]
+  return activeChat.next_msg_id > lastMessage.msg_id
+}
+
 // BRANCH
 
 function switchBranch(key, branch_target) {

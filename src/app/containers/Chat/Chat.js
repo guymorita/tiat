@@ -29,6 +29,7 @@ import {
   hasJumped,
   hasLongWait,
   isAtFirstMessage,
+  isAtLastMessage,
   isCurrentlyWaiting,
   isTerminated,
   isUserOrNarrator,
@@ -55,14 +56,16 @@ import Confetti from '../../modules/react-native-confetti'
 const NEXT = 'NEXT'
 const OPTIONS = 'OPTIONS'
 const WAIT = 'WAIT'
-const JUMP = 'JUMP'
+const JUMP_LINE = 'JUMP_LINE'
+const JUMP_RESTART = 'JUMP_RESTART'
 const TRY_AGAIN = 'TRY_AGAIN'
 const BACK = 'BACK'
 
 const TEXT_COLOR_LIGHT = 'white'
 
 const tryAlertInformJumps = (ui, curInput, dispatch) => {
-  if (!ui.notif_inform_users_on_jumps && curInput === JUMP) {
+  const jumps = [JUMP_LINE, JUMP_RESTART]
+  if (!ui.notif_inform_users_on_jumps && jumps.includes(curInput)) {
     Alert.alert(
       `You'll need to use a jump!`,
       'Jumps help you to speed through and restart conversations. Alternatively you can wait. You start with some jumps and you can always purchase more in the Store.'
@@ -208,14 +211,14 @@ class Chat extends React.Component {
   renderWaitingFooter(timeToRestart) {
     return (
       <Text style={styles.footerText}>
-        Wait {moment.duration(timeToRestart * 1000).humanize()} or Use a Jump
+        Wait {moment.duration(timeToRestart * 1000).humanize()} or...
       </Text>
     );
   }
 
   renderFooter () {
     const { userHasInteracted } = this.state
-    const { curChat, date, isTerm } = this.props
+    const { curChat, date, jumpable, isTerm } = this.props
     let footerComp = this.renderTapBelow
     let waitingToRestart = false
 
@@ -224,7 +227,7 @@ class Chat extends React.Component {
       const { dateRetry } = curChat.terminate
       waitingToRestart = dateRetry > dateNow
 
-      if (waitingToRestart) {
+      if (waitingToRestart && jumpable) {
         const timeToRestart = dateRetry - dateNow
         footerComp = this.renderWaitingFooter.bind(this, timeToRestart)
       }
@@ -253,8 +256,10 @@ class Chat extends React.Component {
         return this.renderNextBubble
       case OPTIONS:
         return this.renderBranchOptions
-      case JUMP:
-        return this.renderJumpBubble
+      case JUMP_LINE:
+        return this.renderJumpLineBubble
+      case JUMP_RESTART:
+        return this.renderJumpRestartBubble
       case TRY_AGAIN:
         return this.renderTerminatedBubble
       case WAIT:
@@ -323,12 +328,22 @@ class Chat extends React.Component {
     );
   }
 
-  renderJumpBubble = (key) => {
+  renderJumpRestartBubble = (key) => {
+    const text = "Use a Skip to Restart"
+    return this.renderJumpBubble(key, text)
+  }
+
+  renderJumpLineBubble = (key) => {
+    const text = "Use a Skip or Wait"
+    return this.renderJumpBubble(key, text)
+  }
+
+  renderJumpBubble = (key, text) => {
     return (
       <TouchableOpacity onPress={this._onJumpPress.bind(this, key)}>
         <View style={[styles.bubbleBase, styles.centerBubble, styles.longWaitBubble]}>
           <Text style={styles.whiteText}>
-            Jump
+            {text}
           </Text>
         </View>
       </TouchableOpacity>
@@ -553,11 +568,10 @@ const styles = StyleSheet.create({
 
 const getCurrentInput = function(curChat, curThread, date, isTerm, jumpable) {
   if (curChat.atBranch) return OPTIONS
-
   if (isTerm) {
     if (shouldWaitForTerminate(curChat, date) && !hasJumped(curChat)) {
       if (jumpable) {
-        return JUMP
+        return JUMP_RESTART
       } else {
         return BACK
       }
@@ -567,8 +581,23 @@ const getCurrentInput = function(curChat, curThread, date, isTerm, jumpable) {
   if (isAtFirstMessage(curChat)) return NEXT
 
   const nextMessage = getNextMessage(curChat, curThread)
+
+  // WORLD OF WAITING AND LINE JUMPS, nothing to do with termination
+
+  // if long wait
+
+
+
+  // TODO fix this
+  // console.log('curThread', curThread, 'curChat', curChat)
+  // if (curThread.branch_type === 'terminal' && !isAtLastMessage(curChat, curThread)) return WAIT
+
   // FIX add logic for if it's not jumpable
-  if (nextMessage && hasLongWait(nextMessage) && jumpable) return JUMP
+  if (nextMessage && hasLongWait(nextMessage)) {
+    // if (shouldWaitForMessage(curChat, curThread, date) && jumpable) return JUMP_LINE
+
+  }
+
 
   if (isCurrentlyWaiting(curChat) && shouldWaitForMessage(curChat, curThread, date)) return WAIT
 
