@@ -57,7 +57,7 @@ export default function activeChats(state = initialState, action) {
           nextLine: 0
         },
         wait: {
-          time_last_interaction: 0,
+          time_last_interaction: 0
         },
         terminate: {
           isTerminated: false,

@@ -37,7 +37,8 @@ import {
   nextStep,
   switchBranchPushMessage,
   shouldWaitForMessage,
-  shouldWaitForTerminate
+  shouldWaitForTerminate,
+  waitMessageTimeLeft
 } from '../../actions/chat'
 
 import {
@@ -48,6 +49,10 @@ import {
   notifInformUsersOnJumps
 } from '../../actions/ui'
 
+import {
+  dateNow
+} from '../../actions/date'
+
 import NavTitle from '../Matches/NavTitle'
 import BackButton from '../../components/Nav/BackButton'
 import ChatModal from '../../components/Modal/ChatModal'
@@ -55,7 +60,8 @@ import Confetti from '../../modules/react-native-confetti'
 
 const NEXT = 'NEXT'
 const OPTIONS = 'OPTIONS'
-const WAIT = 'WAIT'
+const WAIT_SHORT = 'WAIT_SHORT'
+const WAIT_LONG = 'WAIT_LONG'
 const JUMP_LINE = 'JUMP_LINE'
 const JUMP_RESTART = 'JUMP_RESTART'
 const TRY_AGAIN = 'TRY_AGAIN'
@@ -208,32 +214,47 @@ class Chat extends React.Component {
     );
   }
 
-  renderWaitingFooter(timeToRestart) {
+  renderWaitingFooter(footerText) {
     return (
       <Text style={styles.footerText}>
-        Wait {moment.duration(timeToRestart * 1000).humanize()} or...
+        {footerText}
       </Text>
     );
   }
 
   renderFooter () {
     const { userHasInteracted } = this.state
-    const { curChat, date, jumpable, isTerm } = this.props
+    const { curChat, curInput, curThread, date, jumpable, isTerm } = this.props
     let footerComp = this.renderTapBelow
     let waitingToRestart = false
 
-    if (isTerm) {
-      const dateNow = date.opened_today.actual
-      const { dateRetry } = curChat.terminate
-      waitingToRestart = dateRetry > dateNow
+    const waits = [WAIT_LONG, JUMP_LINE, JUMP_RESTART]
+    const messageWaits = [WAIT_LONG, JUMP_LINE]
 
-      if (waitingToRestart && jumpable) {
-        const timeToRestart = dateRetry - dateNow
-        footerComp = this.renderWaitingFooter.bind(this, timeToRestart)
+    if (waits.includes(curInput)) {
+      let timeLeft = 0
+      if (messageWaits.includes(curInput)) {
+        timeLeft = waitMessageTimeLeft(curChat, curThread, date)
+      } else {
+        const dNow = dateNow()
+        const { dateRetry } = curChat.terminate
+        waitingToRestart = dateRetry > dNow
+        timeLeft = dateRetry - dNow
       }
+
+      let footerText = `Wait ${moment.duration(timeLeft * 1000).humanize()}`
+
+      if (curInput !== WAIT_LONG) {
+        footerText += " or..."
+      }
+      footerComp = this.renderWaitingFooter.bind(this, footerText)
     }
 
-    if (!userHasInteracted || waitingToRestart) {
+    if (!userHasInteracted || waits.includes(curInput)) {
+      this.setTimeout(
+        () => {this.cycleFooterAnimation(); },
+        500
+      )
       return (
         <View>
           <Animated.View
@@ -262,7 +283,9 @@ class Chat extends React.Component {
         return this.renderJumpRestartBubble
       case TRY_AGAIN:
         return this.renderTerminatedBubble
-      case WAIT:
+      case WAIT_SHORT:
+        return this.renderWaitingBubble
+      case WAIT_LONG:
         return this.renderWaitingBubble
       case BACK:
         return this.renderBackBubble
@@ -334,7 +357,7 @@ class Chat extends React.Component {
   }
 
   renderJumpLineBubble = (key) => {
-    const text = "Use a Skip or Wait"
+    const text = "Use a Skip to fast forward"
     return this.renderJumpBubble(key, text)
   }
 
@@ -455,11 +478,6 @@ class Chat extends React.Component {
         1000
       )
     }
-
-    this.setTimeout(
-      () => {this.cycleFooterAnimation(); },
-      1500
-    )
   }
 
   componentWillUnmount() {
@@ -578,28 +596,26 @@ const getCurrentInput = function(curChat, curThread, date, isTerm, jumpable) {
     }
     return TRY_AGAIN
   }
+
   if (isAtFirstMessage(curChat)) return NEXT
 
   const nextMessage = getNextMessage(curChat, curThread)
 
   // WORLD OF WAITING AND LINE JUMPS, nothing to do with termination
 
-  // if long wait
+  if (isCurrentlyWaiting(curChat)) return WAIT_SHORT
 
+  if (nextMessage && hasLongWait(nextMessage) && shouldWaitForMessage(curChat, curThread, date)) {
 
-
-  // TODO fix this
-  // console.log('curThread', curThread, 'curChat', curChat)
-  // if (curThread.branch_type === 'terminal' && !isAtLastMessage(curChat, curThread)) return WAIT
-
-  // FIX add logic for if it's not jumpable
-  if (nextMessage && hasLongWait(nextMessage)) {
-    // if (shouldWaitForMessage(curChat, curThread, date) && jumpable) return JUMP_LINE
-
+    if (curThread.branch.branch_type === 'terminal' && !isAtLastMessage(curChat, curThread)) return WAIT_LONG
+    if (jumpable) {
+      return JUMP_LINE
+    } else {
+      // TODO change subtext to read "long wait"
+      // Add messanging
+      return WAIT_LONG
+    }
   }
-
-
-  if (isCurrentlyWaiting(curChat) && shouldWaitForMessage(curChat, curThread, date)) return WAIT
 
   return NEXT
 }

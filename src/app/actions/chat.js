@@ -99,14 +99,19 @@ export function isUserOrNarrator(cha_id) {
 
 // WAIT
 
-function waitMessageComplete(activeChat, curThread, date) {
+export function waitMessageTimeLeft(activeChat, curThread, date) {
   const { wait } = activeChat
   const { time_last_interaction } = wait
-  const curMessage = getCurrentMessage(activeChat, curThread)
-  const { wait_sec } = curMessage
+  const nextMessage = getNextMessage(activeChat, curThread)
+  const { wait_sec } = nextMessage
   const timeNow = dateNow(date)
-  const waitDone = timeNow > time_last_interaction + wait_sec
-  return waitDone
+  const timeLeft = (time_last_interaction + wait_sec) - timeNow
+  return timeLeft
+}
+
+function waitMessageComplete(activeChat, curThread, date) {
+  const timeLeft = waitMessageTimeLeft(activeChat, curThread, date)
+  return timeLeft < 0
 }
 
 export function shouldWaitForMessage(activeChat, curThread, date) {
@@ -211,7 +216,7 @@ function pushNextMessageWithTimeout(activeChat, curThread, nextMessage, nextNext
   return (dispatch, getState) => {
     const { cha_id } = nextMessage
     const { key } = activeChat
-    if (isUserOrNarrator(cha_id)) {
+    if (isUserOrNarrator(cha_id) || isAtFirstMessage(activeChat)) {
       dispatch(pushNextMessageAddChar(key, curThread, nextMessage))
     } else {
       dispatch(pushFemaleNextMessageWithTimeout(key, curThread, nextMessage, nextNextMessage))
