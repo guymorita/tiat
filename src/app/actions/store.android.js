@@ -2,20 +2,40 @@
 
 import InAppBilling from 'react-native-billing'
 
+import * as store from './storeShare'
+
 export const RECEIVE_ANDROID_PRODUCTS = 'RECEIVE_ANDROID_PRODUCTS'
-export const FETCH_ANDROID_PRODUCTS = 'FETCH_ANDROID_PRODUCTS'
-const MORE_MATCHES = 'MORE_MATCHES'
-const SKIP = 'SKIP'
+const FETCH_ANDROID_PRODUCTS = 'FETCH_ANDROID_PRODUCTS'
+export const PRODUCT_ANDROID_BUY_SUCCESS = 'PRODUCT_ANDROID_BUY_SUCCESS'
+const PRODUCT_ANDROID_BUY_TRY = 'PRODUCT_ANDROID_BUY_TRY'
+
+export { SKIP, MORE_MATCHES } from './storeShare'
+
+function productBuyTry(key) {
+  return {
+    type: PRODUCT_ANDROID_BUY_TRY,
+    key
+  }
+}
+
+function productBuySuccess(response) {
+  return {
+    type: PRODUCT_ANDROID_BUY_SUCCESS,
+    response
+  }
+}
 
 export function productBuy(key, success, fail) {
   return (dispatch) => {
+    dispatch(productBuyTry(key))
     InAppBilling.close()
     .then(() => InAppBilling.open())
-    .then(() => InAppBilling.purchase('android.test.purchased'))
+    .then(() => InAppBilling.purchase(key))
     .then((details) => {
-      console.log("You purchased: ", details)
-      InAppBilling.close()
-      return {type: 'PURCHASE'}
+      // console.log("You purchased: ", details)
+      dispatch(productBuySuccess(details))
+      dispatch(store.routeProduct(key))
+      return InAppBilling.close()
     })
     .catch((err) => {
       console.log(err);
@@ -39,24 +59,20 @@ function _fetchAndroidProducts() {
 const requestProducts = [
   {
     key: 'com.heywing.matches.more',
-    type: MORE_MATCHES,
+    type: store.MORE_MATCHES,
     quantity: 1
   },
   {
     key: 'com.heywing.skips.3',
-    type: SKIP,
+    type: store.SKIP,
     quantity: 3
   },
   {
     key: 'com.heywing.skips.7',
-    type: SKIP,
+    type: store.SKIP,
     quantity: 7
   }
 ]
-
-// function findProduct(key) {
-//   return requestProducts.find((prod) => {return prod.key === key})
-// }
 
 export function fetchProducts() {
   return (dispatch, getState) => {

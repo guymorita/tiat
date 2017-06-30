@@ -7,7 +7,7 @@ import {
   View
 } from 'react-native'
 import { connect } from 'react-redux'
-import { fetchProducts, formatProducts } from '../../actions/store' // platform specific
+import { formatProducts } from '../../actions/store' // platform specific
 import { tryPurchaseMatches } from '../../actions/matches'
 
 import { TINDER_COLOR } from '../../lib/colors'
@@ -16,11 +16,6 @@ class Purchase extends Component {
   _onMatchPress = (key) => {
     const { dispatch } = this.props
     dispatch(tryPurchaseMatches(key))
-  }
-
-  componentWillMount() {
-    const { dispatch } = this.props
-    dispatch(fetchProducts())
   }
 
   render() {

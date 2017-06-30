@@ -1,25 +1,18 @@
 
 import {
-  Alert,
   NativeModules
 } from 'react-native'
 const { InAppUtils } = NativeModules
 
-import {
-  inventoryChange
-} from './inventory'
+import * as store from './storeShare'
 
-import {
-  findRandNumMatches
-} from './matches'
-
-const FETCH_IOS_PRODUCTS = 'FETCH_IOS_PRODUCTS'
 export const RECEIVE_IOS_PRODUCTS = 'RECEIVE_IOS_PRODUCTS'
-const PRODUCT_IOS_BUY_TRY = 'PRODUCT_IOS_BUY_TRY'
-export const PRODUCT_IOS_BUY_SUCCESS = 'PRODUCT_IOS_BUY_SUCCESS'
+const FETCH_IOS_PRODUCTS = 'FETCH_IOS_PRODUCTS'
 
-export const SKIP = 'SKIP'
-export const MORE_MATCHES = 'MORE_MATCHES'
+export const PRODUCT_IOS_BUY_SUCCESS = 'PRODUCT_IOS_BUY_SUCCESS'
+const PRODUCT_IOS_BUY_TRY = 'PRODUCT_IOS_BUY_TRY'
+
+export { SKIP, MORE_MATCHES } from './storeShare'
 
 function productBuyTry(key) {
   return {
@@ -35,24 +28,6 @@ function productBuySuccess(response) {
   }
 }
 
-function routeProduct(key) {
-  return (dispatch) => {
-    const prod = findProduct(key)
-    switch (prod.type) {
-      case MORE_MATCHES:
-        dispatch(findRandNumMatches())
-        Alert.alert(
-          'You have new matches!',
-          ''
-        )
-      case SKIP:
-        dispatch(inventoryChange(prod))
-      default:
-        return
-    }
-  }
-}
-
 export function productBuy(key, success, fail) {
   return (dispatch) => {
     dispatch(productBuyTry(key))
@@ -61,7 +36,7 @@ export function productBuy(key, success, fail) {
       // NOTE for v3.0: User can cancel the payment which will be availble as error object here.
       if(response && response.productIdentifier) {
         dispatch(productBuySuccess(response))
-        dispatch(routeProduct(key))
+        dispatch(store.routeProduct(key))
       }
     });
   }
@@ -83,24 +58,20 @@ function _fetchIOSProducts() {
 const requestProducts = [
   {
     key: 'com.heywing.matches.more',
-    type: MORE_MATCHES,
+    type: store.MORE_MATCHES,
     quantity: 1
   },
   {
     key: 'com.heywing.skips.3',
-    type: SKIP,
+    type: store.SKIP,
     quantity: 3
   },
   {
     key: 'com.heywing.skips.7',
-    type: SKIP,
+    type: store.SKIP,
     quantity: 7
   }
 ]
-
-function findProduct(key) {
-  return requestProducts.find((prod) => {return prod.key === key})
-}
 
 export function fetchProducts() {
   return (dispatch, getState) => {
