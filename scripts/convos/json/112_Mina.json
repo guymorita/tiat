@@ -41,7 +41,7 @@
         "text": "No response here. It's nothing personal. Check out some other matches and don't let it get you down.",
         "msg_id": 6,
         "cha_id": 2,
-        "wait_sec": "14400"
+        "wait_sec": 14400
       }
     ],
     "platform": "tinder",

@@ -321,7 +321,7 @@
         "text": "Sometimes people just don't respond. It's nothing personal. Keep on moving, and maintain a positive attitude.",
         "msg_id": 1,
         "cha_id": 2,
-        "wait_sec": "2700"
+        "wait_sec": 2700
       }
     ],
     "platform": "bumble",

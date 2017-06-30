@@ -1,5 +1,5 @@
 {
-  "date": 1497907465,
+  "date": 1498856325,
   "version": 1,
   "matches": [
     {
@@ -903,7 +903,7 @@
               "text": "just off work, heading to the gym",
               "msg_id": 3,
               "cha_id": 101,
-              "wait_sec": "2700"
+              "wait_sec": 2700
             },
             {
               "text": "nice",
@@ -1825,7 +1825,7 @@
       "options": {
         "jumpable": true
       },
-      "hash": "569685ce27f97699791e9200c625569820d23a5d"
+      "hash": "e3131e4d937704567a69d783f2e6a0bae9fac5fe"
     },
     {
       "key": "102_Jessica",
@@ -2156,7 +2156,7 @@
               "text": "Sometimes people just don't respond. It's nothing personal. Keep on moving, and maintain a positive attitude.",
               "msg_id": 1,
               "cha_id": 2,
-              "wait_sec": "2700"
+              "wait_sec": 2700
             }
           ],
           "platform": "bumble",
@@ -2536,7 +2536,7 @@
       "options": {
         "jumpable": true
       },
-      "hash": "6a1daa2708f9753526123f02c55d72ef1ed5ede2"
+      "hash": "22844f033d7c4289e7a93dc5b91ac2988feb595e"
     },
     {
       "key": "103_Christina",
@@ -3666,7 +3666,7 @@
               "text": "Sometimes people just don't respond. It's nothing personal. Keep on moving, and maintain a positive attitude.",
               "msg_id": 2,
               "cha_id": 2,
-              "wait_sec": "14400"
+              "wait_sec": 14400
             }
           ],
           "platform": "tinder",
@@ -3685,7 +3685,7 @@
       "options": {
         "jumpable": false
       },
-      "hash": "d775da9ba16c0be261192011cb63d8043c50930d"
+      "hash": "a809729e3be4ae7d7f9e7c4e84652497c4c29fca"
     },
     {
       "key": "106_Susan",
@@ -6417,7 +6417,7 @@
               "text": "Happy Monday! Hope you're mostly recovered from the weekend :P",
               "msg_id": 12,
               "cha_id": 1,
-              "wait_sec": "14400"
+              "wait_sec": 14400
             },
             {
               "text": "Are you around later this week? Do you want to grab coffee or something?",
@@ -6496,7 +6496,7 @@
       "options": {
         "jumpable": false
       },
-      "hash": "80dd119b01482ccff6e112fb704a67b6d8b7e615"
+      "hash": "a78cd6e664c28a2338da4b657566329ee24ff0a7"
     },
     {
       "key": "112_Mina",
@@ -6547,7 +6547,7 @@
               "text": "No response here. It's nothing personal. Check out some other matches and don't let it get you down.",
               "msg_id": 6,
               "cha_id": 2,
-              "wait_sec": "14400"
+              "wait_sec": 14400
             }
           ],
           "platform": "tinder",
@@ -6566,8 +6566,8 @@
       "options": {
         "jumpable": false
       },
-      "hash": "6f3e99a3ea851be7887e8356cb4dbd9a8c1a5101"
+      "hash": "11b5240f7b04c9e8c59bbb3da0ae7c0b5dc77222"
     }
   ],
-  "hash": "720922c6044e1a643d09a4592a95736d710f5061"
+  "hash": "c9a1f7976dc52e9f39c8064d9cfa364ce6bb4594"
 }

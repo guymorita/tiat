@@ -893,7 +893,7 @@
         "text": "just off work, heading to the gym",
         "msg_id": 3,
         "cha_id": 101,
-        "wait_sec": "2700"
+        "wait_sec": 2700
       },
       {
         "text": "nice",

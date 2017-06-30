@@ -21,7 +21,7 @@ const createMessage = function(element, curThreadLen, femaleCharId) {
     text: element.text,
     msg_id: curThreadLen,
     cha_id: Number(charId),
-    wait_sec: wait_sec
+    wait_sec: Number(wait_sec)
   }
 };
 
