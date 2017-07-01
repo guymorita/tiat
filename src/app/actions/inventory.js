@@ -1,5 +1,9 @@
 
 import {
+  Alert
+} from 'react-native'
+
+import {
   SKIP,
   MORE_MATCHES
 } from './store'
@@ -76,5 +80,10 @@ export function initSubscriptionDisable() {
       'ui'
     ])
     dispatch(subscriptionDisable())
+    Alert.alert(
+      'You have unsubscribed!',
+      'Please close and restart the app'
+    )
+
   }
 }
