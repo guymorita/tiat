@@ -21,17 +21,13 @@ class Purchase extends Component {
   render() {
     return (
       <View>
-        {this.props.products && this.props.products.matchProducts.map((prod) => {
-          return (
-            <TouchableOpacity key={prod.key} onPress={() => {this._onMatchPress(prod.key)}}>
-              <View style={[styles.productButton, styles.redBackground]}>
-                <Text style={styles.productButtonText}>
-                  {prod.title}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          )
-        })}
+        <TouchableOpacity key={prod.key} onPress={() => {this._onMatchPress(prod.key)}}>
+          <View style={[styles.productButton, styles.redBackground]}>
+            <Text style={styles.productButtonText}>
+              {prod.title}
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
     )
   }

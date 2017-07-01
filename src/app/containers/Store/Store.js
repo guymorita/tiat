@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  Dimensions,
   Image,
   ScrollView,
   StyleSheet,
@@ -17,11 +18,7 @@ import Title from '../../components/Nav/Title'
 
 import { LIGHT_BLUE, LIGHT_PURPLE, TINDER_COLOR } from '../../lib/colors'
 
-class Store extends React.Component {
-  _onLeftButtonPress() {
-    this.props.openDrawer()
-  }
-
+class StoreSections extends React.Component {
   _onJumpPress = (key) => {
     const { dispatch } = this.props
     dispatch(productBuy(key))
@@ -121,9 +118,11 @@ class Store extends React.Component {
     )
   }
 
-  _renderUnlimitedSection = () => {
+  _renderUnlimitedSection = (WIDTH) => {
+    const {h, w} = Dimensions.get('window')
+    const width = WIDTH || w
     return (
-      <View style={styles.section}>
+      <View style={[styles.section, {width}]}>
         <View style={[styles.sectionHeader, styles.redBackground]}>
           <Text style={styles.sectionHeaderTextMain}>
             Join Wing Unlimited!
@@ -132,21 +131,49 @@ class Store extends React.Component {
             Get All the Matches with No Waiting!
           </Text>
         </View>
-        {this.props.products && this.props.products.unlimitedProducts.map((prod) => {
-          return (
-            <TouchableOpacity key={prod.key} onPress={() => {this._onJumpPress(prod.key)}}>
-              <View style={[styles.productButton, styles.redBackground]}>
-                {this._renderUnlimitedProductImage(prod.key)}
-                <Text style={styles.productButtonText}>
-                  {prod.shortTitle} for {prod.priceString}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          )
-        })}
+        <View>
+          {this.props.products && this.props.products.unlimitedProducts.map((prod) => {
+            return (
+              <TouchableOpacity key={prod.key} onPress={() => {this._onJumpPress(prod.key)}}>
+                <View style={[styles.productButton, styles.redBackground]}>
+                  {this._renderUnlimitedProductImage(prod.key)}
+                  <Text style={styles.productButtonText}>
+                    {prod.shortTitle} for {prod.priceString}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            )
+          })}
+        </View>
       </View>
     );
   }
+
+  render() {
+    const { MODAL_WIDTH_LENGTH } = this.props
+    return (
+      <View>
+        {this._renderUnlimitedSection(MODAL_WIDTH_LENGTH)}
+      </View>
+    )
+  }
+}
+
+const mapStateToProps = function(state) {
+  const { store } = state
+  const { liveProducts } = store
+  return {
+    products: formatProducts(liveProducts)
+  }
+}
+
+export const ConStoreSections = connect(mapStateToProps)(StoreSections)
+
+export class Store extends React.Component {
+  _onLeftButtonPress() {
+    this.props.openDrawer()
+  }
+
 
   render() {
     return (
@@ -156,9 +183,7 @@ class Store extends React.Component {
           tintColor={"#F8F8F8"}
           title={<Title text={"Store"} />}
         />
-        <ScrollView>
-          {this._renderUnlimitedSection()}
-        </ScrollView>
+        <ConStoreSections />
       </View>
     );
   }
@@ -166,7 +191,7 @@ class Store extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   section: {
     marginBottom: 16
@@ -234,12 +259,3 @@ const styles = StyleSheet.create({
   }
 })
 
-const mapStateToProps = function(state) {
-  const { store } = state
-  const { liveProducts } = store
-  return {
-    products: formatProducts(liveProducts)
-  }
-}
-
-export default connect(mapStateToProps)(Store)

@@ -55,7 +55,7 @@ import {
 
 import NavTitle from '../Matches/NavTitle'
 import BackButton from '../../components/Nav/BackButton'
-import ChatModal from '../../components/Modal/ChatModal'
+import { ChatModal, StoreModal } from '../../components/Modal/Modal'
 import Confetti from '../../modules/react-native-confetti'
 
 const NEXT = 'NEXT'
@@ -88,19 +88,19 @@ class Chat extends React.Component {
       animatedStartValue: new Animated.Value(0),
       userHasInteracted: false,
       buttonsDisabled: false,
-      modalOpen: false
+      modalChatOpen: false
     }
   }
 
-  _onOpenModal() {
+  _onOpenModalChat() {
     this.setState({
-      modalOpen: true
+      modalChatOpen: true
     })
   }
 
-  _onCloseModal() {
+  _onCloseModalChat() {
     this.setState({
-      modalOpen: false
+      modalChatOpen: false
     })
   }
 
@@ -455,13 +455,13 @@ class Chat extends React.Component {
     if (isTerm) {
       const { key } = curChat
       if (!curChat.terminate.showedEndingSeq) {
-        this._onOpenModal()
+        this._onOpenModalChat()
         if(this._confettiView && terminal_type === 'success') {
           this._confettiView.startConfetti();
         }
         dispatch(finishChat(key))
       } else {
-        this._onCloseModal()
+        this._onCloseModalChat()
       }
     }
   }
@@ -515,7 +515,7 @@ class Chat extends React.Component {
             _id: 1,
           }}
         />
-        <ChatModal type={terminal_type} open={this.state.modalOpen} close={this._onCloseModal.bind(this)} text={text}/>
+        <ChatModal type={terminal_type} open={this.state.modalChatOpen} close={this._onCloseModalChat.bind(this)} text={text}/>
         <Confetti ref={(node) => this._confettiView = node}/>
       </View>
     );

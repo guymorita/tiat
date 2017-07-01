@@ -15,7 +15,7 @@ import Dev from './containers/Dev/Dev'
 import Intro from './containers/Intro/Intro'
 import Matches from './containers/Matches/Matches'
 import Profile from './containers/Matches/Profile'
-import Store from './containers/Store/Store'
+import { Store } from './containers/Store/Store'
 
 import { openDrawer, closeDrawer } from './actions/ui'
 
