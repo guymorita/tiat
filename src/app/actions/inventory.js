@@ -4,8 +4,16 @@ import {
   MORE_MATCHES
 } from './store'
 
+import {
+  findRandNumMatches
+} from './matches'
+
+import { perStore } from '../../Client'
+
 export const INV_JUMPS_ADD = 'INV_JUMPS_ADD'
 export const INV_JUMPS_SUBTRACT = 'INV_JUMPS_SUBTRACT'
+export const SUBSCRIPTION_ENABLE = 'SUBSCRIPTION_ENABLE'
+export const SUBSCRIPTION_DISABLE = 'SUBSCRIPTION_DISABLE'
 
 export function invJumpsAdd(quantity) {
   return {
@@ -30,4 +38,43 @@ export function inventoryChange(prod) {
   }
 }
 
+function subscriptionEnable(term) {
+  const terms = ['week', 'month', 'year']
+  const t = terms.includes(term) ? term : 'week'
+  return {
+    type: SUBSCRIPTION_ENABLE,
+    term: t
+  }
+}
 
+export function initSubscriptionEnable(term) {
+  return (dispatch, getState) => {
+    const state = getState()
+    const { currentMatches, matchesAll } = state
+    const matchesLeft = matchesAll.length - currentMatches.length
+    for (let i = 0; i < 10; i++) {
+      dispatch(findRandNumMatches())
+    }
+    dispatch(subscriptionEnable(term))
+  }
+}
+
+function subscriptionDisable() {
+  return {
+    type: SUBSCRIPTION_DISABLE
+  }
+}
+
+export function initSubscriptionDisable() {
+  return (dispatch, getState) => {
+    perStore.purge([
+      'activeChats',
+      'currentChat',
+      'currentMatches',
+      'date',
+      'matchesAll',
+      'ui'
+    ])
+    dispatch(subscriptionDisable())
+  }
+}

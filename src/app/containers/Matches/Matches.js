@@ -109,6 +109,9 @@ class Matches extends Component {
   }
 
   _renderMoreMatches() {
+    const { inventory } = this.props
+    if (inventory.subscription.enabled) return <View></View>
+
     return (
       <TouchableOpacity onPress={() => {this._onOpenModal()}}>
         <View style={[styles.productButton, styles.redBackground]}>
@@ -176,11 +179,12 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { activeChats, currentMatches, date } = state
+  const { activeChats, currentMatches, date, inventory } = state
   return {
     activeChats,
     currentMatches,
-    date
+    date,
+    inventory
   }
 }
 

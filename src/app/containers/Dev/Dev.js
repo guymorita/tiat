@@ -12,7 +12,7 @@ import NavigationBar from 'react-native-navbar'
 import moment from 'moment'
 
 import { findRandNumMatches } from '../../actions/matches'
-import { invJumpsAdd } from '../../actions/inventory'
+import { invJumpsAdd, initSubscriptionEnable, initSubscriptionDisable } from '../../actions/inventory'
 import { LIGHT_GRAY } from '../../lib/colors'
 import { perStore } from '../../../Client'
 
@@ -43,8 +43,18 @@ class Dev extends React.Component {
     alert('Data purged, force stop the app, and restart')
   }
 
+  _onEnableSubscriptionPress = () => {
+    const { dispatch } = this.props
+    dispatch(initSubscriptionEnable())
+  }
+
+  _onDisableSubscriptionPress = () => {
+    const { dispatch } = this.props
+    dispatch(initSubscriptionDisable())
+  }
+
   render() {
-    const { date } = this.props
+    const { date, inventory } = this.props
     return (
       <View style={styles.container}>
         <NavigationBar
@@ -87,23 +97,6 @@ class Dev extends React.Component {
                 </Text>
               </View>
             </View>
-            <View style={styles.row}>
-              <View style={styles.col1}>
-                <Text>
-                  Date Opened Change
-                </Text>
-              </View>
-              <View style={styles.col2}>
-                <Text>
-                  {String(date.opened_today.change_day)}
-                </Text>
-                <Button
-                  onPress={this._onMoreMatchesPress}
-                  title="More Matches"
-                  color="#841584"
-                />
-              </View>
-            </View>
           </View>
           <View style={styles.section}>
             <View style={[styles.row, styles.header]}>
@@ -131,19 +124,46 @@ class Dev extends React.Component {
               <View style={styles.col2}>
               </View>
             </View>
-            <View style={styles.row}>
-              <View style={styles.col1}>
-                <Text>
-                  Skips
-                </Text>
-              </View>
-              <View style={styles.col2}>
-                <Button
-                  onPress={this._onAddJumpsPress}
-                  title="Add 3 Skips"
-                  color="#841584"
-                />
-              </View>
+          </View>
+          <View style={styles.row}>
+            <View style={styles.col1}>
+              <Text>
+                Subscription
+              </Text>
+            </View>
+            <View style={styles.col2}>
+              <Text>
+                Enabled
+              </Text>
+              <Text>
+                Term
+              </Text>
+            </View>
+            <View style={styles.col2}>
+              <Text>
+                {inventory.subscription.enabled.toString()}
+              </Text>
+              <Text>
+                {inventory.subscription.term}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.row}>
+            <View style={styles.col1}>
+            </View>
+            <View style={styles.col2}>
+              <Button
+                onPress={this._onEnableSubscriptionPress}
+                title="Enable"
+                color="#841584"
+                disabled={inventory.subscription.enabled}
+              />
+              <Button
+                onPress={this._onDisableSubscriptionPress}
+                title="Disable"
+                color="#841584"
+                disabled={!inventory.subscription.enabled}
+              />
             </View>
           </View>
         </ScrollView>
@@ -182,11 +202,12 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { activeChats, currentMatches, date } = state
+  const { activeChats, currentMatches, date, inventory } = state
   return {
     activeChats,
     currentMatches,
-    date
+    date,
+    inventory
   }
 }
 

@@ -515,7 +515,12 @@ class Chat extends React.Component {
             _id: 1,
           }}
         />
-        <ChatModal type={terminal_type} open={this.state.modalChatOpen} close={this._onCloseModalChat.bind(this)} text={text}/>
+        <ChatModal
+          type={terminal_type}
+          open={this.state.modalChatOpen}
+          close={this._onCloseModalChat.bind(this)}
+          text={text}
+        />
         <Confetti ref={(node) => this._confettiView = node}/>
       </View>
     );
