@@ -70,6 +70,21 @@ const requestProducts = [
     key: 'com.heywing.skips.7',
     type: store.SKIP,
     quantity: 7
+  },
+  {
+    key: 'com.heywing.unlimited.week.1',
+    type: store.UNLIMITED,
+    quantity: 1
+  },
+  {
+    key: 'com.heywing.unlimited.month.1',
+    type: store.UNLIMITED,
+    quantity: 1
+  },
+  {
+    key: 'com.heywing.unlimited.year.1',
+    type: store.UNLIMITED,
+    quantity: 1
   }
 ]
 
@@ -88,7 +103,7 @@ export function fetchProducts() {
   }
 }
 
-function getProduct(product) {
+function mapProduct(product) {
   const { identifier, price, currencySymbol, priceString, description, title } = product
   return {
     key: identifier,
@@ -96,29 +111,33 @@ function getProduct(product) {
     currencySymbol,
     priceString,
     description,
-    title
+    title,
+    shortTitle: title
   }
+}
+
+function mapProducts(products) {
+  return products.map((product) => { return mapProduct(product) })
 }
 
 const priceLowToHigh = (a, b) => { return a.price - b.price }
 
-function getJumpProducts(products) {
-  const isJump = (prod) => {return prod.title.includes("Skip")}
-  filteredProds = products.filter(isJump)
+function getTypeProducts(products, str) {
+  const isType = (prod) => {return prod.key.includes(str)}
+  filteredProds = products.filter(isType)
   filteredProds.sort(priceLowToHigh)
-  return filteredProds.map((prod) => {return getProduct(prod)})
-}
-
-function getMatchProducts(products) {
-  const isJump = (prod) => {return prod.title.includes("Matches")}
-  filteredProds = products.filter(isJump)
-  filteredProds.sort(priceLowToHigh)
-  return filteredProds.map((prod) => {return getProduct(prod)})
+  return filteredProds
 }
 
 export function formatProducts(products) {
+  const mappedProducts = mapProducts(products)
+  const unlimitedProducts = getTypeProducts(mappedProducts, "unlimited")
   return {
-    jumpProducts: getJumpProducts(products),
-    matchProducts: getMatchProducts(products)
+    jumpProducts: getTypeProducts(mappedProducts, "skips"),
+    matchProducts: getTypeProducts(mappedProducts, "match"),
+    unlimitedProducts: unlimitedProducts.map((prod) => {
+      prod.shortTitle = prod.title.replace(" of Wing Unlimited", "")
+      return prod
+    })
   }
 }

@@ -13,6 +13,7 @@ import {
 
 export const SKIP = 'SKIP'
 export const MORE_MATCHES = 'MORE_MATCHES'
+export const UNLIMITED = 'UNLIMITED'
 
 function findProduct(key) {
   return requestProducts.find((prod) => {return prod.key === key})
