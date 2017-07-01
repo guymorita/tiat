@@ -95,7 +95,6 @@ class Matches extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { activeChats, currentMatches, dispatch } = nextProps
-
     this.setState({
       dataSource: this.state.ds.cloneWithRows(currentMatches)
     })
@@ -140,7 +139,7 @@ class Matches extends Component {
           }
           renderFooter={() => this._renderMoreMatches()}
         />
-        <StoreModal open={this.state.modalStoreOpen} close={this._onCloseModal.bind(this)} />
+        <StoreModal open={this.state.modalStoreOpen} close={this._onCloseModal.bind(this)} onClosed={this._onCloseModal.bind(this)} />
       </View>
     );
   }

@@ -119,7 +119,7 @@ class StoreSections extends React.Component {
   }
 
   _renderUnlimitedSection = (WIDTH) => {
-    const {h, w} = Dimensions.get('window')
+    const { h, w } = Dimensions.get('window')
     const width = WIDTH || w
     return (
       <View style={[styles.section, {width}]}>
@@ -128,7 +128,7 @@ class StoreSections extends React.Component {
             Join Wing Unlimited!
           </Text>
           <Text style={styles.sectionHeaderTextSub}>
-            Get All the Matches with No Waiting!
+            Get All the Matches & No Waits!
           </Text>
         </View>
         <View>

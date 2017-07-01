@@ -26,6 +26,7 @@ class BasicModal extends React.Component {
         backdropPressToClose={true}
         isOpen={open}
         ref={"modal"}
+        {...this.props}
       >
         <View>
           {React.cloneElement(this.props.children, {...this.props})}
