@@ -88,7 +88,8 @@ class Chat extends React.Component {
       animatedStartValue: new Animated.Value(0),
       userHasInteracted: false,
       buttonsDisabled: false,
-      modalChatOpen: false
+      modalChatOpen: false,
+      modalStoreOpen: false
     }
   }
 
@@ -101,6 +102,18 @@ class Chat extends React.Component {
   _onCloseModalChat() {
     this.setState({
       modalChatOpen: false
+    })
+  }
+
+  _onOpenModalStore() {
+    this.setState({
+      modalStoreOpen: true
+    })
+  }
+
+  _onCloseModalStore() {
+    this.setState({
+      modalStoreOpen: false
     })
   }
 
@@ -278,9 +291,9 @@ class Chat extends React.Component {
       case OPTIONS:
         return this.renderBranchOptions
       case JUMP_LINE:
-        return this.renderJumpLineBubble
+        return this.renderSubscribeBubble
       case JUMP_RESTART:
-        return this.renderJumpRestartBubble
+        return this.renderSubscribeBubble
       case TRY_AGAIN:
         return this.renderTerminatedBubble
       case WAIT_SHORT:
@@ -409,6 +422,20 @@ class Chat extends React.Component {
     )
   }
 
+  renderSubscribeBubble = () => {
+    const backgroundStyle = getBackgroundStyle(this.props.platform)
+
+    return (
+      <TouchableOpacity onPress={this._onOpenModalStore.bind(this)}>
+        <View style={[styles.bubbleBase, styles.centerBubble, backgroundStyle]}>
+          <Text style={styles.whiteText}>
+            Subscribe
+          </Text>
+        </View>
+      </TouchableOpacity>
+    )
+  }
+
   renderAccessory(props) {
     return (
       <View>
@@ -521,6 +548,11 @@ class Chat extends React.Component {
           close={this._onCloseModalChat.bind(this)}
           text={text}
         />
+        <StoreModal
+          open={this.state.modalStoreOpen}
+          close={this._onCloseModalStore.bind(this)}
+          onClosed={this._onCloseModalStore.bind(this)}
+        />
         <Confetti ref={(node) => this._confettiView = node}/>
       </View>
     );
@@ -611,13 +643,10 @@ const getCurrentInput = function(curChat, curThread, date, isTerm, jumpable) {
   if (isCurrentlyWaiting(curChat)) return WAIT_SHORT
 
   if (nextMessage && hasLongWait(nextMessage) && shouldWaitForMessage(curChat, curThread, date)) {
-
     if (curThread.branch.branch_type === 'terminal' && !isAtLastMessage(curChat, curThread)) return WAIT_LONG
     if (jumpable) {
       return JUMP_LINE
     } else {
-      // TODO change subtext to read "long wait"
-      // Add messanging
       return WAIT_LONG
     }
   }
