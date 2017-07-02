@@ -73,8 +73,8 @@ const tryAlertInformJumps = (ui, curInput, dispatch) => {
   const jumps = [JUMP_LINE, JUMP_RESTART]
   if (!ui.notif_inform_users_on_jumps && jumps.includes(curInput)) {
     Alert.alert(
-      `You'll need to use a jump!`,
-      'Jumps help you to speed through and restart conversations. Alternatively you can wait. You start with some jumps and you can always purchase more in the Store.'
+      `You'll need to subscribe!`,
+      'Wing Unlimited allows you to have all the matches now and to never wait!'
     )
     dispatch(notifInformUsersOnJumps())
   }
@@ -257,8 +257,12 @@ class Chat extends React.Component {
 
       let footerText = `Wait ${moment.duration(timeLeft * 1000).humanize()}`
 
-      if (curInput !== WAIT_LONG) {
+      if (curInput === JUMP_LINE) {
         footerText += " or..."
+      }
+
+      if (curInput === JUMP_RESTART) {
+        footerText += " to retry, or..."
       }
       footerComp = this.renderWaitingFooter.bind(this, footerText)
     }
@@ -621,9 +625,10 @@ const styles = StyleSheet.create({
   }
 })
 
-const getCurrentInput = function(curChat, curThread, date, isTerm, jumpable) {
+const getCurrentInput = function(curChat, curThread, date, isSubscribed, isTerm, jumpable) {
   if (curChat.atBranch) return OPTIONS
   if (isTerm) {
+    if (isSubscribed) return TRY_AGAIN
     if (shouldWaitForTerminate(curChat, date) && !hasJumped(curChat)) {
       if (jumpable) {
         return JUMP_RESTART
@@ -641,6 +646,7 @@ const getCurrentInput = function(curChat, curThread, date, isTerm, jumpable) {
   // WORLD OF WAITING AND LINE JUMPS, nothing to do with termination
 
   if (isCurrentlyWaiting(curChat)) return WAIT_SHORT
+  if (isSubscribed) return NEXT
 
   if (nextMessage && hasLongWait(nextMessage) && shouldWaitForMessage(curChat, curThread, date)) {
     if (curThread.branch.branch_type === 'terminal' && !isAtLastMessage(curChat, curThread)) return WAIT_LONG
@@ -655,7 +661,7 @@ const getCurrentInput = function(curChat, curThread, date, isTerm, jumpable) {
 }
 
 const mapStateToProps = function(state) {
-  const { activeChats, characters, currentChat, date, ui } = state
+  const { activeChats, characters, currentChat, date, inventory, ui } = state
   const { key } = currentChat
 
   const match = getMatch(state, key)
@@ -663,6 +669,7 @@ const mapStateToProps = function(state) {
   const isActive = !_.isEmpty(curChat)
   const jumpable = match && match.options.jumpable
   const platform = match && match.threads[curChat.thread].platform
+  const isSubscribed = inventory.subscription.enabled
   let curInput, curThread
   let isTerm = false
   let terminal_options = {}
@@ -670,7 +677,7 @@ const mapStateToProps = function(state) {
   if (isActive) {
     curThread = match.threads[curChat.thread]
     isTerm = isTerminated(curChat)
-    curInput = getCurrentInput(curChat, curThread, date, isTerm, jumpable)
+    curInput = getCurrentInput(curChat, curThread, date, isSubscribed, isTerm, jumpable)
     terminal_options = curThread.branch.terminal_options
   }
 
@@ -681,6 +688,7 @@ const mapStateToProps = function(state) {
     curThread,
     date,
     isActive,
+    isSubscribed,
     isTerm,
     key,
     match,
