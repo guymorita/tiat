@@ -54,9 +54,8 @@ function subscriptionEnable(term) {
 export function initSubscriptionEnable(term) {
   return (dispatch, getState) => {
     const state = getState()
-    const { currentMatches, matchesAll } = state
-    const matchesLeft = matchesAll.length - currentMatches.length
-    for (let i = 0; i < 10; i++) {
+    const { matchesAll } = state
+    for (let i = 0; i < matchesAll.length; i++) {
       dispatch(findRandNumMatches())
     }
     dispatch(subscriptionEnable(term))
