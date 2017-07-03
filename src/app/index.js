@@ -16,6 +16,7 @@ import Intro from './containers/Intro/Intro'
 import Matches from './containers/Matches/Matches'
 import Profile from './containers/Matches/Profile'
 import { Store } from './containers/Store/Store'
+import Web from './containers/Web/Web'
 
 import { openDrawer, closeDrawer } from './actions/ui'
 
@@ -42,7 +43,8 @@ class App extends Component {
       {title: 'Chat', index: 2},
       {title: 'Dev', index: 3},
       {title: 'Store', index: 4},
-      {title: 'Profile', index: 5}
+      {title: 'Profile', index: 5},
+      {title: 'Web', index: 6}
     ]
     const firstRoute = ui.intro_finished ? routes[1] : routes[0]
 
@@ -92,6 +94,9 @@ class App extends Component {
 
       case 'Profile':
         return this._renderScene(<Profile navigator={navigator} {...this.props}/>)
+
+      case 'Web':
+        return this._renderScene(<Web navigator={navigator} {...this.props}/>)
     }
   }
 }

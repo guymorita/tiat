@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  Alert,
   Dimensions,
   Image,
   ScrollView,
@@ -7,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  WebView
 } from 'react-native'
 import { connect } from 'react-redux'
 import NavigationBar from 'react-native-navbar'
@@ -37,6 +39,25 @@ class StoreSections extends React.Component {
   componentWillMount() {
     const { dispatch } = this.props
     dispatch(fetchProducts())
+  }
+
+  _onPressPrivacyPolicy() {
+    const { navigator } = this.props
+
+    navigator.push({
+      title: 'Web'
+    })
+  }
+
+  _onAlertSubscriptionInfo() {
+    Alert.alert(
+      'Wing Unlimited',
+      `• You can subscribe for unlimited access to Wing content.\n
+      • Wing offers weekly, monthly, and yearly subscriptions.\n
+      • You'll be able to access unlimited chats for the duration of your subscription.\n
+      • Payment will be charged to iTunes Account at confirmation of purchase.\n
+      • Subscription automatically renews unless auto-review is turned off at least 24-hours before the end of the current period.`
+    )
   }
 
   _renderJumpsSection = () => {
@@ -186,10 +207,22 @@ class StoreSections extends React.Component {
 
   render() {
     const { isSubscribed, MODAL_WIDTH_LENGTH } = this.props
-    if (isSubscribed) return (this._renderSubscriptionActive())
+    const content = isSubscribed ? this._renderSubscriptionActive() : this._renderUnlimitedSection(MODAL_WIDTH_LENGTH)
     return (
       <View>
-        {this._renderUnlimitedSection(MODAL_WIDTH_LENGTH)}
+        {content}
+        <View style={styles.policies}>
+          <TouchableOpacity onPress={this._onPressPrivacyPolicy.bind(this)}>
+            <Text style={[styles.policyText, styles.policyLeft]}>
+              Privacy Policy & Terms
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this._onAlertSubscriptionInfo.bind(this)}>
+            <Text style={styles.policyText}>
+              Subscription Info
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
@@ -221,7 +254,7 @@ export class Store extends React.Component {
           tintColor={"#F8F8F8"}
           title={<Title text={"Store"} />}
         />
-        <ConStoreSections />
+        <ConStoreSections {...this.props}/>
       </View>
     );
   }
@@ -307,6 +340,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 20,
     color: '#333'
+  },
+  policies: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    bottom: 0
+  },
+  policyText: {
+    fontSize: 9,
+    color: '#555',
+    bottom: 0
+  },
+  policyLeft: {
+    marginRight: 20
   }
 })
 

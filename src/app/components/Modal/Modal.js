@@ -41,7 +41,7 @@ export class StoreModal extends React.Component {
     return (
       <BasicModal {...this.props}>
         <View style={styles.container}>
-          <ConStoreSections MODAL_WIDTH_LENGTH={MODAL_WIDTH_LENGTH}/>
+          <ConStoreSections MODAL_WIDTH_LENGTH={MODAL_WIDTH_LENGTH} {...this.props}/>
         </View>
       </BasicModal>
     )

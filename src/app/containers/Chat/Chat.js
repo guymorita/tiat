@@ -556,6 +556,7 @@ class Chat extends React.Component {
           open={this.state.modalStoreOpen}
           close={this._onCloseModalStore.bind(this)}
           onClosed={this._onCloseModalStore.bind(this)}
+          {...this.props}
         />
         <Confetti ref={(node) => this._confettiView = node}/>
       </View>
