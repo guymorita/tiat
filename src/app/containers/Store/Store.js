@@ -149,8 +149,32 @@ class StoreSections extends React.Component {
     );
   }
 
+  _renderSubscriptionActive = () => {
+    return (
+      <View style={[styles.section]}>
+        <View style={[styles.sectionHeader, styles.redBackground]}>
+          <Text style={styles.sectionHeaderTextMain}>
+            Wing Unlimited
+          </Text>
+          <Text style={styles.sectionHeaderTextSub}>
+            You are subscribed!
+          </Text>
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.textSubscription}>
+            New chats are released on a monthly basis. You now have full access to the chats! And best of all you never have to wait.
+          </Text>
+          <Text style={styles.textSubscription}>
+            If you would like to change your subscription, you must do so within your iTunes / Apple ID configuration.
+          </Text>
+        </View>
+      </View>
+    );
+  }
+
   render() {
-    const { MODAL_WIDTH_LENGTH } = this.props
+    const { isSubscribed, MODAL_WIDTH_LENGTH } = this.props
+    if (isSubscribed) return (this._renderSubscriptionActive())
     return (
       <View>
         {this._renderUnlimitedSection(MODAL_WIDTH_LENGTH)}
@@ -160,9 +184,11 @@ class StoreSections extends React.Component {
 }
 
 const mapStateToProps = function(state) {
-  const { store } = state
+  const { inventory, store } = state
   const { liveProducts } = store
+  const isSubscribed = inventory.subscription.enabled
   return {
+    isSubscribed,
     products: formatProducts(liveProducts)
   }
 }
@@ -256,6 +282,14 @@ const styles = StyleSheet.create({
     height: 30,
     marginLeft: 4,
     marginTop: 3
+  },
+  textContainer: {
+    padding: 15
+  },
+  textSubscription: {
+    fontSize: 16,
+    marginBottom: 20,
+    color: '#333'
   }
 })
 
