@@ -19,6 +19,7 @@ import {
 export const SKIP = 'SKIP'
 export const MORE_MATCHES = 'MORE_MATCHES'
 export const UNLIMITED = 'UNLIMITED'
+export const RESTORE_PURCHASES = 'RESTORE_PURCHASES'
 
 function findProduct(key) {
   return requestProducts.find((prod) => {return prod.key === key})

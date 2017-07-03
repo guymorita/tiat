@@ -11,7 +11,7 @@ import {
 import { connect } from 'react-redux'
 import NavigationBar from 'react-native-navbar'
 
-import { fetchProducts, formatProducts, productBuy } from '../../actions/store' // platform specific
+import { fetchProducts, formatProducts, productBuy, initRestorePurchases } from '../../actions/store' // platform specific
 import { tryPurchaseMatches } from '../../actions/matches'
 import HamburgerButton from '../../components/Nav/HamburgerButton'
 import Title from '../../components/Nav/Title'
@@ -27,6 +27,11 @@ class StoreSections extends React.Component {
   _onMatchPress = (key) => {
     const { dispatch } = this.props
     dispatch(tryPurchaseMatches(key))
+  }
+
+  _onRestorePress = () => {
+    const { dispatch } = this.props
+    dispatch(initRestorePurchases())
   }
 
   componentWillMount() {
@@ -144,6 +149,13 @@ class StoreSections extends React.Component {
               </TouchableOpacity>
             )
           })}
+        </View>
+        <View>
+          <TouchableOpacity onPress={() => {this._onRestorePress()}}>
+            <Text style={styles.restoreText} >
+              I'm already in Wing Unlimited
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -282,6 +294,11 @@ const styles = StyleSheet.create({
     height: 30,
     marginLeft: 4,
     marginTop: 3
+  },
+  restoreText: {
+    marginTop: 20,
+    color: '#444',
+    textAlign: 'center'
   },
   textContainer: {
     padding: 15

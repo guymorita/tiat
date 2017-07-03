@@ -1,6 +1,7 @@
 
 import parallel from 'async/parallel'
 import {
+  Alert,
   NativeModules
 } from 'react-native'
 const { InAppUtils } = NativeModules
@@ -178,16 +179,20 @@ const mapValidatorToReceipts = (transReceipts) => {
 }
 
 const wPass = 'ceef46f6e2ee44be9c2a4a521019fc47'
-const production = false // use sandbox or production url for validation
+let production = false // use sandbox or production url for validation
+if (process.env.NODE_ENV === 'production') {
+  production = true
+}
 const validateReceipt = iapReceiptValidator(wPass, production)
 
 export function checkSubscription() {
   return (dispatch, getState) => {
     const state = getState()
     const { receipts } = state.store
-    const transReceipts = receipts.map((receipt) => { return receipt.transactionReceipt })
+    const subReceipts = receipts.filter((r) => { return r.productIdentifier.includes('unlimited')})
+    const subTransReceipts = subReceipts.map((receipt) => { return receipt.transactionReceipt })
 
-    transReceiptsCb = mapValidatorToReceipts(transReceipts)
+    transReceiptsCb = mapValidatorToReceipts(subTransReceipts)
 
     parallel(
       transReceiptsCb,
@@ -198,5 +203,33 @@ export function checkSubscription() {
         dispatch(toggleSubscription(anyValid))
       }
     )
+  }
+}
+
+// RESTORE
+
+function restorePurchases(receipts) {
+  return {
+    type: store.RESTORE_PURCHASES,
+    receipts
+  }
+}
+
+export function initRestorePurchases() {
+  return (dispatch) => {
+    InAppUtils.restorePurchases((error, response)=> {
+    if(error) {
+        Alert.alert('itunes Error', 'Could not connect to itunes store.')
+    } else {
+        if (response.length === 0) {
+          Alert.alert('No Purchases', "We didn't find any purchases to restore.")
+          return
+        }
+
+        dispatch(restorePurchases(response))
+        dispatch(checkSubscription())
+        Alert.alert('Restore Successful', 'Successfully restored all your purchases.')
+      }
+    })
   }
 }

@@ -54,7 +54,7 @@ class Dev extends React.Component {
   }
 
   render() {
-    const { date, inventory } = this.props
+    const { date, inventory, store } = this.props
     return (
       <View style={styles.container}>
         <NavigationBar
@@ -67,7 +67,7 @@ class Dev extends React.Component {
             <View style={[styles.row, styles.header]}>
               <View style={styles.col1}>
                 <Text style={styles.headerText}>
-                  Dates
+                  Stats
                 </Text>
               </View>
               <View style={styles.col2}>
@@ -88,12 +88,36 @@ class Dev extends React.Component {
             <View style={styles.row}>
               <View style={styles.col1}>
                 <Text>
-                  Actual Date Last Opened
+                  Date Last Opened
                 </Text>
               </View>
               <View style={styles.col2}>
                 <Text>
                   {moment.unix(date.opened_today.actual).format("MM-DD-YYYY")}
+                </Text>
+              </View>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.col1}>
+                <Text>
+                  Environment
+                </Text>
+              </View>
+              <View style={styles.col2}>
+                <Text>
+                  {process.env.NODE_ENV}
+                </Text>
+              </View>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.col1}>
+                <Text>
+                  Receipts
+                </Text>
+              </View>
+              <View style={styles.col2}>
+                <Text>
+                  {store.receipts.length}
                 </Text>
               </View>
             </View>
@@ -202,12 +226,13 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = function(state) {
-  const { activeChats, currentMatches, date, inventory } = state
+  const { activeChats, currentMatches, date, inventory, store } = state
   return {
     activeChats,
     currentMatches,
     date,
-    inventory
+    inventory,
+    store
   }
 }
 
