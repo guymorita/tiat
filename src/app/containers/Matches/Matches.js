@@ -19,6 +19,8 @@ import { tryCreatePushNotification } from '../../actions/pushNotification'
 import { StoreModal } from '../../components/Modal/Modal'
 import { TINDER_COLOR } from '../../lib/colors'
 
+import { checkSubscription } from '../../actions/store'
+
 class Matches extends Component {
   constructor(props) {
     super(props);
@@ -81,6 +83,8 @@ class Matches extends Component {
 
   componentWillMount() {
     const { activeChats, currentMatches, dispatch } = this.props
+
+    dispatch(checkSubscription())
 
     if (!currentMatches.length) {
       dispatch(initMatches())

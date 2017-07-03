@@ -86,3 +86,16 @@ export function initSubscriptionDisable() {
 
   }
 }
+
+export function toggleSubscription(anyValid) {
+  return (dispatch, getState) => {
+    const state = getState()
+    const { inventory } = state
+    const isSubscribed = inventory.subscription.enabled
+
+    if (!anyValid && !isSubscribed) return
+    if (anyValid && isSubscribed) return
+    if (anyValid && !isSubscribed) dispatch(initSubscriptionEnable())
+    if (!anyValid && isSubscribed) dispatch(initSubscriptionDisable())
+  }
+}

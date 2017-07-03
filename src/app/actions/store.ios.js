@@ -1,10 +1,20 @@
 
+import parallel from 'async/parallel'
 import {
   NativeModules
 } from 'react-native'
 const { InAppUtils } = NativeModules
+import iapReceiptValidator from 'iap-receipt-validator'
 
 import * as store from './storeShare'
+
+import {
+  dateNow
+} from './date'
+
+import {
+  toggleSubscription
+} from './inventory'
 
 export const RECEIVE_IOS_PRODUCTS = 'RECEIVE_IOS_PRODUCTS'
 const FETCH_IOS_PRODUCTS = 'FETCH_IOS_PRODUCTS'
@@ -55,7 +65,7 @@ function _fetchIOSProducts() {
   }
 }
 
-const requestProducts = [
+export const requestProducts = [
   {
     key: 'com.heywing.matches.more',
     type: store.MORE_MATCHES,
@@ -139,5 +149,54 @@ export function formatProducts(products) {
       prod.shortTitle = prod.title.replace(" of Wing Unlimited", "")
       return prod
     })
+  }
+}
+
+// SUBSCRIPTIONS
+
+const anyReceiptValid = (receipts) => {
+  let anyValid = false
+  receipts.forEach((r) => {
+    const expDate = Number(r.latest_receipt_info.expires_date)/1000
+    const isActive =  expDate > dateNow()
+    if (isActive) anyValid = true
+  })
+  return anyValid
+}
+
+const mapValidatorToReceipts = (transReceipts) => {
+  return transReceipts.map((receipt) => {
+    return valReceipt = (cb) => {
+      return validateReceipt(receipt).then((data) => {
+        cb(null, data)
+      }).catch((err) => {
+        console.log(err.valid, err.error, err.message)
+        cb(null, null)
+      })
+    }
+  })
+}
+
+const wPass = 'ceef46f6e2ee44be9c2a4a521019fc47'
+const production = false // use sandbox or production url for validation
+const validateReceipt = iapReceiptValidator(wPass, production)
+
+export function checkSubscription() {
+  return (dispatch, getState) => {
+    const state = getState()
+    const { receipts } = state.store
+    const transReceipts = receipts.map((receipt) => { return receipt.transactionReceipt })
+
+    transReceiptsCb = mapValidatorToReceipts(transReceipts)
+
+    parallel(
+      transReceiptsCb,
+      (err, receiptRes) => {
+        const cleanReceiptRes = receiptRes.filter((r) => { return r })
+        const anyValid = anyReceiptValid(cleanReceiptRes)
+
+        dispatch(toggleSubscription(anyValid))
+      }
+    )
   }
 }

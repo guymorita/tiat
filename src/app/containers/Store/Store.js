@@ -128,7 +128,7 @@ class StoreSections extends React.Component {
             Join Wing Unlimited!
           </Text>
           <Text style={styles.sectionHeaderTextSub}>
-            Get All the Matches & No Waits!
+            Get All the Matches & No Waits
           </Text>
         </View>
         <View>

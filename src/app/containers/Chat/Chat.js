@@ -74,7 +74,7 @@ const tryAlertInformJumps = (ui, curInput, dispatch) => {
   if (!ui.notif_inform_users_on_jumps && jumps.includes(curInput)) {
     Alert.alert(
       `You'll need to subscribe!`,
-      'Wing Unlimited allows you to have all the matches now and to never wait!'
+      'Wing Unlimited allows you to have all the matches now and to never wait.'
     )
     dispatch(notifInformUsersOnJumps())
   }
@@ -644,12 +644,11 @@ const getCurrentInput = function(curChat, curThread, date, isSubscribed, isTerm,
   const nextMessage = getNextMessage(curChat, curThread)
 
   // WORLD OF WAITING AND LINE JUMPS, nothing to do with termination
-
   if (isCurrentlyWaiting(curChat)) return WAIT_SHORT
   if (isSubscribed) return NEXT
 
   if (nextMessage && hasLongWait(nextMessage) && shouldWaitForMessage(curChat, curThread, date)) {
-    if (curThread.branch.branch_type === 'terminal' && !isAtLastMessage(curChat, curThread)) return WAIT_LONG
+    if (curThread.branch.branch_type === 'terminal' && !isAtLastMessage(curChat, curThread)) return JUMP_LINE
     if (jumpable) {
       return JUMP_LINE
     } else {

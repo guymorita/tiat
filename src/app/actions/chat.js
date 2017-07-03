@@ -51,7 +51,7 @@ export function initSwitchChat(key) {
     if (showDailyConvoModal) {
       Alert.alert(
         'Nice job, check DAILY for new matches',
-        'Be sure to ACCEPT notifications'
+        'Be sure to accept notifications'
       )
       dispatch(notifNewMatchesDaily())
     }
@@ -195,6 +195,9 @@ function pushNextMessageAddChar(key, curThread, nextMessage) {
 
 function pushFemaleNextMessageWithTimeout(key, curThread, nextMessage, nextNextMessage) {
   return (dispatch, getState) => {
+    const state = getState()
+    const { inventory } = state
+    const isSubscribed = inventory.subscription.enabled
     dispatch(tryPushNextMessageAddChar(key, curThread))
 
     const hasMoreMessages = nextNextMessage && nextMessage.cha_id === nextNextMessage.cha_id
@@ -203,8 +206,8 @@ function pushFemaleNextMessageWithTimeout(key, curThread, nextMessage, nextNextM
       if (hasLongWait(nextMessage)) return
       dispatchNextStep = true
     }
-
-    const { wait_sec } = nextMessage
+    let { wait_sec } = nextMessage
+    if (isSubscribed) wait_sec = 2
     setTimeout(() => {
       dispatch(pushNextMessageAddChar(key, curThread, nextMessage))
       if (dispatchNextStep) dispatch(nextStep(key))

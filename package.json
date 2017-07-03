@@ -9,6 +9,8 @@
     "csv_convert": ". ./scripts/csv_convert.sh"
   },
   "dependencies": {
+    "async": "^2.5.0",
+    "iap-receipt-validator": "^1.0.6",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "react": "16.0.0-alpha.6",
