@@ -155,6 +155,13 @@ export function formatProducts(products) {
 
 // SUBSCRIPTIONS
 
+const wPass = 'ceef46f6e2ee44be9c2a4a521019fc47'
+let production = false // use sandbox or production url for validation
+// if (process.env.NODE_ENV === 'production') {
+//   production = true
+// }
+const validateReceipt = iapReceiptValidator(wPass, production)
+
 const anyReceiptValid = (receipts) => {
   let anyValid = false
   receipts.forEach((r) => {
@@ -167,7 +174,7 @@ const anyReceiptValid = (receipts) => {
 
 const mapValidatorToReceipts = (transReceipts) => {
   return transReceipts.map((receipt) => {
-    return valReceipt = (cb) => {
+    return (cb) => {
       return validateReceipt(receipt).then((data) => {
         cb(null, data)
       }).catch((err) => {
@@ -177,13 +184,6 @@ const mapValidatorToReceipts = (transReceipts) => {
     }
   })
 }
-
-const wPass = 'ceef46f6e2ee44be9c2a4a521019fc47'
-let production = false // use sandbox or production url for validation
-if (process.env.NODE_ENV === 'production') {
-  production = true
-}
-const validateReceipt = iapReceiptValidator(wPass, production)
 
 export function checkSubscription() {
   return (dispatch, getState) => {
