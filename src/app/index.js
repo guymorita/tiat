@@ -1,10 +1,10 @@
 
 import React, { Component } from 'react'
 import {
-  Navigator,
   Text,
   View
 } from 'react-native'
+import NavigationExperimental from 'react-native-deprecated-custom-components'
 import NavigationBar from 'react-native-navbar'
 import { connect } from 'react-redux'
 import Drawer from 'react-native-drawer'
@@ -55,13 +55,13 @@ class App extends Component {
         tapToClose={true}
         content={<ControlPanel navigator={this._navigator} {...this.props}/>}
         >
-        <Navigator
+        <NavigationExperimental.Navigator
           initialRoute={firstRoute}
           initialRouteStack={routes}
           ref={(ref) => this._navigator = ref}
           renderScene={this.renderScene.bind(this)}
           configureScene={(route, routeStack) =>
-            Navigator.SceneConfigs.FadeAndroid}
+            NavigationExperimental.Navigator.SceneConfigs.FadeAndroid}
         />
       </Drawer>
     );
