@@ -9,6 +9,8 @@ import NavigationBar from 'react-native-navbar'
 import { connect } from 'react-redux'
 import Drawer from 'react-native-drawer'
 
+import { tryCreateAndLogFirst, viewPage } from './actions/analytics'
+
 import Chat from './containers/Chat/Chat'
 import ControlPanel from './containers/ControlPanel/ControlPanel'
 import Dev from './containers/Dev/Dev'
@@ -29,14 +31,25 @@ class App extends Component {
     this._drawer.close()
   }
 
+  componentWillMount() {
+    const { dispatch } = this.props
+    dispatch(tryCreateAndLogFirst())
+  }
+
   componentWillReceiveProps(nextProps) {
     const { ui } = nextProps
     const { drawer_opened } = ui
     drawer_opened ? this._openDrawer() : this._closeDrawer()
   }
 
+  logPage(nav) {
+    const { user } = this.props
+    const { title } = nav
+    viewPage(user.id, title)
+  }
+
   render() {
-    const { ui } = this.props
+    const { ui, viewPage } = this.props
     const routes = [
       {title: 'Intro', index: 0},
       {title: 'Matches', index: 1},
@@ -60,6 +73,7 @@ class App extends Component {
           initialRouteStack={routes}
           ref={(ref) => this._navigator = ref}
           renderScene={this.renderScene.bind(this)}
+          onDidFocus={this.logPage.bind(this)}
           configureScene={(route, routeStack) =>
             NavigationExperimental.Navigator.SceneConfigs.FadeAndroid}
         />
@@ -104,14 +118,15 @@ class App extends Component {
 function mapDispatchToProps(dispatch) {
   return({
     openDrawer: () => {dispatch(openDrawer())},
-    closeDrawer: () => {dispatch(closeDrawer())}
+    closeDrawer: () => {dispatch(closeDrawer())},
+    dispatch
   })
 }
 
 
 const mapStateToProps = function(state) {
-  const { ui } = state
-  return { ui }
+  const { ui, user } = state
+  return { ui, user }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

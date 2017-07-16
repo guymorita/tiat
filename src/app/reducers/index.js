@@ -10,6 +10,7 @@ import inventory from './inventory'
 import ui from './ui'
 import matchesAll from './matchesAll'
 import store from './store'
+import user from './user'
 
 export default combineReducers({
   activeChats,
@@ -20,5 +21,6 @@ export default combineReducers({
   inventory,
   matchesAll,
   store,
-  ui
+  ui,
+  user
 })
