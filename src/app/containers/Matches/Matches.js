@@ -20,6 +20,7 @@ import { StoreModal } from '../../components/Modal/Modal'
 import { TINDER_COLOR } from '../../lib/colors'
 
 import { checkSubscription } from '../../actions/store'
+import { modalStoreMatchesShow } from '../../actions/analytics'
 
 class Matches extends Component {
   constructor(props) {
@@ -36,6 +37,8 @@ class Matches extends Component {
   }
 
   _onOpenModal() {
+    const { user } = this.props
+    modalStoreMatchesShow(user.id)
     this.setState({
       modalStoreOpen: true
     })

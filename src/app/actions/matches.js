@@ -14,6 +14,8 @@ import { invKeysSubtract } from './inventory'
 
 import { productBuy } from './store' // platform specific
 
+import { noMatchesLeft } from './analytics'
+
 export const ADVANCE_MATCH_QUEUE = 'ADVANCE_MATCH_QUEUE'
 export const FIND_MATCHES_TO_SHOW = 'FIND_MATCHES_TO_SHOW'
 export const IMPORT_TO_CURRENT_MATCHES_FINISHED = 'IMPORT_TO_CURRENT_MATCHES_FINISHED'
@@ -43,7 +45,7 @@ export function tryPurchaseMatches(key) {
         `We are adding more soon =)`
       )
     } else {
-      dispatch(productBuy(key))
+      // TODO took away purchase matches
     }
   }
 }
@@ -58,8 +60,10 @@ function findMatchesToShow(matches) {
 export function findRandNumMatches() {
   return (dispatch, getState) => {
     const state = getState()
-    const { currentMatches, matchesAll } = state
+    const { currentMatches, inventory, matchesAll, user } = state
+    const isSubscribed = inventory.subscription.enabled
     const matchesLeft = matchesAll.length - currentMatches.length
+    if (!matchesLeft && !isSubscribed) noMatchesLeft(user.id)
     const range = MAX_NUM_RANDOM_MATCHES_PER_DAY - MIN_NUM_RANDOM_MATCHES_PER_DAY
     const numRandomMatches = Math.floor(Math.random()*(range + 1))+MIN_NUM_RANDOM_MATCHES_PER_DAY
     const lesserOf = matchesLeft < numRandomMatches ? matchesLeft : numRandomMatches

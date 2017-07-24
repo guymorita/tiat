@@ -53,6 +53,10 @@ import {
   dateNow
 } from '../../actions/date'
 
+import {
+  modalStoreChatShow
+} from '../../actions/analytics'
+
 import NavTitle from '../Matches/NavTitle'
 import BackButton from '../../components/Nav/BackButton'
 import { ChatModal, StoreModal } from '../../components/Modal/Modal'
@@ -106,6 +110,8 @@ class Chat extends React.Component {
   }
 
   _onOpenModalStore() {
+    const { user } = this.props
+    modalStoreChatShow(user.id)
     this.setState({
       modalStoreOpen: true
     })

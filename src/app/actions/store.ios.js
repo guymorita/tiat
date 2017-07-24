@@ -17,6 +17,10 @@ import {
   toggleSubscription
 } from './inventory'
 
+import {
+  subscriptionBuy
+} from './analytics'
+
 export const RECEIVE_IOS_PRODUCTS = 'RECEIVE_IOS_PRODUCTS'
 const FETCH_IOS_PRODUCTS = 'FETCH_IOS_PRODUCTS'
 
@@ -39,13 +43,17 @@ function productBuySuccess(response) {
   }
 }
 
-export function productBuy(key, success, fail) {
-  return (dispatch) => {
+export function productBuy(prod) {
+  return (dispatch, getState) => {
+    const state = getState()
+    const { user } = state
+    const { key, price, currencySymbol} = prod
     dispatch(productBuyTry(key))
     InAppUtils.purchaseProduct(key, (error, response) => {
       if (error) console.log("error", error)
       // NOTE for v3.0: User can cancel the payment which will be availble as error object here.
       if(response && response.productIdentifier) {
+        subscriptionBuy(user.id, key, price, currencySymbol)
         dispatch(productBuySuccess(response))
         dispatch(store.routeProduct(key))
       }
@@ -157,9 +165,9 @@ export function formatProducts(products) {
 
 const wPass = 'ceef46f6e2ee44be9c2a4a521019fc47'
 let production = false // use sandbox or production url for validation
-// if (process.env.NODE_ENV === 'production') {
-//   production = true
-// }
+if (process.env.NODE_ENV === 'production') {
+  production = true
+}
 const validateReceipt = iapReceiptValidator(wPass, production)
 
 const anyReceiptValid = (receipts) => {

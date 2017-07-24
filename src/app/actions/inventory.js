@@ -12,6 +12,11 @@ import {
   findRandNumMatches
 } from './matches'
 
+import {
+  subEnable,
+  subDisable
+} from './analytics'
+
 import { perStore } from '../../Client'
 
 export const INV_JUMPS_ADD = 'INV_JUMPS_ADD'
@@ -54,7 +59,8 @@ function subscriptionEnable(term) {
 export function initSubscriptionEnable(term) {
   return (dispatch, getState) => {
     const state = getState()
-    const { matchesAll } = state
+    const { matchesAll, user } = state
+    subEnable(user.id)
     for (let i = 0; i < matchesAll.length; i++) {
       dispatch(findRandNumMatches())
     }
@@ -70,6 +76,9 @@ function subscriptionDisable() {
 
 export function initSubscriptionDisable() {
   return (dispatch, getState) => {
+    const state = getState()
+    const { user } = state
+    subDisable(user.id)
     perStore.purge([
       'activeChats',
       'currentChat',
