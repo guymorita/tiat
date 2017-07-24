@@ -18,6 +18,8 @@ export const ADVANCE_MATCH_QUEUE = 'ADVANCE_MATCH_QUEUE'
 export const FIND_MATCHES_TO_SHOW = 'FIND_MATCHES_TO_SHOW'
 export const IMPORT_TO_CURRENT_MATCHES_FINISHED = 'IMPORT_TO_CURRENT_MATCHES_FINISHED'
 export const INIT_MATCH_QUEUE = 'INIT_MATCH_QUEUE'
+export const REMOVE_ACTIVE_CHAT = 'REMOVE_ACTIVE_CHAT'
+export const REMOVE_CURRENT_MATCH = 'REMOVE_CURRENT_MATCH'
 
 const MIN_NUM_RANDOM_MATCHES_PER_DAY = 1
 const MAX_NUM_RANDOM_MATCHES_PER_DAY = 2
@@ -73,10 +75,41 @@ export function tryFindMatches() {
     const { date } = state
     const now = dateNow()
     const day = dayFromDate(now)
+    dispatch(cleanMatches())
     if (day !== date.opened_today.actual_day) {
       dispatch(findRandNumMatches())
     }
     dispatch(updateDateDay())
+  }
+}
+
+function removeActiveChat(key) {
+  return {
+    type: REMOVE_ACTIVE_CHAT,
+    key
+  }
+}
+
+function removeCurrentMatch(key) {
+  return {
+    type: REMOVE_CURRENT_MATCH,
+    key
+  }
+}
+
+function cleanMatches() {
+  return (dispatch, getState) => {
+    const state = getState()
+    const { activeChats, currentMatches, matchesAll} = state
+    const hashList = matchesAll.map((match) => { return match.hash })
+    const hashSet = new Set(hashList)
+    const unmatchedList = currentMatches.filter((match) => { return !hashSet.has(match.hash) })
+
+    unmatchedList.forEach((match) => {
+      const { key } = match
+      dispatch(removeActiveChat(key))
+      dispatch(removeCurrentMatch(key))
+    })
   }
 }
 

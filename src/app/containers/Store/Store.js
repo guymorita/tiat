@@ -21,9 +21,9 @@ import Title from '../../components/Nav/Title'
 import { LIGHT_BLUE, LIGHT_PURPLE, TINDER_COLOR } from '../../lib/colors'
 
 class StoreSections extends React.Component {
-  _onJumpPress = (key) => {
+  _onPurchasePress = (prod) => {
     const { dispatch } = this.props
-    dispatch(productBuy(key))
+    dispatch(productBuy(prod))
   }
 
   _onMatchPress = (key) => {
@@ -160,7 +160,7 @@ class StoreSections extends React.Component {
         <View>
           {this.props.products && this.props.products.unlimitedProducts.map((prod) => {
             return (
-              <TouchableOpacity key={prod.key} onPress={() => {this._onJumpPress(prod.key)}}>
+              <TouchableOpacity key={prod.key} onPress={() => {this._onPurchasePress(prod)}}>
                 <View style={[styles.productButton, styles.redBackground]}>
                   {this._renderUnlimitedProductImage(prod.key)}
                   <Text style={styles.productButtonText}>

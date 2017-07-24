@@ -13,7 +13,6 @@ const initialState = {
   ],
   receipts: []
 }
-console.log('RESTORE_PURCHASES', RESTORE_PURCHASES)
 
 export default function storeIOS(state = initialState, action) {
   switch(action.type) {

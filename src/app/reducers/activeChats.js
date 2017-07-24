@@ -14,6 +14,10 @@ import {
   FINISH_CHAT
 } from '../actions/chat'
 
+import {
+  REMOVE_ACTIVE_CHAT
+} from '../actions/matches'
+
 const initialState = {
 }
 
@@ -151,6 +155,12 @@ export default function activeChats(state = initialState, action) {
           }
         }
       }
+
+    case REMOVE_ACTIVE_CHAT:
+      const clone = Object.assign({}, state)
+      const { key } = action
+      delete clone[key]
+      return clone
 
     default:
       return state
