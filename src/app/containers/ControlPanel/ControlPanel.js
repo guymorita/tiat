@@ -32,7 +32,7 @@ class ControlPanel extends Component {
         <NavigationBar
             tintColor={"#F8F8F8"}
           />
-        <View>
+        <View style={styles.content}>
           <TouchableOpacity onPress={this._onChatPress.bind(this)}>
             <View style={styles.menuItem}>
               <Text style={styles.menuItemText}>
@@ -47,26 +47,29 @@ class ControlPanel extends Component {
               </Text>
             </View>
           </TouchableOpacity>
+          <View style={styles.version}>
+            <Text style={styles.versionText}>
+              v1.2
+            </Text>
+          </View>
         </View>
       </View>
     )
   }
 }
 
+const PADDING = 15
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F9F9F9'
   },
-  sectionHeader: {
-    marginLeft: 20,
-    marginTop: 10,
-    paddingTop: 5,
-    paddingBottom: 5,
-    backgroundColor: '#fff'
+  content: {
+    flex: 1
   },
   menuItem: {
-    padding: 15,
+    padding: PADDING,
     borderBottomWidth: 1,
     borderBottomColor: '#DDDDDD'
   },
@@ -74,6 +77,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#606060',
     fontWeight: '500'
+  },
+  version: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginRight: PADDING,
+    marginBottom: PADDING
+  },
+  versionText: {
+    alignSelf: 'flex-end',
+    color: '#909090'
   }
 })
 
