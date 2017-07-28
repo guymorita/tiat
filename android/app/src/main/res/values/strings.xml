@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">tiat</string>
     <string name="RNB_GOOGLE_PLAY_LICENSE_KEY">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtbhbXofSDcYF6ezPomjZLoVrcmOZIYYGifFyeQ0bRT6w1csO+2T3IFBF42RdPVQpuYFCWZ3DuqF8YZ7YPmcwjaqysyaKHFtN+RtdLoZqqBBp3Bq5UZWLMJgPGgkiZNNjOetEaPSg9RoZ1u5dbxfcMiwEG3ufGQekopyUpTYUE99r55ybE0WvJPJ4DP0ZDMx8X3v2ee9Y84j7dWGX6vhiTSlGz3dZWDxbixbqEKdlF/ehtAis8j9JoR8OiP4lBcT3S0I59JpKFB/nF3zA2HPRFIVzxBc47Tlba5T9zEv/5oa6pMm1UB4Xid9bxMlI2UUPZzyGzcudIi0KA4zwIipmSwIDAQAB</string>
 </resources>
