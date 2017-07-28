@@ -32,23 +32,23 @@ class Intro extends Component {
       fontColor: '#fff',
       level: 10,
     }, {
-      title: 'Choose Your Own Path',
+      title: 'Decide your Response',
       description: 'Will you choose to play it safe or take a little risk. Find out which works better!',
-      img: require('./onboarding5.png'),
+      img: require('./onboarding2.png'),
       imgStyle: {
-        height: 350 / 1.5,
-        width: 420 / 1.5
+        height: 300 / 1.5,
+        width: 400 / 1.5
       },
       backgroundColor: LIGHT_BLUE,
       fontColor: '#fff',
       level: 10,
     }, {
-      title: 'Get Instant Feedback',
+      title: 'Get Feedback to Improve',
       description: 'Get helpful tips and insight from our modern romance specialist',
       img: require('./onboarding3.png'),
       imgStyle: {
-        height: 310 / 2.5,
-        width: 630 / 2.5,
+        height: 300 / 1.5,
+        width: 400 / 1.5
       },
       backgroundColor: LIGHT_PURPLE,
       fontColor: '#fff',
@@ -76,7 +76,7 @@ const customIntroStyles = {
   },
   title: {
     textAlign: 'center',
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: '500'
   },
   description: {
