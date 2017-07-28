@@ -1,6 +1,8 @@
 
 import moment from 'moment'
 
+const NUM_MIN_WAIT_TO_RESTART = 45
+
 import {
   BRANCH_MULTI,
   BRANCH_TERMINAL,
@@ -36,7 +38,7 @@ export default function activeChats(state = initialState, action) {
     case BRANCH_TERMINAL:
       const actiChat = state[action.key]
       const dateNow = action.dateNow
-      const dateNextAvailable = moment.unix(dateNow).add(4, 'hours').unix()
+      const dateNextAvailable = moment.unix(dateNow).add(NUM_MIN_WAIT_TO_RESTART, 'minutes').unix()
       return {
         ...state,
         [action.key]: {
