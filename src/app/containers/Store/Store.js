@@ -195,7 +195,7 @@ class StoreSections extends React.Component {
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.textSubscription}>
-            New chats are released on a monthly basis. You now have full access to the chats! And best of all you never have to wait.
+            New chats are typically released on a monthly basis. You now have full access to the chats! And best of all you never have to wait.
           </Text>
           <Text style={styles.textSubscription}>
             If you would like to change your subscription, you must do so within your iTunes / Apple ID configuration.
