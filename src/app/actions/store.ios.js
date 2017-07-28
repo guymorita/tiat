@@ -173,7 +173,7 @@ const validateReceipt = iapReceiptValidator(wPass, production)
 const anyReceiptValid = (receipts) => {
   let anyValid = false
   receipts.forEach((r) => {
-    const expDate = Number(r.latest_receipt_info.expires_date)/1000
+    const expDate = Number(r.receipt.expires_date)/1000
     const isActive =  expDate > dateNow()
     if (isActive) anyValid = true
   })
@@ -236,7 +236,7 @@ export function initRestorePurchases() {
 
         dispatch(restorePurchases(response))
         dispatch(checkSubscription())
-        Alert.alert('Restore Successful', 'Successfully restored all your purchases.')
+        Alert.alert('Receipts restored', 'If any receipts are still valid the app will update accordingly.')
       }
     })
   }
